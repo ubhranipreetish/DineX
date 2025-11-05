@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 10, "column": 0}, "map": {"version":3,"sources":["file:///Users/preetishubhrani/Documents/Projects/DineX/dinex-client/src/components/Navbar.js"],"sourcesContent":["\"use client\";\nimport Link from \"next/link\";\n\nexport default function Navbar() {\n  return (\n    <nav className=\"flex justify-between items-center px-8 py-4 shadow-md bg-white\">\n      <Link href=\"/\" className=\"text-2xl font-bold text-red-600\">\n        DineX\n      </Link>\n      <div className=\"flex gap-6\">\n        <Link href=\"/login\" className=\"text-red-400 hover:text-red-600\">Login</Link>\n        <Link href=\"/signup\" className=\"text-red-400 hover:text-red-600\">Signup</Link>\n      </div>\n    </nav>\n  );\n}\n"],"names":[],"mappings":";;;;;AACA;AADA;;;AAGe,SAAS;IACtB,qBACE,mSAAC;QAAI,WAAU;;0BACb,mSAAC,4NAAI;gBAAC,MAAK;gBAAI,WAAU;0BAAkC;;;;;;0BAG3D,mSAAC;gBAAI,WAAU;;kCACb,mSAAC,4NAAI;wBAAC,MAAK;wBAAS,WAAU;kCAAkC;;;;;;kCAChE,mSAAC,4NAAI;wBAAC,MAAK;wBAAU,WAAU;kCAAkC;;;;;;;;;;;;;;;;;;AAIzE","debugId":null}}]
+}
