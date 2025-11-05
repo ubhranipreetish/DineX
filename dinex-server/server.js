@@ -8,9 +8,11 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-  origin: "http://localhost:3000",
-  credentials: true
-}));
+    origin: "*", // (for testing; later restrict to your frontend domain)
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"]
+  }));
+
 app.use(express.json());
 
 // ✅ Connect to MongoDB
