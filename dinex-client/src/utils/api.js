@@ -2,5 +2,5 @@
 import axios from "axios";
 
 export const API = axios.create({
-  baseURL: "https://dinex-24s9.onrender.com/", // backend base URL
+  baseURL: process.env.NEXT_PUBLIC_API_URL , // backend base URL
 });
