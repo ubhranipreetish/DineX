@@ -2,5 +2,5 @@
 import axios from "axios";
 
 export const API = axios.create({
-  baseURL: "http://localhost:8080", // backend base URL
+  baseURL: "https://dinex-24s9.onrender.com/", // backend base URL
 });
