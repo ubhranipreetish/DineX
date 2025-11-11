@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="min-h-screen flex flex-col">
         <Navbar />
-        <main className="flex-1 px-6 py-4">{children}</main>
+        <main className="flex-1 bg-white">{children}</main>
         <Footer />
       </body>
     </html>

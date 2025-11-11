@@ -8,68 +8,156 @@ __turbopack_context__.s([
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/next/dist/client/app-dir/link.js [app-client] (ecmascript)");
+(()=>{
+    const e = new Error("Cannot find module 'lucide-react'");
+    e.code = 'MODULE_NOT_FOUND';
+    throw e;
+})();
+;
 ;
 ;
 function RestaurantCard({ restaurant }) {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
         href: `/restaurant/${restaurant.id}`,
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-            className: "border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition bg-white",
+            className: "bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition relative border border-gray-100",
             children: [
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                    src: restaurant.image,
-                    alt: restaurant.name,
-                    className: "w-full h-48 object-cover"
-                }, void 0, false, {
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "relative",
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                            src: restaurant.image,
+                            alt: restaurant.name,
+                            className: "w-full h-52 object-cover rounded-t-2xl"
+                        }, void 0, false, {
+                            fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/RestaurantCard.js",
+                            lineNumber: 10,
+                            columnNumber: 11
+                        }, this),
+                        restaurant.promoted && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "absolute top-2 left-2 bg-gray-700/70 text-white text-xs font-medium px-2 py-1 rounded",
+                            children: "Promoted"
+                        }, void 0, false, {
+                            fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/RestaurantCard.js",
+                            lineNumber: 18,
+                            columnNumber: 13
+                        }, this),
+                        restaurant.offer && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "absolute bottom-2 left-0 bg-blue-600 text-white text-sm font-semibold px-3 py-1 rounded-r-lg flex items-center gap-2",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                    className: "text-lg",
+                                    children: "💠"
+                                }, void 0, false, {
+                                    fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/RestaurantCard.js",
+                                    lineNumber: 26,
+                                    columnNumber: 15
+                                }, this),
+                                " ",
+                                restaurant.offer
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/RestaurantCard.js",
+                            lineNumber: 25,
+                            columnNumber: 13
+                        }, this)
+                    ]
+                }, void 0, true, {
                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/RestaurantCard.js",
-                    lineNumber: 7,
+                    lineNumber: 9,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "p-4",
                     children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                            className: "text-lg font-semibold text-gray-800",
-                            children: restaurant.name
-                        }, void 0, false, {
-                            fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/RestaurantCard.js",
-                            lineNumber: 13,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                            className: "text-gray-500",
-                            children: restaurant.cuisine
-                        }, void 0, false, {
-                            fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/RestaurantCard.js",
-                            lineNumber: 16,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                            className: "text-yellow-500 font-medium mt-1",
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "flex justify-between items-center",
                             children: [
-                                "⭐ ",
-                                restaurant.rating
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                    className: "text-lg font-semibold text-gray-800",
+                                    children: restaurant.name
+                                }, void 0, false, {
+                                    fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/RestaurantCard.js",
+                                    lineNumber: 34,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                    className: "bg-green-100 text-green-800 text-sm font-semibold px-2 py-1 rounded flex items-center gap-1",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Star, {
+                                            className: "w-4 h-4 fill-green-600 text-green-600"
+                                        }, void 0, false, {
+                                            fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/RestaurantCard.js",
+                                            lineNumber: 38,
+                                            columnNumber: 15
+                                        }, this),
+                                        restaurant.rating
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/RestaurantCard.js",
+                                    lineNumber: 37,
+                                    columnNumber: 13
+                                }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/RestaurantCard.js",
-                            lineNumber: 17,
+                            lineNumber: 33,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                            className: "text-gray-500 text-sm truncate",
+                            children: restaurant.cuisine
+                        }, void 0, false, {
+                            fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/RestaurantCard.js",
+                            lineNumber: 43,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "flex justify-between text-sm text-gray-600 mt-1",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                    children: restaurant.price
+                                }, void 0, false, {
+                                    fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/RestaurantCard.js",
+                                    lineNumber: 48,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                    children: restaurant.distance
+                                }, void 0, false, {
+                                    fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/RestaurantCard.js",
+                                    lineNumber: 49,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/RestaurantCard.js",
+                            lineNumber: 47,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                            className: "text-gray-400 text-sm mt-1",
+                            children: restaurant.location
+                        }, void 0, false, {
+                            fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/RestaurantCard.js",
+                            lineNumber: 52,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/RestaurantCard.js",
-                    lineNumber: 12,
+                    lineNumber: 32,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/RestaurantCard.js",
-            lineNumber: 6,
+            lineNumber: 7,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/RestaurantCard.js",
-        lineNumber: 5,
+        lineNumber: 6,
         columnNumber: 5
     }, this);
 }
@@ -565,59 +653,51 @@ function Home() {
     const [restaurants, setRestaurants] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([
         {
             id: 1,
-            name: "Café Mocha",
-            cuisine: "Italian",
+            name: "38 Barracks",
+            cuisine: "North Indian, Biryani, Chinese",
             rating: 4.5,
-            image: "/images/cafe1.jpg"
+            price: "₹2,000 for two",
+            distance: "1.5 km",
+            location: "Connaught Place, New Delhi",
+            image: "/images/cafe1.jpg",
+            offer: "Flat 15% OFF",
+            promoted: true
         },
         {
             id: 2,
-            name: "Tandoori Tales",
-            cuisine: "Indian",
-            rating: 4.2,
-            image: "/images/cafe2.jpg"
+            name: "48 Barracks",
+            cuisine: "North Indian, Biryani, Chinese",
+            rating: 4.5,
+            price: "₹2,000 for two",
+            distance: "1.5 km",
+            location: "Connaught Place, New Delhi",
+            image: "/images/cafe1.jpg",
+            offer: "Flat 15% OFF",
+            promoted: true
         },
         {
             id: 3,
-            name: "Sushi Zen",
-            cuisine: "Japanese",
-            rating: 4.7,
-            image: "/images/cafe1.jpg"
+            name: "58 Barracks",
+            cuisine: "North Indian, Biryani, Chinese",
+            rating: 4.5,
+            price: "₹2,000 for two",
+            distance: "1.5 km",
+            location: "Connaught Place, New Delhi",
+            image: "/images/cafe1.jpg",
+            offer: "Flat 15% OFF",
+            promoted: true
         },
         {
             id: 4,
-            name: "Bistro Delight",
-            cuisine: "French",
-            rating: 4.4,
-            image: "/images/cafe2.jpg"
-        },
-        {
-            id: 5,
-            name: "Café Mocha",
-            cuisine: "Italian",
+            name: "68 Barracks",
+            cuisine: "North Indian, Biryani, Chinese",
             rating: 4.5,
-            image: "/images/cafe1.jpg"
-        },
-        {
-            id: 6,
-            name: "Tandoori Tales",
-            cuisine: "Indian",
-            rating: 4.2,
-            image: "/images/cafe2.jpg"
-        },
-        {
-            id: 7,
-            name: "Sushi Zen",
-            cuisine: "Japanese",
-            rating: 4.7,
-            image: "/images/cafe1.jpg"
-        },
-        {
-            id: 8,
-            name: "Bistro Delight",
-            cuisine: "French",
-            rating: 4.4,
-            image: "/images/cafe2.jpg"
+            price: "₹2,000 for two",
+            distance: "1.5 km",
+            location: "Connaught Place, New Delhi",
+            image: "/images/cafe1.jpg",
+            offer: "Flat 15% OFF",
+            promoted: true
         }
     ]);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
@@ -656,7 +736,7 @@ function Home() {
                 children: "Find Your Perfect Dining Spot 🍽️"
             }, void 0, false, {
                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/page.js",
-                lineNumber: 52,
+                lineNumber: 92,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -670,7 +750,7 @@ function Home() {
                                 children: "📍"
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/page.js",
-                                lineNumber: 60,
+                                lineNumber: 100,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -681,13 +761,13 @@ function Home() {
                                 className: "w-full bg-transparent outline-none text-gray-800 placeholder-gray-500"
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/page.js",
-                                lineNumber: 61,
+                                lineNumber: 101,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/page.js",
-                        lineNumber: 59,
+                        lineNumber: 99,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -702,7 +782,7 @@ function Home() {
                                 className: "flex-1 px-3 py-2 bg-gray-100 text-gray-800 outline-none placeholder-gray-500"
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/page.js",
-                                lineNumber: 75,
+                                lineNumber: 115,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -711,19 +791,19 @@ function Home() {
                                 children: "Search"
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/page.js",
-                                lineNumber: 82,
+                                lineNumber: 122,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/page.js",
-                        lineNumber: 71,
+                        lineNumber: 111,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/page.js",
-                lineNumber: 57,
+                lineNumber: 97,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -731,17 +811,17 @@ function Home() {
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$components$2f$FilterBar$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/page.js",
-                        lineNumber: 94,
+                        lineNumber: 134,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/page.js",
-                    lineNumber: 93,
+                    lineNumber: 133,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/page.js",
-                lineNumber: 92,
+                lineNumber: 132,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -750,22 +830,22 @@ function Home() {
                         restaurant: res
                     }, res.id, false, {
                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/page.js",
-                        lineNumber: 101,
+                        lineNumber: 141,
                         columnNumber: 11
                     }, this))
             }, void 0, false, {
                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/page.js",
-                lineNumber: 99,
+                lineNumber: 139,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/page.js",
-        lineNumber: 50,
+        lineNumber: 90,
         columnNumber: 5
     }, this);
 }
-_s(Home, "QAKwsM7dg6iABROIpABtcqLvpjM=");
+_s(Home, "dZkRC8RHKfMDop6x21hlNV8edfo=");
 _c = Home;
 var _c;
 __turbopack_context__.k.register(_c, "Home");

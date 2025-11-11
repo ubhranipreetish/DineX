@@ -4,7 +4,7 @@ import BookingForm from "./BookingForm";
 import ReviewBooking from "./ReviewBooking";
 import Payment from "./Payment";
 
-export default function BookingFlow({ restaurantName }) {
+export default function BookingFlow({ restaurantName, offers = [] }) {
   const [step, setStep] = useState(1);
   const [bookingData, setBookingData] = useState(null);
 
@@ -13,10 +13,7 @@ export default function BookingFlow({ restaurantName }) {
     setStep(2);
   };
 
-  const handleProceedToPayment = () => {
-    setStep(3);
-  };
-
+  const handleProceedToPayment = () => setStep(3);
   const handlePaymentComplete = () => {
     alert("✅ Payment successful! Your table has been reserved.");
     setStep(1);
@@ -26,7 +23,11 @@ export default function BookingFlow({ restaurantName }) {
   return (
     <div className="mt-10">
       {step === 1 && (
-        <BookingForm restaurantName={restaurantName} onSubmit={handleBookingSubmit} />
+        <BookingForm
+          restaurantName={restaurantName}
+          offers={offers}
+          onSubmit={handleBookingSubmit}
+        />
       )}
       {step === 2 && (
         <ReviewBooking data={bookingData} onProceed={handleProceedToPayment} />
