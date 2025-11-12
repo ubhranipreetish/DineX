@@ -26,11 +26,13 @@ __turbopack_context__.s([
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/next/navigation.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$utils$2f$api$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/src/utils/api.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/next/dist/client/app-dir/link.js [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
 "use client";
+;
 ;
 ;
 ;
@@ -42,13 +44,19 @@ function LoginPage() {
     });
     const [showPassword, setShowPassword] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [isLoading, setIsLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"])();
     const handleLogin = async (e)=>{
         e.preventDefault();
         setIsLoading(true);
         try {
             const res = await __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$utils$2f$api$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["API"].post("/api/auth/login", form);
-            localStorage.setItem("token", res.data.token);
-            alert("Login successful!");
+            const { token, user } = res.data;
+            if (token) localStorage.setItem("token", token);
+            if (user) {
+                localStorage.setItem("user", JSON.stringify(user));
+                window.dispatchEvent(new Event("userUpdated"));
+            }
+            router.push("/");
         } catch (err) {
             alert(err.response?.data?.msg || "Login failed");
         } finally{
@@ -68,21 +76,21 @@ function LoginPage() {
                             children: "DineX"
                         }, void 0, false, {
                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-                            lineNumber: 30,
+                            lineNumber: 41,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                             className: "text-gray-600",
-                            children: "Welcome back! Please sign in to your account"
+                            children: "Welcome back! Please log in to your account"
                         }, void 0, false, {
                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-                            lineNumber: 31,
+                            lineNumber: 42,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-                    lineNumber: 29,
+                    lineNumber: 40,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -99,7 +107,7 @@ function LoginPage() {
                                             children: "Email Address"
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-                                            lineNumber: 39,
+                                            lineNumber: 50,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -114,13 +122,13 @@ function LoginPage() {
                                             required: true
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-                                            lineNumber: 42,
+                                            lineNumber: 53,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-                                    lineNumber: 38,
+                                    lineNumber: 49,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -130,7 +138,7 @@ function LoginPage() {
                                             children: "Password"
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-                                            lineNumber: 54,
+                                            lineNumber: 65,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -148,7 +156,7 @@ function LoginPage() {
                                                     required: true
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-                                                    lineNumber: 58,
+                                                    lineNumber: 69,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -167,12 +175,12 @@ function LoginPage() {
                                                             d: "M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L3 3m6.878 6.878L21 21"
                                                         }, void 0, false, {
                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-                                                            lineNumber: 73,
+                                                            lineNumber: 84,
                                                             columnNumber: 23
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-                                                        lineNumber: 72,
+                                                        lineNumber: 83,
                                                         columnNumber: 21
                                                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
                                                         className: "w-5 h-5",
@@ -187,7 +195,7 @@ function LoginPage() {
                                                                 d: "M15 12a3 3 0 11-6 0 3 3 0 016 0z"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-                                                                lineNumber: 77,
+                                                                lineNumber: 88,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -197,30 +205,30 @@ function LoginPage() {
                                                                 d: "M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-                                                                lineNumber: 78,
+                                                                lineNumber: 89,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-                                                        lineNumber: 76,
+                                                        lineNumber: 87,
                                                         columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-                                                    lineNumber: 66,
+                                                    lineNumber: 77,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-                                            lineNumber: 57,
+                                            lineNumber: 68,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-                                    lineNumber: 53,
+                                    lineNumber: 64,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -234,7 +242,7 @@ function LoginPage() {
                                                     className: "w-4 h-4 text-red-600 border-gray-300 rounded focus:ring-red-500"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-                                                    lineNumber: 88,
+                                                    lineNumber: 99,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -242,13 +250,13 @@ function LoginPage() {
                                                     children: "Remember me"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-                                                    lineNumber: 89,
+                                                    lineNumber: 100,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-                                            lineNumber: 87,
+                                            lineNumber: 98,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -257,13 +265,13 @@ function LoginPage() {
                                             children: "Forgot password?"
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-                                            lineNumber: 91,
+                                            lineNumber: 102,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-                                    lineNumber: 86,
+                                    lineNumber: 97,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -287,7 +295,7 @@ function LoginPage() {
                                                         strokeWidth: "4"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-                                                        lineNumber: 105,
+                                                        lineNumber: 116,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -296,27 +304,27 @@ function LoginPage() {
                                                         d: "M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-                                                        lineNumber: 106,
+                                                        lineNumber: 117,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-                                                lineNumber: 104,
+                                                lineNumber: 115,
                                                 columnNumber: 19
                                             }, this),
-                                            "Signing in..."
+                                            "Logging in..."
                                         ]
-                                    }, void 0, true) : 'Sign In'
+                                    }, void 0, true) : 'Log In'
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-                                    lineNumber: 97,
+                                    lineNumber: 108,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-                            lineNumber: 36,
+                            lineNumber: 47,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -330,12 +338,12 @@ function LoginPage() {
                                             className: "w-full border-t border-gray-300"
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-                                            lineNumber: 120,
+                                            lineNumber: 131,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-                                        lineNumber: 119,
+                                        lineNumber: 130,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -345,23 +353,23 @@ function LoginPage() {
                                             children: "Or continue with"
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-                                            lineNumber: 123,
+                                            lineNumber: 134,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-                                        lineNumber: 122,
+                                        lineNumber: 133,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-                                lineNumber: 118,
+                                lineNumber: 129,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-                            lineNumber: 117,
+                            lineNumber: 128,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -379,7 +387,7 @@ function LoginPage() {
                                                     d: "M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-                                                    lineNumber: 132,
+                                                    lineNumber: 143,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -387,7 +395,7 @@ function LoginPage() {
                                                     d: "M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-                                                    lineNumber: 133,
+                                                    lineNumber: 144,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -395,7 +403,7 @@ function LoginPage() {
                                                     d: "M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-                                                    lineNumber: 134,
+                                                    lineNumber: 145,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -403,20 +411,20 @@ function LoginPage() {
                                                     d: "M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-                                                    lineNumber: 135,
+                                                    lineNumber: 146,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-                                            lineNumber: 131,
+                                            lineNumber: 142,
                                             columnNumber: 15
                                         }, this),
                                         "Google"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-                                    lineNumber: 130,
+                                    lineNumber: 141,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -430,25 +438,25 @@ function LoginPage() {
                                                 d: "M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-                                                lineNumber: 141,
+                                                lineNumber: 152,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-                                            lineNumber: 140,
+                                            lineNumber: 151,
                                             columnNumber: 15
                                         }, this),
                                         "Facebook"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-                                    lineNumber: 139,
+                                    lineNumber: 150,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-                            lineNumber: 129,
+                            lineNumber: 140,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -464,39 +472,43 @@ function LoginPage() {
                                         children: "Sign up for free"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-                                        lineNumber: 151,
+                                        lineNumber: 162,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-                                lineNumber: 149,
+                                lineNumber: 160,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-                            lineNumber: 148,
+                            lineNumber: 159,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-                    lineNumber: 35,
+                    lineNumber: 46,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-            lineNumber: 27,
+            lineNumber: 38,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/login/page.js",
-        lineNumber: 26,
+        lineNumber: 37,
         columnNumber: 5
     }, this);
 }
-_s(LoginPage, "AyqTgCVDUXwuVNgnWZt7N1R71VM=");
+_s(LoginPage, "WmFNwocKvPjxk1FI0yLeb98X0PQ=", false, function() {
+    return [
+        __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"]
+    ];
+});
 _c = LoginPage;
 var _c;
 __turbopack_context__.k.register(_c, "LoginPage");

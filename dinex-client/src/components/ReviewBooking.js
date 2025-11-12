@@ -107,7 +107,7 @@ export default function ReviewBooking({ data, onProceed }) {
                   </div>
                 </div>
               )}
-              
+
               {data.specialRequests && data.specialRequests.trim() !== "" && (
                 <div className="mt-6 p-4 bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl border border-gray-200">
                   <div className="flex items-start gap-3">
@@ -192,7 +192,7 @@ export default function ReviewBooking({ data, onProceed }) {
                 {/* Action Button */}
                 <button
                   onClick={onProceed}
-                  className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold py-4 px-6 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2"
+                  className="cursor-pointer w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold py-4 px-6 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2"
                 >
                   <IndianRupee className="w-5 h-5" />
                   Proceed to Payment
@@ -215,7 +215,7 @@ export default function ReviewBooking({ data, onProceed }) {
                 <p className="text-sm text-blue-800 mb-3">
                   Our support team is available 24/7 to assist you with your booking.
                 </p>
-                <button className="text-sm text-blue-600 hover:text-blue-700 font-semibold">
+                <button className="cursor-pointer text-sm text-blue-600 hover:text-blue-700 font-semibold">
                   Contact Support →
                 </button>
               </div>

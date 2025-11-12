@@ -310,7 +310,7 @@ function Reviews({ restaurantName }) {
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                        className: "text-red-500 border border-red-400 px-4 py-1 rounded-lg hover:bg-red-50 text-sm",
+                                        className: "cursor-pointer text-red-500 border border-red-400 px-4 py-1 rounded-lg hover:bg-red-50 text-sm",
                                         children: "Follow"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Reviews.js",
@@ -374,7 +374,7 @@ function Reviews({ restaurantName }) {
                                         className: "flex items-center gap-6 text-gray-500 text-sm mt-3",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                className: "flex items-center gap-1 hover:text-gray-700",
+                                                className: "cursor-pointer flex items-center gap-1 hover:text-gray-700",
                                                 children: [
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$thumbs$2d$up$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ThumbsUp$3e$__["ThumbsUp"], {
                                                         className: "w-4 h-4"
@@ -391,7 +391,7 @@ function Reviews({ restaurantName }) {
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                className: "flex items-center gap-1 hover:text-gray-700",
+                                                className: "cursor-pointer flex items-center gap-1 hover:text-gray-700",
                                                 children: [
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$message$2d$circle$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__MessageCircle$3e$__["MessageCircle"], {
                                                         className: "w-4 h-4"
@@ -408,7 +408,7 @@ function Reviews({ restaurantName }) {
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                className: "flex items-center gap-1 hover:text-gray-700",
+                                                className: "cursor-pointer flex items-center gap-1 hover:text-gray-700",
                                                 children: [
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$share$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Share$3e$__["Share"], {
                                                         className: "w-4 h-4"
@@ -454,7 +454,7 @@ function Reviews({ restaurantName }) {
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                         disabled: page === 1,
                         onClick: ()=>setPage((p)=>p - 1),
-                        className: "px-4 py-2 border rounded-md text-sm text-gray-700 hover:bg-gray-100 disabled:opacity-50",
+                        className: "cursor-pointer px-4 py-2 border rounded-md text-sm text-gray-700 hover:bg-gray-100 disabled:opacity-50",
                         children: "Previous"
                     }, void 0, false, {
                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Reviews.js",
@@ -477,7 +477,7 @@ function Reviews({ restaurantName }) {
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                         disabled: page === totalPages,
                         onClick: ()=>setPage((p)=>p + 1),
-                        className: "px-4 py-2 border rounded-md text-sm text-gray-700 hover:bg-gray-100 disabled:opacity-50",
+                        className: "cursor-pointer px-4 py-2 border rounded-md text-sm text-gray-700 hover:bg-gray-100 disabled:opacity-50",
                         children: "Next"
                     }, void 0, false, {
                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Reviews.js",
@@ -548,7 +548,7 @@ function Overview({ restaurant }) {
                         className: "grid md:grid-cols-3 sm:grid-cols-2 gap-4",
                         children: restaurant.offers.map((offer, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                 onClick: ()=>setSelectedOffer(i),
-                                className: `rounded-xl p-4 text-left border shadow-sm transition-all duration-200 ${selectedOffer === i ? "bg-blue-600 text-white border-blue-600 scale-[1.02]" : "bg-white border-gray-200 text-gray-700 hover:border-blue-400 hover:shadow-md"}`,
+                                className: `cursor-pointer rounded-xl p-4 text-left border shadow-sm transition-all duration-200 ${selectedOffer === i ? "bg-blue-600 text-white border-blue-600 scale-[1.02]" : "bg-white border-gray-200 text-gray-700 hover:border-blue-400 hover:shadow-md"}`,
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                                         className: `font-semibold mb-1 ${selectedOffer === i ? "text-white/90" : "text-blue-700 uppercase text-sm"}`,
@@ -1041,7 +1041,7 @@ function BookingForm({ restaurantName, offers = [], onSubmit }) {
                         children: offers.map((offer, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                 type: "button",
                                 onClick: ()=>setSelectedOffer(i),
-                                className: `rounded-2xl p-5 text-left border shadow-sm transition-all duration-200 ${selectedOffer === i ? "bg-blue-600 text-white border-blue-600 scale-[1.02]" : "bg-white border-gray-200 text-gray-700 hover:border-blue-400 hover:shadow-md"}`,
+                                className: `cursor-pointer rounded-2xl p-5 text-left border shadow-sm transition-all duration-200 ${selectedOffer === i ? "bg-blue-600 text-white border-blue-600 scale-[1.02]" : "bg-white border-gray-200 text-gray-700 hover:border-blue-400 hover:shadow-md"}`,
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                                         className: `font-semibold mb-1 ${selectedOffer === i ? "text-white/90" : "text-blue-700 uppercase text-sm"}`,
@@ -1109,7 +1109,7 @@ function BookingForm({ restaurantName, offers = [], onSubmit }) {
                         value: date,
                         onChange: (e)=>setDate(e.target.value),
                         min: new Date().toISOString().split("T")[0],
-                        className: "w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all outline-none text-gray-700",
+                        className: "cursor-pointer w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all outline-none text-gray-700",
                         required: true
                     }, void 0, false, {
                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/BookingForm.js",
@@ -1147,7 +1147,7 @@ function BookingForm({ restaurantName, offers = [], onSubmit }) {
                         children: timeSlots.map((slot)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                 type: "button",
                                 onClick: ()=>setTime(slot),
-                                className: `px-3 py-2 rounded-lg border text-sm transition ${time === slot ? "bg-red-100 border-red-400 text-red-600 font-medium" : "hover:bg-gray-100 text-gray-700"}`,
+                                className: `cursor-pointer px-3 py-2 rounded-lg border text-sm transition ${time === slot ? "bg-red-100 border-red-400 text-red-600 font-medium" : "hover:bg-gray-100 text-gray-700"}`,
                                 children: formatTime(slot)
                             }, slot, false, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/BookingForm.js",
@@ -1201,7 +1201,7 @@ function BookingForm({ restaurantName, offers = [], onSubmit }) {
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                         type: "button",
                                         onClick: ()=>handlePeopleChange(-1),
-                                        className: "w-7 h-7 flex items-center justify-center bg-red-100 text-red-600 rounded-lg hover:bg-red-200 transition-all font-bold text-xl shadow-sm hover:shadow active:scale-95",
+                                        className: "cursor-pointer w-7 h-7 flex items-center justify-center bg-red-100 text-red-600 rounded-lg hover:bg-red-200 transition-all font-bold text-xl shadow-sm hover:shadow active:scale-95",
                                         children: "−"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/BookingForm.js",
@@ -1219,7 +1219,7 @@ function BookingForm({ restaurantName, offers = [], onSubmit }) {
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                         type: "button",
                                         onClick: ()=>handlePeopleChange(1),
-                                        className: "w-7 h-7 flex items-center justify-center bg-red-100 text-red-600 rounded-lg hover:bg-red-200 transition-all font-bold text-xl shadow-sm hover:shadow active:scale-95",
+                                        className: "cursor-pointer w-7 h-7 flex items-center justify-center bg-red-100 text-red-600 rounded-lg hover:bg-red-200 transition-all font-bold text-xl shadow-sm hover:shadow active:scale-95",
                                         children: "+"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/BookingForm.js",
@@ -1277,7 +1277,7 @@ function BookingForm({ restaurantName, offers = [], onSubmit }) {
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                     type: "submit",
                     disabled: isLoading,
-                    className: "w-full bg-[#EF4F5F] hover:bg-red-600 disabled:bg-gray-400 text-white font-bold py-4 px-6 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-md hover:shadow-lg transform hover:scale-[1.02] active:scale-[0.98] disabled:cursor-not-allowed",
+                    className: "cursor-pointer w-full bg-[#EF4F5F] hover:bg-red-600 disabled:bg-gray-400 text-white font-bold py-4 px-6 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-md hover:shadow-lg transform hover:scale-[1.02] active:scale-[0.98] disabled:cursor-not-allowed",
                     children: isLoading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
@@ -2133,7 +2133,7 @@ function ReviewBooking({ data, onProceed }) {
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                             onClick: onProceed,
-                                            className: "w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold py-4 px-6 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2",
+                                            className: "cursor-pointer w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold py-4 px-6 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2",
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$indian$2d$rupee$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__IndianRupee$3e$__["IndianRupee"], {
                                                     className: "w-5 h-5"
@@ -2210,7 +2210,7 @@ function ReviewBooking({ data, onProceed }) {
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                            className: "text-sm text-blue-600 hover:text-blue-700 font-semibold",
+                                            className: "cursor-pointer text-sm text-blue-600 hover:text-blue-700 font-semibold",
                                             children: "Contact Support →"
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/ReviewBooking.js",
@@ -3072,7 +3072,7 @@ function Payment({ data, onComplete }) {
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                         onClick: handlePayment,
                                         disabled: isProcessing,
-                                        className: "w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 disabled:from-gray-400 disabled:to-gray-500 text-white font-bold py-4 px-6 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98] disabled:cursor-not-allowed",
+                                        className: "cursor-pointer w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 disabled:from-gray-400 disabled:to-gray-500 text-white font-bold py-4 px-6 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98] disabled:cursor-not-allowed",
                                         children: isProcessing ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "flex items-center justify-center gap-2",
                                             children: [
@@ -3953,7 +3953,7 @@ function RestaurantDetail() {
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                         onClick: closeModal,
-                        className: "absolute top-6 right-6 text-white hover:text-gray-300 transition z-50",
+                        className: "cursor-pointer absolute top-6 right-6 text-white hover:text-gray-300 transition z-50",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$x$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__X$3e$__["X"], {
                             className: "w-10 h-10"
                         }, void 0, false, {
@@ -3968,7 +3968,7 @@ function RestaurantDetail() {
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                         onClick: prevImage,
-                        className: "absolute left-6 text-white hover:text-gray-300 bg-black/50 p-3 rounded-full z-50",
+                        className: "cursor-pointer absolute left-6 text-white hover:text-gray-300 bg-black/50 p-3 rounded-full z-50",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$left$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronLeft$3e$__["ChevronLeft"], {
                             className: "w-8 h-8"
                         }, void 0, false, {
@@ -3999,7 +3999,7 @@ function RestaurantDetail() {
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                         onClick: nextImage,
-                        className: "absolute right-6 text-white hover:text-gray-300 bg-black/50 p-3 rounded-full z-50",
+                        className: "cursor-pointer absolute right-6 text-white hover:text-gray-300 bg-black/50 p-3 rounded-full z-50",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$right$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronRight$3e$__["ChevronRight"], {
                             className: "w-8 h-8"
                         }, void 0, false, {
@@ -4041,7 +4041,7 @@ function RestaurantDetail() {
                     "Book a Table"
                 ].map((tab)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                         onClick: ()=>setActiveTab(tab),
-                        className: `pb-3 relative ${activeTab === tab ? "text-red-500 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-red-500" : "hover:text-gray-800"}`,
+                        className: `cursor-pointer pb-3 relative ${activeTab === tab ? "text-red-500 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-red-500" : "hover:text-gray-800"}`,
                         children: tab
                     }, tab, false, {
                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/restaurant/[id]/page.js",
@@ -4081,13 +4081,13 @@ function RestaurantDetail() {
                 lineNumber: 347,
                 columnNumber: 9
             }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+            activeTab === "Menu" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                 className: "text-2xl font-semibold mt-8 mb-3 text-gray-800",
                 children: "Menu"
             }, void 0, false, {
                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/restaurant/[id]/page.js",
-                lineNumber: 353,
-                columnNumber: 7
+                lineNumber: 352,
+                columnNumber: 32
             }, this),
             activeTab === "Book a Table" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$components$2f$BookingFlow$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                 restaurantName: restaurant.name,

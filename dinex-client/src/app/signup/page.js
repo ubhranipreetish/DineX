@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { API } from "@/utils/api";
 
 export default function SignupPage() {
@@ -9,49 +10,48 @@ export default function SignupPage() {
   const [confirmPassword, setConfirmPassword] = useState("");
 
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
+  const router = useRouter();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
   
-  if (form.password !== confirmPassword) {
-    alert("Passwords don't match!");
-    return;
-  }
+    if (form.password !== confirmPassword) {
+      alert("Passwords don't match!");
+      return;
+    }
+  
+    if (form.password.length < 6) {
+      alert("Password must be at least 6 characters long!");
+      return;
+    }
+  
+    setIsLoading(true);
+    try {
+      const res = await API.post("/api/auth/signup", form);
+  
+      // save returned user (backend returns { msg, user })
+      if (res.data?.user) {
+        localStorage.setItem("user", JSON.stringify(res.data.user));
+        // optionally you might auto-login — if you return a token from signup store it here
+        // localStorage.setItem("token", res.data.token)
+      }
 
-  if (form.password.length < 6) {
-    alert("Password must be at least 6 characters long!");
-    return;
-  }
-
-  setIsLoading(true);
-  try {
-    console.log("Sending signup request with:", form); // Debug log
-    const res = await API.post("/api/auth/signup", form);
-    console.log("Signup response:", res.data); // Debug log
-    
-    alert("Account created successfully! Please login to continue.");
-    
-    // Clear form on success
-    setForm({ name: "", email: "", password: "", role: "customer" });
-    setConfirmPassword("");
-    
-    // Optional: Redirect to login page
-    // window.location.href = "/login";
-    
-  } catch (err) {
-    console.error("Signup error:", err); // Debug log
-    console.error("Error response:", err.response); // Debug log
-    
-    const errorMessage = err.response?.data?.message || 
-                        err.response?.data?.msg || 
-                        err.response?.data?.error || 
-                        err.message || 
-                        "Signup failed. Please try again.";
-    
-    alert(errorMessage);
-  } finally {
-    setIsLoading(false);
-  }
-};
+      localStorage.setItem("user", JSON.stringify(res.data.user));
+      window.dispatchEvent(new Event("userUpdated")); 
+      router.push("/");
+  
+    } catch (err) {
+      const errorMessage =
+        err.response?.data?.message ||
+        err.response?.data?.msg ||
+        err.response?.data?.error ||
+        err.message ||
+        "Signup failed. Please try again.";
+      alert(errorMessage);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
 
   return (
@@ -257,7 +257,7 @@ const handleSubmit = async (e) => {
             <p className="text-gray-600">
               Already have an account?{' '}
               <a href="/login" className="text-red-600 hover:text-red-700 font-semibold">
-                Sign in here
+                Log in here
               </a>
             </p>
           </div>

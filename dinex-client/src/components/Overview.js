@@ -18,7 +18,7 @@ export default function Overview({ restaurant }) {
             <button
               key={i}
               onClick={() => setSelectedOffer(i)}
-              className={`rounded-xl p-4 text-left border shadow-sm transition-all duration-200 ${
+              className={`cursor-pointer rounded-xl p-4 text-left border shadow-sm transition-all duration-200 ${
                 selectedOffer === i
                   ? "bg-blue-600 text-white border-blue-600 scale-[1.02]"
                   : "bg-white border-gray-200 text-gray-700 hover:border-blue-400 hover:shadow-md"

@@ -244,7 +244,7 @@ export default function Reviews({ restaurantName }) {
                     </p>
                   </div>
                 </div>
-                <button className="text-red-500 border border-red-400 px-4 py-1 rounded-lg hover:bg-red-50 text-sm">
+                <button className="cursor-pointer text-red-500 border border-red-400 px-4 py-1 rounded-lg hover:bg-red-50 text-sm">
                   Follow
                 </button>
               </div>
@@ -272,13 +272,13 @@ export default function Reviews({ restaurantName }) {
                 <p className="text-gray-700 mt-2">{review.text}</p>
 
                 <div className="flex items-center gap-6 text-gray-500 text-sm mt-3">
-                  <button className="flex items-center gap-1 hover:text-gray-700">
+                  <button className="cursor-pointer flex items-center gap-1 hover:text-gray-700">
                     <ThumbsUp className="w-4 h-4" /> Helpful
                   </button>
-                  <button className="flex items-center gap-1 hover:text-gray-700">
+                  <button className="cursor-pointer flex items-center gap-1 hover:text-gray-700">
                     <MessageCircle className="w-4 h-4" /> Comment
                   </button>
-                  <button className="flex items-center gap-1 hover:text-gray-700">
+                  <button className="cursor-pointer flex items-center gap-1 hover:text-gray-700">
                     <Share className="w-4 h-4" /> Share
                   </button>
                 </div>
@@ -293,7 +293,7 @@ export default function Reviews({ restaurantName }) {
         <button
           disabled={page === 1}
           onClick={() => setPage((p) => p - 1)}
-          className="px-4 py-2 border rounded-md text-sm text-gray-700 hover:bg-gray-100 disabled:opacity-50"
+          className="cursor-pointer px-4 py-2 border rounded-md text-sm text-gray-700 hover:bg-gray-100 disabled:opacity-50"
         >
           Previous
         </button>
@@ -303,7 +303,7 @@ export default function Reviews({ restaurantName }) {
         <button
           disabled={page === totalPages}
           onClick={() => setPage((p) => p + 1)}
-          className="px-4 py-2 border rounded-md text-sm text-gray-700 hover:bg-gray-100 disabled:opacity-50"
+          className="cursor-pointer px-4 py-2 border rounded-md text-sm text-gray-700 hover:bg-gray-100 disabled:opacity-50"
         >
           Next
         </button>

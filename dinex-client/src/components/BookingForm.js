@@ -93,7 +93,7 @@ export default function BookingForm({ restaurantName, offers = [], onSubmit }) {
                 type="button"
                 key={i}
                 onClick={() => setSelectedOffer(i)}
-                className={`rounded-2xl p-5 text-left border shadow-sm transition-all duration-200 ${
+                className={`cursor-pointer rounded-2xl p-5 text-left border shadow-sm transition-all duration-200 ${
                   selectedOffer === i
                     ? "bg-blue-600 text-white border-blue-600 scale-[1.02]"
                     : "bg-white border-gray-200 text-gray-700 hover:border-blue-400 hover:shadow-md"
@@ -139,7 +139,7 @@ export default function BookingForm({ restaurantName, offers = [], onSubmit }) {
           value={date}
           onChange={(e) => setDate(e.target.value)}
           min={new Date().toISOString().split("T")[0]}
-          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all outline-none text-gray-700"
+          className="cursor-pointer w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all outline-none text-gray-700"
           required
         />
       </div>
@@ -156,7 +156,7 @@ export default function BookingForm({ restaurantName, offers = [], onSubmit }) {
               key={slot}
               type="button"
               onClick={() => setTime(slot)}
-              className={`px-3 py-2 rounded-lg border text-sm transition ${
+              className={`cursor-pointer px-3 py-2 rounded-lg border text-sm transition ${
                 time === slot
                   ? "bg-red-100 border-red-400 text-red-600 font-medium"
                   : "hover:bg-gray-100 text-gray-700"
@@ -180,7 +180,7 @@ export default function BookingForm({ restaurantName, offers = [], onSubmit }) {
             <button
               type="button"
               onClick={() => handlePeopleChange(-1)}
-              className="w-7 h-7 flex items-center justify-center bg-red-100 text-red-600 rounded-lg hover:bg-red-200 transition-all font-bold text-xl shadow-sm hover:shadow active:scale-95"
+              className="cursor-pointer w-7 h-7 flex items-center justify-center bg-red-100 text-red-600 rounded-lg hover:bg-red-200 transition-all font-bold text-xl shadow-sm hover:shadow active:scale-95"
             >
               −
             </button>
@@ -190,7 +190,7 @@ export default function BookingForm({ restaurantName, offers = [], onSubmit }) {
             <button
               type="button"
               onClick={() => handlePeopleChange(1)}
-              className="w-7 h-7 flex items-center justify-center bg-red-100 text-red-600 rounded-lg hover:bg-red-200 transition-all font-bold text-xl shadow-sm hover:shadow active:scale-95"
+              className="cursor-pointer w-7 h-7 flex items-center justify-center bg-red-100 text-red-600 rounded-lg hover:bg-red-200 transition-all font-bold text-xl shadow-sm hover:shadow active:scale-95"
             >
               +
             </button>
@@ -217,7 +217,7 @@ export default function BookingForm({ restaurantName, offers = [], onSubmit }) {
         <button
           type="submit"
           disabled={isLoading}
-          className="w-full bg-[#EF4F5F] hover:bg-red-600 disabled:bg-gray-400 text-white font-bold py-4 px-6 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-md hover:shadow-lg transform hover:scale-[1.02] active:scale-[0.98] disabled:cursor-not-allowed"
+          className="cursor-pointer w-full bg-[#EF4F5F] hover:bg-red-600 disabled:bg-gray-400 text-white font-bold py-4 px-6 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-md hover:shadow-lg transform hover:scale-[1.02] active:scale-[0.98] disabled:cursor-not-allowed"
         >
           {isLoading ? (
             <>

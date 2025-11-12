@@ -283,7 +283,7 @@ export default function RestaurantDetail() {
           {/* Close Button */}
           <button
             onClick={closeModal}
-            className="absolute top-6 right-6 text-white hover:text-gray-300 transition z-50"
+            className="cursor-pointer absolute top-6 right-6 text-white hover:text-gray-300 transition z-50"
           >
             <X className="w-10 h-10" />
           </button>
@@ -291,7 +291,7 @@ export default function RestaurantDetail() {
           {/* Navigation Arrows */}
           <button
             onClick={prevImage}
-            className="absolute left-6 text-white hover:text-gray-300 bg-black/50 p-3 rounded-full z-50"
+            className="cursor-pointer absolute left-6 text-white hover:text-gray-300 bg-black/50 p-3 rounded-full z-50"
           >
             <ChevronLeft className="w-8 h-8" />
           </button>
@@ -306,7 +306,7 @@ export default function RestaurantDetail() {
 
           <button
             onClick={nextImage}
-            className="absolute right-6 text-white hover:text-gray-300 bg-black/50 p-3 rounded-full z-50"
+            className="cursor-pointer absolute right-6 text-white hover:text-gray-300 bg-black/50 p-3 rounded-full z-50"
           >
             <ChevronRight className="w-8 h-8" />
           </button>
@@ -325,7 +325,7 @@ export default function RestaurantDetail() {
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
-            className={`pb-3 relative ${
+            className={`cursor-pointer pb-3 relative ${
               activeTab === tab
                 ? "text-red-500 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-red-500"
                 : "hover:text-gray-800"
@@ -349,8 +349,8 @@ export default function RestaurantDetail() {
         </div>
       )}
 
-
-      <h2 className="text-2xl font-semibold mt-8 mb-3 text-gray-800">Menu</h2>
+      {activeTab === "Menu" && <h2 className="text-2xl font-semibold mt-8 mb-3 text-gray-800">Menu</h2>}
+      
       {/* <div className="border rounded-xl p-4 bg-gray-50">
         {restaurant.menu.map((item, i) => (
           <div
