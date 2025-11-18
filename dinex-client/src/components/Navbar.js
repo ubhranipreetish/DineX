@@ -10,6 +10,30 @@ export default function Navbar() {
   const [user, setUser] = useState(null);
   const router = useRouter();
 
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        async (position) => {
+          const { latitude, longitude } = position.coords;
+          try {
+            const res = await fetch(
+              `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`
+            );
+            const data = await res.json();
+            setLocation(`${data.address.amenity}, ${data.address.city}` || "Your Area");
+          } catch (error) {
+            setLocation("Unknown Location");
+          }
+        },
+        () => {
+          setLocation("Location Access Denied");
+        }
+      );
+    } else {
+      setLocation("Location Unavailable");
+    }
+  }, []);
+
   // 🧠 Detect login status (Next.js client)
   useEffect(() => {
     const stored = localStorage.getItem("user");

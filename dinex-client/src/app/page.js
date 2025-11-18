@@ -55,7 +55,7 @@ export default function Home() {
     <div className="min-h-screen bg-gray-50 text-gray-900 px-4 md:px-10 py-8">
       {/* Title */}
       <h1 className="text-3xl font-semibold text-center mb-8 text-gray-800">
-        Find Your Perfect Dining Spot 🍽️
+        Find Your Perfect Dining Spot
       </h1>
 
       {/* Sticky Filter Bar */}

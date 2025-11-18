@@ -1,1 +1,16 @@
-{}
+{
+  "[project]/node_modules/react-pdf/dist/Page.js [app-client] (ecmascript, next/dynamic entry)": {
+    "id": "[project]/node_modules/react-pdf/dist/Page.js [app-client] (ecmascript, next/dynamic entry)",
+    "files": [
+      "static/chunks/node_modules_8c4dfabf._.js",
+      "static/chunks/node_modules_react-pdf_dist_Page_0c07c921.js"
+    ]
+  },
+  "[project]/node_modules/react-pdf/dist/Document.js [app-client] (ecmascript, next/dynamic entry)": {
+    "id": "[project]/node_modules/react-pdf/dist/Document.js [app-client] (ecmascript, next/dynamic entry)",
+    "files": [
+      "static/chunks/node_modules_12c7d6d5._.js",
+      "static/chunks/node_modules_react-pdf_dist_Document_0c07c921.js"
+    ]
+  }
+}

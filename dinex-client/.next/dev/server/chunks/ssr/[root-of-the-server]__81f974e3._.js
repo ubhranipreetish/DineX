@@ -46,6 +46,24 @@ function Navbar() {
     const [searchQuery, setSearchQuery] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("");
     const [user, setUser] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRouter"])();
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(async (position)=>{
+                const { latitude, longitude } = position.coords;
+                try {
+                    const res = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`);
+                    const data = await res.json();
+                    setLocation(`${data.address.amenity}, ${data.address.city}` || "Your Area");
+                } catch (error) {
+                    setLocation("Unknown Location");
+                }
+            }, ()=>{
+                setLocation("Location Access Denied");
+            });
+        } else {
+            setLocation("Location Unavailable");
+        }
+    }, []);
     // 🧠 Detect login status (Next.js client)
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
         const stored = localStorage.getItem("user");
@@ -73,7 +91,7 @@ function Navbar() {
                     children: "DineX"
                 }, void 0, false, {
                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Navbar.js",
-                    lineNumber: 38,
+                    lineNumber: 62,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -87,7 +105,7 @@ function Navbar() {
                                     children: "📍"
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Navbar.js",
-                                    lineNumber: 45,
+                                    lineNumber: 69,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -98,13 +116,13 @@ function Navbar() {
                                     className: "w-full bg-transparent outline-none text-gray-800 placeholder-gray-500"
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Navbar.js",
-                                    lineNumber: 46,
+                                    lineNumber: 70,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Navbar.js",
-                            lineNumber: 44,
+                            lineNumber: 68,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -114,7 +132,7 @@ function Navbar() {
                                     className: "w-4 h-4 text-gray-500 absolute left-4"
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Navbar.js",
-                                    lineNumber: 56,
+                                    lineNumber: 80,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -125,19 +143,19 @@ function Navbar() {
                                     className: "w-full pl-9 bg-transparent outline-none text-gray-800 placeholder-gray-500"
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Navbar.js",
-                                    lineNumber: 57,
+                                    lineNumber: 81,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Navbar.js",
-                            lineNumber: 55,
+                            lineNumber: 79,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Navbar.js",
-                    lineNumber: 43,
+                    lineNumber: 67,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -153,7 +171,7 @@ function Navbar() {
                                     children: user.name ? user.name[0].toUpperCase() : "U"
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Navbar.js",
-                                    lineNumber: 72,
+                                    lineNumber: 96,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -161,18 +179,18 @@ function Navbar() {
                                     children: user.name?.split(" ")[0] || "Profile"
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Navbar.js",
-                                    lineNumber: 75,
+                                    lineNumber: 99,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Navbar.js",
-                            lineNumber: 71,
+                            lineNumber: 95,
                             columnNumber: 15
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Navbar.js",
-                        lineNumber: 70,
+                        lineNumber: 94,
                         columnNumber: 13
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
                         children: [
@@ -182,7 +200,7 @@ function Navbar() {
                                 children: "Login"
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Navbar.js",
-                                lineNumber: 82,
+                                lineNumber: 106,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -191,25 +209,25 @@ function Navbar() {
                                 children: "Signup"
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Navbar.js",
-                                lineNumber: 85,
+                                lineNumber: 109,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, void 0, true)
                 }, void 0, false, {
                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Navbar.js",
-                    lineNumber: 68,
+                    lineNumber: 92,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Navbar.js",
-            lineNumber: 36,
+            lineNumber: 60,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Navbar.js",
-        lineNumber: 35,
+        lineNumber: 59,
         columnNumber: 5
     }, this);
 }

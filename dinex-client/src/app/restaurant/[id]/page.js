@@ -7,6 +7,8 @@ import Reviews from "@/components/Reviews";
 import Overview from "@/components/Overview";
 import Photos from "@/components/Photos";
 import BookingFlow from "@/components/BookingFlow";
+import MenuSection from "@/components/MenuSection";
+
 
 
 
@@ -349,28 +351,15 @@ export default function RestaurantDetail() {
         </div>
       )}
 
-      {activeTab === "Menu" && <h2 className="text-2xl font-semibold mt-8 mb-3 text-gray-800">Menu</h2>}
+      {activeTab === "Menu" && <MenuSection restaurant={restaurant} />}
+
       
-      {/* <div className="border rounded-xl p-4 bg-gray-50">
-        {restaurant.menu.map((item, i) => (
-          <div
-            key={i}
-            className="flex justify-between border-b border-gray-200 py-2 last:border-none"
-          >
-            <span className="text-gray-800">{item.name}</span>
-            <span className="text-gray-700 font-medium">₹{item.price}</span>
-          </div>
-        ))}
-      </div> */}
       {activeTab === "Book a Table" && (
         <BookingFlow
           restaurantName={restaurant.name}
           offers={restaurant.offers}
         />
       )}
-      {/* <div className="mt-10">
-        <BookingFlow restaurantName={restaurant.name} />
-      </div> */}
     </div>
   );
 }
