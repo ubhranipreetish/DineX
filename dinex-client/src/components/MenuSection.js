@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect, useMemo } from "react";
-import { pdfjs } from "react-pdf";   
 
 import {
   Utensils,
@@ -12,7 +11,6 @@ import {
   ZoomOut,
   X,
 } from "lucide-react";
-import dynamic from "next/dynamic";
   
   
   
