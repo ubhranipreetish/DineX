@@ -1,11 +1,11 @@
-# 🍽️ DineX – Restaurant Ordering & Table Booking System
+# DineX – Restaurant Ordering & Table Booking System
 
 DineX is a full-stack platform designed to simplify restaurant operations and enhance the dining experience for customers.  
 It offers seamless **table booking**, **menu browsing**, **online ordering**, and a **restaurant dashboard** to manage both online and offline orders — all in one place.
 
 ---
 
-## 🚀 Live Demo Links
+## Live Demo Links
 
 | Service | URL |
 |--------|-----|
@@ -14,13 +14,13 @@ It offers seamless **table booking**, **menu browsing**, **online ordering**, an
 | **Database (MongoDB Atlas Dashboard)** | https://cloud.mongodb.com/v2/69099995b37fa62f6c38bf02#/metrics/replicaSet/69099b19d82f480839f1b994/explorer/test/users/find |
 
 
-## 📌 Project Overview
+## Project Overview
 
-### ❗ Problem Statement  
+### Problem Statement  
 Restaurants often face difficulty managing **online orders**, **walk-in customers**, and **table availability** in real time.  
 Customers also struggle with inefficient booking systems, delayed order handling, and lack of transparency.
 
-### 🎯 DineX Solution  
+### DineX Solution  
 DineX solves these problems by offering:
 
 - A unified platform for **table booking + menu browsing**
@@ -28,7 +28,7 @@ DineX solves these problems by offering:
 - Secure authentication system for both customers and restaurants
 
 
-### 🧩 Technologies Used
+### Technologies Used
 
 - **Frontend:** Next.js, React, TailwindCSS  
 - **Backend:** Node.js, Express.js  
@@ -40,37 +40,37 @@ DineX solves these problems by offering:
   - DB → MongoDB Atlas  
 
 
-## ✨ Key Features
+## Key Features
 
-### 🔐 Authentication & Authorization
+### Authentication & Authorization
 - JWT-based secure login/signup  
 - Separate roles: **Customer** and **Restaurant**  
 
-### 🍽️ Customer Interface
+### Customer Interface
 - Browse restaurants  
 - View menus  
 - Book tables  
 - View their order history  
 
-### 🧾 Restaurant Interface
+### Restaurant Interface
 - Manage menu items (CRUD)  
 - Manage offline orders  
 - Update order status (Accepted / Preparing / Ready / Completed)  
 - View table bookings  
 - Add walk-in customer orders  
 
-### 🔍 Searching, Filtering & Sorting
+### Searching, Filtering & Sorting
 - Search restaurants by name or dish  
 - Filter by cuisine, cost, rating, veg/non-veg  
 - Sort by popularity, rating  
 - Pagination for faster loading  
 
-### 🌐 Hosting
+### Hosting
 - Client, server, and database are fully deployed  
 - Live URLs for easy access
 
 
-## 🧪 API Overview
+## API Overview
 
 Below are some core REST API routes:
 
