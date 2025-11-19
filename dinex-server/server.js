@@ -3,8 +3,11 @@ import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import authRoutes from "./routes/auth.js";
+import restaurantRoutes from "./routes/restaurant.js";
 
 dotenv.config();
+console.log("Loaded MONGO_URI:", process.env.MONGO_URI);
+
 const app = express();
 
 app.use(cors({
@@ -24,6 +27,7 @@ mongoose.connect(process.env.MONGO_URI, {
 .catch(err => console.log("❌ MongoDB connection error:", err));
 
 app.use("/api/auth", authRoutes);
+app.use("/api/restaurants", restaurantRoutes);
 app.get("/", (req, res) => res.send("DineX Backend Running ✅"));
 
 const PORT = process.env.PORT || 8080;

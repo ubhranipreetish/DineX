@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import RestaurantCard from "@/components/RestaurantCard";
 import FilterBar from "@/components/FilterBar";
+import { API } from "@/utils/api";
 
 export default function Home() {
   const [restaurants, setRestaurants] = useState([
@@ -50,6 +51,13 @@ export default function Home() {
       offer: "Flat 15% OFF",
     },
   ]);
+  useEffect(() => {
+    fetch(`${API}/api/restaurants`)
+      .then((res) => res.json())
+      .then((data) => setRestaurants(data))
+      .catch((err) => console.error(err));
+  }, []);
+  
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900 px-4 md:px-10 py-8">

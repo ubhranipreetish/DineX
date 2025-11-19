@@ -163,6 +163,15 @@ export default function RestaurantDetail() {
     setRestaurant(selected);
   }, [id]);
 
+  const images = [
+    "/images/cafe1.png",
+    "/images/drama1.jpg",
+    "/images/drama2.jpg",
+    "/images/drama3.jpg",
+    "/images/drama4.jpg"
+  ]
+  
+
   const openImage = (index) => setSelectedImageIndex(index);
   const closeModal = () => setSelectedImageIndex(null);
   const nextImage = () =>
@@ -188,7 +197,7 @@ export default function RestaurantDetail() {
 
             <div className="flex flex-wrap items-center gap-2 mt-3">
               <span className="text-green-600 font-medium bg-green-100 px-3 py-1 rounded-full text-sm">
-                {restaurant.openNow ? "Open now" : "Closed"}
+                Open now
               </span>
               <span className="text-gray-600 text-sm">• 10am – 11:30pm</span>
               <span className="text-gray-600 text-sm">• ₹{restaurant.priceForTwo} for two</span>
@@ -229,7 +238,7 @@ export default function RestaurantDetail() {
           onClick={() => setSelectedImageIndex(0)}
         >
           <img
-            src={restaurant.images[0]}
+            src={images[0]}
             alt="Main"
             className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105"
           />
@@ -237,7 +246,7 @@ export default function RestaurantDetail() {
 
         {/* Right grid of smaller images */}
         <div className="md:col-span-2 grid grid-cols-2 gap-3">
-          {restaurant.images.slice(1, 4).map((img, index) => (
+          {images.slice(1, 4).map((img, index) => (
             <div
               key={index}
               className="relative group cursor-pointer overflow-hidden rounded-xl"
@@ -266,7 +275,7 @@ export default function RestaurantDetail() {
           >
             {/* Background image */}
             <img
-              src={restaurant.images[4] || restaurant.images[0]}
+              src={images[4] || images[0]}
               alt="Gallery 5"
               className="w-full h-[155px] object-cover transition-transform duration-500 group-hover:scale-105"
             />
@@ -300,7 +309,7 @@ export default function RestaurantDetail() {
 
           <div className="max-w-6xl mx-auto w-full px-4 flex items-center justify-center">
             <img
-              src={restaurant.images[selectedImageIndex]}
+              src={images[selectedImageIndex]}
               alt={`Photo ${selectedImageIndex + 1}`}
               className="max-h-[80vh] w-auto rounded-xl object-contain shadow-2xl"
             />
@@ -315,7 +324,7 @@ export default function RestaurantDetail() {
 
           {/* Image Counter */}
           <div className="absolute bottom-8 text-white text-sm">
-            {selectedImageIndex + 1} / {restaurant.images.length}
+            {selectedImageIndex + 1} / {images.length}
           </div>
         </div>
       )}

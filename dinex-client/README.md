@@ -11,7 +11,6 @@ It offers seamless **table booking**, **menu browsing**, **online ordering**, an
 |--------|-----|
 | **Frontend (Next.js – Vercel)** | https://dine-x-mu.vercel.app/ |
 | **Backend API (Express – Render)** | https://dinex-24s9.onrender.com/ |
-| **Database (MongoDB Atlas Dashboard)** | https://cloud.mongodb.com/v2/69099995b37fa62f6c38bf02#/metrics/replicaSet/69099b19d82f480839f1b994/explorer/test/users/find |
 
 
 ## 📌 Project Overview

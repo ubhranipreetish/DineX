@@ -6,6 +6,58 @@ export default function Overview({ restaurant }) {
 
   if (!restaurant) return null;
 
+  const staticRestaurantData = {
+  
+    offers: [
+      { title: "PRE-BOOK OFFER", desc: "Flat 20% OFF", sub: "Booking required" },
+      { title: "INSTANT OFFER", desc: "Flat 10% OFF", sub: "on bill payments" },
+      { title: "SURPRISE", desc: "Get a scratch card", sub: "after every transaction" },
+      { title: "EXCLUSIVE OFFER", desc: "Get 15% upto ₹1200 on RuPay CC UPI", sub: "valid on your next dining payment" },
+      { title: "BANK OFFER", desc: "20% OFF up to ₹5000", sub: "on Solitaire Credit Cards and more with other banks" }
+    ],
+  
+    knownFor: [
+      "Fancy Place",
+      "Best in Service",
+      "Sanitised Service",
+      "Best Staff",
+      "Great Menu",
+      "Food Tastes Great"
+    ],
+  
+    paymentInfo: [
+      "Cash and Cards accepted",
+      "Digital payments accepted"
+    ],
+  
+    moreInfo: [
+      "Lunch",
+      "Dinner",
+      "Takeaway available",
+      "Full bar available",
+      "Artistic",
+      "Reservation required",
+      "Dress code [Formal]",
+      "Parking available",
+      "Valet parking",
+      "Offers candlelit setting",
+      "Gluten free options",
+      "Vegan options",
+      "Celebrity frequented",
+      "Nightlife",
+      "Garden",
+      "Outdoor seating",
+      "Romantic dining",
+      "Family friendly",
+      "Luxury dining",
+      "Private dining area",
+      "Lounge seating",
+      "Party vibe",
+      "Free parking",
+      "Indoor seating"
+    ]
+  };
+
   return (
     <div className="mt-8 space-y-8">
       {/* 🍽️ Dining Offers */}
@@ -14,7 +66,7 @@ export default function Overview({ restaurant }) {
         <p className="text-gray-500 mb-4">Tap on any offer to know more</p>
 
         <div className="grid md:grid-cols-3 sm:grid-cols-2 gap-4">
-          {restaurant.offers.map((offer, i) => (
+          {staticRestaurantData.offers.map((offer, i) => (
             <button
               key={i}
               onClick={() => setSelectedOffer(i)}
@@ -50,13 +102,13 @@ export default function Overview({ restaurant }) {
         </div>
 
         {/* Display selected offer details below */}
-        {restaurant.offers[selectedOffer] && (
+        {staticRestaurantData.offers[selectedOffer] && (
           <div className="mt-5 bg-gray-50 border border-gray-200 rounded-lg p-4">
             <h4 className="font-semibold text-gray-800 text-lg">
-              Selected Offer: {restaurant.offers[selectedOffer].title}
+              Selected Offer: {staticRestaurantData.offers[selectedOffer].title}
             </h4>
             <p className="text-gray-600 mt-1">
-              {restaurant.offers[selectedOffer].desc}
+              {staticRestaurantData.offers[selectedOffer].desc}
             </p>
           </div>
         )}
@@ -68,7 +120,7 @@ export default function Overview({ restaurant }) {
           People Say This Place Is Known For
         </h2>
         <p className="text-gray-600 mb-4">
-          {restaurant.knownFor?.length ? restaurant.knownFor.join(", ") : "No info available."}
+          {staticRestaurantData.knownFor?.length ? staticRestaurantData.knownFor.join(", ") : "No info available."}
         </p>
 
         <h2 className="text-xl text-gray-900 font-semibold mb-2">Average Cost</h2>
@@ -76,8 +128,8 @@ export default function Overview({ restaurant }) {
         <p className="text-gray-500">₹395 for a pint of beer (approx.)</p>
 
         <div className="mt-3 space-y-1">
-          {restaurant.paymentInfo?.length ? (
-            restaurant.paymentInfo.map((info, i) => (
+          {staticRestaurantData.paymentInfo?.length ? (
+            staticRestaurantData.paymentInfo.map((info, i) => (
               <p key={i} className="text-gray-700">
                 {info}
               </p>
@@ -92,8 +144,8 @@ export default function Overview({ restaurant }) {
       <section className="border border-gray-200 rounded-xl p-5">
         <h2 className="text-xl text-gray-900 font-semibold mb-4">More Info</h2>
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-2">
-          {restaurant.moreInfo?.length ? (
-            restaurant.moreInfo.map((info, i) => (
+          {staticRestaurantData.moreInfo?.length ? (
+            staticRestaurantData.moreInfo.map((info, i) => (
               <div key={i} className="flex items-center gap-2 text-gray-700">
                 <span className="text-green-500 text-lg">✔</span> {info}
               </div>
