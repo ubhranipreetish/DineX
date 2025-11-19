@@ -1,13 +1,15 @@
 import mongoose from "mongoose";
-import Restaurant from "../models/Restaurant.js";
 import dotenv from "dotenv";
-dotenv.config();
+import Restaurant from "../models/Restaurant.js";
 
+dotenv.config();
 
 const MONGO_URI = process.env.MONGO_URI;
 
-const restaurants = [
+// Base 4 restaurants
+const baseRestaurants = [
   {
+    restaurantId: 1,
     name: "38 Barracks",
     cuisines: ["North Indian", "Biryani", "Chinese"],
     address: "Connaught Place, New Delhi",
@@ -17,6 +19,7 @@ const restaurants = [
     offer: 25,
   },
   {
+    restaurantId: 2,
     name: "48 Barracks",
     cuisines: ["North Indian", "Mughlai"],
     address: "Rajouri Garden, New Delhi",
@@ -26,6 +29,7 @@ const restaurants = [
     offer: 10,
   },
   {
+    restaurantId: 3,
     name: "58 Barracks",
     cuisines: ["Chinese", "Thai"],
     address: "Punjabi Bagh, New Delhi",
@@ -35,6 +39,7 @@ const restaurants = [
     offer: 40,
   },
   {
+    restaurantId: 4,
     name: "68 Barracks",
     cuisines: ["Italian", "Continental"],
     address: "Saket, New Delhi",
@@ -43,34 +48,38 @@ const restaurants = [
     contact: "9090909090",
     offer: 15,
   },
-
-  // ⭐ Auto-generate remaining 26 restaurants
-  ...Array.from({ length: 26 }).map((_, i) => ({
-    name: `Restaurant ${i + 5}`,
-    cuisines: ["Indian", "Chinese", "Continental"],
-    address: `Area ${i + 1}, New Delhi`,
-    rating: (Math.random() * (5 - 3.5) + 3.5).toFixed(1), // between 3.5–5
-    priceForTwo: Math.floor(Math.random() * 1500 + 1000), // 1000–2500
-    contact: `${9000000000 + i}`, // unique 10-digit number
-    offer: [10, 15, 20, 25, 30, 40][Math.floor(Math.random() * 6)], // random offer
-  })),
 ];
+
+// Generate 26 more
+const generatedRestaurants = Array.from({ length: 26 }).map((_, i) => ({
+  restaurantId: i + 5,
+  name: `Restaurant ${i + 5}`,
+  cuisines: ["Indian", "Chinese", "Continental"],
+  address: `Area ${i + 1}, New Delhi`,
+  rating: Number((Math.random() * (5 - 3.5) + 3.5).toFixed(1)),
+  priceForTwo: Math.floor(Math.random() * 1500 + 1000),
+  contact: String(9000000000 + i),
+  offer: [10, 15, 20, 25, 30, 40][Math.floor(Math.random() * 6)],
+}));
+
+const restaurants = [...baseRestaurants, ...generatedRestaurants];
 
 async function seedRestaurants() {
   try {
-    console.log("⏳ Connecting to MongoDB...");
+    console.log("⏳ Connecting...");
     await mongoose.connect(MONGO_URI);
 
-    console.log("🔥 Clearing old data...");
+    console.log("🔥 Deleting old restaurants...");
     await Restaurant.deleteMany({});
 
-    console.log("🍽️ Inserting new restaurants...");
-    await Restaurant.insertMany(restaurants);
+    console.log("🍽 Inserting new restaurants...");
+    const inserted = await Restaurant.insertMany(restaurants);
 
-    console.log("✅ Successfully seeded 30 restaurants!");
+    console.log("🎉 DONE!");
+
     process.exit();
   } catch (err) {
-    console.error("❌ Error seeding restaurants:", err);
+    console.error("❌ Error:", err);
     process.exit(1);
   }
 }

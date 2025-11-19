@@ -1,12 +1,17 @@
 import express from "express";
+import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import User from "../models/User.js";
 
 const router = express.Router();
+console.log("User model is:", User);
+
 
 // 🟢 Signup
 router.post("/signup", async (req, res) => {
+  console.log("Connected DB name:", mongoose.connection.name);
+
   const { name, email, password, role } = req.body;
 
   try {
