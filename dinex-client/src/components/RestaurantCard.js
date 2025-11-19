@@ -3,7 +3,7 @@ import { Star } from "lucide-react";
 
 export default function RestaurantCard({ restaurant }) {
   return (
-    <Link href={`/restaurant/${restaurant.id}`}>
+    <Link href={`/restaurant/${restaurant.restaurantId}`}>
       <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition relative border border-gray-100">
         {/* Restaurant Image Section */}
         <div className="relative">
@@ -16,7 +16,7 @@ export default function RestaurantCard({ restaurant }) {
           {/* Offer Banner */}
           {restaurant.offer && (
             <div className="absolute bottom-2 left-0 bg-blue-600 text-white text-sm font-semibold px-3 py-1 rounded-r-lg flex items-center gap-2">
-              <span className="text-lg">💠</span> {restaurant.offer}
+              <span className="text-lg">💠</span> {restaurant.offer}% OFF
             </div>
           )}
         </div>
@@ -34,16 +34,16 @@ export default function RestaurantCard({ restaurant }) {
           </div>
 
           <p className="text-gray-500 text-sm truncate">
-            {restaurant.cuisine}
+            {restaurant.cuisines.join(", ")}
           </p>
 
           <div className="flex justify-between text-sm text-gray-600 mt-1">
-            <span>{restaurant.price}</span>
-            <span>{restaurant.distance}</span>
+            <span>₹{restaurant.priceForTwo} for two</span>
+            <span>2.5 km</span>
           </div>
 
           <p className="text-gray-400 text-sm mt-1">
-            {restaurant.location}
+            {restaurant.address}
           </p>
         </div>
       </div>

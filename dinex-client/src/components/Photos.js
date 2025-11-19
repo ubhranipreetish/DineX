@@ -3,20 +3,24 @@ import { useState } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function Photos({ restaurant }) {
+  const images = [
+    "/images/cafe1.png",
+    "/images/drama1.jpg",
+    "/images/drama2.jpg",
+    "/images/drama3.jpg",
+    "/images/drama4.jpg"
+  ]
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
-
-  if (!restaurant?.images || restaurant.images.length === 0)
-    return <p className="text-gray-600 mt-8">No photos available</p>;
 
   const openImage = (index) => setSelectedImageIndex(index);
   const closeModal = () => setSelectedImageIndex(null);
   const nextImage = () =>
     setSelectedImageIndex((prev) =>
-      prev === restaurant.images.length - 1 ? 0 : prev + 1
+      prev === images.length - 1 ? 0 : prev + 1
     );
   const prevImage = () =>
     setSelectedImageIndex((prev) =>
-      prev === 0 ? restaurant.images.length - 1 : prev - 1
+      prev === 0 ? images.length - 1 : prev - 1
     );
 
   return (
@@ -27,7 +31,7 @@ export default function Photos({ restaurant }) {
 
       {/* Grid */}
       <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {restaurant.images.map((img, index) => (
+        {images.map((img, index) => (
           <div
             key={index}
             onClick={() => openImage(index)}
@@ -64,7 +68,7 @@ export default function Photos({ restaurant }) {
 
           <div className="max-w-6xl mx-auto w-full px-4 flex items-center justify-center">
             <img
-              src={restaurant.images[selectedImageIndex]}
+              src={images[selectedImageIndex]}
               alt={`Photo ${selectedImageIndex + 1}`}
               className="max-h-[80vh] w-auto rounded-xl object-contain shadow-2xl"
             />
@@ -79,7 +83,7 @@ export default function Photos({ restaurant }) {
 
           {/* Image Counter */}
           <div className="absolute bottom-8 text-white text-sm">
-            {selectedImageIndex + 1} / {restaurant.images.length}
+            {selectedImageIndex + 1} / {images.length}
           </div>
         </div>
       )}

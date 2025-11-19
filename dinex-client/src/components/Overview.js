@@ -9,7 +9,7 @@ export default function Overview({ restaurant }) {
   const staticRestaurantData = {
   
     offers: [
-      { title: "PRE-BOOK OFFER", desc: "Flat 20% OFF", sub: "Booking required" },
+      { title: "PRE-BOOK OFFER", desc: `Flat ${restaurant.offer}% OFF`, sub: "Booking required" },
       { title: "INSTANT OFFER", desc: "Flat 10% OFF", sub: "on bill payments" },
       { title: "SURPRISE", desc: "Get a scratch card", sub: "after every transaction" },
       { title: "EXCLUSIVE OFFER", desc: "Get 15% upto ₹1200 on RuPay CC UPI", sub: "valid on your next dining payment" },

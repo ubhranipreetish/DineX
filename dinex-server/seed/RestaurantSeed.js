@@ -51,7 +51,7 @@ const baseRestaurants = [
 ];
 
 // Generate 26 more
-const generatedRestaurants = Array.from({ length: 26 }).map((_, i) => ({
+const generatedRestaurants = Array.from({ length: 41 }).map((_, i) => ({
   restaurantId: i + 5,
   name: `Restaurant ${i + 5}`,
   cuisines: ["Indian", "Chinese", "Continental"],

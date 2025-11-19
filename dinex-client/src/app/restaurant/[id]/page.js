@@ -1,6 +1,6 @@
 "use client";
 import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { Camera, X, ChevronLeft, ChevronRight,ThumbsUp, MessageCircle } from 'lucide-react';
 import { MapPin, Phone,Share, Share2, Star, Calendar, MessageSquare } from "lucide-react";
 import Reviews from "@/components/Reviews";
@@ -10,158 +10,33 @@ import BookingFlow from "@/components/BookingFlow";
 import MenuSection from "@/components/MenuSection";
 
 
-
-
 export default function RestaurantDetail() {
   const { id } = useParams();
-  const [restaurant, setRestaurant] = useState(null);
+  const [restaurant, setRestaurant] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("Overview");
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
 
 
   useEffect(() => {
-    const dummyData = [
-      {
-        id: "1",
-        name: "Drama",
-        cuisines: "Modern Indian, Asian, Italian, Continental",
-        address: "14, Second Floor, Scindia House, Kasturba Gandhi Marg, Atul Grove Road, Connaught Place, New Delhi",
-        rating: 4.3,
-        diningRatings: 2929,
-        openNow: true,
-        timing: "12noon – 1am (Today)",
-        priceForTwo: 3000,
-        contact: "+919560999779",
-        offers: [
-          { title: "PRE-BOOK OFFER", desc: "Flat 20% OFF", sub: "Booking required" },
-          { title: "INSTANT OFFER", desc: "Flat 10% OFF", sub: "on bill payments" },
-          { title: "SURPRISE", desc: "Get a scratch card", sub: "after every transaction" },
-          { title: "EXCLUSIVE OFFER", desc: "Get 15% upto ₹1200 on RuPay CC UPI", sub: "valid on your next dining payment" },
-          { title: "BANK OFFER", desc: "20% OFF up to ₹5000", sub: "on Solitaire Credit Cards\nand more with other banks" },
-        ],
-        knownFor: ["Fancy Place", "Best in Service", "Sanitised Service", "Best Staff", "Great Menu", "Food Tastes Great"],
-        paymentInfo: ["Cash and Cards accepted", "Digital payments accepted"],
-        moreInfo: [
-          "Lunch", "Dinner", "Takeaway available", "Full bar available", "Artistic", "Reservation required",
-          "Dress code [Formal]", "Parking available", "Valet parking", "Offers candlelit setting", "Gluten free options",
-          "Vegan options", "Celebrity frequented", "Nightlife", "Garden", "Outdoor seating", "Romantic dining",
-          "Family friendly", "Luxury dining", "Private dining area", "Lounge seating", "Party vibe", "Free parking", "Indoor seating"
-        ],
-        images: [
-          "/images/cafe1.png",
-          "/images/drama1.jpg",
-          "/images/drama2.jpg",
-          "/images/drama3.jpg",
-          "/images/drama4.jpg"
-        ]
-      },
-      {
-        id: "2",
-        name: "Drama",
-        cuisines: "Modern Indian, Asian, Italian, Continental",
-        address: "14, Second Floor, Scindia House, Kasturba Gandhi Marg, Atul Grove Road, Connaught Place, New Delhi",
-        rating: 4.3,
-        diningRatings: 2929,
-        openNow: true,
-        timing: "12noon – 1am (Today)",
-        priceForTwo: 3000,
-        contact: "+919560999779",
-        offers: [
-          { title: "PRE-BOOK OFFER", desc: "Flat 20% OFF", sub: "Booking required" },
-          { title: "INSTANT OFFER", desc: "Flat 10% OFF", sub: "on bill payments" },
-          { title: "SURPRISE", desc: "Get a scratch card", sub: "after every transaction" },
-          { title: "EXCLUSIVE OFFER", desc: "Get 15% upto ₹1200 on RuPay CC UPI", sub: "valid on your next dining payment" },
-          { title: "BANK OFFER", desc: "20% OFF up to ₹5000", sub: "on Solitaire Credit Cards\nand more with other banks" },
-        ],
-        knownFor: ["Fancy Place", "Best in Service", "Sanitised Service", "Best Staff", "Great Menu", "Food Tastes Great"],
-        paymentInfo: ["Cash and Cards accepted", "Digital payments accepted"],
-        moreInfo: [
-          "Lunch", "Dinner", "Takeaway available", "Full bar available", "Artistic", "Reservation required",
-          "Dress code [Formal]", "Parking available", "Valet parking", "Offers candlelit setting", "Gluten free options",
-          "Vegan options", "Celebrity frequented", "Nightlife", "Garden", "Outdoor seating", "Romantic dining",
-          "Family friendly", "Luxury dining", "Private dining area", "Lounge seating", "Party vibe", "Free parking", "Indoor seating"
-        ],
-        images: [
-          "/images/cafe1.png",
-          "/images/drama1.jpg",
-          "/images/drama2.jpg",
-          "/images/drama3.jpg",
-          "/images/drama4.jpg"
-        ]
-      },
-      {
-        id: "3",
-        name: "Drama",
-        cuisines: "Modern Indian, Asian, Italian, Continental",
-        address: "14, Second Floor, Scindia House, Kasturba Gandhi Marg, Atul Grove Road, Connaught Place, New Delhi",
-        rating: 4.3,
-        diningRatings: 2929,
-        openNow: true,
-        timing: "12noon – 1am (Today)",
-        priceForTwo: 3000,
-        contact: "+919560999779",
-        offers: [
-          { title: "PRE-BOOK OFFER", desc: "Flat 20% OFF", sub: "Booking required" },
-          { title: "INSTANT OFFER", desc: "Flat 10% OFF", sub: "on bill payments" },
-          { title: "SURPRISE", desc: "Get a scratch card", sub: "after every transaction" },
-          { title: "EXCLUSIVE OFFER", desc: "Get 15% upto ₹1200 on RuPay CC UPI", sub: "valid on your next dining payment" },
-          { title: "BANK OFFER", desc: "20% OFF up to ₹5000", sub: "on Solitaire Credit Cards\nand more with other banks" },
-        ],
-        knownFor: ["Fancy Place", "Best in Service", "Sanitised Service", "Best Staff", "Great Menu", "Food Tastes Great"],
-        paymentInfo: ["Cash and Cards accepted", "Digital payments accepted"],
-        moreInfo: [
-          "Lunch", "Dinner", "Takeaway available", "Full bar available", "Artistic", "Reservation required",
-          "Dress code [Formal]", "Parking available", "Valet parking", "Offers candlelit setting", "Gluten free options",
-          "Vegan options", "Celebrity frequented", "Nightlife", "Garden", "Outdoor seating", "Romantic dining",
-          "Family friendly", "Luxury dining", "Private dining area", "Lounge seating", "Party vibe", "Free parking", "Indoor seating"
-        ],
-        images: [
-          "/images/cafe1.png",
-          "/images/drama1.jpg",
-          "/images/drama2.jpg",
-          "/images/drama3.jpg",
-          "/images/drama4.jpg"
-        ]
-      },
-      {
-        id: "4",
-        name: "Drama",
-        cuisines: "Modern Indian, Asian, Italian, Continental",
-        address: "14, Second Floor, Scindia House, Kasturba Gandhi Marg, Atul Grove Road, Connaught Place, New Delhi",
-        rating: 4.3,
-        diningRatings: 2929,
-        openNow: true,
-        timing: "12noon – 1am (Today)",
-        priceForTwo: 3000,
-        contact: "+919560999779",
-        offers: [
-          { title: "PRE-BOOK OFFER", desc: "Flat 20% OFF", sub: "Booking required" },
-          { title: "INSTANT OFFER", desc: "Flat 10% OFF", sub: "on bill payments" },
-          { title: "SURPRISE", desc: "Get a scratch card", sub: "after every transaction" },
-          { title: "EXCLUSIVE OFFER", desc: "Get 15% upto ₹1200 on RuPay CC UPI", sub: "valid on your next dining payment" },
-          { title: "BANK OFFER", desc: "20% OFF up to ₹5000", sub: "on Solitaire Credit Cards\nand more with other banks" },
-        ],
-        knownFor: ["Fancy Place", "Best in Service", "Sanitised Service", "Best Staff", "Great Menu", "Food Tastes Great"],
-        paymentInfo: ["Cash and Cards accepted", "Digital payments accepted"],
-        moreInfo: [
-          "Lunch", "Dinner", "Takeaway available", "Full bar available", "Artistic", "Reservation required",
-          "Dress code [Formal]", "Parking available", "Valet parking", "Offers candlelit setting", "Gluten free options",
-          "Vegan options", "Celebrity frequented", "Nightlife", "Garden", "Outdoor seating", "Romantic dining",
-          "Family friendly", "Luxury dining", "Private dining area", "Lounge seating", "Party vibe", "Free parking", "Indoor seating"
-        ],
-        images: [
-          "/images/cafe1.png",
-          "/images/drama1.jpg",
-          "/images/drama2.jpg",
-          "/images/drama3.jpg",
-          "/images/drama4.jpg"
-        ]
-      },
-    ];
-
-    const selected = dummyData.find((r) => r.id === id);
-    setRestaurant(selected);
+    if (!id) return;
+    
+    const API = process.env.NEXT_PUBLIC_API_URL;
+  
+    fetch(`${API}/api/restaurants/${id}`)
+      .then((res) => {
+        if (!res.ok) throw new Error("Restaurant not found");
+        return res.json();
+      })
+      .then((data) => {
+        setRestaurant(data);
+        setLoading(true);
+      })
+      .catch((err) => console.error(err))
+      .finally(() => setLoading(false));
   }, [id]);
+  
+  
 
   const images = [
     "/images/cafe1.png",
@@ -183,8 +58,51 @@ export default function RestaurantDetail() {
       prev === 0 ? restaurant.images.length - 1 : prev - 1
     );
 
+    const cuisinesText = Array.isArray(restaurant.cuisines)
+    ? restaurant.cuisines.join(", ")
+    : restaurant.cuisines || "";
 
-  if (!restaurant) return <p className="text-center mt-10 text-gray-600">Loading...</p>;
+    if (loading || !restaurant)
+      return (
+        <div className="min-h-screen bg-[#fafafa] flex flex-col items-center justify-center px-6">
+          
+          {/* Glowing plate icon */}
+          <div className="relative w-28 h-28 mb-8">
+            <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-orange-400 to-red-500 blur-xl opacity-40 animate-pulse"></div>
+            <div className="relative w-28 h-28 rounded-full bg-white shadow-xl flex items-center justify-center">
+              <span className="text-5xl animate-[wiggle_1.2s_ease-in-out_infinite]">🍽️</span>
+            </div>
+          </div>
+    
+          {/* Smooth title shimmer */}
+          <div className="w-64 h-6 rounded-lg bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 animate-shimmer mb-3"></div>
+          <div className="w-40 h-4 rounded-lg bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 animate-shimmer"></div>
+    
+          {/* Mini loading dots */}
+          <div className="flex gap-2 mt-8">
+            <div className="w-3 h-3 bg-orange-500 rounded-full animate-[bounce_0.8s_infinite]" />
+            <div className="w-3 h-3 bg-orange-500 rounded-full animate-[bounce_0.8s_infinite_0.2s]" />
+            <div className="w-3 h-3 bg-orange-500 rounded-full animate-[bounce_0.8s_infinite_0.4s]" />
+          </div>
+    
+          {/* Custom shimmer animation */}
+          <style jsx>{`
+            @keyframes shimmer {
+              0% { background-position: -200px 0; }
+              100% { background-position: 200px 0; }
+            }
+            .animate-shimmer {
+              background-size: 400px 100%;
+              animation: shimmer 1.5s infinite linear;
+            }
+            @keyframes wiggle {
+              0%, 100% { transform: rotate(-3deg); }
+              50% { transform: rotate(3deg); }
+            }
+          `}</style>
+        </div>
+      );
+    
   return (
     <div className="max-w-6xl mx-auto bg-white rounded-2xl shadow-sm p-6 border border-gray-100">
       <div className="sticky top-0 z-40 bg-white py-4">
@@ -192,7 +110,7 @@ export default function RestaurantDetail() {
         <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
           <div>
             <h1 className="text-4xl font-semibold text-gray-900">{restaurant.name}</h1>
-            <p className="text-gray-600 text-lg mt-1">{restaurant.cuisines}</p>
+            <p className="text-gray-600 text-lg mt-1">{cuisinesText}</p>
             <p className="text-gray-500 mt-1">{restaurant.address}</p>
 
             <div className="flex flex-wrap items-center gap-2 mt-3">
@@ -212,7 +130,7 @@ export default function RestaurantDetail() {
             <div className="flex items-center gap-1 bg-green-600 text-white px-3 py-1 rounded-md text-sm font-medium">
               <Star className="w-4 h-4 fill-white" /> {restaurant.rating}
             </div>
-            <p className="text-sm text-gray-600">{restaurant.diningRatings.toLocaleString()} Dining Ratings</p>
+            <p className="text-sm text-gray-600">2534 Dining Ratings</p>
           </div>
         </div>
 
