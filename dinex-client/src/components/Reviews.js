@@ -293,7 +293,7 @@ export default function Reviews({ restaurantName }) {
         <button
           disabled={page === 1}
           onClick={() => setPage((p) => p - 1)}
-          className="cursor-pointer px-4 py-2 border rounded-md text-sm text-gray-700 hover:bg-gray-100 disabled:opacity-50"
+          className="cursor-pointer px-4 py-2 border rounded-md text-sm bg-white text-gray-700 hover:bg-[#FFF8E7] hover:text-[#8B6F3E] border-2 border-gray-200 hover:border-[#C9A050] disabled:opacity-50"
         >
           Previous
         </button>
@@ -303,7 +303,7 @@ export default function Reviews({ restaurantName }) {
         <button
           disabled={page === totalPages}
           onClick={() => setPage((p) => p + 1)}
-          className="cursor-pointer px-4 py-2 border rounded-md text-sm text-gray-700 hover:bg-gray-100 disabled:opacity-50"
+          className="cursor-pointer px-4 py-2 border rounded-md text-sm bg-white text-gray-700 hover:bg-[#FFF8E7] hover:text-[#8B6F3E] border-2 border-gray-200 hover:border-[#C9A050] disabled:opacity-50"
         >
           Next
         </button>

@@ -66,11 +66,10 @@ export default function Payment({ data, onComplete }) {
                   <div
                     key={pm.id}
                     onClick={() => setMethod(pm.id)}
-                    className={`relative flex items-center gap-4 p-4 rounded-xl border-2 cursor-pointer transition-all ${
-                      method === pm.id
+                    className={`relative flex items-center gap-4 p-4 rounded-xl border-2 cursor-pointer transition-all ${method === pm.id
                         ? 'border-red-500 bg-red-50 shadow-md'
                         : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50'
-                    }`}
+                      }`}
                   >
                     {/* Recommended Badge */}
                     {pm.recommended && (
@@ -80,9 +79,8 @@ export default function Payment({ data, onComplete }) {
                     )}
 
                     {/* Icon */}
-                    <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${
-                      method === pm.id ? 'bg-red-100 text-red-600' : 'bg-gray-100 text-gray-600'
-                    }`}>
+                    <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${method === pm.id ? 'bg-red-100 text-red-600' : 'bg-gray-100 text-gray-600'
+                      }`}>
                       {pm.icon}
                     </div>
 
@@ -93,17 +91,15 @@ export default function Payment({ data, onComplete }) {
                     </div>
 
                     {/* Radio Indicator */}
-                    <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${
-                      method === pm.id
+                    <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${method === pm.id
                         ? 'border-red-500 bg-red-500'
                         : 'border-gray-300'
-                    }`}>
+                      }`}>
                       {method === pm.id && <CheckCircle className="w-4 h-4 text-white" />}
                     </div>
 
-                    <ChevronRight className={`w-5 h-5 ${
-                      method === pm.id ? 'text-red-600' : 'text-gray-400'
-                    }`} />
+                    <ChevronRight className={`w-5 h-5 ${method === pm.id ? 'text-red-600' : 'text-gray-400'
+                      }`} />
                   </div>
                 ))}
               </div>
@@ -217,7 +213,7 @@ export default function Payment({ data, onComplete }) {
             <div className="sticky top-8">
               <div className="bg-white rounded-2xl shadow-lg p-6">
                 <h4 className="text-lg font-bold text-gray-800 mb-4">Booking Summary</h4>
-                
+
                 {/* Restaurant Details */}
                 <div className="bg-gradient-to-r from-red-50 to-orange-50 p-4 rounded-xl mb-4">
                   <h5 className="font-bold text-gray-800 mb-1">{data.restaurantName}</h5>
@@ -231,8 +227,8 @@ export default function Payment({ data, onComplete }) {
                   <div className="flex justify-between text-sm">
                     <span className="text-gray-600">Date</span>
                     <span className="font-semibold text-gray-800">
-                      {new Date(data.date).toLocaleDateString('en-US', { 
-                        month: 'short', 
+                      {new Date(data.date).toLocaleDateString('en-US', {
+                        month: 'short',
                         day: 'numeric',
                         year: 'numeric'
                       })}

@@ -106,11 +106,11 @@ export default function Photos({ restaurant }) {
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`px-5 py-2.5 rounded-xl text-sm font-medium transition-all border
+            className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all border
               ${
                 activeTab === tab.id
-                  ? "bg-[#EF4F5F] text-white border-gray-300"
-                  : "bg-white text-gray-700 border-gray-300 hover:bg-gray-100"
+                  ? "bg-[#C9A050] text-white border-[#A68545] shadow-sm"
+                  : "bg-white text-[#8B6F3E] border-[#D9B56E] hover:bg-[#FFF3D9]"
               }
             `}
           >
@@ -118,6 +118,8 @@ export default function Photos({ restaurant }) {
           </button>
         ))}
       </div>
+
+
 
 
       {/* Grid */}

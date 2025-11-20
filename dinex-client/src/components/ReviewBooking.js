@@ -40,9 +40,9 @@ export default function ReviewBooking({ data, onProceed }) {
                   <div className="flex-1">
                     <p className="text-xs text-gray-500 font-medium">Date</p>
                     <p className="text-base font-semibold text-gray-800">
-                      {new Date(data.date).toLocaleDateString('en-US', { 
-                        weekday: 'short', 
-                        month: 'short', 
+                      {new Date(data.date).toLocaleDateString('en-US', {
+                        weekday: 'short',
+                        month: 'short',
                         day: 'numeric',
                         year: 'numeric'
                       })}
@@ -164,18 +164,18 @@ export default function ReviewBooking({ data, onProceed }) {
               {/* Price Summary */}
               <div className="bg-white rounded-2xl shadow-lg p-6">
                 <h4 className="text-lg font-bold text-gray-800 mb-4">Payment Summary</h4>
-                
+
                 <div className="space-y-3 mb-4">
                   <div className="flex justify-between items-center pb-3 border-b border-gray-200">
                     <span className="text-sm text-gray-600">Booking Amount</span>
                     <span className="font-semibold text-gray-800">₹{data.amount}</span>
                   </div>
-                  
+
                   <div className="flex justify-between items-center pb-3 border-b border-gray-200">
                     <span className="text-sm text-gray-600">Platform Fee</span>
                     <span className="font-semibold text-gray-800">₹0</span>
                   </div>
-                  
+
                   <div className="flex justify-between items-center pt-2">
                     <span className="text-base font-bold text-gray-800">Total Amount</span>
                     <span className="text-xl font-bold text-red-600">₹{data.amount}</span>

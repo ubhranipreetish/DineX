@@ -19,19 +19,19 @@ export default function BookingForm({ restaurantName, offers = [], onSubmit }) {
     start.setHours(10, 0, 0);
     const end = new Date();
     end.setHours(23, 30, 0);
-    
+
     while (start <= end) {
       const hours = start.getHours().toString().padStart(2, "0");
       const minutes = start.getMinutes().toString().padStart(2, "0");
       const slot = `${hours}:${minutes}`;
       const slotTime = new Date();
       slotTime.setHours(Number(hours), Number(minutes), 0, 0);
-      
+
       if (slotTime > now) slots.push(slot);
-      
+
       start.setMinutes(start.getMinutes() + 30);
     }
-    
+
     return slots;
   };
   const formatTime = (time24) => {
@@ -63,10 +63,10 @@ export default function BookingForm({ restaurantName, offers = [], onSubmit }) {
         time: formatTime(time),
         offer: selectedOffer,
         specialRequests,
-        offers, 
+        offers,
         amount: 200,
       });
-      
+
       setIsLoading(false);
     }, 600);
   };
@@ -93,32 +93,28 @@ export default function BookingForm({ restaurantName, offers = [], onSubmit }) {
                 type="button"
                 key={i}
                 onClick={() => setSelectedOffer(i)}
-                className={`cursor-pointer rounded-2xl p-5 text-left border shadow-sm transition-all duration-200 ${
-                  selectedOffer === i
+                className={`cursor-pointer rounded-2xl p-5 text-left border shadow-sm transition-all duration-200 ${selectedOffer === i
                     ? "bg-blue-600 text-white border-blue-600 scale-[1.02]"
                     : "bg-white border-gray-200 text-gray-700 hover:border-blue-400 hover:shadow-md"
-                }`}
+                  }`}
               >
                 <h3
-                  className={`font-semibold mb-1 ${
-                    selectedOffer === i
+                  className={`font-semibold mb-1 ${selectedOffer === i
                       ? "text-white/90"
                       : "text-blue-700 uppercase text-sm"
-                  }`}
+                    }`}
                 >
                   {offer.title}
                 </h3>
                 <p
-                  className={`font-bold text-lg ${
-                    selectedOffer === i ? "text-white" : "text-gray-900"
-                  }`}
+                  className={`font-bold text-lg ${selectedOffer === i ? "text-white" : "text-gray-900"
+                    }`}
                 >
                   {offer.desc}
                 </p>
                 <p
-                  className={`text-sm mt-1 ${
-                    selectedOffer === i ? "text-blue-100" : "text-gray-500"
-                  }`}
+                  className={`text-sm mt-1 ${selectedOffer === i ? "text-blue-100" : "text-gray-500"
+                    }`}
                 >
                   {offer.sub}
                 </p>
@@ -156,11 +152,10 @@ export default function BookingForm({ restaurantName, offers = [], onSubmit }) {
               key={slot}
               type="button"
               onClick={() => setTime(slot)}
-              className={`cursor-pointer px-3 py-2 rounded-lg border text-sm transition ${
-                time === slot
+              className={`cursor-pointer px-3 py-2 rounded-lg border text-sm transition ${time === slot
                   ? "bg-red-100 border-red-400 text-red-600 font-medium"
                   : "hover:bg-gray-100 text-gray-700"
-              }`}
+                }`}
             >
               {formatTime(slot)}
             </button>

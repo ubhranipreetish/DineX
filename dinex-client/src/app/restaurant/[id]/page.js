@@ -8,6 +8,8 @@ import Overview from "@/components/Overview";
 import Photos from "@/components/Photos";
 import BookingFlow from "@/components/BookingFlow";
 import MenuSection from "@/components/MenuSection";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 
 
 export default function RestaurantDetail() {
@@ -99,6 +101,8 @@ export default function RestaurantDetail() {
 
     if (loading || !restaurant)
       return (
+        <>
+        <Navbar />
         <div className="min-h-screen bg-[#fafafa] flex flex-col items-center justify-center px-6">
           
           {/* Glowing plate icon */}
@@ -136,9 +140,14 @@ export default function RestaurantDetail() {
             }
           `}</style>
         </div>
+
+        <Footer />
+        </>
       );
     
   return (
+    <>
+    <Navbar />
     <div className="max-w-6xl mx-auto bg-white rounded-2xl shadow-sm p-6 border border-gray-100">
       <div className="sticky top-0 z-40 bg-white py-4">
         {/* --- Restaurant Header --- */}
@@ -291,7 +300,7 @@ export default function RestaurantDetail() {
             onClick={() => setActiveTab(tab)}
             className={`cursor-pointer pb-3 relative ${
               activeTab === tab
-                ? "text-red-500 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-red-500"
+                ? "text-[#5E4633] after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-[#5E4633]"
                 : "hover:text-gray-800"
             }`}
           >
@@ -323,5 +332,8 @@ export default function RestaurantDetail() {
         />
       )}
     </div>
+
+    <Footer />
+    </>
   );
 }

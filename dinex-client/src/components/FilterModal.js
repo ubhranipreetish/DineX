@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import { X, Star, DollarSign, Utensils, TrendingUp } from "lucide-react";
 
 export default function FilterModal({
   onClose,
@@ -12,142 +13,256 @@ export default function FilterModal({
   const [selectedRating, setSelectedRating] = useState("");
   const [costRange, setCostRange] = useState("");
 
-  const cuisines = ["Italian", "Indian", "Chinese", "Mexican", "Thai"];
+  const cuisines = [
+    "Italian",
+    "Indian",
+    "Chinese",
+    "Mexican",
+    "Thai",
+    "Japanese",
+    "American",
+  ];
 
-  // Restore previous filter states if user reopens modal
+  // Restore previous selections
   useEffect(() => {
+    const restored = [];
     activeFilters.forEach((filter) => {
       if (filter.startsWith("Sort: ")) setSortBy(filter.replace("Sort: ", ""));
-      if (filter.startsWith("Rating: ")) setSelectedRating(filter.match(/\d+/)[0]);
-      if (filter.startsWith("Cost: ")) setCostRange(filter.replace("Cost: ", ""));
-      if (cuisines.includes(filter)) {
-        setSelectedCuisines((prev) => [...prev, filter]);
+      if (filter.startsWith("Rating: ")) {
+        const num = filter.match(/\d+/);
+        if (num) setSelectedRating(num[0]);
       }
+      if (filter.startsWith("Cost: ")) setCostRange(filter.replace("Cost: ", ""));
+      if (cuisines.includes(filter)) restored.push(filter);
     });
-  }, [activeFilters]);
+    setSelectedCuisines(restored);
+  }, []);
 
-  const toggleCuisine = (cuisine) => {
-    if (selectedCuisines.includes(cuisine)) {
-      setSelectedCuisines(selectedCuisines.filter((c) => c !== cuisine));
+  const toggleCuisine = (c) => {
+    if (selectedCuisines.includes(c)) {
+      setSelectedCuisines(selectedCuisines.filter((x) => x !== c));
     } else {
-      setSelectedCuisines([...selectedCuisines, cuisine]);
+      setSelectedCuisines([...selectedCuisines, c]);
     }
   };
 
   const applyFilters = () => {
-    const newFilters = [
+    const cleaned = activeFilters.filter(
+      (f) =>
+        !f.startsWith("Sort: ") &&
+        !f.startsWith("Rating: ") &&
+        !f.startsWith("Cost: ") &&
+        !cuisines.includes(f)
+    );
+
+    const updated = [
       ...selectedCuisines,
       sortBy !== "Popularity" ? `Sort: ${sortBy}` : null,
       selectedRating ? `Rating: ${selectedRating}+` : null,
       costRange ? `Cost: ${costRange}` : null,
     ].filter(Boolean);
 
-    setActiveFilters([...new Set([...activeFilters, ...newFilters])]);
+    setActiveFilters([...cleaned, ...updated]);
     onClose();
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm flex items-center justify-center z-50">
-      <div className="bg-[#1E1E1E] text-gray-200 w-[90%] max-w-3xl rounded-2xl shadow-2xl p-6 relative border border-gray-700">
-        {/* Close button */}
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 text-gray-400 hover:text-white text-xl"
-        >
-          ✕
-        </button>
+    <div
+      className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+      onClick={onClose}
+    >
+      <div
+        className="bg-white w-full max-w-4xl rounded-3xl shadow-2xl overflow-hidden"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Header */}
+        <div className="bg-[#5E4633] px-8 py-6 relative">
+          <button
+            onClick={onClose}
+            className="absolute top-6 right-6 text-white/90 hover:text-white transition-colors"
+          >
+            <X className="w-6 h-6" />
+          </button>
+          <h2 className="text-3xl font-bold text-white">Filters</h2>
+          <p className="text-white/70 text-sm mt-1">
+            Customize your restaurant search
+          </p>
+        </div>
 
-        <h2 className="text-2xl font-semibold mb-4 border-b border-gray-700 pb-2">
-          Filters
-        </h2>
+        {/* Content */}
+        <div className="p-8 max-h-[70vh] overflow-y-auto bg-[#FFF8E7]">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Sort By */}
-          <div>
-            <h3 className="text-red-400 font-medium mb-2">Sort By</h3>
-            {["Popularity", "Rating: High to Low", "Cost: Low to High", "Cost: High to Low", "Distance"].map(
-              (option) => (
-                <label key={option} className="block mb-1 cursor-pointer">
+            {/* Sort By */}
+            <div>
+              <div className="flex items-center gap-2 mb-3">
+                <TrendingUp className="w-5 h-5 text-[#C9A050]" />
+                <h3 className="text-lg font-bold text-[#5E4633]">Sort By</h3>
+              </div>
+
+              {[
+                "Popularity",
+                "Rating: High to Low",
+                "Cost: Low to High",
+                "Cost: High to Low",
+                "Distance",
+              ].map((option) => (
+                <label
+                  key={option}
+                  className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-[#F7EFE3] cursor-pointer"
+                >
                   <input
                     type="radio"
                     name="sort"
                     value={option}
                     checked={sortBy === option}
                     onChange={() => setSortBy(option)}
-                    className="mr-2 accent-red-500"
+                    className="w-4 h-4 text-[#C9A050] accent-[#C9A050]"
                   />
-                  {option}
+                  <span
+                    className={`text-sm ${
+                      sortBy === option
+                        ? "text-[#5E4633] font-semibold"
+                        : "text-gray-700"
+                    }`}
+                  >
+                    {option}
+                  </span>
                 </label>
-              )
-            )}
-          </div>
+              ))}
+            </div>
 
-          {/* Cuisines */}
-          <div>
-            <h3 className="text-red-400 font-medium mb-2">Cuisines</h3>
-            {cuisines.map((cuisine) => (
-              <label key={cuisine} className="block mb-1 cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={selectedCuisines.includes(cuisine)}
-                  onChange={() => toggleCuisine(cuisine)}
-                  className="mr-2 accent-red-500"
-                />
-                {cuisine}
-              </label>
-            ))}
-          </div>
+            {/* Cuisines */}
+            <div>
+              <div className="flex items-center gap-2 mb-3">
+                <Utensils className="w-5 h-5 text-[#C9A050]" />
+                <h3 className="text-lg font-bold text-[#5E4633]">Cuisines</h3>
+              </div>
 
-          {/* Rating */}
-          <div>
-            <h3 className="text-red-400 font-medium mb-2">Rating</h3>
-            {[4, 3, 2].map((rating) => (
-              <label key={rating} className="block mb-1 cursor-pointer">
-                <input
-                  type="radio"
-                  name="rating"
-                  value={rating}
-                  checked={selectedRating === String(rating)}
-                  onChange={() => setSelectedRating(String(rating))}
-                  className="mr-2 accent-red-500"
-                />
-                {rating}+ stars
-              </label>
-            ))}
-          </div>
+              {cuisines.map((cuisine) => (
+                <label
+                  key={cuisine}
+                  className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-[#F7EFE3] cursor-pointer"
+                >
+                  <input
+                    type="checkbox"
+                    checked={selectedCuisines.includes(cuisine)}
+                    onChange={() => toggleCuisine(cuisine)}
+                    className="w-4 h-4 text-[#C9A050] accent-[#C9A050]"
+                  />
+                  <span
+                    className={`text-sm ${
+                      selectedCuisines.includes(cuisine)
+                        ? "text-[#5E4633] font-semibold"
+                        : "text-gray-700"
+                    }`}
+                  >
+                    {cuisine}
+                  </span>
+                </label>
+              ))}
+            </div>
 
-          {/* Cost */}
-          <div>
-            <h3 className="text-red-400 font-medium mb-2">Cost for Two</h3>
-            {["Low", "Medium", "High"].map((range) => (
-              <label key={range} className="block mb-1 cursor-pointer">
-                <input
-                  type="radio"
-                  name="cost"
-                  value={range}
-                  checked={costRange === range}
-                  onChange={() => setCostRange(range)}
-                  className="mr-2 accent-red-500"
-                />
-                {range}
-              </label>
-            ))}
+            {/* Rating */}
+            <div>
+              <div className="flex items-center gap-2 mb-3">
+                <Star className="w-5 h-5 text-[#C9A050]" />
+                <h3 className="text-lg font-bold text-[#5E4633]">Rating</h3>
+              </div>
+
+              {[4, 3, 2].map((rating) => (
+                <label
+                  key={rating}
+                  className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-[#F7EFE3] cursor-pointer"
+                >
+                  <input
+                    type="radio"
+                    name="rating"
+                    value={rating}
+                    checked={selectedRating === String(rating)}
+                    onChange={() => setSelectedRating(String(rating))}
+                    className="w-4 h-4 text-[#C9A050] accent-[#C9A050]"
+                  />
+                  <span
+                    className={`text-sm flex items-center gap-1 ${
+                      selectedRating === String(rating)
+                        ? "text-[#5E4633] font-semibold"
+                        : "text-gray-700"
+                    }`}
+                  >
+                    {rating}+{" "}
+                    <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                  </span>
+                </label>
+              ))}
+            </div>
+
+            {/* Cost */}
+            <div>
+              <div className="flex items-center gap-2 mb-3">
+                <DollarSign className="w-5 h-5 text-[#C9A050]" />
+                <h3 className="text-lg font-bold text-[#5E4633]">Cost for Two</h3>
+              </div>
+
+              {[
+                { label: "Budget Friendly", value: "Low", price: "Under ₹500" },
+                { label: "Moderate", value: "Medium", price: "₹500 - ₹1000" },
+                { label: "Premium", value: "High", price: "Above ₹1000" },
+              ].map((range) => (
+                <label
+                  key={range.value}
+                  className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-[#F7EFE3] cursor-pointer"
+                >
+                  <input
+                    type="radio"
+                    name="cost"
+                    value={range.value}
+                    checked={costRange === range.value}
+                    onChange={() => setCostRange(range.value)}
+                    className="w-4 h-4 text-[#C9A050] accent-[#C9A050]"
+                  />
+                  <div className="flex-1">
+                    <span
+                      className={`text-sm block ${
+                        costRange === range.value
+                          ? "text-[#5E4633] font-semibold"
+                          : "text-gray-700"
+                      }`}
+                    >
+                      {range.label}
+                    </span>
+                    <span className="text-xs text-gray-500">
+                      {range.price}
+                    </span>
+                  </div>
+                </label>
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* Bottom Buttons */}
-        <div className="flex justify-between mt-6 border-t border-gray-700 pt-4">
+        {/* Footer */}
+        <div className="bg-white px-8 py-5 flex items-center justify-between border-t border-[#E4D7C5]">
           <button
-            onClick={clearFilters}
-            className="px-5 py-2 border border-gray-600 rounded-lg hover:bg-gray-800 transition"
+            onClick={() => {
+              clearFilters();
+              setSortBy("Popularity");
+              setSelectedCuisines([]);
+              setSelectedRating("");
+              setCostRange("");
+            }}
+            className="px-6 py-2.5 border border-[#D7C7AD] text-[#5E4633] font-semibold 
+            rounded-xl hover:bg-[#F7EFE3] transition-all"
           >
             Clear All
           </button>
+
           <button
             onClick={applyFilters}
-            className="px-5 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
+            className="px-8 py-2.5 bg-[#C9A050] text-white font-bold rounded-xl 
+            hover:bg-[#A68545] transition-all shadow-md hover:shadow-lg transform hover:scale-105"
           >
-            Apply
+            Apply Filters
           </button>
         </div>
       </div>

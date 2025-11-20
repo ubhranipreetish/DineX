@@ -454,7 +454,7 @@ function Reviews({ restaurantName }) {
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                         disabled: page === 1,
                         onClick: ()=>setPage((p)=>p - 1),
-                        className: "cursor-pointer px-4 py-2 border rounded-md text-sm text-gray-700 hover:bg-gray-100 disabled:opacity-50",
+                        className: "cursor-pointer px-4 py-2 border rounded-md text-sm bg-white text-gray-700 hover:bg-[#FFF8E7] hover:text-[#8B6F3E] border-2 border-gray-200 hover:border-[#C9A050] disabled:opacity-50",
                         children: "Previous"
                     }, void 0, false, {
                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Reviews.js",
@@ -477,7 +477,7 @@ function Reviews({ restaurantName }) {
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                         disabled: page === totalPages,
                         onClick: ()=>setPage((p)=>p + 1),
-                        className: "cursor-pointer px-4 py-2 border rounded-md text-sm text-gray-700 hover:bg-gray-100 disabled:opacity-50",
+                        className: "cursor-pointer px-4 py-2 border rounded-md text-sm bg-white text-gray-700 hover:bg-[#FFF8E7] hover:text-[#8B6F3E] border-2 border-gray-200 hover:border-[#C9A050] disabled:opacity-50",
                         children: "Next"
                     }, void 0, false, {
                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Reviews.js",
@@ -3776,7 +3776,7 @@ function RestaurantDetail() {
                                         className: "flex flex-wrap items-center gap-2 mt-3",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "text-green-600 font-medium bg-green-100 px-3 py-1 rounded-full text-sm",
+                                                className: "text-[#926E35] font-medium bg-[#FFF8E5] px-3 py-1 rounded-full text-sm",
                                                 children: "Open now"
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/restaurant/[id]/page.js",
@@ -4130,7 +4130,7 @@ function RestaurantDetail() {
                     "Book a Table"
                 ].map((tab)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                         onClick: ()=>setActiveTab(tab),
-                        className: `cursor-pointer pb-3 relative ${activeTab === tab ? "text-red-500 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-red-500" : "hover:text-gray-800"}`,
+                        className: `cursor-pointer pb-3 relative ${activeTab === tab ? "text-[#D49216] after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-[#D49216]" : "hover:text-gray-800"}`,
                         children: tab
                     }, tab, false, {
                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/restaurant/[id]/page.js",
