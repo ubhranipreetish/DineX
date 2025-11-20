@@ -36,14 +36,49 @@ export default function RestaurantDetail() {
       .finally(() => setLoading(false));
   }, [id]);
   
-  
 
   const images = [
-    "/images/cafe1.png",
-    "/images/drama1.jpg",
-    "/images/drama2.jpg",
-    "/images/drama3.jpg",
-    "/images/drama4.jpg"
+    "/images/ambience/amb13.png",
+    "/images/ambience/amb6.png",
+    "/images/ambience/amb8.png",
+    "/images/ambience/amb9.png",
+    "/images/ambience/amb4.png",
+    "/images/food/food7.png",
+    "/images/ambience/amb12.png",
+    "/images/food/food15.png",
+    "/images/ambience/amb3.png",
+    "/images/food/food1.png",
+    "/images/ambience/amb9.png",
+    "/images/food/food19.png",
+    "/images/ambience/amb6.png",
+    "/images/food/food11.png",
+    "/images/ambience/amb1.png",
+    "/images/food/food3.png",
+    "/images/ambience/amb15.png",
+    "/images/food/food9.png",
+    "/images/ambience/amb4.png",
+    "/images/food/food13.png",
+    "/images/ambience/amb10.png",
+    "/images/food/food2.png",
+    "/images/ambience/amb7.png",
+    "/images/food/food17.png",
+    "/images/ambience/amb14.png",
+    "/images/food/food5.png",
+    "/images/ambience/amb2.png",
+    "/images/food/food8.png",
+    "/images/ambience/amb11.png",
+    "/images/food/food18.png",
+    "/images/ambience/amb5.png",
+    "/images/food/food6.png",
+    "/images/ambience/amb13.png",
+    "/images/food/food10.png",
+    "/images/ambience/amb8.png",
+    "/images/food/food12.png",
+    "/images/ambience/amb16.png",
+    "/images/food/food4.png",
+    "/images/food/food14.png",
+    "/images/food/food16.png",
+    "/images/food/food20.png"
   ]
   
 
@@ -51,11 +86,11 @@ export default function RestaurantDetail() {
   const closeModal = () => setSelectedImageIndex(null);
   const nextImage = () =>
     setSelectedImageIndex((prev) =>
-      prev === restaurant.images.length - 1 ? 0 : prev + 1
+      prev === images.length - 1 ? 0 : prev + 1
     );
   const prevImage = () =>
     setSelectedImageIndex((prev) =>
-      prev === 0 ? restaurant.images.length - 1 : prev - 1
+      prev === 0 ? images.length - 1 : prev - 1
     );
 
     const cuisinesText = Array.isArray(restaurant.cuisines)
@@ -120,7 +155,7 @@ export default function RestaurantDetail() {
               <span className="text-gray-600 text-sm">• 10am – 11:30pm</span>
               <span className="text-gray-600 text-sm">• ₹{restaurant.priceForTwo} for two</span>
               <span className="text-red-500 text-sm font-medium flex items-center gap-1">
-                <Phone className="w-4 h-4" /> {restaurant.contact}
+                <Phone className="w-4 h-4" /> +91 {restaurant.contact}
               </span>
             </div>
           </div>

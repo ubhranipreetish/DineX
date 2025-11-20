@@ -1,7 +1,7 @@
 # DineX – Restaurant Ordering & Table Booking System
 
 DineX is a full-stack platform designed to simplify restaurant operations and enhance the dining experience for customers.  
-It offers seamless **table booking**, **menu browsing**, **online ordering**, and a **restaurant dashboard** to manage both online and offline orders — all in one place.
+It offers seamless **table booking**, **menu browsing** for **customers** and a **restaurant dashboard** to manage all offline orders in one place for **restaurants**.
 
 ---
 
@@ -11,13 +11,12 @@ It offers seamless **table booking**, **menu browsing**, **online ordering**, an
 |--------|-----|
 | **Frontend (Next.js – Vercel)** | https://dine-x-mu.vercel.app/ |
 | **Backend API (Express – Render)** | https://dinex-24s9.onrender.com/ |
-| **Database (MongoDB Atlas Dashboard)** | https://cloud.mongodb.com/v2/69099995b37fa62f6c38bf02#/metrics/replicaSet/69099b19d82f480839f1b994/explorer/test/users/find |
 
 
 ## Project Overview
 
 ### Problem Statement  
-Restaurants often face difficulty managing **online orders**, **walk-in customers**, and **table availability** in real time.  
+Restaurants often face difficulty managing **walk-in customers** and **table availability** in real time.  
 Customers also struggle with inefficient booking systems, delayed order handling, and lack of transparency.
 
 ### DineX Solution  
@@ -56,7 +55,6 @@ DineX solves these problems by offering:
 - Manage menu items (CRUD)  
 - Manage offline orders  
 - Update order status (Accepted / Preparing / Ready / Completed)  
-- View table bookings  
 - Add walk-in customer orders  
 
 ### Searching, Filtering & Sorting
@@ -78,16 +76,15 @@ Below are some core REST API routes:
 |----------|--------|-------------|--------|
 | `/api/auth/signup` | POST | Register new user (Customer/Restaurant) | Public |
 | `/api/auth/login` | POST | Login user | Public |
-| `/api/restaurants` | GET | Fetch all restaurants | Authenticated |
-| `/api/restaurants/:id` | GET | Get details of one restaurant | Authenticated |
-| `/api/restaurants` | POST | Create new restaurant | Restaurant |
-| `/api/restaurants/:id` | PUT | Update restaurant | Restaurant |
-| `/api/restaurants/:id` | DELETE | Delete restaurant | Restaurant |
-| `/api/orders` | POST | Place new order | Customer |
-| `/api/orders` | GET | View all orders | Restaurant |
-| `/api/orders/:id` | PUT | Update order status | Restaurant |
+| `/api/restaurants` | GET | Fetch all restaurants | Public |
+| `/api/restaurants/:id` | GET | Get details of one restaurant | Public |
 | `/api/bookings` | POST | Create booking | Customer |
-| `/api/bookings` | GET | View restaurant bookings | Restaurant |
+| `/api/bookings/:id` | PUT | Update a booking | Customer |
 | `/api/bookings/:id` | DELETE | Cancel a booking | Customer |
+| `/api/orders` | POST | Place new order | Restaurant |
+| `/api/orders` | GET | View all orders | Restaurant |
+| `/api/orders/:id` | GET | View order details | Restaurant |
+| `/api/orders/:id` | PUT | Update order status | Restaurant |
+| `/api/orders/:id` | DELETE | Delete an order | Restaurant |
 
 

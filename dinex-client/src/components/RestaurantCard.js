@@ -8,7 +8,7 @@ export default function RestaurantCard({ restaurant }) {
         {/* Restaurant Image Section */}
         <div className="relative">
           <img
-            src="/images/cafe1.png"
+            src={`/images/cafe/cafe${restaurant.restaurantId % 23 + 1}.png`}
             alt={restaurant.name}
             className="w-full h-52 object-cover rounded-t-2xl"
           />

@@ -157,9 +157,7 @@
     --radius-xl: .75rem;
     --radius-2xl: 1rem;
     --animate-spin: spin 1s linear infinite;
-    --animate-ping: ping 1s cubic-bezier(0, 0, .2, 1) infinite;
     --animate-pulse: pulse 2s cubic-bezier(.4, 0, .6, 1) infinite;
-    --animate-bounce: bounce 1s infinite;
     --blur-sm: 8px;
     --blur-xl: 24px;
     --default-transition-duration: .15s;
@@ -757,10 +755,6 @@
     height: calc(var(--spacing) * 16);
   }
 
-  .h-24 {
-    height: calc(var(--spacing) * 24);
-  }
-
   .h-28 {
     height: calc(var(--spacing) * 28);
   }
@@ -785,6 +779,10 @@
     height: 155px;
   }
 
+  .h-full {
+    height: 100%;
+  }
+
   .h-px {
     height: 1px;
   }
@@ -795,6 +793,10 @@
 
   .max-h-\[80vh\] {
     max-height: 80vh;
+  }
+
+  .max-h-\[90vh\] {
+    max-height: 90vh;
   }
 
   .min-h-screen {
@@ -853,10 +855,6 @@
     width: calc(var(--spacing) * 16);
   }
 
-  .w-24 {
-    width: calc(var(--spacing) * 24);
-  }
-
   .w-28 {
     width: calc(var(--spacing) * 28);
   }
@@ -891,6 +889,10 @@
 
   .max-w-6xl {
     max-width: var(--container-6xl);
+  }
+
+  .max-w-\[90vw\] {
+    max-width: 90vw;
   }
 
   .max-w-md {
@@ -932,14 +934,6 @@
 
   .animate-\[wiggle_1\.2s_ease-in-out_infinite\] {
     animation: 1.2s ease-in-out infinite wiggle;
-  }
-
-  .animate-bounce {
-    animation: var(--animate-bounce);
-  }
-
-  .animate-ping {
-    animation: var(--animate-ping);
   }
 
   .animate-pulse {
@@ -1134,6 +1128,11 @@
     border-bottom-width: 1px;
   }
 
+  .border-b-2 {
+    border-bottom-style: var(--tw-border-style);
+    border-bottom-width: 2px;
+  }
+
   .border-amber-200 {
     border-color: var(--color-amber-200);
   }
@@ -1176,6 +1175,10 @@
 
   .border-green-200 {
     border-color: var(--color-green-200);
+  }
+
+  .border-orange-600 {
+    border-color: var(--color-orange-600);
   }
 
   .border-red-400 {
@@ -1316,11 +1319,6 @@
     background-color: var(--color-yellow-500);
   }
 
-  .bg-gradient-to-b {
-    --tw-gradient-position: to bottom in oklab;
-    background-image: linear-gradient(var(--tw-gradient-stops));
-  }
-
   .bg-gradient-to-br {
     --tw-gradient-position: to bottom right in oklab;
     background-image: linear-gradient(var(--tw-gradient-stops));
@@ -1363,11 +1361,6 @@
 
   .from-orange-400 {
     --tw-gradient-from: var(--color-orange-400);
-    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
-  }
-
-  .from-orange-500 {
-    --tw-gradient-from: var(--color-orange-500);
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
 
@@ -1503,6 +1496,10 @@
 
   .py-2 {
     padding-block: calc(var(--spacing) * 2);
+  }
+
+  .py-2\.5 {
+    padding-block: calc(var(--spacing) * 2.5);
   }
 
   .py-3 {
@@ -1752,6 +1749,10 @@
 
   .text-green-800 {
     color: var(--color-green-800);
+  }
+
+  .text-orange-600 {
+    color: var(--color-orange-600);
   }
 
   .text-purple-600 {
@@ -2072,12 +2073,6 @@
   }
 
   @media (hover: hover) {
-    .hover\:border-\[\#FEB3BB\]:hover {
-      border-color: #feb3bb;
-    }
-  }
-
-  @media (hover: hover) {
     .hover\:border-black:hover {
       border-color: var(--color-black);
     }
@@ -2102,32 +2097,8 @@
   }
 
   @media (hover: hover) {
-    .hover\:border-orange-500:hover {
-      border-color: var(--color-orange-500);
-    }
-  }
-
-  @media (hover: hover) {
     .hover\:border-red-500:hover {
       border-color: var(--color-red-500);
-    }
-  }
-
-  @media (hover: hover) {
-    .hover\:bg-\[\#EF4F5F\]:hover {
-      background-color: #ef4f5f;
-    }
-  }
-
-  @media (hover: hover) {
-    .hover\:bg-\[\#FBAAB2\]:hover {
-      background-color: #fbaab2;
-    }
-  }
-
-  @media (hover: hover) {
-    .hover\:bg-\[\#FFE4E7\]:hover {
-      background-color: #ffe4e7;
     }
   }
 
@@ -2152,12 +2123,6 @@
   @media (hover: hover) {
     .hover\:bg-gray-800:hover {
       background-color: var(--color-gray-800);
-    }
-  }
-
-  @media (hover: hover) {
-    .hover\:bg-orange-50:hover {
-      background-color: var(--color-orange-50);
     }
   }
 
@@ -2226,18 +2191,6 @@
   }
 
   @media (hover: hover) {
-    .hover\:text-\[\#FEB3BB\]:hover {
-      color: #feb3bb;
-    }
-  }
-
-  @media (hover: hover) {
-    .hover\:text-\[\#FFEEEF\]:hover {
-      color: #ffeeef;
-    }
-  }
-
-  @media (hover: hover) {
     .hover\:text-black:hover {
       color: var(--color-black);
     }
@@ -2268,8 +2221,8 @@
   }
 
   @media (hover: hover) {
-    .hover\:text-orange-600:hover {
-      color: var(--color-orange-600);
+    .hover\:text-gray-900:hover {
+      color: var(--color-gray-900);
     }
   }
 
@@ -2827,13 +2780,6 @@ body {
 @keyframes spin {
   to {
     transform: rotate(360deg);
-  }
-}
-
-@keyframes ping {
-  75%, 100% {
-    opacity: 0;
-    transform: scale(2);
   }
 }
 
