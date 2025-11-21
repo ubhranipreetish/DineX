@@ -188,7 +188,7 @@ function FilterModal({ onClose, activeFilters, setActiveFilters, clearFilters })
     const [costRange, setCostRange] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
     const cuisines = [
         "Italian",
-        "Indian",
+        "North Indian",
         "Chinese",
         "Mexican",
         "Thai",
@@ -231,10 +231,11 @@ function FilterModal({ onClose, activeFilters, setActiveFilters, clearFilters })
             selectedRating ? `Rating: ${selectedRating}+` : null,
             costRange ? `Cost: ${costRange}` : null
         ].filter(Boolean);
-        setActiveFilters([
+        const finalFilters = [
             ...cleaned,
             ...updated
-        ]);
+        ];
+        setActiveFilters(finalFilters);
         onClose();
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -254,12 +255,12 @@ function FilterModal({ onClose, activeFilters, setActiveFilters, clearFilters })
                                 className: "w-6 h-6"
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                lineNumber: 84,
+                                lineNumber: 87,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                            lineNumber: 80,
+                            lineNumber: 83,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -267,7 +268,7 @@ function FilterModal({ onClose, activeFilters, setActiveFilters, clearFilters })
                             children: "Filters"
                         }, void 0, false, {
                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                            lineNumber: 86,
+                            lineNumber: 89,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -275,13 +276,13 @@ function FilterModal({ onClose, activeFilters, setActiveFilters, clearFilters })
                             children: "Customize your restaurant search"
                         }, void 0, false, {
                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                            lineNumber: 87,
+                            lineNumber: 90,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                    lineNumber: 79,
+                    lineNumber: 82,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -298,7 +299,7 @@ function FilterModal({ onClose, activeFilters, setActiveFilters, clearFilters })
                                                 className: "w-5 h-5 text-[#C9A050]"
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                                lineNumber: 99,
+                                                lineNumber: 102,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -306,21 +307,21 @@ function FilterModal({ onClose, activeFilters, setActiveFilters, clearFilters })
                                                 children: "Sort By"
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                                lineNumber: 100,
+                                                lineNumber: 103,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                        lineNumber: 98,
+                                        lineNumber: 101,
                                         columnNumber: 15
                                     }, this),
                                     [
                                         "Popularity",
+                                        "Rating: Low to High",
                                         "Rating: High to Low",
                                         "Cost: Low to High",
-                                        "Cost: High to Low",
-                                        "Distance"
+                                        "Cost: High to Low"
                                     ].map((option)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                                             className: "flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-[#F7EFE3] cursor-pointer",
                                             children: [
@@ -333,7 +334,7 @@ function FilterModal({ onClose, activeFilters, setActiveFilters, clearFilters })
                                                     className: "w-4 h-4 text-[#C9A050] accent-[#C9A050]"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                                    lineNumber: 114,
+                                                    lineNumber: 117,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -341,19 +342,19 @@ function FilterModal({ onClose, activeFilters, setActiveFilters, clearFilters })
                                                     children: option
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                                    lineNumber: 122,
+                                                    lineNumber: 125,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, option, true, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                            lineNumber: 110,
+                                            lineNumber: 113,
                                             columnNumber: 17
                                         }, this))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                lineNumber: 97,
+                                lineNumber: 100,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -365,7 +366,7 @@ function FilterModal({ onClose, activeFilters, setActiveFilters, clearFilters })
                                                 className: "w-5 h-5 text-[#C9A050]"
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                                lineNumber: 138,
+                                                lineNumber: 141,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -373,13 +374,13 @@ function FilterModal({ onClose, activeFilters, setActiveFilters, clearFilters })
                                                 children: "Cuisines"
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                                lineNumber: 139,
+                                                lineNumber: 142,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                        lineNumber: 137,
+                                        lineNumber: 140,
                                         columnNumber: 15
                                     }, this),
                                     cuisines.map((cuisine)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -392,7 +393,7 @@ function FilterModal({ onClose, activeFilters, setActiveFilters, clearFilters })
                                                     className: "w-4 h-4 text-[#C9A050] accent-[#C9A050]"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                                    lineNumber: 147,
+                                                    lineNumber: 150,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -400,19 +401,19 @@ function FilterModal({ onClose, activeFilters, setActiveFilters, clearFilters })
                                                     children: cuisine
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                                    lineNumber: 153,
+                                                    lineNumber: 156,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, cuisine, true, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                            lineNumber: 143,
+                                            lineNumber: 146,
                                             columnNumber: 17
                                         }, this))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                lineNumber: 136,
+                                lineNumber: 139,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -424,7 +425,7 @@ function FilterModal({ onClose, activeFilters, setActiveFilters, clearFilters })
                                                 className: "w-5 h-5 text-[#C9A050]"
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                                lineNumber: 169,
+                                                lineNumber: 172,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -432,13 +433,13 @@ function FilterModal({ onClose, activeFilters, setActiveFilters, clearFilters })
                                                 children: "Rating"
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                                lineNumber: 170,
+                                                lineNumber: 173,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                        lineNumber: 168,
+                                        lineNumber: 171,
                                         columnNumber: 15
                                     }, this),
                                     [
@@ -457,7 +458,7 @@ function FilterModal({ onClose, activeFilters, setActiveFilters, clearFilters })
                                                     className: "w-4 h-4 text-[#C9A050] accent-[#C9A050]"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                                    lineNumber: 178,
+                                                    lineNumber: 181,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -470,25 +471,25 @@ function FilterModal({ onClose, activeFilters, setActiveFilters, clearFilters })
                                                             className: "w-4 h-4 fill-yellow-400 text-yellow-400"
                                                         }, void 0, false, {
                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                                            lineNumber: 194,
+                                                            lineNumber: 197,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                                    lineNumber: 186,
+                                                    lineNumber: 189,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, rating, true, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                            lineNumber: 174,
+                                            lineNumber: 177,
                                             columnNumber: 17
                                         }, this))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                lineNumber: 167,
+                                lineNumber: 170,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -500,7 +501,7 @@ function FilterModal({ onClose, activeFilters, setActiveFilters, clearFilters })
                                                 className: "w-5 h-5 text-[#C9A050]"
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                                lineNumber: 203,
+                                                lineNumber: 206,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -508,30 +509,30 @@ function FilterModal({ onClose, activeFilters, setActiveFilters, clearFilters })
                                                 children: "Cost for Two"
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                                lineNumber: 204,
+                                                lineNumber: 207,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                        lineNumber: 202,
+                                        lineNumber: 205,
                                         columnNumber: 15
                                     }, this),
                                     [
                                         {
                                             label: "Budget Friendly",
                                             value: "Low",
-                                            price: "Under ₹500"
+                                            price: "Under ₹800"
                                         },
                                         {
                                             label: "Moderate",
                                             value: "Medium",
-                                            price: "₹500 - ₹1000"
+                                            price: "₹800 - ₹1600"
                                         },
                                         {
                                             label: "Premium",
                                             value: "High",
-                                            price: "Above ₹1000"
+                                            price: "Above ₹1600"
                                         }
                                     ].map((range)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                                             className: "flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-[#F7EFE3] cursor-pointer",
@@ -545,7 +546,7 @@ function FilterModal({ onClose, activeFilters, setActiveFilters, clearFilters })
                                                     className: "w-4 h-4 text-[#C9A050] accent-[#C9A050]"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                                    lineNumber: 216,
+                                                    lineNumber: 219,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -556,7 +557,7 @@ function FilterModal({ onClose, activeFilters, setActiveFilters, clearFilters })
                                                             children: range.label
                                                         }, void 0, false, {
                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                                            lineNumber: 225,
+                                                            lineNumber: 228,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -564,36 +565,36 @@ function FilterModal({ onClose, activeFilters, setActiveFilters, clearFilters })
                                                             children: range.price
                                                         }, void 0, false, {
                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                                            lineNumber: 234,
+                                                            lineNumber: 237,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                                    lineNumber: 224,
+                                                    lineNumber: 227,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, range.value, true, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                            lineNumber: 212,
+                                            lineNumber: 215,
                                             columnNumber: 17
                                         }, this))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                lineNumber: 201,
+                                lineNumber: 204,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                        lineNumber: 94,
+                        lineNumber: 97,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                    lineNumber: 93,
+                    lineNumber: 96,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -611,7 +612,7 @@ function FilterModal({ onClose, activeFilters, setActiveFilters, clearFilters })
                             children: "Clear All"
                         }, void 0, false, {
                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                            lineNumber: 246,
+                            lineNumber: 249,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -620,24 +621,24 @@ function FilterModal({ onClose, activeFilters, setActiveFilters, clearFilters })
                             children: "Apply Filters"
                         }, void 0, false, {
                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                            lineNumber: 260,
+                            lineNumber: 263,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                    lineNumber: 245,
+                    lineNumber: 248,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-            lineNumber: 74,
+            lineNumber: 77,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-        lineNumber: 70,
+        lineNumber: 73,
         columnNumber: 5
     }, this);
 }
@@ -667,7 +668,7 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
-function FilterBar() {
+function FilterBar({ onFiltersChange }) {
     _s();
     const [isModalOpen, setIsModalOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [activeFilters, setActiveFilters] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
@@ -681,17 +682,23 @@ function FilterBar() {
     const toggleFilter = (filter)=>{
         if (activeFilters.includes(filter)) {
             setActiveFilters(activeFilters.filter((f)=>f !== filter));
+            onFiltersChange(activeFilters);
         } else {
             setActiveFilters([
                 ...activeFilters,
                 filter
             ]);
+            onFiltersChange(activeFilters);
         }
     };
     const removeFilter = (filter)=>{
         setActiveFilters(activeFilters.filter((f)=>f !== filter));
+        onFiltersChange(activeFilters);
     };
-    const clearFilters = ()=>setActiveFilters([]);
+    const clearFilters = ()=>{
+        setActiveFilters([]);
+        onFiltersChange(activeFilters);
+    };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "sticky top-16 z-30 bg-white py-4 px-4 rounded-2xl shadow-md border border-[#E4D7C5]",
         children: [
@@ -706,7 +713,7 @@ function FilterBar() {
                                 className: "w-4 h-4"
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterBar.js",
-                                lineNumber: 43,
+                                lineNumber: 49,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -718,19 +725,19 @@ function FilterBar() {
                                         children: activeFilters.length
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterBar.js",
-                                        lineNumber: 47,
+                                        lineNumber: 53,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterBar.js",
-                                lineNumber: 44,
+                                lineNumber: 50,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterBar.js",
-                        lineNumber: 37,
+                        lineNumber: 43,
                         columnNumber: 9
                     }, this),
                     activeFilters.map((filter)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -741,7 +748,7 @@ function FilterBar() {
                                     children: filter
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterBar.js",
-                                    lineNumber: 61,
+                                    lineNumber: 67,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -752,18 +759,18 @@ function FilterBar() {
                                         className: "w-4 h-4"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterBar.js",
-                                        lineNumber: 67,
+                                        lineNumber: 73,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterBar.js",
-                                    lineNumber: 62,
+                                    lineNumber: 68,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, filter, true, {
                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterBar.js",
-                            lineNumber: 56,
+                            lineNumber: 62,
                             columnNumber: 11
                         }, this)),
                     allFilters.filter((f)=>!activeFilters.includes(f)).map((filter)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -772,7 +779,7 @@ function FilterBar() {
                             children: filter
                         }, filter, false, {
                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterBar.js",
-                            lineNumber: 76,
+                            lineNumber: 82,
                             columnNumber: 13
                         }, this)),
                     activeFilters.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -781,29 +788,35 @@ function FilterBar() {
                         children: "Clear All"
                     }, void 0, false, {
                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterBar.js",
-                        lineNumber: 88,
+                        lineNumber: 94,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterBar.js",
-                lineNumber: 34,
+                lineNumber: 40,
                 columnNumber: 7
             }, this),
             isModalOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$components$2f$FilterModal$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                 onClose: ()=>setIsModalOpen(false),
                 activeFilters: activeFilters,
-                setActiveFilters: setActiveFilters,
-                clearFilters: clearFilters
+                setActiveFilters: (updated)=>{
+                    setActiveFilters(updated);
+                    onFiltersChange(updated);
+                },
+                clearFilters: ()=>{
+                    setActiveFilters([]);
+                    onFiltersChange([]);
+                }
             }, void 0, false, {
                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterBar.js",
-                lineNumber: 100,
+                lineNumber: 106,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterBar.js",
-        lineNumber: 33,
+        lineNumber: 39,
         columnNumber: 5
     }, this);
 }
@@ -1087,7 +1100,7 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
-function Navbar() {
+function Navbar({ onSearch }) {
     _s();
     const [location, setLocation] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
     const [searchQuery, setSearchQuery] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
@@ -1137,7 +1150,7 @@ function Navbar() {
     const handleSearchChange = (e)=>{
         const value = e.target.value;
         setSearchQuery(value);
-        console.log(`Searching for "${value}" in "${location}"`);
+        onSearch(value); // ⬅ send search to parent
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
         className: "w-full bg-white shadow-sm border-b border-gray-100",
@@ -1156,12 +1169,12 @@ function Navbar() {
                         className: "object-contain"
                     }, void 0, false, {
                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Navbar.js",
-                        lineNumber: 64,
+                        lineNumber: 65,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Navbar.js",
-                    lineNumber: 63,
+                    lineNumber: 64,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1175,7 +1188,7 @@ function Navbar() {
                                     children: "📍"
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Navbar.js",
-                                    lineNumber: 77,
+                                    lineNumber: 78,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1186,13 +1199,13 @@ function Navbar() {
                                     className: "w-full bg-transparent outline-none text-gray-800 placeholder-gray-500"
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Navbar.js",
-                                    lineNumber: 78,
+                                    lineNumber: 79,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Navbar.js",
-                            lineNumber: 76,
+                            lineNumber: 77,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1202,7 +1215,7 @@ function Navbar() {
                                     className: "w-4 h-4 text-gray-500 absolute left-4"
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Navbar.js",
-                                    lineNumber: 88,
+                                    lineNumber: 89,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1213,19 +1226,19 @@ function Navbar() {
                                     className: "w-full pl-9 bg-transparent outline-none text-gray-800 placeholder-gray-500"
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Navbar.js",
-                                    lineNumber: 89,
+                                    lineNumber: 90,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Navbar.js",
-                            lineNumber: 87,
+                            lineNumber: 88,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Navbar.js",
-                    lineNumber: 75,
+                    lineNumber: 76,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1241,7 +1254,7 @@ function Navbar() {
                                     children: user.name ? user.name[0].toUpperCase() : "U"
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Navbar.js",
-                                    lineNumber: 104,
+                                    lineNumber: 105,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1249,18 +1262,18 @@ function Navbar() {
                                     children: user.name?.split(" ")[0] || "Profile"
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Navbar.js",
-                                    lineNumber: 107,
+                                    lineNumber: 108,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Navbar.js",
-                            lineNumber: 103,
+                            lineNumber: 104,
                             columnNumber: 15
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Navbar.js",
-                        lineNumber: 102,
+                        lineNumber: 103,
                         columnNumber: 13
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
                         children: [
@@ -1270,7 +1283,7 @@ function Navbar() {
                                 children: "Login"
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Navbar.js",
-                                lineNumber: 114,
+                                lineNumber: 115,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -1279,25 +1292,25 @@ function Navbar() {
                                 children: "Signup"
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Navbar.js",
-                                lineNumber: 117,
+                                lineNumber: 118,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, void 0, true)
                 }, void 0, false, {
                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Navbar.js",
-                    lineNumber: 100,
+                    lineNumber: 101,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Navbar.js",
-            lineNumber: 61,
+            lineNumber: 62,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Navbar.js",
-        lineNumber: 60,
+        lineNumber: 61,
         columnNumber: 5
     }, this);
 }
@@ -2047,6 +2060,66 @@ function Home() {
             }["Home.useEffect"]);
         }
     }["Home.useEffect"], []);
+    const [filters, setFilters] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
+    const [search, setSearch] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "Home.useEffect": ()=>{
+            const params = new URLSearchParams();
+            // 🔎 SEARCH
+            if (search) params.append("search", search);
+            // 🎛 Feature Filters
+            const featureFilters = filters.filter({
+                "Home.useEffect.featureFilters": (f)=>[
+                        "Offers",
+                        "Pet Friendly",
+                        "Outdoor Seating",
+                        "Serves Alcohol",
+                        "Open Now"
+                    ].includes(f)
+            }["Home.useEffect.featureFilters"]);
+            if (featureFilters.length > 0) {
+                params.append("filters", featureFilters.join(","));
+            }
+            // 🍽 Cuisines filters
+            const cuisines = filters.filter({
+                "Home.useEffect.cuisines": (f)=>[
+                        "Italian",
+                        "North Indian",
+                        "Chinese",
+                        "Mexican",
+                        "Thai",
+                        "Japanese",
+                        "American"
+                    ].includes(f)
+            }["Home.useEffect.cuisines"]);
+            if (cuisines.length > 0) {
+                params.append("cuisines", cuisines.join(","));
+            }
+            // ⭐ Rating
+            const rating = filters.find({
+                "Home.useEffect.rating": (f)=>f.startsWith("Rating: ")
+            }["Home.useEffect.rating"]);
+            if (rating) params.append("rating", rating.replace("Rating: ", "").replace("+", ""));
+            // 💰 Cost
+            const cost = filters.find({
+                "Home.useEffect.cost": (f)=>f.startsWith("Cost: ")
+            }["Home.useEffect.cost"]);
+            if (cost) params.append("cost", cost.replace("Cost: ", ""));
+            // 🔽 Sort
+            const sort = filters.find({
+                "Home.useEffect.sort": (f)=>f.startsWith("Sort: ")
+            }["Home.useEffect.sort"]);
+            if (sort) params.append("sort", sort.replace("Sort: ", ""));
+            // Fetch
+            fetch(`${("TURBOPACK compile-time value", "https://dinex-24s9.onrender.com")}/api/restaurants?${params.toString()}`).then({
+                "Home.useEffect": (res)=>res.json()
+            }["Home.useEffect"]).then({
+                "Home.useEffect": (data)=>setRestaurants(data)
+            }["Home.useEffect"]);
+        }
+    }["Home.useEffect"], [
+        filters
+    ]);
     // Calculate pagination
     const indexOfLastRestaurant = currentPage * restaurantsPerPage;
     const indexOfFirstRestaurant = indexOfLastRestaurant - restaurantsPerPage;
@@ -2064,14 +2137,16 @@ function Home() {
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
         children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$components$2f$Navbar$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$components$2f$Navbar$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                onSearch: (value)=>setSearch(value)
+            }, void 0, false, {
                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/page.js",
-                lineNumber: 39,
+                lineNumber: 83,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$components$2f$HeroSection$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/page.js",
-                lineNumber: 41,
+                lineNumber: 85,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2079,21 +2154,23 @@ function Home() {
                 className: "min-h-screen bg-[#FFF8E7] text-gray-900 px-4 md:px-10 py-8",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "max-w-6xl mx-auto sticky top-0 z-20 mt-10 mb-8 bg-gray-50 py-2",
+                        className: "max-w-6xl mx-auto sticky top-0 z-20 mb-8 bg-[#FFF8E7] pt-2 ",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$components$2f$FilterBar$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$components$2f$FilterBar$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                onFiltersChange: (f)=>setFilters(f)
+                            }, void 0, false, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/page.js",
-                                lineNumber: 49,
+                                lineNumber: 93,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/page.js",
-                            lineNumber: 48,
+                            lineNumber: 92,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/page.js",
-                        lineNumber: 47,
+                        lineNumber: 91,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2102,12 +2179,12 @@ function Home() {
                                 restaurant: res
                             }, res.restaurantId, false, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/page.js",
-                                lineNumber: 63,
+                                lineNumber: 107,
                                 columnNumber: 13
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/page.js",
-                        lineNumber: 61,
+                        lineNumber: 105,
                         columnNumber: 9
                     }, this),
                     totalPages > 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2129,17 +2206,17 @@ function Home() {
                                         d: "M15 19l-7-7 7-7"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/page.js",
-                                        lineNumber: 79,
+                                        lineNumber: 123,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/page.js",
-                                    lineNumber: 78,
+                                    lineNumber: 122,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/page.js",
-                                lineNumber: 71,
+                                lineNumber: 115,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2156,7 +2233,7 @@ function Home() {
                                             children: pageNumber
                                         }, pageNumber, false, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/page.js",
-                                            lineNumber: 95,
+                                            lineNumber: 139,
                                             columnNumber: 21
                                         }, this);
                                     } else if (pageNumber === currentPage - 2 || pageNumber === currentPage + 2) {
@@ -2165,7 +2242,7 @@ function Home() {
                                             children: "..."
                                         }, pageNumber, false, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/page.js",
-                                            lineNumber: 109,
+                                            lineNumber: 153,
                                             columnNumber: 26
                                         }, this);
                                     }
@@ -2173,7 +2250,7 @@ function Home() {
                                 })
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/page.js",
-                                lineNumber: 84,
+                                lineNumber: 128,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2192,40 +2269,40 @@ function Home() {
                                         d: "M9 5l7 7-7 7"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/page.js",
-                                        lineNumber: 124,
+                                        lineNumber: 168,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/page.js",
-                                    lineNumber: 123,
+                                    lineNumber: 167,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/page.js",
-                                lineNumber: 116,
+                                lineNumber: 160,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/page.js",
-                        lineNumber: 69,
+                        lineNumber: 113,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/page.js",
-                lineNumber: 44,
+                lineNumber: 88,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$components$2f$Footer$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/page.js",
-                lineNumber: 131,
+                lineNumber: 175,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true);
 }
-_s(Home, "AMJCP1cIwVhaTKOqWE/fwO0H5ME=");
+_s(Home, "v+jFldywwZ7+0ynPAyjkSBioKTM=");
 _c = Home;
 var _c;
 __turbopack_context__.k.register(_c, "Home");

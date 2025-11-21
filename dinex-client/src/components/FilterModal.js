@@ -15,7 +15,7 @@ export default function FilterModal({
 
   const cuisines = [
     "Italian",
-    "Indian",
+    "North Indian",
     "Chinese",
     "Mexican",
     "Thai",
@@ -54,17 +54,20 @@ export default function FilterModal({
         !f.startsWith("Cost: ") &&
         !cuisines.includes(f)
     );
-
+  
     const updated = [
       ...selectedCuisines,
       sortBy !== "Popularity" ? `Sort: ${sortBy}` : null,
       selectedRating ? `Rating: ${selectedRating}+` : null,
       costRange ? `Cost: ${costRange}` : null,
     ].filter(Boolean);
-
-    setActiveFilters([...cleaned, ...updated]);
+  
+    const finalFilters = [...cleaned, ...updated];
+  
+    setActiveFilters(finalFilters);
     onClose();
   };
+  
 
   return (
     <div
@@ -102,10 +105,10 @@ export default function FilterModal({
 
               {[
                 "Popularity",
+                "Rating: Low to High",
                 "Rating: High to Low",
                 "Cost: Low to High",
                 "Cost: High to Low",
-                "Distance",
               ].map((option) => (
                 <label
                   key={option}
@@ -205,9 +208,9 @@ export default function FilterModal({
               </div>
 
               {[
-                { label: "Budget Friendly", value: "Low", price: "Under ₹500" },
-                { label: "Moderate", value: "Medium", price: "₹500 - ₹1000" },
-                { label: "Premium", value: "High", price: "Above ₹1000" },
+                { label: "Budget Friendly", value: "Low", price: "Under ₹800" },
+                { label: "Moderate", value: "Medium", price: "₹800 - ₹1600" },
+                { label: "Premium", value: "High", price: "Above ₹1600" },
               ].map((range) => (
                 <label
                   key={range.value}

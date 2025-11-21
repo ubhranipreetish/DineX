@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation"; 
 import { Search } from "lucide-react";
 
-export default function Navbar() {
+export default function Navbar({ onSearch }) {
   const [location, setLocation] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [user, setUser] = useState(null);
@@ -53,8 +53,9 @@ export default function Navbar() {
   const handleSearchChange = (e) => {
     const value = e.target.value;
     setSearchQuery(value);
-    console.log(`Searching for "${value}" in "${location}"`);
+    onSearch(value);    // ⬅ send search to parent
   };
+  
 
   return (
     <nav className="w-full bg-white shadow-sm border-b border-gray-100">

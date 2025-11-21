@@ -3,7 +3,7 @@ import { useState } from "react";
 import { SlidersHorizontal, X } from "lucide-react";
 import FilterModal from "./FilterModal";
 
-export default function FilterBar() {
+export default function FilterBar({ onFiltersChange }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeFilters, setActiveFilters] = useState([]);
 
@@ -18,16 +18,22 @@ export default function FilterBar() {
   const toggleFilter = (filter) => {
     if (activeFilters.includes(filter)) {
       setActiveFilters(activeFilters.filter((f) => f !== filter));
+      onFiltersChange(activeFilters);
     } else {
       setActiveFilters([...activeFilters, filter]);
+      onFiltersChange(activeFilters);
     }
   };
 
   const removeFilter = (filter) => {
     setActiveFilters(activeFilters.filter((f) => f !== filter));
+    onFiltersChange(activeFilters);
   };
 
-  const clearFilters = () => setActiveFilters([]);
+  const clearFilters = () => {
+    setActiveFilters([])
+    onFiltersChange(activeFilters);
+  };
 
   return (
     <div className="sticky top-16 z-30 bg-white py-4 px-4 rounded-2xl shadow-md border border-[#E4D7C5]">
@@ -100,8 +106,14 @@ export default function FilterBar() {
         <FilterModal
           onClose={() => setIsModalOpen(false)}
           activeFilters={activeFilters}
-          setActiveFilters={setActiveFilters}
-          clearFilters={clearFilters}
+          setActiveFilters={(updated) => {
+            setActiveFilters(updated);
+            onFiltersChange(updated);
+          }}
+          clearFilters={() => {
+            setActiveFilters([]);
+            onFiltersChange([]);
+          }}
         />
       )}
     </div>

@@ -43,7 +43,7 @@ export default function Payment({ data, onComplete }) {
   };
 
   return (
-    <div className="min-h-screen border border-gray-300 rounded-xl py-8 px-4">
+    <div className="min-h-screen pt-4 pb-8 px-4">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Left Section - Payment Methods */}

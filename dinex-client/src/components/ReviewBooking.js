@@ -2,7 +2,7 @@ import { Calendar, Clock, Users, IndianRupee, CheckCircle, AlertCircle, Tag } fr
 
 export default function ReviewBooking({ data, onProceed }) {
   return (
-    <div className="min-h-screen border border-gray-300 rounded-xl py-8 px-4">
+    <div className="min-h-screen py-2">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Left Section - Main Details */}

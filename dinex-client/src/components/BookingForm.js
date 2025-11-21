@@ -74,7 +74,7 @@ export default function BookingForm({ restaurantName, offers = [], onSubmit }) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="border border-gray-200 p-8 rounded-2xl shadow-sm bg-white space-y-8"
+      className="bg-white space-y-8 mt-8"
     >
       {/* 🔖 Heading */}
       <h3 className="text-2xl font-semibold text-gray-900 mb-2">

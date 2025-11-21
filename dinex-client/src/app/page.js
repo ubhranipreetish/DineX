@@ -18,6 +18,50 @@ export default function Home() {
       .catch((err) => console.error("Error:", err));
   }, []);
 
+  const [filters, setFilters] = useState([]);
+  const [search, setSearch] = useState(""); 
+
+  useEffect(() => {
+    const params = new URLSearchParams();
+
+    // 🔎 SEARCH
+    if (search) params.append("search", search);
+
+    // 🎛 Feature Filters
+    const featureFilters = filters
+      .filter(f => ["Offers","Pet Friendly","Outdoor Seating","Serves Alcohol","Open Now"].includes(f));
+    if (featureFilters.length > 0) {
+      params.append("filters", featureFilters.join(","));
+    }
+
+    // 🍽 Cuisines filters
+    const cuisines = filters.filter(f =>
+      ["Italian","North Indian","Chinese","Mexican","Thai","Japanese","American"].includes(f)
+    );
+    if (cuisines.length > 0) {
+      params.append("cuisines", cuisines.join(","));
+    }
+
+    // ⭐ Rating
+    const rating = filters.find(f => f.startsWith("Rating: "));
+    if (rating) params.append("rating", rating.replace("Rating: ", "").replace("+", ""));
+
+    // 💰 Cost
+    const cost = filters.find(f => f.startsWith("Cost: "));
+    if (cost) params.append("cost", cost.replace("Cost: ", ""));
+
+    // 🔽 Sort
+    const sort = filters.find(f => f.startsWith("Sort: "));
+    if (sort) params.append("sort", sort.replace("Sort: ", ""));
+
+    // Fetch
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/restaurants?${params.toString()}`)
+      .then(res => res.json())
+      .then(data => setRestaurants(data));
+
+  }, [filters]);
+
+
   // Calculate pagination
   const indexOfLastRestaurant = currentPage * restaurantsPerPage;
   const indexOfFirstRestaurant = indexOfLastRestaurant - restaurantsPerPage;
@@ -36,7 +80,7 @@ export default function Home() {
 
   return (
     <>
-      <Navbar />
+      <Navbar onSearch={(value) => setSearch(value)} />
       {/* Hero Section */}
       <HeroSection />
 
@@ -44,9 +88,9 @@ export default function Home() {
       <div id="restaurants-section" className="min-h-screen bg-[#FFF8E7] text-gray-900 px-4 md:px-10 py-8">
 
         {/* Sticky Filter Bar */}
-        <div className="max-w-6xl mx-auto sticky top-0 z-20 mt-10 mb-8 bg-gray-50 py-2">
+        <div className="max-w-6xl mx-auto sticky top-0 z-20 mb-8 bg-[#FFF8E7] pt-2 ">
           <div>
-            <FilterBar />
+            <FilterBar onFiltersChange={(f) => setFilters(f)} />
           </div>
         </div>
 

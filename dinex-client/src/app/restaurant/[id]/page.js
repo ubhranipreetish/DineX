@@ -103,7 +103,7 @@ export default function RestaurantDetail() {
       return (
         <>
         <Navbar />
-        <div className="min-h-screen bg-[#fafafa] flex flex-col items-center justify-center px-6">
+        <div className="min-h-screen bg-[#FFF8E7] flex flex-col items-center justify-center px-6">
           
           {/* Glowing plate icon */}
           <div className="relative w-28 h-28 mb-8">

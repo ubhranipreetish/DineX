@@ -21,7 +21,7 @@ export default function BookingFlow({ restaurantName, offers = [] }) {
   };
 
   return (
-    <div className="mt-10">
+    <div className="mt-4">
       {step === 1 && (
         <BookingForm
           restaurantName={restaurantName}
