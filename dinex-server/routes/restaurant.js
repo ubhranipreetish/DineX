@@ -55,9 +55,9 @@ router.get("/", async (req, res) => {
 
       if (f.includes("Offers")) query.offer = { $gt: 0 };
       if (f.includes("Pet Friendly")) query.isPetFriendly = true;
-      if (f.includes("Outdoor Seating")) query.outdoorSeating = true;
+      if (f.includes("Outdoor Seating")) query.hasOutdoorSeating = true;
       if (f.includes("Serves Alcohol")) query.servesAlcohol = true;
-      if (f.includes("Open Now")) query.isOpen = true;
+      if (f.includes("Open Now")) query.isOpenNow = true;
     }
 
     // 🔽 SORTING

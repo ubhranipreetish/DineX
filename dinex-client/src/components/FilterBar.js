@@ -16,24 +16,30 @@ export default function FilterBar({ onFiltersChange }) {
   ];
 
   const toggleFilter = (filter) => {
+    let updatedFilters;
     if (activeFilters.includes(filter)) {
-      setActiveFilters(activeFilters.filter((f) => f !== filter));
-      onFiltersChange(activeFilters);
+      updatedFilters = activeFilters.filter((f) => f !== filter);
     } else {
-      setActiveFilters([...activeFilters, filter]);
-      onFiltersChange(activeFilters);
+      updatedFilters = [...activeFilters, filter];
     }
+  
+    setActiveFilters(updatedFilters);
+    onFiltersChange(updatedFilters);   
   };
+  
 
   const removeFilter = (filter) => {
-    setActiveFilters(activeFilters.filter((f) => f !== filter));
-    onFiltersChange(activeFilters);
+    const updatedFilters = activeFilters.filter((f) => f !== filter);
+    setActiveFilters(updatedFilters);
+    onFiltersChange(updatedFilters);   
   };
+  
 
   const clearFilters = () => {
-    setActiveFilters([])
-    onFiltersChange(activeFilters);
+    setActiveFilters([]);
+    onFiltersChange([]);   
   };
+  
 
   return (
     <div className="sticky top-16 z-30 bg-white py-4 px-4 rounded-2xl shadow-md border border-[#E4D7C5]">
@@ -106,15 +112,16 @@ export default function FilterBar({ onFiltersChange }) {
         <FilterModal
           onClose={() => setIsModalOpen(false)}
           activeFilters={activeFilters}
-          setActiveFilters={(updated) => {
-            setActiveFilters(updated);
-            onFiltersChange(updated);
+          setActiveFilters={(newFilters) => {
+            setActiveFilters(newFilters);
+            onFiltersChange(newFilters);   
           }}
           clearFilters={() => {
             setActiveFilters([]);
-            onFiltersChange([]);
+            onFiltersChange([]);           
           }}
         />
+      
       )}
     </div>
   );

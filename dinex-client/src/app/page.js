@@ -25,7 +25,8 @@ export default function Home() {
     const params = new URLSearchParams();
 
     // 🔎 SEARCH
-    if (search) params.append("search", search);
+    if (search.trim()) params.append("search", search);
+    
 
     // 🎛 Feature Filters
     const featureFilters = filters
@@ -59,7 +60,7 @@ export default function Home() {
       .then(res => res.json())
       .then(data => setRestaurants(data));
 
-  }, [filters]);
+  }, [filters,search]);
 
 
   // Calculate pagination
@@ -80,7 +81,7 @@ export default function Home() {
 
   return (
     <>
-      <Navbar onSearch={(value) => setSearch(value)} />
+      <Navbar onSearchChange={(value) => setSearch(value)} />
       {/* Hero Section */}
       <HeroSection />
 

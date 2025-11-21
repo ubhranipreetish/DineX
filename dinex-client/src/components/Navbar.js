@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation"; 
 import { Search } from "lucide-react";
 
-export default function Navbar({ onSearch }) {
+export default function Navbar({ onSearchChange }) {
   const [location, setLocation] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [user, setUser] = useState(null);
@@ -53,8 +53,12 @@ export default function Navbar({ onSearch }) {
   const handleSearchChange = (e) => {
     const value = e.target.value;
     setSearchQuery(value);
-    onSearch(value);    // ⬅ send search to parent
+    
+    if (onSearchChange) {
+      onSearchChange(value);   // <-- send live search term to Home
+    }
   };
+  
   
 
   return (
