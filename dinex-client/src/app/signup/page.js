@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { API } from "@/utils/api";
 import Link from "next/link";
 
@@ -12,6 +12,7 @@ export default function SignupPage() {
 
 
   const router = useRouter();
+  const searchParams = useSearchParams();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,7 +40,14 @@ export default function SignupPage() {
 
       localStorage.setItem("user", JSON.stringify(res.data.user));
       window.dispatchEvent(new Event("userUpdated"));
-      router.push("/");
+
+      // Check if there's a redirect parameter
+      const redirectUrl = searchParams.get("redirect");
+      if (redirectUrl) {
+        router.push(redirectUrl);
+      } else {
+        router.push("/");
+      }
 
     } catch (err) {
       const errorMessage =
@@ -62,31 +70,31 @@ export default function SignupPage() {
           {/* Left Side - Full Background Image */}
           <div className="lg:w-1/2 relative flex items-center justify-center p-12">
 
-          {/* Full background image */}
-          <img
-            src="/images/hero-background.jpg"
-            alt="Cheers"
-            className="absolute inset-0 w-full h-full object-cover rounded-none"
-          />
+            {/* Full background image */}
+            <img
+              src="/images/hero-background.jpg"
+              alt="Cheers"
+              className="absolute inset-0 w-full h-full object-cover rounded-none"
+            />
 
-          {/* Dark overlay to make text readable */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/40"></div>
+            {/* Dark overlay to make text readable */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/40"></div>
 
-          {/* Text on top of image */}
-          <div className="relative text-center text-white">
-                <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 animate-fade-in">
-                    <span className="bg-gradient-to-r from-[#C9A050] via-[#F4D483] to-[#C9A050] bg-clip-text text-white">
-                        Dine
-                    </span>
-                    <span className="bg-gradient-to-r from-[#C9A050] via-[#F4D483] to-[#C9A050] bg-clip-text text-transparent">
-                        X
-                    </span>
-                </h1>
+            {/* Text on top of image */}
+            <div className="relative text-center text-white">
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 animate-fade-in">
+                <span className="bg-gradient-to-r from-[#C9A050] via-[#F4D483] to-[#C9A050] bg-clip-text text-white">
+                  Dine
+                </span>
+                <span className="bg-gradient-to-r from-[#C9A050] via-[#F4D483] to-[#C9A050] bg-clip-text text-transparent">
+                  X
+                </span>
+              </h1>
 
-            <p className="text-xl text-white/xl drop-shadow-md">
-              Discover the finest dining experiences in your area
-            </p>
-          </div>
+              <p className="text-xl text-white/xl drop-shadow-md">
+                Discover the finest dining experiences in your area
+              </p>
+            </div>
 
           </div>
 
@@ -221,7 +229,10 @@ export default function SignupPage() {
               <div className="mt-5 text-center">
                 <p className="text-gray-600">
                   Already have an account?{' '}
-                  <Link href="/login" className="text-[#8B6F3E] hover:text-[#C9A050] font-semibold">
+                  <Link
+                    href={searchParams.get("redirect") ? `/login?redirect=${searchParams.get("redirect")}` : "/login"}
+                    className="text-[#8B6F3E] hover:text-[#C9A050] font-semibold"
+                  >
                     Log in here
                   </Link>
                 </p>

@@ -12,22 +12,47 @@ import {
   Edit2,
   Settings,
   History,
+  Clock,
+  Users as UsersIcon,
+  Trash2,
+  XCircle,
 } from "lucide-react";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import EditBookingModal from "@/components/EditBookingModal";
+import { API } from "@/utils/api";
 
 export default function ProfilePage() {
   const [user, setUser] = useState(null);
+  const [bookings, setBookings] = useState([]);
+  const [loadingBookings, setLoadingBookings] = useState(true);
+  const [editingBooking, setEditingBooking] = useState(null);
+  const [showEditModal, setShowEditModal] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
     const stored = localStorage.getItem("user");
     if (stored) {
-      setUser(JSON.parse(stored));
+      const userData = JSON.parse(stored);
+      setUser(userData);
+      fetchBookings(userData._id);
     } else {
       router.push("/login");
     }
   }, [router]);
+
+  const fetchBookings = async (userId) => {
+    try {
+      setLoadingBookings(true);
+      const response = await API.get(`/api/bookings/user/${userId}`);
+      setBookings(response.data.bookings || []);
+    } catch (error) {
+      console.error("Error fetching bookings:", error);
+      setBookings([]);
+    } finally {
+      setLoadingBookings(false);
+    }
+  };
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -36,7 +61,84 @@ export default function ProfilePage() {
     router.push("/");
   };
 
+  const handleEditBooking = (booking) => {
+    setEditingBooking(booking);
+    setShowEditModal(true);
+  };
+
+  const handleSaveBooking = async (updateData) => {
+    try {
+      await API.patch(`/api/bookings/${editingBooking._id}`, updateData);
+      alert("✅ Booking updated successfully!");
+      setShowEditModal(false);
+      setEditingBooking(null);
+      fetchBookings(user._id);
+    } catch (error) {
+      console.error("Error updating booking:", error);
+      throw error;
+    }
+  };
+
+  const handleCancelBooking = async (bookingId) => {
+    if (!confirm("Are you sure you want to cancel this booking?")) return;
+
+    try {
+      await API.patch(`/api/bookings/${bookingId}/cancel`);
+      alert("✅ Booking cancelled successfully!");
+      fetchBookings(user._id);
+    } catch (error) {
+      console.error("Error cancelling booking:", error);
+      alert(error.response?.data?.msg || "Failed to cancel booking");
+    }
+  };
+
+  const handleDeleteBooking = async (bookingId) => {
+    if (!confirm("Are you sure you want to permanently delete this booking?")) return;
+
+    try {
+      await API.delete(`/api/bookings/${bookingId}`);
+      alert("✅ Booking deleted successfully!");
+      fetchBookings(user._id);
+    } catch (error) {
+      console.error("Error deleting booking:", error);
+      alert(error.response?.data?.msg || "Failed to delete booking");
+    }
+  };
+
+  const getStatusBadge = (status) => {
+    const styles = {
+      confirmed: "bg-green-100 text-green-700",
+      completed: "bg-blue-100 text-blue-700",
+      cancelled: "bg-red-100 text-red-700"
+    };
+    return styles[status] || "bg-gray-100 text-gray-700";
+  };
+
+  const canEditOrCancel = (booking) => {
+    if (booking.status !== "confirmed") return false;
+
+    const now = new Date();
+    const bookingDateTime = new Date(booking.date);
+    const timeParts = booking.time.match(/(\d+):(\d+)\s*(AM|PM)/i);
+
+    if (timeParts) {
+      let hours = parseInt(timeParts[1]);
+      const minutes = parseInt(timeParts[2]);
+      const period = timeParts[3].toUpperCase();
+
+      if (period === "PM" && hours !== 12) hours += 12;
+      if (period === "AM" && hours === 12) hours = 0;
+
+      bookingDateTime.setHours(hours, minutes, 0, 0);
+    }
+
+    return now < bookingDateTime;
+  };
+
   if (!user) return null;
+
+  const confirmedBookings = bookings.filter(b => b.status === "confirmed").length;
+  const completedBookings = bookings.filter(b => b.status === "completed").length;
 
   return (
     <>
@@ -70,11 +172,10 @@ export default function ProfilePage() {
 
                 {/* Role Badge */}
                 <div
-                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-full font-semibold text-sm mb-6 ${
-                    user.role === "customer"
+                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-full font-semibold text-sm mb-6 ${user.role === "customer"
                       ? "bg-[#E3EFFA] text-[#3C5A78]"
                       : "bg-[#EFE4F6] text-[#684D8A]"
-                  }`}
+                    }`}
                 >
                   {user.role === "customer" ? (
                     <User className="w-4 h-4" />
@@ -87,12 +188,12 @@ export default function ProfilePage() {
                 {/* Stats */}
                 <div className="grid grid-cols-2 gap-4 mb-6 pt-6 border-t border-[#E8E1D5]">
                   <div className="text-center">
-                    <p className="text-2xl font-bold text-[#C9A050]">12</p>
-                    <p className="text-xs text-[#6B625A]">Bookings</p>
+                    <p className="text-2xl font-bold text-[#C9A050]">{confirmedBookings}</p>
+                    <p className="text-xs text-[#6B625A]">Active</p>
                   </div>
                   <div className="text-center">
-                    <p className="text-2xl font-bold text-[#C9A050]">8</p>
-                    <p className="text-xs text-[#6B625A]">Reviews</p>
+                    <p className="text-2xl font-bold text-[#C9A050]">{completedBookings}</p>
+                    <p className="text-xs text-[#6B625A]">Completed</p>
                   </div>
                 </div>
 
@@ -113,7 +214,9 @@ export default function ProfilePage() {
                   <div className="flex items-center gap-3 text-sm">
                     <CalendarDays className="w-4 h-4 text-[#6B625A]" />
                     <span className="text-[#6B625A]">Joined:</span>
-                    <span className="font-semibold text-[#4A3F35]">Jan 2024</span>
+                    <span className="font-semibold text-[#4A3F35]">
+                      {new Date(user.createdAt).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
+                    </span>
                   </div>
                   <div className="flex items-center gap-3 text-sm">
                     <Phone className="w-4 h-4 text-[#6B625A]" />
@@ -159,130 +262,120 @@ export default function ProfilePage() {
                 </button>
               </div>
 
-              {/* Recent Bookings */}
+              {/* Bookings Section */}
               <div className="bg-white border border-[#E8E1D5] rounded-2xl shadow-md p-6">
                 <div className="flex items-center justify-between mb-6">
                   <h3 className="text-xl font-bold text-[#4A3F35]">
-                    Recent Bookings
+                    My Bookings
                   </h3>
-                  <button className="text-sm text-[#C9A050] hover:text-[#8B6F3E] font-semibold">
-                    View All →
-                  </button>
+                  <span className="text-sm text-[#6B625A]">
+                    {bookings.length} total
+                  </span>
                 </div>
-                <div className="space-y-4">
-                  {/* Booking Item 1 */}
-                  <div className="flex items-center gap-4 p-4 bg-[#FAF6EF] rounded-xl hover:bg-[#F3EAD8] transition-all cursor-pointer">
-                    <img
-                      src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=100&h=100&fit=crop"
-                      className="w-16 h-16 rounded-lg object-cover"
-                    />
-                    <div className="flex-1">
-                      <h4 className="font-bold text-[#4A3F35]">The Great Kabab Factory</h4>
-                      <p className="text-sm text-[#6B625A]">
-                        Dec 28, 2024 • 8:00 PM • 4 Guests
-                      </p>
-                    </div>
-                    <span className="px-3 py-1 bg-[#E3F6EB] text-[#3C7A55] rounded-full text-xs font-semibold">
-                      Confirmed
-                    </span>
+
+                {loadingBookings ? (
+                  <div className="text-center py-12">
+                    <div className="animate-spin w-12 h-12 border-4 border-[#C9A050] border-t-transparent rounded-full mx-auto mb-4"></div>
+                    <p className="text-gray-600">Loading bookings...</p>
                   </div>
-
-                  {/* Booking 2 */}
-                  <div className="flex items-center gap-4 p-4 bg-[#FAF6EF] rounded-xl hover:bg-[#F3EAD8] transition-all cursor-pointer">
-                    <img
-                      src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=100&h=100&fit=crop"
-                      className="w-16 h-16 rounded-lg object-cover"
-                    />
-                    <div className="flex-1">
-                      <h4 className="font-bold text-[#4A3F35]">Indian Accent</h4>
-                      <p className="text-sm text-[#6B625A]">
-                        Dec 25, 2024 • 7:30 PM • 2 Guests
-                      </p>
-                    </div>
-                    <span className="px-3 py-1 bg-[#E3EFFA] text-[#3C5A78] rounded-full text-xs font-semibold">
-                      Completed
-                    </span>
+                ) : bookings.length === 0 ? (
+                  <div className="text-center py-12">
+                    <Utensils className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+                    <h4 className="text-lg font-semibold text-gray-700 mb-2">No bookings yet</h4>
+                    <p className="text-gray-500 mb-4">Start exploring restaurants and make your first reservation!</p>
+                    <button
+                      onClick={() => router.push("/")}
+                      className="px-6 py-2 bg-[#C9A050] text-white rounded-lg hover:bg-[#8B6F3E] transition"
+                    >
+                      Browse Restaurants
+                    </button>
                   </div>
+                ) : (
+                  <div className="space-y-4">
+                    {bookings.map((booking) => (
+                      <div
+                        key={booking._id}
+                        className="flex flex-col md:flex-row md:items-center gap-4 p-4 bg-[#FAF6EF] rounded-xl hover:bg-[#F3EAD8] transition-all border border-[#E8E1D5]"
+                      >
+                        {/* Booking Info */}
+                        <div className="flex-1">
+                          <div className="flex items-start justify-between mb-2">
+                            <h4 className="font-bold text-[#4A3F35] text-lg">{booking.restaurantName}</h4>
+                            <span className={`px-3 py-1 rounded-full text-xs font-semibold capitalize ${getStatusBadge(booking.status)}`}>
+                              {booking.status}
+                            </span>
+                          </div>
+                          <div className="flex flex-wrap gap-4 text-sm text-[#6B625A]">
+                            <span className="flex items-center gap-1">
+                              <CalendarDays className="w-4 h-4" />
+                              {new Date(booking.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                            </span>
+                            <span className="flex items-center gap-1">
+                              <Clock className="w-4 h-4" />
+                              {booking.time}
+                            </span>
+                            <span className="flex items-center gap-1">
+                              <UsersIcon className="w-4 h-4" />
+                              {booking.people} {booking.people === 1 ? 'Guest' : 'Guests'}
+                            </span>
+                            <span className="font-semibold text-[#C9A050]">
+                              ₹{booking.amount}
+                            </span>
+                          </div>
+                        </div>
 
-                  {/* Booking 3 */}
-                  <div className="flex items-center gap-4 p-4 bg-[#FAF6EF] rounded-xl hover:bg-[#F3EAD8] transition-all cursor-pointer">
-                    <img
-                      src="https://images.unsplash.com/photo-1552566626-52f8b828add9?w=100&h=100&fit=crop"
-                      className="w-16 h-16 rounded-lg object-cover"
-                    />
-                    <div className="flex-1">
-                      <h4 className="font-bold text-[#4A3F35]">Bukhara</h4>
-                      <p className="text-sm text-[#6B625A]">
-                        Dec 20, 2024 • 9:00 PM • 6 Guests
-                      </p>
-                    </div>
-                    <span className="px-3 py-1 bg-[#E3EFFA] text-[#3C5A78] rounded-full text-xs font-semibold">
-                      Completed
-                    </span>
+                        {/* Action Buttons */}
+                        <div className="flex gap-2">
+                          {canEditOrCancel(booking) && (
+                            <>
+                              <button
+                                onClick={() => handleEditBooking(booking)}
+                                className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-lg transition flex items-center gap-1"
+                              >
+                                <Edit2 className="w-4 h-4" />
+                                Edit
+                              </button>
+                              <button
+                                onClick={() => handleCancelBooking(booking._id)}
+                                className="px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white text-sm font-semibold rounded-lg transition flex items-center gap-1"
+                              >
+                                <XCircle className="w-4 h-4" />
+                                Cancel
+                              </button>
+                            </>
+                          )}
+                          {booking.status === "cancelled" && (
+                            <button
+                              onClick={() => handleDeleteBooking(booking._id)}
+                              className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white text-sm font-semibold rounded-lg transition flex items-center gap-1"
+                            >
+                              <Trash2 className="w-4 h-4" />
+                              Delete
+                            </button>
+                          )}
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                </div>
-              </div>
-
-              {/* Preferences */}
-              <div className="bg-white border border-[#E8E1D5] rounded-2xl shadow-md p-6">
-                <h3 className="text-xl font-bold text-[#4A3F35] mb-6">
-                  Preferences
-                </h3>
-
-                <div className="space-y-4">
-
-                  {/* Email Notifications */}
-                  <div className="flex items-center justify-between p-4 bg-[#FAF6EF] rounded-xl">
-                    <div>
-                      <h4 className="font-semibold text-[#4A3F35]">
-                        Email Notifications
-                      </h4>
-                      <p className="text-sm text-[#6B625A]">
-                        Get booking confirmations via email
-                      </p>
-                    </div>
-                    <label className="relative inline-flex items-center cursor-pointer">
-                      <input type="checkbox" className="sr-only peer" defaultChecked />
-                      <div className="w-11 h-6 bg-gray-300 peer-focus:outline-none rounded-full peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#C9A050]"></div>
-                    </label>
-                  </div>
-
-                  {/* SMS */}
-                  <div className="flex items-center justify-between p-4 bg-[#FAF6EF] rounded-xl">
-                    <div>
-                      <h4 className="font-semibold text-[#4A3F35]">SMS Alerts</h4>
-                      <p className="text-sm text-[#6B625A]">
-                        Receive booking reminders via SMS
-                      </p>
-                    </div>
-                    <label className="relative inline-flex items-center cursor-pointer">
-                      <input type="checkbox" className="sr-only peer" defaultChecked />
-                      <div className="w-11 h-6 bg-gray-300 peer-focus:outline-none rounded-full peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#C9A050]"></div>
-                    </label>
-                  </div>
-
-                  {/* Promotions */}
-                  <div className="flex items-center justify-between p-4 bg-[#FAF6EF] rounded-xl">
-                    <div>
-                      <h4 className="font-semibold text-[#4A3F35]">
-                        Promotional Offers
-                      </h4>
-                      <p className="text-sm text-[#6B625A]">
-                        Get special deals and discounts
-                      </p>
-                    </div>
-                    <label className="relative inline-flex items-center cursor-pointer">
-                      <input type="checkbox" className="sr-only peer" />
-                      <div className="w-11 h-6 bg-gray-300 peer-focus:outline-none rounded-full peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#C9A050]"></div>
-                    </label>
-                  </div>
-                </div>
+                )}
               </div>
 
             </div>
           </div>
         </div>
       </div>
+
+      {/* Edit Modal */}
+      {showEditModal && editingBooking && (
+        <EditBookingModal
+          booking={editingBooking}
+          onClose={() => {
+            setShowEditModal(false);
+            setEditingBooking(null);
+          }}
+          onSave={handleSaveBooking}
+        />
+      )}
 
       <Footer />
     </>

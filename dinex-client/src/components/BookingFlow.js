@@ -4,7 +4,7 @@ import BookingForm from "./BookingForm";
 import ReviewBooking from "./ReviewBooking";
 import Payment from "./Payment";
 
-export default function BookingFlow({ restaurantName, offers = [] }) {
+export default function BookingFlow({ restaurantName, restaurantId, offers = [] }) {
   const [step, setStep] = useState(1);
   const [bookingData, setBookingData] = useState(null);
 
@@ -25,6 +25,7 @@ export default function BookingFlow({ restaurantName, offers = [] }) {
       {step === 1 && (
         <BookingForm
           restaurantName={restaurantName}
+          restaurantId={restaurantId}
           offers={offers}
           onSubmit={handleBookingSubmit}
         />

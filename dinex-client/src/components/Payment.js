@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { CreditCard, Smartphone, Wallet, Building2, CheckCircle, ChevronRight, Lock } from 'lucide-react';
+import { API } from "@/utils/api";
 
 export default function Payment({ data, onComplete }) {
   const [method, setMethod] = useState("card");
@@ -34,11 +35,36 @@ export default function Payment({ data, onComplete }) {
     }
   ];
 
-  const handlePayment = () => {
+  const handlePayment = async () => {
     setIsProcessing(true);
+
     // Simulate payment processing
-    setTimeout(() => {
-      onComplete();
+    setTimeout(async () => {
+      try {
+        // Save booking to database
+        const bookingData = {
+          restaurantId: data.restaurantId,
+          restaurantName: data.restaurantName,
+          date: data.date,
+          time: data.time,
+          people: data.people,
+          amount: data.amount,
+          offer: data.offer !== null && data.offers?.[data.offer] ? data.offers[data.offer] : undefined,
+          specialRequests: data.specialRequests || "",
+          paymentMethod: method
+        };
+
+        const response = await API.post("/api/bookings", bookingData);
+
+        if (response.data.booking) {
+          alert(`✅ Payment successful! Booking ID: ${response.data.booking._id}`);
+          onComplete();
+        }
+      } catch (error) {
+        console.error("Error saving booking:", error);
+        alert("Payment successful but failed to save booking. Please contact support.");
+        setIsProcessing(false);
+      }
     }, 2000);
   };
 
@@ -67,8 +93,8 @@ export default function Payment({ data, onComplete }) {
                     key={pm.id}
                     onClick={() => setMethod(pm.id)}
                     className={`relative flex items-center gap-4 p-4 rounded-xl border-2 cursor-pointer transition-all ${method === pm.id
-                        ? 'border-red-500 bg-red-50 shadow-md'
-                        : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50'
+                      ? 'border-red-500 bg-red-50 shadow-md'
+                      : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50'
                       }`}
                   >
                     {/* Recommended Badge */}
@@ -92,8 +118,8 @@ export default function Payment({ data, onComplete }) {
 
                     {/* Radio Indicator */}
                     <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${method === pm.id
-                        ? 'border-red-500 bg-red-500'
-                        : 'border-gray-300'
+                      ? 'border-red-500 bg-red-500'
+                      : 'border-gray-300'
                       }`}>
                       {method === pm.id && <CheckCircle className="w-4 h-4 text-white" />}
                     </div>

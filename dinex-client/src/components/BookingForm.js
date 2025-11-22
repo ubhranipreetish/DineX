@@ -1,8 +1,9 @@
 "use client";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { Calendar, Clock, Users } from 'lucide-react';
 
-export default function BookingForm({ restaurantName, offers = [], onSubmit }) {
+export default function BookingForm({ restaurantName, restaurantId, offers = [], onSubmit }) {
   const [people, setPeople] = useState(2);
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
@@ -10,6 +11,7 @@ export default function BookingForm({ restaurantName, offers = [], onSubmit }) {
   const [timeSlots, setTimeSlots] = useState([]);
   const [specialRequests, setSpecialRequests] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
 
   // 🕒 Generate available slots dynamically (only future)
   const generateAvailableSlots = () => {
@@ -54,10 +56,21 @@ export default function BookingForm({ restaurantName, offers = [], onSubmit }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Check if user is logged in
+    const user = localStorage.getItem("user");
+    if (!user) {
+      // Get current page URL and redirect to login with return URL
+      const currentPath = window.location.pathname;
+      router.push(`/login?redirect=${encodeURIComponent(currentPath)}`);
+      return;
+    }
+
     setIsLoading(true);
     setTimeout(() => {
       onSubmit({
         restaurantName,
+        restaurantId,
         people,
         date,
         time: formatTime(time),
@@ -94,14 +107,14 @@ export default function BookingForm({ restaurantName, offers = [], onSubmit }) {
                 key={i}
                 onClick={() => setSelectedOffer(i)}
                 className={`cursor-pointer rounded-2xl p-5 text-left border shadow-sm transition-all duration-200 ${selectedOffer === i
-                    ? "bg-blue-600 text-white border-blue-600 scale-[1.02]"
-                    : "bg-white border-gray-200 text-gray-700 hover:border-blue-400 hover:shadow-md"
+                  ? "bg-blue-600 text-white border-blue-600 scale-[1.02]"
+                  : "bg-white border-gray-200 text-gray-700 hover:border-blue-400 hover:shadow-md"
                   }`}
               >
                 <h3
                   className={`font-semibold mb-1 ${selectedOffer === i
-                      ? "text-white/90"
-                      : "text-blue-700 uppercase text-sm"
+                    ? "text-white/90"
+                    : "text-blue-700 uppercase text-sm"
                     }`}
                 >
                   {offer.title}
@@ -153,8 +166,8 @@ export default function BookingForm({ restaurantName, offers = [], onSubmit }) {
               type="button"
               onClick={() => setTime(slot)}
               className={`cursor-pointer px-3 py-2 rounded-lg border text-sm transition ${time === slot
-                  ? "bg-red-100 border-red-400 text-red-600 font-medium"
-                  : "hover:bg-gray-100 text-gray-700"
+                ? "bg-red-100 border-red-400 text-red-600 font-medium"
+                : "hover:bg-gray-100 text-gray-700"
                 }`}
             >
               {formatTime(slot)}
