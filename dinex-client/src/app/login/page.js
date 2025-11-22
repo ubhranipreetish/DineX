@@ -1,11 +1,11 @@
 "use client";
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { API } from "@/utils/api";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 
-export default function LoginPage() {
+function LoginForm() {
   const [form, setForm] = useState({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -186,5 +186,13 @@ export default function LoginPage() {
         </div>
       </div>
     </>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-[#FFF8E7] flex items-center justify-center"><div className="animate-spin w-12 h-12 border-4 border-[#C9A050] border-t-transparent rounded-full"></div></div>}>
+      <LoginForm />
+    </Suspense>
   );
 }

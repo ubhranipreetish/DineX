@@ -2569,7 +2569,7 @@ function Payment({ data, onComplete }) {
                 };
                 const response = await __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$utils$2f$api$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["API"].post("/api/bookings", bookingData);
                 if (response.data.booking) {
-                    alert(`✅ Payment successful! Booking ID: ${response.data.booking._id}`);
+                    // alert(`✅ Payment successful! Booking ID: ${response.data.booking._id}`);
                     onComplete();
                 }
             } catch (error) {

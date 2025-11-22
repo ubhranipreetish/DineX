@@ -36,6 +36,14 @@ export default function ProfilePage() {
       const userData = JSON.parse(stored);
       setUser(userData);
       fetchBookings(userData._id);
+
+      // Set up auto-refresh every 60 seconds to update booking statuses
+      const intervalId = setInterval(() => {
+        fetchBookings(userData._id);
+      }, 60000); // 60 seconds
+
+      // Cleanup interval on unmount
+      return () => clearInterval(intervalId);
     } else {
       router.push("/login");
     }
@@ -173,8 +181,8 @@ export default function ProfilePage() {
                 {/* Role Badge */}
                 <div
                   className={`inline-flex items-center gap-2 px-4 py-2 rounded-full font-semibold text-sm mb-6 ${user.role === "customer"
-                      ? "bg-[#E3EFFA] text-[#3C5A78]"
-                      : "bg-[#EFE4F6] text-[#684D8A]"
+                    ? "bg-[#E3EFFA] text-[#3C5A78]"
+                    : "bg-[#EFE4F6] text-[#684D8A]"
                     }`}
                 >
                   {user.role === "customer" ? (
@@ -268,9 +276,31 @@ export default function ProfilePage() {
                   <h3 className="text-xl font-bold text-[#4A3F35]">
                     My Bookings
                   </h3>
-                  <span className="text-sm text-[#6B625A]">
-                    {bookings.length} total
-                  </span>
+                  <div className="flex items-center gap-3">
+                    <span className="text-sm text-[#6B625A]">
+                      {bookings.length} total
+                    </span>
+                    <button
+                      onClick={() => user && fetchBookings(user._id)}
+                      disabled={loadingBookings}
+                      className="p-2 hover:bg-[#FFF8E7] rounded-lg transition disabled:opacity-50"
+                      title="Refresh bookings"
+                    >
+                      <svg
+                        className={`w-5 h-5 text-[#8B6F3E] ${loadingBookings ? 'animate-spin' : ''}`}
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                        />
+                      </svg>
+                    </button>
+                  </div>
                 </div>
 
                 {loadingBookings ? (

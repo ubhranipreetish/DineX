@@ -57,7 +57,7 @@ export default function Payment({ data, onComplete }) {
         const response = await API.post("/api/bookings", bookingData);
 
         if (response.data.booking) {
-          alert(`✅ Payment successful! Booking ID: ${response.data.booking._id}`);
+          // alert(`✅ Payment successful! Booking ID: ${response.data.booking._id}`);
           onComplete();
         }
       } catch (error) {
