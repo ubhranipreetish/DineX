@@ -178,21 +178,6 @@ export default function ProfilePage() {
                   {user.email}
                 </p>
 
-                {/* Role Badge */}
-                <div
-                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-full font-semibold text-sm mb-6 ${user.role === "customer"
-                    ? "bg-[#E3EFFA] text-[#3C5A78]"
-                    : "bg-[#EFE4F6] text-[#684D8A]"
-                    }`}
-                >
-                  {user.role === "customer" ? (
-                    <User className="w-4 h-4" />
-                  ) : (
-                    <Utensils className="w-4 h-4" />
-                  )}
-                  {user.role === "customer" ? "Customer" : "Restaurant Owner"}
-                </div>
-
                 {/* Stats */}
                 <div className="grid grid-cols-2 gap-4 mb-6 pt-6 border-t border-[#E8E1D5]">
                   <div className="text-center">

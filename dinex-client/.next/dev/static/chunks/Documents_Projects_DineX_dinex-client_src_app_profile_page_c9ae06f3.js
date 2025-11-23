@@ -2,7 +2,7 @@
     script: typeof document === "object" ? document.currentScript : undefined,
     chunks: [
   "static/chunks/Documents_Projects_DineX_dinex-client_src_871833be._.js",
-  "static/chunks/91a93_fdb7f57d._.js"
+  "static/chunks/91a93_b5e49e90._.js"
 ],
     source: "dynamic"
 });

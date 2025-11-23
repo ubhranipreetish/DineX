@@ -12,33 +12,53 @@ const checkAndUpdateStatus = async (booking) => {
     const bookingDateTime = new Date(booking.date);
 
     console.log("Checking booking:", booking._id);
-    console.log("Current time:", now);
-    console.log("Booking date:", bookingDateTime);
-    console.log("Booking time string:", booking.time);
+    console.log("Current time (UTC):", now.toISOString());
+    console.log("Booking date (UTC):", bookingDateTime.toISOString());
+    console.log("Booking time string (IST):", booking.time);
 
-    // Parse time (format: "7:30 PM")
+    // Parse time (format: "7:30 PM" - this is IST time)
     const timeParts = booking.time.match(/(\d+):(\d+)\s*(AM|PM)/i);
     if (timeParts) {
         let hours = parseInt(timeParts[1]);
         const minutes = parseInt(timeParts[2]);
         const period = timeParts[3].toUpperCase();
 
-        console.log("Parsed - hours:", hours, "minutes:", minutes, "period:", period);
+        console.log("Parsed IST - hours:", hours, "minutes:", minutes, "period:", period);
 
         if (period === "PM" && hours !== 12) hours += 12;
         if (period === "AM" && hours === 12) hours = 0;
 
-        console.log("Adjusted hours:", hours);
+        console.log("Adjusted IST hours:", hours);
 
-        bookingDateTime.setHours(hours, minutes, 0, 0);
+        // Convert IST to UTC by subtracting 5 hours 30 minutes
+        // IST is UTC+5:30, so to get UTC time, we subtract 5.5 hours
+        let utcHours = hours - 5;
+        let utcMinutes = minutes - 30;
+
+        if (utcMinutes < 0) {
+            utcMinutes += 60;
+            utcHours -= 1;
+        }
+
+        if (utcHours < 0) {
+            utcHours += 24;
+            // Subtract one day from the date
+            bookingDateTime.setUTCDate(bookingDateTime.getUTCDate() - 1);
+        }
+
+        console.log("Converted to UTC - hours:", utcHours, "minutes:", utcMinutes);
+
+        // Set the UTC time on the booking date
+        bookingDateTime.setUTCHours(utcHours, utcMinutes, 0, 0);
     }
 
-    console.log("Final booking datetime:", bookingDateTime);
+    console.log("Final booking datetime (UTC):", bookingDateTime.toISOString());
+    console.log("Current time (UTC):", now.toISOString());
     console.log("Is now > bookingDateTime?", now > bookingDateTime);
 
     // If booking time has passed, update status to completed
     if (now > bookingDateTime && booking.status === "confirmed") {
-        console.log("Updating booking status to completed");
+        console.log("✅ Updating booking status to completed");
         booking.status = "completed";
         await booking.save();
     }
@@ -60,7 +80,21 @@ const hasBookingTimePassed = (booking) => {
         if (period === "PM" && hours !== 12) hours += 12;
         if (period === "AM" && hours === 12) hours = 0;
 
-        bookingDateTime.setHours(hours, minutes, 0, 0);
+        // Convert IST to UTC by subtracting 5 hours 30 minutes
+        let utcHours = hours - 5;
+        let utcMinutes = minutes - 30;
+
+        if (utcMinutes < 0) {
+            utcMinutes += 60;
+            utcHours -= 1;
+        }
+
+        if (utcHours < 0) {
+            utcHours += 24;
+            bookingDateTime.setUTCDate(bookingDateTime.getUTCDate() - 1);
+        }
+
+        bookingDateTime.setUTCHours(utcHours, utcMinutes, 0, 0);
     }
 
     return now > bookingDateTime;
