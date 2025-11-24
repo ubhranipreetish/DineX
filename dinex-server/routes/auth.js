@@ -27,7 +27,18 @@ router.post("/signup", async (req, res) => {
       role,
     });
 
-    res.json({ msg: "Signup successful", user: newUser });
+    // Generate JWT token
+    const token = jwt.sign(
+      { id: newUser._id, email: newUser.email, role: newUser.role },
+      process.env.JWT_SECRET,
+      { expiresIn: "7d" }
+    );
+
+    // Remove password from response
+    const userResponse = newUser.toObject();
+    delete userResponse.password;
+
+    res.json({ msg: "Signup successful", token, user: userResponse });
   } catch (err) {
     res.status(500).json({ msg: err.message });
   }
@@ -50,7 +61,11 @@ router.post("/login", async (req, res) => {
       { expiresIn: "7d" }
     );
 
-    res.json({ msg: "Login successful", token, user });
+    // Remove password from response
+    const userResponse = user.toObject();
+    delete userResponse.password;
+
+    res.json({ msg: "Login successful", token, user: userResponse });
   } catch (err) {
     res.status(500).json({ msg: err.message });
   }
