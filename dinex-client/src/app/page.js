@@ -19,25 +19,25 @@ export default function Home() {
   }, []);
 
   const [filters, setFilters] = useState([]);
-  const [search, setSearch] = useState(""); 
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     const params = new URLSearchParams();
 
     // 🔎 SEARCH
     if (search.trim()) params.append("search", search);
-    
+
 
     // 🎛 Feature Filters
     const featureFilters = filters
-      .filter(f => ["Offers","Pet Friendly","Outdoor Seating","Serves Alcohol","Open Now"].includes(f));
+      .filter(f => ["Offers", "Pet Friendly", "Outdoor Seating", "Serves Alcohol", "Open Now"].includes(f));
     if (featureFilters.length > 0) {
       params.append("filters", featureFilters.join(","));
     }
 
     // 🍽 Cuisines filters
     const cuisines = filters.filter(f =>
-      ["Italian","North Indian","Chinese","Mexican","Thai","Japanese","American"].includes(f)
+      ["Italian", "North Indian", "Chinese", "Mexican", "Thai", "Japanese", "American"].includes(f)
     );
     if (cuisines.length > 0) {
       params.append("cuisines", cuisines.join(","));
@@ -60,7 +60,7 @@ export default function Home() {
       .then(res => res.json())
       .then(data => setRestaurants(data));
 
-  }, [filters,search]);
+  }, [filters, search]);
 
 
   // Calculate pagination
@@ -86,10 +86,10 @@ export default function Home() {
       <HeroSection />
 
       {/* Restaurants Section */}
-      <div id="restaurants-section" className="min-h-screen bg-[#FFF8E7] text-gray-900 px-4 md:px-10 py-8">
+      <div id="restaurants-section" className="min-h-screen bg-[#FFF8E7] text-gray-900 px-3 sm:px-4 md:px-10 py-6 sm:py-8">
 
         {/* Sticky Filter Bar */}
-        <div className="max-w-6xl mx-auto sticky top-0 z-20 mb-8 bg-[#FFF8E7] pt-2 ">
+        <div className="max-w-6xl mx-auto sticky top-0 z-20 mb-6 sm:mb-8 bg-[#FFF8E7] pt-2">
           <div>
             <FilterBar onFiltersChange={(f) => setFilters(f)} />
           </div>
@@ -103,7 +103,7 @@ export default function Home() {
       </div> */}
 
         {/* Restaurant Grid */}
-        <div className="max-w-6xl mx-auto grid md:grid-cols-3 sm:grid-cols-2 gap-8 mb-12">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-12">
           {currentRestaurants.map((res) => (
             <RestaurantCard key={res.restaurantId} restaurant={res} />
           ))}
@@ -111,22 +111,22 @@ export default function Home() {
 
         {/* Pagination */}
         {totalPages > 1 && (
-          <div className="max-w-6xl mx-auto flex items-center justify-center gap-2 pb-12">
+          <div className="max-w-6xl mx-auto flex items-center justify-center gap-1 sm:gap-2 pb-8 sm:pb-12 px-2">
             {/* Previous Button */}
             <button
               onClick={() => paginate(currentPage - 1)}
               disabled={currentPage === 1}
-              className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${currentPage === 1
-                  ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                  : 'bg-white text-gray-700 hover:bg-[#FFF8E7] hover:text-[#8B6F3E] border-2 border-gray-200 hover:border-[#C9A050]'
+              className={`px-2 sm:px-4 py-2 rounded-lg font-medium transition-all duration-200 ${currentPage === 1
+                ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                : 'bg-white text-gray-700 hover:bg-[#FFF8E7] hover:text-[#8B6F3E] border-2 border-gray-200 hover:border-[#C9A050]'
                 }`}    >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
 
             {/* Page Numbers */}
-            <div className="flex gap-2">
+            <div className="flex gap-1 sm:gap-2">
               {[...Array(totalPages)].map((_, index) => {
                 const pageNumber = index + 1;
 
@@ -140,9 +140,9 @@ export default function Home() {
                     <button
                       key={pageNumber}
                       onClick={() => paginate(pageNumber)}
-                      className={`w-10 h-10 rounded-lg font-semibold transition-all duration-200 ${currentPage === pageNumber
-                          ? 'bg-[#C9A050] text-white shadow-md'
-                          : 'bg-white text-gray-700 hover:bg-[#FFF8E7] hover:text-[#8B6F3E] border-2 border-gray-200 hover:border-[#C9A050]'
+                      className={`w-8 h-8 sm:w-10 sm:h-10 rounded-lg font-semibold transition-all duration-200 text-sm sm:text-base ${currentPage === pageNumber
+                        ? 'bg-[#C9A050] text-white shadow-md'
+                        : 'bg-white text-gray-700 hover:bg-[#FFF8E7] hover:text-[#8B6F3E] border-2 border-gray-200 hover:border-[#C9A050]'
                         }`}    >
                       {pageNumber}
                     </button>
@@ -151,7 +151,7 @@ export default function Home() {
                   pageNumber === currentPage - 2 ||
                   pageNumber === currentPage + 2
                 ) {
-                  return <span key={pageNumber} className="px-2 text-gray-400">...</span>;
+                  return <span key={pageNumber} className="px-1 sm:px-2 text-gray-400 text-sm">...</span>;
                 }
                 return null;
               })}
@@ -161,11 +161,11 @@ export default function Home() {
             <button
               onClick={() => paginate(currentPage + 1)}
               disabled={currentPage === totalPages}
-              className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${currentPage === totalPages
-                  ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                  : 'bg-white text-gray-700 hover:bg-[#FFF8E7] hover:text-[#8B6F3E] border-2 border-gray-200 hover:border-[#C9A050]'
+              className={`px-2 sm:px-4 py-2 rounded-lg font-medium transition-all duration-200 ${currentPage === totalPages
+                ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                : 'bg-white text-gray-700 hover:bg-[#FFF8E7] hover:text-[#8B6F3E] border-2 border-gray-200 hover:border-[#C9A050]'
                 }`}    >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </button>

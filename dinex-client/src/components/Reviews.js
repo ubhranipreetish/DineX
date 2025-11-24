@@ -215,51 +215,50 @@ export default function Reviews({ restaurantName }) {
   const currentReviews = reviews.slice((page - 1) * perPage, page * perPage);
 
   return (
-    <div className="mt-8">
-      <h2 className="text-2xl font-semibold text-gray-900 mb-6">
+    <div className="mt-6 sm:mt-8">
+      <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-4 sm:mb-6">
         {restaurantName} Dining Reviews
       </h2>
 
-      <div className="space-y-6">
+      <div className="space-y-4 sm:space-y-6">
         {currentReviews.map((review) => {
           const bgColor =
             avatarColors[Math.floor(Math.random() * avatarColors.length)];
           const initial = review.name.charAt(0).toUpperCase();
 
           return (
-            <div key={review.id} className="border-b border-gray-200 pb-6">
+            <div key={review.id} className="border-b border-gray-200 pb-4 sm:pb-6">
               {/* User Info */}
-              <div className="flex justify-between items-start">
-                <div className="flex items-start gap-4">
+              <div className="flex justify-between items-start gap-2">
+                <div className="flex items-start gap-2 sm:gap-4 min-w-0 flex-1">
                   <div
-                    className="w-10 h-10 rounded-full flex items-center justify-center text-white font-semibold"
+                    className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-white font-semibold text-sm sm:text-base flex-shrink-0"
                     style={{ backgroundColor: bgColor }}
                   >
                     {initial}
                   </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900">{review.name}</h3>
-                    <p className="text-gray-500 text-sm">
+                  <div className="min-w-0 flex-1">
+                    <h3 className="font-semibold text-gray-900 text-sm sm:text-base truncate">{review.name}</h3>
+                    <p className="text-gray-500 text-xs sm:text-sm">
                       {review.reviews} reviews • {review.followers} Followers
                     </p>
                   </div>
                 </div>
-                <button className="cursor-pointer text-red-500 border border-red-400 px-4 py-1 rounded-lg hover:bg-red-50 text-sm">
+                <button className="cursor-pointer text-red-500 border border-red-400 px-2 sm:px-4 py-1 rounded-lg hover:bg-red-50 text-xs sm:text-sm whitespace-nowrap flex-shrink-0">
                   Follow
                 </button>
               </div>
 
               {/* Rating + Review Text */}
-              <div className="mt-3 pl-14">
-                <div className="flex items-center gap-2">
+              <div className="mt-2 sm:mt-3 pl-10 sm:pl-14">
+                <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
                   <span
-                    className={`px-2 py-[2px] text-xs font-semibold rounded ${
-                      review.rating >= 4
+                    className={`px-2 py-[2px] text-xs font-semibold rounded ${review.rating >= 4
                         ? "bg-green-600 text-white"
                         : review.rating === 3
-                        ? "bg-yellow-500 text-white"
-                        : "bg-red-500 text-white"
-                    }`}
+                          ? "bg-yellow-500 text-white"
+                          : "bg-red-500 text-white"
+                      }`}
                   >
                     {review.rating}★
                   </span>
@@ -269,17 +268,17 @@ export default function Reviews({ restaurantName }) {
                   <span className="text-xs text-gray-400">{review.timeAgo}</span>
                 </div>
 
-                <p className="text-gray-700 mt-2">{review.text}</p>
+                <p className="text-gray-700 mt-2 text-sm sm:text-base">{review.text}</p>
 
-                <div className="flex items-center gap-6 text-gray-500 text-sm mt-3">
+                <div className="flex items-center gap-3 sm:gap-6 text-gray-500 text-xs sm:text-sm mt-2 sm:mt-3 flex-wrap">
                   <button className="cursor-pointer flex items-center gap-1 hover:text-gray-700">
-                    <ThumbsUp className="w-4 h-4" /> Helpful
+                    <ThumbsUp className="w-3 h-3 sm:w-4 sm:h-4" /> Helpful
                   </button>
                   <button className="cursor-pointer flex items-center gap-1 hover:text-gray-700">
-                    <MessageCircle className="w-4 h-4" /> Comment
+                    <MessageCircle className="w-3 h-3 sm:w-4 sm:h-4" /> Comment
                   </button>
                   <button className="cursor-pointer flex items-center gap-1 hover:text-gray-700">
-                    <Share className="w-4 h-4" /> Share
+                    <Share className="w-3 h-3 sm:w-4 sm:h-4" /> Share
                   </button>
                 </div>
               </div>
@@ -289,21 +288,21 @@ export default function Reviews({ restaurantName }) {
       </div>
 
       {/* Pagination */}
-      <div className="flex justify-center items-center gap-4 mt-8">
+      <div className="flex justify-center items-center gap-2 sm:gap-4 mt-6 sm:mt-8 flex-wrap">
         <button
           disabled={page === 1}
           onClick={() => setPage((p) => p - 1)}
-          className="cursor-pointer px-4 py-2 border rounded-md text-sm bg-white text-gray-700 hover:bg-[#FFF8E7] hover:text-[#8B6F3E] border-2 border-gray-200 hover:border-[#C9A050] disabled:opacity-50"
+          className="cursor-pointer px-3 sm:px-4 py-2 border rounded-md text-xs sm:text-sm bg-white text-gray-700 hover:bg-[#FFF8E7] hover:text-[#8B6F3E] border-2 border-gray-200 hover:border-[#C9A050] disabled:opacity-50"
         >
           Previous
         </button>
-        <span className="text-gray-600">
+        <span className="text-gray-600 text-xs sm:text-sm">
           Page {page} of {totalPages}
         </span>
         <button
           disabled={page === totalPages}
           onClick={() => setPage((p) => p + 1)}
-          className="cursor-pointer px-4 py-2 border rounded-md text-sm bg-white text-gray-700 hover:bg-[#FFF8E7] hover:text-[#8B6F3E] border-2 border-gray-200 hover:border-[#C9A050] disabled:opacity-50"
+          className="cursor-pointer px-3 sm:px-4 py-2 border rounded-md text-xs sm:text-sm bg-white text-gray-700 hover:bg-[#FFF8E7] hover:text-[#8B6F3E] border-2 border-gray-200 hover:border-[#C9A050] disabled:opacity-50"
         >
           Next
         </button>

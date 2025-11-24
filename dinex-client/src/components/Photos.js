@@ -48,7 +48,7 @@ export default function Photos({ restaurant }) {
   ]
 
   let ambienceImages = Array.from({ length: 16 }).map((_, i) => (
-    `/images/ambience/amb${i+1}.png`
+    `/images/ambience/amb${i + 1}.png`
   ));
 
   ambienceImages = [...["/images/ambience/amb13.png",
@@ -58,9 +58,9 @@ export default function Photos({ restaurant }) {
     "/images/ambience/amb4.png"], ...ambienceImages]
 
   const foodImages = Array.from({ length: 20 }).map((_, i) => (
-    `/images/food/food${i+1}.png`
+    `/images/food/food${i + 1}.png`
   ));
-  
+
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
   const [activeTab, setActiveTab] = useState("all");
 
@@ -95,22 +95,21 @@ export default function Photos({ restaurant }) {
     );
 
   return (
-    <div className="mt-8">
-      <h2 className="text-2xl font-semibold text-gray-900 mb-6">
+    <div className="mt-6 sm:mt-8">
+      <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-4 sm:mb-6">
         {restaurant.name} Photos
       </h2>
 
       {/* Tabs */}
-      <div className="flex gap-3 mb-8">
+      <div className="flex gap-2 sm:gap-3 mb-6 sm:mb-8 overflow-x-auto scrollbar-hide">
         {tabs.map((tab) => (
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all border
-              ${
-                activeTab === tab.id
-                  ? "bg-[#C9A050] text-white border-[#A68545] shadow-sm"
-                  : "bg-white text-[#8B6F3E] border-[#D9B56E] hover:bg-[#FFF3D9]"
+            className={`px-3 sm:px-5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all border whitespace-nowrap
+              ${activeTab === tab.id
+                ? "bg-[#C9A050] text-white border-[#A68545] shadow-sm"
+                : "bg-white text-[#8B6F3E] border-[#D9B56E] hover:bg-[#FFF3D9]"
               }
             `}
           >
@@ -119,21 +118,31 @@ export default function Photos({ restaurant }) {
         ))}
       </div>
 
+      <style jsx>{`
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
+
 
 
 
       {/* Grid */}
-      <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-4">
         {images.map((img, index) => (
           <div
             key={index}
             onClick={() => openImage(index)}
-            className="relative cursor-pointer overflow-hidden rounded-xl group"
+            className="relative cursor-pointer overflow-hidden rounded-lg sm:rounded-xl group"
           >
             <img
               src={img}
               alt={`Photo ${index + 1}`}
-              className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
+              className="w-full h-32 sm:h-48 object-cover transition-transform duration-500 group-hover:scale-110"
             />
             <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all" />
           </div>
@@ -142,40 +151,40 @@ export default function Photos({ restaurant }) {
 
       {/* Fullscreen Modal */}
       {selectedImageIndex !== null && (
-        <div className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center">
+        <div className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-2 sm:p-4">
           {/* Close Button */}
           <button
             onClick={closeModal}
-            className="absolute top-6 right-6 text-white hover:text-gray-300 transition z-50"
+            className="absolute top-3 right-3 sm:top-6 sm:right-6 text-white hover:text-gray-300 transition z-50 bg-black/30 rounded-full p-1.5 sm:p-2"
           >
-            <X className="w-10 h-10 cursor-pointer" />
+            <X className="w-6 h-6 sm:w-10 sm:h-10 cursor-pointer" />
           </button>
 
           {/* Navigation Arrows */}
           <button
             onClick={prevImage}
-            className="absolute left-6 text-white hover:text-gray-300 bg-black/50 p-3 rounded-full z-50"
+            className="absolute left-2 sm:left-6 text-white hover:text-gray-300 bg-black/50 p-2 sm:p-3 rounded-full z-50"
           >
-            <ChevronLeft className="w-8 h-8 cursor-pointer" />
+            <ChevronLeft className="w-5 h-5 sm:w-8 sm:h-8 cursor-pointer" />
           </button>
 
-          <div className="max-w-6xl mx-auto w-full px-4 flex items-center justify-center">
+          <div className="max-w-6xl mx-auto w-full px-2 sm:px-4 flex items-center justify-center">
             <img
               src={images[selectedImageIndex]}
               alt={`Photo ${selectedImageIndex + 1}`}
-              className="max-h-[80vh] w-auto rounded-xl object-contain shadow-2xl"
+              className="max-h-[70vh] sm:max-h-[80vh] w-auto rounded-lg sm:rounded-xl object-contain shadow-2xl"
             />
           </div>
 
           <button
             onClick={nextImage}
-            className="absolute right-6 text-white hover:text-gray-300 bg-black/50 p-3 rounded-full z-50"
+            className="absolute right-2 sm:right-6 text-white hover:text-gray-300 bg-black/50 p-2 sm:p-3 rounded-full z-50"
           >
-            <ChevronRight className="w-8 h-8 cursor-pointer" />
+            <ChevronRight className="w-5 h-5 sm:w-8 sm:h-8 cursor-pointer" />
           </button>
 
           {/* Image Counter */}
-          <div className="absolute bottom-8 text-white text-sm">
+          <div className="absolute bottom-4 sm:bottom-8 text-white text-xs sm:text-sm bg-black/50 px-3 py-1.5 rounded-full">
             {selectedImageIndex + 1} / {images.length}
           </div>
         </div>

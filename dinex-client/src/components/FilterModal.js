@@ -54,20 +54,20 @@ export default function FilterModal({
         !f.startsWith("Cost: ") &&
         !cuisines.includes(f)
     );
-  
+
     const updated = [
       ...selectedCuisines,
       sortBy !== "Popularity" ? `Sort: ${sortBy}` : null,
       selectedRating ? `Rating: ${selectedRating}+` : null,
       costRange ? `Cost: ${costRange}` : null,
     ].filter(Boolean);
-  
+
     const finalFilters = [...cleaned, ...updated];
-  
+
     setActiveFilters(finalFilters);
     onClose();
   };
-  
+
 
   return (
     <div
@@ -123,11 +123,10 @@ export default function FilterModal({
                     className="w-4 h-4 text-[#C9A050] accent-[#C9A050]"
                   />
                   <span
-                    className={`text-sm ${
-                      sortBy === option
+                    className={`text-sm ${sortBy === option
                         ? "text-[#5E4633] font-semibold"
                         : "text-gray-700"
-                    }`}
+                      }`}
                   >
                     {option}
                   </span>
@@ -154,11 +153,10 @@ export default function FilterModal({
                     className="w-4 h-4 text-[#C9A050] accent-[#C9A050]"
                   />
                   <span
-                    className={`text-sm ${
-                      selectedCuisines.includes(cuisine)
+                    className={`text-sm ${selectedCuisines.includes(cuisine)
                         ? "text-[#5E4633] font-semibold"
                         : "text-gray-700"
-                    }`}
+                      }`}
                   >
                     {cuisine}
                   </span>
@@ -187,11 +185,10 @@ export default function FilterModal({
                     className="w-4 h-4 text-[#C9A050] accent-[#C9A050]"
                   />
                   <span
-                    className={`text-sm flex items-center gap-1 ${
-                      selectedRating === String(rating)
+                    className={`text-sm flex items-center gap-1 ${selectedRating === String(rating)
                         ? "text-[#5E4633] font-semibold"
                         : "text-gray-700"
-                    }`}
+                      }`}
                   >
                     {rating}+{" "}
                     <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
@@ -226,11 +223,10 @@ export default function FilterModal({
                   />
                   <div className="flex-1">
                     <span
-                      className={`text-sm block ${
-                        costRange === range.value
+                      className={`text-sm block ${costRange === range.value
                           ? "text-[#5E4633] font-semibold"
                           : "text-gray-700"
-                      }`}
+                        }`}
                     >
                       {range.label}
                     </span>
@@ -245,7 +241,7 @@ export default function FilterModal({
         </div>
 
         {/* Footer */}
-        <div className="bg-white px-8 py-5 flex items-center justify-between border-t border-[#E4D7C5]">
+        <div className="bg-white px-4 sm:px-8 py-4 sm:py-5 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4 border-t border-[#E4D7C5]">
           <button
             onClick={() => {
               clearFilters();
@@ -255,7 +251,7 @@ export default function FilterModal({
               setCostRange("");
             }}
             className="px-6 py-2.5 border border-[#D7C7AD] text-[#5E4633] font-semibold 
-            rounded-xl hover:bg-[#F7EFE3] transition-all"
+            rounded-xl hover:bg-[#F7EFE3] transition-all text-sm sm:text-base"
           >
             Clear All
           </button>
@@ -263,7 +259,7 @@ export default function FilterModal({
           <button
             onClick={applyFilters}
             className="px-8 py-2.5 bg-[#C9A050] text-white font-bold rounded-xl 
-            hover:bg-[#A68545] transition-all shadow-md hover:shadow-lg transform hover:scale-105"
+            hover:bg-[#A68545] transition-all shadow-md hover:shadow-lg transform hover:scale-105 text-sm sm:text-base"
           >
             Apply Filters
           </button>

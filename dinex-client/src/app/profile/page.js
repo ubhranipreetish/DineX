@@ -208,31 +208,31 @@ export default function ProfilePage() {
         <div className="max-w-7xl mx-auto">
 
           {/* TOP SECTION - User Info */}
-          <div className="bg-white rounded-2xl shadow-lg p-8 mb-6 border border-[#E8E1D5]">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-6">
+          <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 md:p-8 mb-6 border border-[#E8E1D5]">
+            <div className="flex flex-col sm:flex-row items-center sm:items-start justify-between gap-4">
+              <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6 text-center sm:text-left">
                 {/* Avatar */}
-                <div className="w-24 h-24 bg-[#5E4633] rounded-full flex items-center justify-center text-white text-3xl font-bold shadow-md">
+                <div className="w-20 h-20 sm:w-24 sm:h-24 bg-[#5E4633] rounded-full flex items-center justify-center text-white text-2xl sm:text-3xl font-bold shadow-md flex-shrink-0">
                   {user.name?.charAt(0).toUpperCase()}
                 </div>
 
                 {/* User Details */}
                 <div>
-                  <h1 className="text-3xl font-bold text-[#4A3F35] mb-1">
+                  <h1 className="text-2xl sm:text-3xl font-bold text-[#4A3F35] mb-1">
                     {user.name}
                   </h1>
-                  <p className="text-[#6B625A] flex items-center gap-2 mb-2">
+                  <p className="text-[#6B625A] flex items-center justify-center sm:justify-start gap-2 mb-2 text-sm sm:text-base">
                     <Mail className="w-4 h-4" />
-                    {user.email}
+                    <span className="break-all">{user.email}</span>
                   </p>
-                  <p className="text-sm text-[#8B7355]">
+                  <p className="text-xs sm:text-sm text-[#8B7355]">
                     Member since {new Date(user.createdAt).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
                   </p>
                 </div>
               </div>
 
               {/* Edit Profile Button */}
-              <button className="bg-[#1E3A5F] hover:bg-[#2C4F7C] text-white font-semibold py-3 px-6 rounded-xl transition-all shadow-md hover:shadow-xl flex items-center gap-2">
+              <button className="w-full sm:w-auto bg-[#1E3A5F] hover:bg-[#2C4F7C] text-white font-semibold py-2 sm:py-3 px-4 sm:px-6 rounded-xl transition-all shadow-md hover:shadow-xl flex items-center justify-center gap-2 text-sm sm:text-base">
                 <Edit2 className="w-4 h-4" />
                 Edit Profile
               </button>
@@ -244,44 +244,45 @@ export default function ProfilePage() {
 
             {/* LEFT SIDEBAR - Tabs */}
             <div className="lg:col-span-1">
-              <div className="bg-white rounded-2xl shadow-lg p-4 border border-[#E8E1D5]">
-                <nav className="space-y-2">
+              <div className="bg-white rounded-2xl shadow-lg p-3 sm:p-4 border border-[#E8E1D5]">
+                <nav className="flex lg:flex-col overflow-x-auto lg:overflow-x-visible gap-2 lg:space-y-2">
                   <button
                     onClick={() => setActiveTab("bookings")}
-                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${activeTab === "bookings"
+                    className={`flex items-center gap-2 lg:gap-3 px-3 lg:px-4 py-2 lg:py-3 rounded-xl transition-all whitespace-nowrap text-sm lg:text-base ${activeTab === "bookings"
                       ? "bg-[#E8F0FE] text-[#1E3A5F] font-semibold"
                       : "text-[#6B625A] hover:bg-[#FFF8E7]"
                       }`}
                   >
-                    <CalendarDays className="w-5 h-5" />
-                    Your Bookings
+                    <CalendarDays className="w-4 h-4 lg:w-5 lg:h-5" />
+                    <span className="hidden sm:inline">Your Bookings</span>
+                    <span className="sm:hidden">Bookings</span>
                   </button>
 
                   <button
                     onClick={() => setActiveTab("reviews")}
-                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${activeTab === "reviews"
+                    className={`flex items-center gap-2 lg:gap-3 px-3 lg:px-4 py-2 lg:py-3 rounded-xl transition-all whitespace-nowrap text-sm lg:text-base ${activeTab === "reviews"
                       ? "bg-[#E8F0FE] text-[#1E3A5F] font-semibold"
                       : "text-[#6B625A] hover:bg-[#FFF8E7]"
                       }`}
                   >
-                    <Star className="w-5 h-5" />
+                    <Star className="w-4 h-4 lg:w-5 lg:h-5" />
                     Reviews
                   </button>
 
                   <button
                     onClick={() => setActiveTab("settings")}
-                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${activeTab === "settings"
+                    className={`flex items-center gap-2 lg:gap-3 px-3 lg:px-4 py-2 lg:py-3 rounded-xl transition-all whitespace-nowrap text-sm lg:text-base ${activeTab === "settings"
                       ? "bg-[#E8F0FE] text-[#1E3A5F] font-semibold"
                       : "text-[#6B625A] hover:bg-[#FFF8E7]"
                       }`}
                   >
-                    <Settings className="w-5 h-5" />
+                    <Settings className="w-4 h-4 lg:w-5 lg:h-5" />
                     Settings
                   </button>
                 </nav>
 
                 {/* Logout Button */}
-                <div className="mt-4 pt-4 border-t border-[#E8E1D5]">
+                <div className="hidden lg:block mt-4 pt-4 border-t border-[#E8E1D5]">
                   <button
                     onClick={handleLogout}
                     className="w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-[#5E4633] hover:bg-[#4A372A] text-white font-semibold transition-all shadow-md hover:shadow-xl"
@@ -326,62 +327,61 @@ export default function ProfilePage() {
                         {upcomingBookings.map((booking, index) => (
                           <div
                             key={booking._id}
-                            className="flex gap-4 p-4 bg-[#FAF6EF] rounded-xl hover:bg-[#F3EAD8] transition-all border border-[#E8E1D5]"
-                          >
+                            className="flex flex-col sm:flex-row gap-3 sm:gap-4 p-3 sm:p-4 bg-[#FAF6EF] rounded-xl hover:bg-[#F3EAD8] transition-all border border-[#E8E1D5]">
                             {/* Restaurant Image */}
                             <img
                               src={getRestaurantImage(index)}
                               alt={booking.restaurantName}
-                              className="w-24 h-24 rounded-lg object-cover"
+                              className="w-full sm:w-20 md:w-24 h-32 sm:h-20 md:h-24 rounded-lg object-cover flex-shrink-0"
                             />
 
                             {/* Booking Details */}
-                            <div className="flex-1">
-                              <div className="flex items-start justify-between mb-2">
-                                <h3 className="font-bold text-[#4A3F35] text-lg">{booking.restaurantName}</h3>
-                                <span className={`px-3 py-1 rounded-full text-xs font-semibold capitalize flex items-center gap-1 ${getStatusBadge(booking.status)}`}>
+                            <div className="flex-1 min-w-0">
+                              <div className="flex flex-col sm:flex-row items-start justify-between mb-2 gap-2">
+                                <h3 className="font-bold text-[#4A3F35] text-base sm:text-lg truncate">{booking.restaurantName}</h3>
+                                <span className={`px-3 py-1 rounded-full text-xs font-semibold capitalize flex items-center gap-1 whitespace-nowrap ${getStatusBadge(booking.status)}`}>
                                   <CheckCircle2 className="w-3 h-3" />
                                   {booking.status}
                                 </span>
                               </div>
 
-                              <div className="flex flex-wrap gap-4 text-sm text-[#6B625A] mb-3">
+                              <div className="flex flex-wrap gap-3 sm:gap-4 text-xs sm:text-sm text-[#6B625A] mb-3">
                                 <span className="flex items-center gap-1">
-                                  <CalendarDays className="w-4 h-4" />
+                                  <CalendarDays className="w-3 h-3 sm:w-4 sm:h-4" />
                                   {new Date(booking.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                                 </span>
                                 <span className="flex items-center gap-1">
-                                  <Clock className="w-4 h-4" />
+                                  <Clock className="w-3 h-3 sm:w-4 sm:h-4" />
                                   {booking.time}
                                 </span>
                                 <span className="flex items-center gap-1">
-                                  <UsersIcon className="w-4 h-4" />
+                                  <UsersIcon className="w-3 h-3 sm:w-4 sm:h-4" />
                                   {booking.people} {booking.people === 1 ? 'Guest' : 'Guests'}
                                 </span>
                               </div>
 
                               {/* Special Requests */}
                               {booking.specialRequests && (
-                                <div className="mb-3 text-sm">
+                                <div className="mb-3 text-xs sm:text-sm">
                                   <span className="text-[#8B7355] font-semibold">Special Requests: </span>
                                   <span className="text-[#6B625A]">{booking.specialRequests}</span>
                                 </div>
                               )}
 
                               {/* Action Buttons */}
-                              <div className="flex gap-2">
+                              <div className="flex flex-wrap gap-2">
                                 {canEditOrCancel(booking) && (
                                   <>
                                     <button
                                       onClick={() => handleEditBooking(booking)}
-                                      className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-lg transition flex items-center gap-1"
+                                      className="px-3 sm:px-4 py-1.5 sm:py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-semibold rounded-lg transition flex items-center gap-1"
                                     >
-                                      <Edit2 className="w-4 h-4" />
+                                      <Edit2 className="w-3 h-3 sm:w-4 sm:h-4" />
                                       Edit
                                     </button>
                                     <button
                                       onClick={() => handleCancelBooking(booking._id)}
-                                      className="px-4 py-2 bg-white border-2 border-gray-300 hover:border-gray-400 text-gray-700 text-sm font-semibold rounded-lg transition"
+                                      className="px-3 sm:px-4 py-1.5 sm:py-2 bg-white border-2 border-gray-300 hover:border-gray-400 text-gray-700 text-xs sm:text-sm font-semibold rounded-lg transition"
                                     >
                                       Cancel
                                     </button>
@@ -409,65 +409,65 @@ export default function ProfilePage() {
                         {pastBookings.map((booking, index) => (
                           <div
                             key={booking._id}
-                            className="flex gap-4 p-4 bg-[#FAF6EF] rounded-xl hover:bg-[#F3EAD8] transition-all border border-[#E8E1D5]"
+                            className="flex flex-col sm:flex-row gap-3 sm:gap-4 p-3 sm:p-4 bg-[#FAF6EF] rounded-xl hover:bg-[#F3EAD8] transition-all border border-[#E8E1D5]"
                           >
                             {/* Restaurant Image */}
                             <img
                               src={getRestaurantImage(index + upcomingBookings.length)}
                               alt={booking.restaurantName}
-                              className="w-24 h-24 rounded-lg object-cover"
+                              className="w-full sm:w-20 md:w-24 h-32 sm:h-20 md:h-24 rounded-lg object-cover flex-shrink-0"
                             />
 
                             {/* Booking Details */}
-                            <div className="flex-1">
-                              <div className="flex items-start justify-between mb-2">
-                                <h3 className="font-bold text-[#4A3F35] text-lg">{booking.restaurantName}</h3>
-                                <span className={`px-3 py-1 rounded-full text-xs font-semibold capitalize ${getStatusBadge(booking.status)}`}>
+                            <div className="flex-1 min-w-0">
+                              <div className="flex flex-col sm:flex-row items-start justify-between mb-2 gap-2">
+                                <h3 className="font-bold text-[#4A3F35] text-base sm:text-lg truncate">{booking.restaurantName}</h3>
+                                <span className={`px-3 py-1 rounded-full text-xs font-semibold capitalize whitespace-nowrap ${getStatusBadge(booking.status)}`}>
                                   {booking.status}
                                 </span>
                               </div>
 
-                              <div className="flex flex-wrap gap-4 text-sm text-[#6B625A] mb-3">
+                              <div className="flex flex-wrap gap-3 sm:gap-4 text-xs sm:text-sm text-[#6B625A] mb-3">
                                 <span className="flex items-center gap-1">
-                                  <CalendarDays className="w-4 h-4" />
+                                  <CalendarDays className="w-3 h-3 sm:w-4 sm:h-4" />
                                   {new Date(booking.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                                 </span>
                                 <span className="flex items-center gap-1">
-                                  <Clock className="w-4 h-4" />
+                                  <Clock className="w-3 h-3 sm:w-4 sm:h-4" />
                                   {booking.time}
                                 </span>
                                 <span className="flex items-center gap-1">
-                                  <UsersIcon className="w-4 h-4" />
+                                  <UsersIcon className="w-3 h-3 sm:w-4 sm:h-4" />
                                   {booking.people} {booking.people === 1 ? 'Guest' : 'Guests'}
                                 </span>
                               </div>
 
                               {/* Special Requests */}
                               {booking.specialRequests && (
-                                <div className="mb-3 text-sm">
+                                <div className="mb-3 text-xs sm:text-sm">
                                   <span className="text-[#8B7355] font-semibold">Special Requests: </span>
                                   <span className="text-[#6B625A]">{booking.specialRequests}</span>
                                 </div>
                               )}
 
                               {/* Action Buttons */}
-                              <div className="flex gap-2">
+                              <div className="flex flex-wrap gap-2">
                                 {booking.status === "completed" && (
-                                  <button className="px-4 py-2 bg-[#FFD700] hover:bg-[#FFC700] text-[#4A3F35] text-sm font-semibold rounded-lg transition">
+                                  <button className="px-3 sm:px-4 py-1.5 sm:py-2 bg-[#FFD700] hover:bg-[#FFC700] text-[#4A3F35] text-xs sm:text-sm font-semibold rounded-lg transition">
                                     Write a Review
                                   </button>
                                 )}
                                 {booking.status === "cancelled" && (
                                   <button
                                     onClick={() => handleDeleteBooking(booking._id)}
-                                    className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white text-sm font-semibold rounded-lg transition flex items-center gap-1"
+                                    className="px-3 sm:px-4 py-1.5 sm:py-2 bg-red-600 hover:bg-red-700 text-white text-xs sm:text-sm font-semibold rounded-lg transition flex items-center gap-1"
                                   >
-                                    <Trash2 className="w-4 h-4" />
+                                    <Trash2 className="w-3 h-3 sm:w-4 sm:h-4" />
                                     Delete
                                   </button>
                                 )}
                                 {booking.status === "completed" && (
-                                  <button className="px-4 py-2 bg-[#1E3A5F] hover:bg-[#2C4F7C] text-white text-sm font-semibold rounded-lg transition">
+                                  <button className="px-3 sm:px-4 py-1.5 sm:py-2 bg-[#1E3A5F] hover:bg-[#2C4F7C] text-white text-xs sm:text-sm font-semibold rounded-lg transition">
                                     Book Again
                                   </button>
                                 )}
@@ -483,31 +483,31 @@ export default function ProfilePage() {
 
               {/* REVIEWS TAB */}
               {activeTab === "reviews" && (
-                <div className="bg-white rounded-2xl shadow-lg p-6 border border-[#E8E1D5]">
-                  <h2 className="text-2xl font-bold text-[#4A3F35] mb-6">Your Reviews</h2>
+                <div className="bg-white rounded-2xl shadow-lg p-3 sm:p-4 md:p-6 border border-[#E8E1D5]">
+                  <h2 className="text-xl sm:text-2xl font-bold text-[#4A3F35] mb-4 sm:mb-6">Your Reviews</h2>
 
-                  <div className="space-y-4">
+                  <div className="space-y-3 sm:space-y-4">
                     {dummyReviews.map((review) => (
                       <div
                         key={review.id}
-                        className="flex gap-4 p-4 bg-[#FAF6EF] rounded-xl border border-[#E8E1D5]"
+                        className="flex flex-col sm:flex-row gap-3 sm:gap-4 p-3 sm:p-4 bg-[#FAF6EF] rounded-xl border border-[#E8E1D5]"
                       >
                         {/* Restaurant Image */}
                         <img
                           src={review.image}
                           alt={review.restaurantName}
-                          className="w-24 h-24 rounded-lg object-cover"
+                          className="w-full sm:w-20 md:w-24 h-32 sm:h-20 md:h-24 rounded-lg object-cover flex-shrink-0"
                         />
 
                         {/* Review Details */}
-                        <div className="flex-1">
-                          <div className="flex items-start justify-between mb-2">
-                            <h3 className="font-bold text-[#4A3F35] text-lg">{review.restaurantName}</h3>
-                            <div className="flex items-center gap-1">
+                        <div className="flex-1 min-w-0">
+                          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-2">
+                            <h3 className="font-bold text-[#4A3F35] text-base sm:text-lg truncate">{review.restaurantName}</h3>
+                            <div className="flex items-center gap-0.5 sm:gap-1 flex-shrink-0">
                               {[...Array(5)].map((_, i) => (
                                 <Star
                                   key={i}
-                                  className={`w-4 h-4 ${i < review.rating
+                                  className={`w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0 ${i < review.rating
                                     ? "fill-[#FFD700] text-[#FFD700]"
                                     : "text-gray-300"
                                     }`}
@@ -516,9 +516,9 @@ export default function ProfilePage() {
                             </div>
                           </div>
 
-                          <p className="text-[#6B625A] mb-2">{review.text}</p>
+                          <p className="text-[#6B625A] mb-2 text-sm sm:text-base line-clamp-2">{review.text}</p>
 
-                          <p className="text-sm text-[#8B7355]">
+                          <p className="text-xs sm:text-sm text-[#8B7355]">
                             Posted on {new Date(review.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
                           </p>
                         </div>
@@ -630,6 +630,17 @@ export default function ProfilePage() {
                 </div>
               )}
             </div>
+          </div>
+
+          {/* Mobile Logout Button - Visible only on small screens */}
+          <div className="lg:hidden mt-6">
+            <button
+              onClick={handleLogout}
+              className="w-full flex items-center justify-center gap-3 px-4 py-3 rounded-xl bg-[#5E4633] hover:bg-[#4A372A] text-white font-semibold transition-all shadow-md hover:shadow-xl"
+            >
+              <LogOut className="w-5 h-5" />
+              Logout
+            </button>
           </div>
         </div>
       </div>

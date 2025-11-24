@@ -74,17 +74,19 @@ Below are some core REST API routes:
 
 | Endpoint | Method | Description | Access |
 |----------|--------|-------------|--------|
-| `/api/auth/signup` | POST | Register new user (Customer/Restaurant) | Public |
+| `/api/auth/signup` | POST | Register new user | Public |
 | `/api/auth/login` | POST | Login user | Public |
-| `/api/restaurants` | GET | Fetch all restaurants | Public |
+| `/api/restaurants` | GET | Fetch all restaurants with filtering | Public |
 | `/api/restaurants/:id` | GET | Get details of one restaurant | Public |
-| `/api/bookings` | POST | Create booking | Customer |
-| `/api/bookings/:id` | PUT | Update a booking | Customer |
-| `/api/bookings/:id` | DELETE | Cancel a booking | Customer |
+| `/api/bookings` | POST | Create new booking | Customer |
+| `/api/bookings/user/:userId` | GET | Get user's booking | Customer |
+| `/api/bookings/:id` | GET | Get single booking | Customer |
+| `/api/bookings/:id` | PATCH | Update a booking | Customer |
+| `/api/bookings/:id/cancel` | PATCH | Cancel a booking | Customer |
+| `/api/bookings/:id` | DELETE | Delete cancelled booking | Customer |
 | `/api/orders` | POST | Place new order | Restaurant |
 | `/api/orders` | GET | View all orders | Restaurant |
 | `/api/orders/:id` | GET | View order details | Restaurant |
 | `/api/orders/:id` | PUT | Update order status | Restaurant |
 | `/api/orders/:id` | DELETE | Delete an order | Restaurant |
-
 

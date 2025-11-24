@@ -90,43 +90,43 @@ export default function BookingForm({ restaurantName, restaurantId, offers = [],
       className="bg-white space-y-8 mt-8"
     >
       {/* 🔖 Heading */}
-      <h3 className="text-2xl font-semibold text-gray-900 mb-2">
+      <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-2">
         Reserve a Table
       </h3>
 
       {/* 🏷️ Dining Offers */}
       {offers.length > 0 && (
         <div className="space-y-3">
-          <h4 className="text-lg font-semibold text-gray-800">
+          <h4 className="text-base sm:text-lg font-semibold text-gray-800">
             Available Dining Offers
           </h4>
-          <div className="grid md:grid-cols-3 sm:grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-5">
             {offers.map((offer, i) => (
               <button
                 type="button"
                 key={i}
                 onClick={() => setSelectedOffer(i)}
-                className={`cursor-pointer rounded-2xl p-5 text-left border shadow-sm transition-all duration-200 ${selectedOffer === i
+                className={`cursor-pointer rounded-2xl p-4 sm:p-5 text-left border shadow-sm transition-all duration-200 ${selectedOffer === i
                   ? "bg-blue-600 text-white border-blue-600 scale-[1.02]"
                   : "bg-white border-gray-200 text-gray-700 hover:border-blue-400 hover:shadow-md"
                   }`}
               >
                 <h3
-                  className={`font-semibold mb-1 ${selectedOffer === i
+                  className={`font-semibold mb-1 text-xs sm:text-sm ${selectedOffer === i
                     ? "text-white/90"
-                    : "text-blue-700 uppercase text-sm"
+                    : "text-blue-700 uppercase"
                     }`}
                 >
                   {offer.title}
                 </h3>
                 <p
-                  className={`font-bold text-lg ${selectedOffer === i ? "text-white" : "text-gray-900"
+                  className={`font-bold text-base sm:text-lg ${selectedOffer === i ? "text-white" : "text-gray-900"
                     }`}
                 >
                   {offer.desc}
                 </p>
                 <p
-                  className={`text-sm mt-1 ${selectedOffer === i ? "text-blue-100" : "text-gray-500"
+                  className={`text-xs sm:text-sm mt-1 ${selectedOffer === i ? "text-blue-100" : "text-gray-500"
                     }`}
                 >
                   {offer.sub}
@@ -155,17 +155,17 @@ export default function BookingForm({ restaurantName, restaurantId, offers = [],
 
       {/* 🕒 Time Slots */}
       <div className="space-y-2">
-        <label className="block font-semibold text-gray-700">
+        <label className="block text-sm sm:text-base font-semibold text-gray-700">
           <Clock className="w-4 h-4 inline mr-2 text-red-500" />
           Select Time Slot
         </label>
-        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3 max-h-48 overflow-y-auto border border-gray-200 p-3 rounded-xl bg-gray-50">
+        <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-2 sm:gap-3 max-h-48 overflow-y-auto border border-gray-200 p-2 sm:p-3 rounded-xl bg-gray-50">
           {timeSlots.map((slot) => (
             <button
               key={slot}
               type="button"
               onClick={() => setTime(slot)}
-              className={`cursor-pointer px-3 py-2 rounded-lg border text-sm transition ${time === slot
+              className={`cursor-pointer px-2 sm:px-3 py-2 rounded-lg border text-xs sm:text-sm transition ${time === slot
                 ? "bg-red-100 border-red-400 text-red-600 font-medium"
                 : "hover:bg-gray-100 text-gray-700"
                 }`}
@@ -225,7 +225,7 @@ export default function BookingForm({ restaurantName, restaurantId, offers = [],
         <button
           type="submit"
           disabled={isLoading}
-          className="cursor-pointer w-full bg-[#EF4F5F] hover:bg-red-600 disabled:bg-gray-400 text-white font-bold py-4 px-6 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-md hover:shadow-lg transform hover:scale-[1.02] active:scale-[0.98] disabled:cursor-not-allowed"
+          className="cursor-pointer w-full bg-[#EF4F5F] hover:bg-red-600 disabled:bg-gray-400 text-white font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-md hover:shadow-lg transform hover:scale-[1.02] active:scale-[0.98] disabled:cursor-not-allowed text-sm sm:text-base"
         >
           {isLoading ? (
             <>

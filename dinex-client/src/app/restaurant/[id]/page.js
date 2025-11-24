@@ -157,45 +157,45 @@ export default function RestaurantDetail() {
     <>
       <Navbar />
       <div className="max-w-6xl mx-auto bg-white rounded-2xl shadow-sm p-6 border border-gray-100">
-        <div className="sticky top-0 z-40 bg-white py-4">
+        <div className="sticky top-0 z-40 bg-white py-3 sm:py-4">
           {/* --- Restaurant Header --- */}
-          <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
+          <div className="flex flex-col md:flex-row md:items-start justify-between gap-3 sm:gap-4">
             <div>
-              <h1 className="text-4xl font-semibold text-gray-900">{restaurant.name}</h1>
-              <p className="text-gray-600 text-lg mt-1">{cuisinesText}</p>
-              <p className="text-gray-500 mt-1">{restaurant.address}</p>
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">{restaurant.name}</h1>
+              <p className="text-gray-600 text-sm sm:text-base md:text-lg mt-1">{cuisinesText}</p>
+              <p className="text-gray-500 text-xs sm:text-sm mt-1 line-clamp-1">{restaurant.address}</p>
 
-              <div className="flex flex-wrap items-center gap-2 mt-3">
-                <span className="text-green-600 font-medium bg-green-100 px-3 py-1 rounded-full text-sm">
+              <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mt-2 sm:mt-3 text-xs sm:text-sm">
+                <span className="text-green-600 font-medium bg-green-100 px-2 sm:px-3 py-1 rounded-full">
                   Open now
                 </span>
-                <span className="text-gray-600 text-sm">• 10am – 11:30pm</span>
-                <span className="text-gray-600 text-sm">• ₹{restaurant.priceForTwo} for two</span>
-                <span className="text-red-500 text-sm font-medium flex items-center gap-1">
-                  <Phone className="w-4 h-4" /> +91 {restaurant.contact}
+                <span className="text-gray-600">• 10am – 11:30pm</span>
+                <span className="text-gray-600">• ₹{restaurant.priceForTwo} for two</span>
+                <span className="text-red-500 font-medium flex items-center gap-1">
+                  <Phone className="w-3 h-3 sm:w-4 sm:h-4" /> +91 {restaurant.contact}
                 </span>
               </div>
             </div>
 
             {/* --- Rating Section --- */}
-            <div className="flex flex-col items-end gap-2">
-              <div className="flex items-center gap-1 bg-green-600 text-white px-3 py-1 rounded-md text-sm font-medium">
-                <Star className="w-4 h-4 fill-white" /> {restaurant.rating}
+            <div className="flex flex-col items-start md:items-end gap-1.5 sm:gap-2">
+              <div className="flex items-center gap-0.5 sm:gap-1 bg-green-600 text-white px-2 sm:px-2.5 md:px-3 py-1 rounded-md text-xs sm:text-sm font-medium whitespace-nowrap">
+                <Star className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 fill-white flex-shrink-0" /> {restaurant.rating}
               </div>
-              <p className="text-sm text-gray-600">2534 Dining Ratings</p>
+              <p className="text-xs sm:text-sm text-gray-600 whitespace-nowrap">2534 Dining Ratings</p>
             </div>
           </div>
 
           {/* --- Action Buttons --- */}
-          <div className="flex flex-wrap gap-3 mt-5">
-            <button className="flex items-center gap-2 px-4 py-2 border border-gray-300 text-gray-900 rounded-lg hover:bg-gray-50 transition">
-              <MapPin className="w-4 h-4 text-gray-900" /> Direction
+          <div className="flex flex-wrap gap-2 sm:gap-3 mt-3 sm:mt-5">
+            <button className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 text-gray-900 rounded-lg hover:bg-gray-50 transition text-xs sm:text-sm whitespace-nowrap">
+              <MapPin className="w-3 h-3 sm:w-4 sm:h-4 text-gray-900 flex-shrink-0" /> Direction
             </button>
-            <button className="flex items-center gap-2 px-4 py-2 border border-gray-300 text-gray-900 rounded-lg hover:bg-gray-50 transition">
-              <Share2 className="w-4 h-4 text-gray-900" /> Share
+            <button className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 text-gray-900 rounded-lg hover:bg-gray-50 transition text-xs sm:text-sm whitespace-nowrap">
+              <Share2 className="w-3 h-3 sm:w-4 sm:h-4 text-gray-900 flex-shrink-0" /> Share
             </button>
-            <button className="flex items-center gap-2 px-4 py-2 border border-gray-300 text-gray-900 rounded-lg hover:bg-gray-50 transition">
-              <MessageSquare className="w-4 h-4 text-gray-900" /> Reviews
+            <button className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 text-gray-900 rounded-lg hover:bg-gray-50 transition text-xs sm:text-sm whitespace-nowrap">
+              <MessageSquare className="w-3 h-3 sm:w-4 sm:h-4 text-gray-900 flex-shrink-0" /> Reviews
             </button>
           </div>
         </div>
@@ -260,40 +260,40 @@ export default function RestaurantDetail() {
 
         {/* Fullscreen Modal */}
         {selectedImageIndex !== null && (
-          <div className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center">
+          <div className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-2 sm:p-4">
             {/* Close Button */}
             <button
               onClick={closeModal}
-              className="cursor-pointer absolute top-6 right-6 text-white hover:text-gray-300 transition z-50"
+              className="cursor-pointer absolute top-3 right-3 sm:top-6 sm:right-6 text-white hover:text-gray-300 transition z-50 bg-black/30 rounded-full p-1.5 sm:p-2"
             >
-              <X className="w-10 h-10" />
+              <X className="w-6 h-6 sm:w-10 sm:h-10" />
             </button>
 
             {/* Navigation Arrows */}
             <button
               onClick={prevImage}
-              className="cursor-pointer absolute left-6 text-white hover:text-gray-300 bg-black/50 p-3 rounded-full z-50"
+              className="cursor-pointer absolute left-2 sm:left-6 text-white hover:text-gray-300 bg-black/50 p-2 sm:p-3 rounded-full z-50"
             >
-              <ChevronLeft className="w-8 h-8" />
+              <ChevronLeft className="w-5 h-5 sm:w-8 sm:h-8" />
             </button>
 
-            <div className="max-w-6xl mx-auto w-full px-4 flex items-center justify-center">
+            <div className="max-w-6xl mx-auto w-full px-2 sm:px-4 flex items-center justify-center">
               <img
                 src={images[selectedImageIndex]}
                 alt={`Photo ${selectedImageIndex + 1}`}
-                className="max-h-[80vh] w-auto rounded-xl object-contain shadow-2xl"
+                className="max-h-[70vh] sm:max-h-[80vh] w-auto rounded-lg sm:rounded-xl object-contain shadow-2xl"
               />
             </div>
 
             <button
               onClick={nextImage}
-              className="cursor-pointer absolute right-6 text-white hover:text-gray-300 bg-black/50 p-3 rounded-full z-50"
+              className="cursor-pointer absolute right-2 sm:right-6 text-white hover:text-gray-300 bg-black/50 p-2 sm:p-3 rounded-full z-50"
             >
-              <ChevronRight className="w-8 h-8" />
+              <ChevronRight className="w-5 h-5 sm:w-8 sm:h-8" />
             </button>
 
             {/* Image Counter */}
-            <div className="absolute bottom-8 text-white text-sm">
+            <div className="absolute bottom-4 sm:bottom-8 text-white text-xs sm:text-sm bg-black/50 px-3 py-1.5 rounded-full">
               {selectedImageIndex + 1} / {images.length}
             </div>
           </div>
@@ -301,20 +301,33 @@ export default function RestaurantDetail() {
 
 
         {/* ✅ Tabs */}
-        <div className="sticky top-[234px] z-30 bg-white border-b border-gray-400 tborder-b pt-5 flex gap-8 text-gray-600 font-medium text-lg" id="tabs">
-          {["Overview", "Reviews", "Photos", "Menu", "Book a Table"].map((tab) => (
-            <button
-              key={tab}
-              onClick={() => setActiveTab(tab)}
-              className={`cursor-pointer pb-3 relative ${activeTab === tab
+        <div className="sticky top-[180px] sm:top-[200px] md:top-[234px] z-30 bg-white border-b border-gray-400 pt-3 sm:pt-5 overflow-x-auto scrollbar-hide" id="tabs">
+          <div className="flex gap-4 sm:gap-6 md:gap-8 text-gray-600 font-medium text-sm sm:text-base md:text-lg min-w-max">
+            {["Overview", "Reviews", "Photos", "Menu", "Book a Table"].map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`cursor-pointer pb-2 sm:pb-3 relative whitespace-nowrap ${activeTab === tab
                   ? "text-[#5E4633] after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-[#5E4633]"
                   : "hover:text-gray-800"
-                }`}
-            >
-              {tab}
-            </button>
-          ))}
+                  }`}
+              >
+                <span className="hidden sm:inline">{tab}</span>
+                <span className="sm:hidden">{tab === "Book a Table" ? "Book" : tab}</span>
+              </button>
+            ))}
+          </div>
         </div>
+
+        <style jsx>{`
+          .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+          }
+          .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+          }
+        `}</style>
 
         {/* ✅ Overview Section */}
         {activeTab === "Overview" && <Overview restaurant={restaurant} />}

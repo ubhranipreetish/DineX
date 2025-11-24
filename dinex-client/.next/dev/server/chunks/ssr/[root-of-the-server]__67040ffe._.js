@@ -1650,15 +1650,15 @@ function ProfilePage() {
                     className: "max-w-7xl mx-auto",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "bg-white rounded-2xl shadow-lg p-8 mb-6 border border-[#E8E1D5]",
+                            className: "bg-white rounded-2xl shadow-lg p-4 sm:p-6 md:p-8 mb-6 border border-[#E8E1D5]",
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "flex items-center justify-between",
+                                className: "flex flex-col sm:flex-row items-center sm:items-start justify-between gap-4",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "flex items-center gap-6",
+                                        className: "flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6 text-center sm:text-left",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "w-24 h-24 bg-[#5E4633] rounded-full flex items-center justify-center text-white text-3xl font-bold shadow-md",
+                                                className: "w-20 h-20 sm:w-24 sm:h-24 bg-[#5E4633] rounded-full flex items-center justify-center text-white text-2xl sm:text-3xl font-bold shadow-md flex-shrink-0",
                                                 children: user.name?.charAt(0).toUpperCase()
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
@@ -1668,7 +1668,7 @@ function ProfilePage() {
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 children: [
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                                                        className: "text-3xl font-bold text-[#4A3F35] mb-1",
+                                                        className: "text-2xl sm:text-3xl font-bold text-[#4A3F35] mb-1",
                                                         children: user.name
                                                     }, void 0, false, {
                                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
@@ -1676,7 +1676,7 @@ function ProfilePage() {
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                        className: "text-[#6B625A] flex items-center gap-2 mb-2",
+                                                        className: "text-[#6B625A] flex items-center justify-center sm:justify-start gap-2 mb-2 text-sm sm:text-base",
                                                         children: [
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$mail$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Mail$3e$__["Mail"], {
                                                                 className: "w-4 h-4"
@@ -1685,7 +1685,14 @@ function ProfilePage() {
                                                                 lineNumber: 225,
                                                                 columnNumber: 21
                                                             }, this),
-                                                            user.email
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                className: "break-all",
+                                                                children: user.email
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
+                                                                lineNumber: 226,
+                                                                columnNumber: 21
+                                                            }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
@@ -1693,7 +1700,7 @@ function ProfilePage() {
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                        className: "text-sm text-[#8B7355]",
+                                                        className: "text-xs sm:text-sm text-[#8B7355]",
                                                         children: [
                                                             "Member since ",
                                                             new Date(user.createdAt).toLocaleDateString('en-US', {
@@ -1719,7 +1726,7 @@ function ProfilePage() {
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                        className: "bg-[#1E3A5F] hover:bg-[#2C4F7C] text-white font-semibold py-3 px-6 rounded-xl transition-all shadow-md hover:shadow-xl flex items-center gap-2",
+                                        className: "w-full sm:w-auto bg-[#1E3A5F] hover:bg-[#2C4F7C] text-white font-semibold py-2 sm:py-3 px-4 sm:px-6 rounded-xl transition-all shadow-md hover:shadow-xl flex items-center justify-center gap-2 text-sm sm:text-base",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$pen$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Edit2$3e$__["Edit2"], {
                                                 className: "w-4 h-4"
@@ -1752,23 +1759,38 @@ function ProfilePage() {
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "lg:col-span-1",
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "bg-white rounded-2xl shadow-lg p-4 border border-[#E8E1D5]",
+                                        className: "bg-white rounded-2xl shadow-lg p-3 sm:p-4 border border-[#E8E1D5]",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
-                                                className: "space-y-2",
+                                                className: "flex lg:flex-col overflow-x-auto lg:overflow-x-visible gap-2 lg:space-y-2",
                                                 children: [
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                         onClick: ()=>setActiveTab("bookings"),
-                                                        className: `w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${activeTab === "bookings" ? "bg-[#E8F0FE] text-[#1E3A5F] font-semibold" : "text-[#6B625A] hover:bg-[#FFF8E7]"}`,
+                                                        className: `flex items-center gap-2 lg:gap-3 px-3 lg:px-4 py-2 lg:py-3 rounded-xl transition-all whitespace-nowrap text-sm lg:text-base ${activeTab === "bookings" ? "bg-[#E8F0FE] text-[#1E3A5F] font-semibold" : "text-[#6B625A] hover:bg-[#FFF8E7]"}`,
                                                         children: [
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$calendar$2d$days$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__CalendarDays$3e$__["CalendarDays"], {
-                                                                className: "w-5 h-5"
+                                                                className: "w-4 h-4 lg:w-5 lg:h-5"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
                                                                 lineNumber: 256,
                                                                 columnNumber: 21
                                                             }, this),
-                                                            "Your Bookings"
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                className: "hidden sm:inline",
+                                                                children: "Your Bookings"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
+                                                                lineNumber: 257,
+                                                                columnNumber: 21
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                className: "sm:hidden",
+                                                                children: "Bookings"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
+                                                                lineNumber: 258,
+                                                                columnNumber: 21
+                                                            }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
@@ -1777,38 +1799,38 @@ function ProfilePage() {
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                         onClick: ()=>setActiveTab("reviews"),
-                                                        className: `w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${activeTab === "reviews" ? "bg-[#E8F0FE] text-[#1E3A5F] font-semibold" : "text-[#6B625A] hover:bg-[#FFF8E7]"}`,
+                                                        className: `flex items-center gap-2 lg:gap-3 px-3 lg:px-4 py-2 lg:py-3 rounded-xl transition-all whitespace-nowrap text-sm lg:text-base ${activeTab === "reviews" ? "bg-[#E8F0FE] text-[#1E3A5F] font-semibold" : "text-[#6B625A] hover:bg-[#FFF8E7]"}`,
                                                         children: [
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$star$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Star$3e$__["Star"], {
-                                                                className: "w-5 h-5"
+                                                                className: "w-4 h-4 lg:w-5 lg:h-5"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
-                                                                lineNumber: 267,
+                                                                lineNumber: 268,
                                                                 columnNumber: 21
                                                             }, this),
                                                             "Reviews"
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
-                                                        lineNumber: 260,
+                                                        lineNumber: 261,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                         onClick: ()=>setActiveTab("settings"),
-                                                        className: `w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${activeTab === "settings" ? "bg-[#E8F0FE] text-[#1E3A5F] font-semibold" : "text-[#6B625A] hover:bg-[#FFF8E7]"}`,
+                                                        className: `flex items-center gap-2 lg:gap-3 px-3 lg:px-4 py-2 lg:py-3 rounded-xl transition-all whitespace-nowrap text-sm lg:text-base ${activeTab === "settings" ? "bg-[#E8F0FE] text-[#1E3A5F] font-semibold" : "text-[#6B625A] hover:bg-[#FFF8E7]"}`,
                                                         children: [
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$settings$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Settings$3e$__["Settings"], {
-                                                                className: "w-5 h-5"
+                                                                className: "w-4 h-4 lg:w-5 lg:h-5"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
-                                                                lineNumber: 278,
+                                                                lineNumber: 279,
                                                                 columnNumber: 21
                                                             }, this),
                                                             "Settings"
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
-                                                        lineNumber: 271,
+                                                        lineNumber: 272,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
@@ -1818,7 +1840,7 @@ function ProfilePage() {
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "mt-4 pt-4 border-t border-[#E8E1D5]",
+                                                className: "hidden lg:block mt-4 pt-4 border-t border-[#E8E1D5]",
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                     onClick: handleLogout,
                                                     className: "w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-[#5E4633] hover:bg-[#4A372A] text-white font-semibold transition-all shadow-md hover:shadow-xl",
@@ -1827,19 +1849,19 @@ function ProfilePage() {
                                                             className: "w-5 h-5"
                                                         }, void 0, false, {
                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
-                                                            lineNumber: 289,
+                                                            lineNumber: 290,
                                                             columnNumber: 21
                                                         }, this),
                                                         "Logout"
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
-                                                    lineNumber: 285,
+                                                    lineNumber: 286,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
-                                                lineNumber: 284,
+                                                lineNumber: 285,
                                                 columnNumber: 17
                                             }, this)
                                         ]
@@ -1867,7 +1889,7 @@ function ProfilePage() {
                                                             children: "Upcoming Bookings"
                                                         }, void 0, false, {
                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
-                                                            lineNumber: 305,
+                                                            lineNumber: 306,
                                                             columnNumber: 21
                                                         }, this),
                                                         loadingBookings ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1877,7 +1899,7 @@ function ProfilePage() {
                                                                     className: "animate-spin w-12 h-12 border-4 border-[#C9A050] border-t-transparent rounded-full mx-auto mb-4"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
-                                                                    lineNumber: 309,
+                                                                    lineNumber: 310,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1885,13 +1907,13 @@ function ProfilePage() {
                                                                     children: "Loading bookings..."
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
-                                                                    lineNumber: 310,
+                                                                    lineNumber: 311,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
-                                                            lineNumber: 308,
+                                                            lineNumber: 309,
                                                             columnNumber: 23
                                                         }, this) : upcomingBookings.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                             className: "text-center py-12",
@@ -1900,7 +1922,7 @@ function ProfilePage() {
                                                                     className: "w-16 h-16 text-gray-300 mx-auto mb-4"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
-                                                                    lineNumber: 314,
+                                                                    lineNumber: 315,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
@@ -1908,7 +1930,7 @@ function ProfilePage() {
                                                                     children: "No upcoming bookings"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
-                                                                    lineNumber: 315,
+                                                                    lineNumber: 316,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1916,7 +1938,7 @@ function ProfilePage() {
                                                                     children: "Start exploring restaurants and make your first reservation!"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
-                                                                    lineNumber: 316,
+                                                                    lineNumber: 317,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1925,36 +1947,36 @@ function ProfilePage() {
                                                                     children: "Browse Restaurants"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
-                                                                    lineNumber: 317,
+                                                                    lineNumber: 318,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
-                                                            lineNumber: 313,
+                                                            lineNumber: 314,
                                                             columnNumber: 23
                                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                             className: "space-y-4",
                                                             children: upcomingBookings.map((booking, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                    className: "flex gap-4 p-4 bg-[#FAF6EF] rounded-xl hover:bg-[#F3EAD8] transition-all border border-[#E8E1D5]",
+                                                                    className: "flex flex-col sm:flex-row gap-3 sm:gap-4 p-3 sm:p-4 bg-[#FAF6EF] rounded-xl hover:bg-[#F3EAD8] transition-all border border-[#E8E1D5]",
                                                                     children: [
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
                                                                             src: getRestaurantImage(index),
                                                                             alt: booking.restaurantName,
-                                                                            className: "w-24 h-24 rounded-lg object-cover"
+                                                                            className: "w-full sm:w-20 md:w-24 h-32 sm:h-20 md:h-24 rounded-lg object-cover flex-shrink-0"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
                                                                             lineNumber: 332,
                                                                             columnNumber: 29
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                            className: "flex-1",
+                                                                            className: "flex-1 min-w-0",
                                                                             children: [
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                                    className: "flex items-start justify-between mb-2",
+                                                                                    className: "flex flex-col sm:flex-row items-start justify-between mb-2 gap-2",
                                                                                     children: [
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                                                                            className: "font-bold text-[#4A3F35] text-lg",
+                                                                                            className: "font-bold text-[#4A3F35] text-base sm:text-lg truncate",
                                                                                             children: booking.restaurantName
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
@@ -1962,7 +1984,7 @@ function ProfilePage() {
                                                                                             columnNumber: 33
                                                                                         }, this),
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                                            className: `px-3 py-1 rounded-full text-xs font-semibold capitalize flex items-center gap-1 ${getStatusBadge(booking.status)}`,
+                                                                                            className: `px-3 py-1 rounded-full text-xs font-semibold capitalize flex items-center gap-1 whitespace-nowrap ${getStatusBadge(booking.status)}`,
                                                                                             children: [
                                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$check$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__CheckCircle2$3e$__["CheckCircle2"], {
                                                                                                     className: "w-3 h-3"
@@ -1985,13 +2007,13 @@ function ProfilePage() {
                                                                                     columnNumber: 31
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                                    className: "flex flex-wrap gap-4 text-sm text-[#6B625A] mb-3",
+                                                                                    className: "flex flex-wrap gap-3 sm:gap-4 text-xs sm:text-sm text-[#6B625A] mb-3",
                                                                                     children: [
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                                             className: "flex items-center gap-1",
                                                                                             children: [
                                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$calendar$2d$days$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__CalendarDays$3e$__["CalendarDays"], {
-                                                                                                    className: "w-4 h-4"
+                                                                                                    className: "w-3 h-3 sm:w-4 sm:h-4"
                                                                                                 }, void 0, false, {
                                                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
                                                                                                     lineNumber: 350,
@@ -2012,7 +2034,7 @@ function ProfilePage() {
                                                                                             className: "flex items-center gap-1",
                                                                                             children: [
                                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$clock$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Clock$3e$__["Clock"], {
-                                                                                                    className: "w-4 h-4"
+                                                                                                    className: "w-3 h-3 sm:w-4 sm:h-4"
                                                                                                 }, void 0, false, {
                                                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
                                                                                                     lineNumber: 354,
@@ -2029,7 +2051,7 @@ function ProfilePage() {
                                                                                             className: "flex items-center gap-1",
                                                                                             children: [
                                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$users$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Users$3e$__["Users"], {
-                                                                                                    className: "w-4 h-4"
+                                                                                                    className: "w-3 h-3 sm:w-4 sm:h-4"
                                                                                                 }, void 0, false, {
                                                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
                                                                                                     lineNumber: 358,
@@ -2051,7 +2073,7 @@ function ProfilePage() {
                                                                                     columnNumber: 31
                                                                                 }, this),
                                                                                 booking.specialRequests && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                                    className: "mb-3 text-sm",
+                                                                                    className: "mb-3 text-xs sm:text-sm",
                                                                                     children: [
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                                             className: "text-[#8B7355] font-semibold",
@@ -2076,15 +2098,15 @@ function ProfilePage() {
                                                                                     columnNumber: 33
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                                    className: "flex gap-2",
+                                                                                    className: "flex flex-wrap gap-2",
                                                                                     children: canEditOrCancel(booking) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
                                                                                         children: [
                                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                                                                 onClick: ()=>handleEditBooking(booking),
-                                                                                                className: "px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-lg transition flex items-center gap-1",
+                                                                                                className: "px-3 sm:px-4 py-1.5 sm:py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-semibold rounded-lg transition flex items-center gap-1",
                                                                                                 children: [
                                                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$pen$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Edit2$3e$__["Edit2"], {
-                                                                                                        className: "w-4 h-4"
+                                                                                                        className: "w-3 h-3 sm:w-4 sm:h-4"
                                                                                                     }, void 0, false, {
                                                                                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
                                                                                                         lineNumber: 379,
@@ -2099,7 +2121,7 @@ function ProfilePage() {
                                                                                             }, this),
                                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                                                                 onClick: ()=>handleCancelBooking(booking._id),
-                                                                                                className: "px-4 py-2 bg-white border-2 border-gray-300 hover:border-gray-400 text-gray-700 text-sm font-semibold rounded-lg transition",
+                                                                                                className: "px-3 sm:px-4 py-1.5 sm:py-2 bg-white border-2 border-gray-300 hover:border-gray-400 text-gray-700 text-xs sm:text-sm font-semibold rounded-lg transition",
                                                                                                 children: "Cancel"
                                                                                             }, void 0, false, {
                                                                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
@@ -2122,18 +2144,18 @@ function ProfilePage() {
                                                                     ]
                                                                 }, booking._id, true, {
                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
-                                                                    lineNumber: 327,
+                                                                    lineNumber: 328,
                                                                     columnNumber: 27
                                                                 }, this))
                                                         }, void 0, false, {
                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
-                                                            lineNumber: 325,
+                                                            lineNumber: 326,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
-                                                    lineNumber: 304,
+                                                    lineNumber: 305,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2173,25 +2195,25 @@ function ProfilePage() {
                                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                             className: "space-y-4",
                                                             children: pastBookings.map((booking, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                    className: "flex gap-4 p-4 bg-[#FAF6EF] rounded-xl hover:bg-[#F3EAD8] transition-all border border-[#E8E1D5]",
+                                                                    className: "flex flex-col sm:flex-row gap-3 sm:gap-4 p-3 sm:p-4 bg-[#FAF6EF] rounded-xl hover:bg-[#F3EAD8] transition-all border border-[#E8E1D5]",
                                                                     children: [
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
                                                                             src: getRestaurantImage(index + upcomingBookings.length),
                                                                             alt: booking.restaurantName,
-                                                                            className: "w-24 h-24 rounded-lg object-cover"
+                                                                            className: "w-full sm:w-20 md:w-24 h-32 sm:h-20 md:h-24 rounded-lg object-cover flex-shrink-0"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
                                                                             lineNumber: 415,
                                                                             columnNumber: 29
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                            className: "flex-1",
+                                                                            className: "flex-1 min-w-0",
                                                                             children: [
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                                    className: "flex items-start justify-between mb-2",
+                                                                                    className: "flex flex-col sm:flex-row items-start justify-between mb-2 gap-2",
                                                                                     children: [
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                                                                            className: "font-bold text-[#4A3F35] text-lg",
+                                                                                            className: "font-bold text-[#4A3F35] text-base sm:text-lg truncate",
                                                                                             children: booking.restaurantName
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
@@ -2199,7 +2221,7 @@ function ProfilePage() {
                                                                                             columnNumber: 33
                                                                                         }, this),
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                                            className: `px-3 py-1 rounded-full text-xs font-semibold capitalize ${getStatusBadge(booking.status)}`,
+                                                                                            className: `px-3 py-1 rounded-full text-xs font-semibold capitalize whitespace-nowrap ${getStatusBadge(booking.status)}`,
                                                                                             children: booking.status
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
@@ -2213,13 +2235,13 @@ function ProfilePage() {
                                                                                     columnNumber: 31
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                                    className: "flex flex-wrap gap-4 text-sm text-[#6B625A] mb-3",
+                                                                                    className: "flex flex-wrap gap-3 sm:gap-4 text-xs sm:text-sm text-[#6B625A] mb-3",
                                                                                     children: [
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                                             className: "flex items-center gap-1",
                                                                                             children: [
                                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$calendar$2d$days$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__CalendarDays$3e$__["CalendarDays"], {
-                                                                                                    className: "w-4 h-4"
+                                                                                                    className: "w-3 h-3 sm:w-4 sm:h-4"
                                                                                                 }, void 0, false, {
                                                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
                                                                                                     lineNumber: 432,
@@ -2240,7 +2262,7 @@ function ProfilePage() {
                                                                                             className: "flex items-center gap-1",
                                                                                             children: [
                                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$clock$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Clock$3e$__["Clock"], {
-                                                                                                    className: "w-4 h-4"
+                                                                                                    className: "w-3 h-3 sm:w-4 sm:h-4"
                                                                                                 }, void 0, false, {
                                                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
                                                                                                     lineNumber: 436,
@@ -2257,7 +2279,7 @@ function ProfilePage() {
                                                                                             className: "flex items-center gap-1",
                                                                                             children: [
                                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$users$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Users$3e$__["Users"], {
-                                                                                                    className: "w-4 h-4"
+                                                                                                    className: "w-3 h-3 sm:w-4 sm:h-4"
                                                                                                 }, void 0, false, {
                                                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
                                                                                                     lineNumber: 440,
@@ -2279,7 +2301,7 @@ function ProfilePage() {
                                                                                     columnNumber: 31
                                                                                 }, this),
                                                                                 booking.specialRequests && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                                    className: "mb-3 text-sm",
+                                                                                    className: "mb-3 text-xs sm:text-sm",
                                                                                     children: [
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                                             className: "text-[#8B7355] font-semibold",
@@ -2304,10 +2326,10 @@ function ProfilePage() {
                                                                                     columnNumber: 33
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                                    className: "flex gap-2",
+                                                                                    className: "flex flex-wrap gap-2",
                                                                                     children: [
                                                                                         booking.status === "completed" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                                                            className: "px-4 py-2 bg-[#FFD700] hover:bg-[#FFC700] text-[#4A3F35] text-sm font-semibold rounded-lg transition",
+                                                                                            className: "px-3 sm:px-4 py-1.5 sm:py-2 bg-[#FFD700] hover:bg-[#FFC700] text-[#4A3F35] text-xs sm:text-sm font-semibold rounded-lg transition",
                                                                                             children: "Write a Review"
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
@@ -2316,10 +2338,10 @@ function ProfilePage() {
                                                                                         }, this),
                                                                                         booking.status === "cancelled" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                                                             onClick: ()=>handleDeleteBooking(booking._id),
-                                                                                            className: "px-4 py-2 bg-red-600 hover:bg-red-700 text-white text-sm font-semibold rounded-lg transition flex items-center gap-1",
+                                                                                            className: "px-3 sm:px-4 py-1.5 sm:py-2 bg-red-600 hover:bg-red-700 text-white text-xs sm:text-sm font-semibold rounded-lg transition flex items-center gap-1",
                                                                                             children: [
                                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$trash$2d$2$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Trash2$3e$__["Trash2"], {
-                                                                                                    className: "w-4 h-4"
+                                                                                                    className: "w-3 h-3 sm:w-4 sm:h-4"
                                                                                                 }, void 0, false, {
                                                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
                                                                                                     lineNumber: 465,
@@ -2333,7 +2355,7 @@ function ProfilePage() {
                                                                                             columnNumber: 35
                                                                                         }, this),
                                                                                         booking.status === "completed" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                                                            className: "px-4 py-2 bg-[#1E3A5F] hover:bg-[#2C4F7C] text-white text-sm font-semibold rounded-lg transition",
+                                                                                            className: "px-3 sm:px-4 py-1.5 sm:py-2 bg-[#1E3A5F] hover:bg-[#2C4F7C] text-white text-xs sm:text-sm font-semibold rounded-lg transition",
                                                                                             children: "Book Again"
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
@@ -2372,14 +2394,14 @@ function ProfilePage() {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
-                                            lineNumber: 301,
+                                            lineNumber: 302,
                                             columnNumber: 17
                                         }, this),
                                         activeTab === "reviews" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "bg-white rounded-2xl shadow-lg p-6 border border-[#E8E1D5]",
+                                            className: "bg-white rounded-2xl shadow-lg p-3 sm:p-4 md:p-6 border border-[#E8E1D5]",
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                                                    className: "text-2xl font-bold text-[#4A3F35] mb-6",
+                                                    className: "text-xl sm:text-2xl font-bold text-[#4A3F35] mb-4 sm:mb-6",
                                                     children: "Your Reviews"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
@@ -2387,27 +2409,27 @@ function ProfilePage() {
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "space-y-4",
+                                                    className: "space-y-3 sm:space-y-4",
                                                     children: dummyReviews.map((review)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "flex gap-4 p-4 bg-[#FAF6EF] rounded-xl border border-[#E8E1D5]",
+                                                            className: "flex flex-col sm:flex-row gap-3 sm:gap-4 p-3 sm:p-4 bg-[#FAF6EF] rounded-xl border border-[#E8E1D5]",
                                                             children: [
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
                                                                     src: review.image,
                                                                     alt: review.restaurantName,
-                                                                    className: "w-24 h-24 rounded-lg object-cover"
+                                                                    className: "w-full sm:w-20 md:w-24 h-32 sm:h-20 md:h-24 rounded-lg object-cover flex-shrink-0"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
                                                                     lineNumber: 496,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                    className: "flex-1",
+                                                                    className: "flex-1 min-w-0",
                                                                     children: [
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                            className: "flex items-start justify-between mb-2",
+                                                                            className: "flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-2",
                                                                             children: [
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                                                                    className: "font-bold text-[#4A3F35] text-lg",
+                                                                                    className: "font-bold text-[#4A3F35] text-base sm:text-lg truncate",
                                                                                     children: review.restaurantName
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
@@ -2415,11 +2437,11 @@ function ProfilePage() {
                                                                                     columnNumber: 29
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                                    className: "flex items-center gap-1",
+                                                                                    className: "flex items-center gap-0.5 sm:gap-1 flex-shrink-0",
                                                                                     children: [
                                                                                         ...Array(5)
                                                                                     ].map((_, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$star$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Star$3e$__["Star"], {
-                                                                                            className: `w-4 h-4 ${i < review.rating ? "fill-[#FFD700] text-[#FFD700]" : "text-gray-300"}`
+                                                                                            className: `w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0 ${i < review.rating ? "fill-[#FFD700] text-[#FFD700]" : "text-gray-300"}`
                                                                                         }, i, false, {
                                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
                                                                                             lineNumber: 508,
@@ -2437,7 +2459,7 @@ function ProfilePage() {
                                                                             columnNumber: 27
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                                            className: "text-[#6B625A] mb-2",
+                                                                            className: "text-[#6B625A] mb-2 text-sm sm:text-base line-clamp-2",
                                                                             children: review.text
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
@@ -2445,7 +2467,7 @@ function ProfilePage() {
                                                                             columnNumber: 27
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                                            className: "text-sm text-[#8B7355]",
+                                                                            className: "text-xs sm:text-sm text-[#8B7355]",
                                                                             children: [
                                                                                 "Posted on ",
                                                                                 new Date(review.date).toLocaleDateString('en-US', {
@@ -2918,13 +2940,38 @@ function ProfilePage() {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
-                                    lineNumber: 297,
+                                    lineNumber: 298,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
                             lineNumber: 243,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "lg:hidden mt-6",
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                onClick: handleLogout,
+                                className: "w-full flex items-center justify-center gap-3 px-4 py-3 rounded-xl bg-[#5E4633] hover:bg-[#4A372A] text-white font-semibold transition-all shadow-md hover:shadow-xl",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$log$2d$out$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__LogOut$3e$__["LogOut"], {
+                                        className: "w-5 h-5"
+                                    }, void 0, false, {
+                                        fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
+                                        lineNumber: 641,
+                                        columnNumber: 15
+                                    }, this),
+                                    "Logout"
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
+                                lineNumber: 637,
+                                columnNumber: 13
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
+                            lineNumber: 636,
                             columnNumber: 11
                         }, this)
                     ]
@@ -2947,12 +2994,12 @@ function ProfilePage() {
                 onSave: handleSaveBooking
             }, void 0, false, {
                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
-                lineNumber: 639,
+                lineNumber: 650,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$components$2f$Footer$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/profile/page.js",
-                lineNumber: 649,
+                lineNumber: 660,
                 columnNumber: 7
             }, this)
         ]

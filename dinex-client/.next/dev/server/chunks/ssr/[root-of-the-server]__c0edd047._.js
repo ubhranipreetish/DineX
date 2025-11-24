@@ -360,7 +360,7 @@ function FilterModal({ onClose, activeFilters, setActiveFilters, clearFilters })
                                                 className: "w-5 h-5 text-[#C9A050]"
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                                lineNumber: 141,
+                                                lineNumber: 140,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -368,13 +368,13 @@ function FilterModal({ onClose, activeFilters, setActiveFilters, clearFilters })
                                                 children: "Cuisines"
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                                lineNumber: 142,
+                                                lineNumber: 141,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                        lineNumber: 140,
+                                        lineNumber: 139,
                                         columnNumber: 15
                                     }, this),
                                     cuisines.map((cuisine)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -387,7 +387,7 @@ function FilterModal({ onClose, activeFilters, setActiveFilters, clearFilters })
                                                     className: "w-4 h-4 text-[#C9A050] accent-[#C9A050]"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                                    lineNumber: 150,
+                                                    lineNumber: 149,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -395,19 +395,19 @@ function FilterModal({ onClose, activeFilters, setActiveFilters, clearFilters })
                                                     children: cuisine
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                                    lineNumber: 156,
+                                                    lineNumber: 155,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, cuisine, true, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                            lineNumber: 146,
+                                            lineNumber: 145,
                                             columnNumber: 17
                                         }, this))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                lineNumber: 139,
+                                lineNumber: 138,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -419,7 +419,7 @@ function FilterModal({ onClose, activeFilters, setActiveFilters, clearFilters })
                                                 className: "w-5 h-5 text-[#C9A050]"
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                                lineNumber: 172,
+                                                lineNumber: 170,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -427,13 +427,13 @@ function FilterModal({ onClose, activeFilters, setActiveFilters, clearFilters })
                                                 children: "Rating"
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                                lineNumber: 173,
+                                                lineNumber: 171,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                        lineNumber: 171,
+                                        lineNumber: 169,
                                         columnNumber: 15
                                     }, this),
                                     [
@@ -452,7 +452,7 @@ function FilterModal({ onClose, activeFilters, setActiveFilters, clearFilters })
                                                     className: "w-4 h-4 text-[#C9A050] accent-[#C9A050]"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                                    lineNumber: 181,
+                                                    lineNumber: 179,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -465,25 +465,25 @@ function FilterModal({ onClose, activeFilters, setActiveFilters, clearFilters })
                                                             className: "w-4 h-4 fill-yellow-400 text-yellow-400"
                                                         }, void 0, false, {
                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                                            lineNumber: 197,
+                                                            lineNumber: 194,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                                    lineNumber: 189,
+                                                    lineNumber: 187,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, rating, true, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                            lineNumber: 177,
+                                            lineNumber: 175,
                                             columnNumber: 17
                                         }, this))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                lineNumber: 170,
+                                lineNumber: 168,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -495,7 +495,7 @@ function FilterModal({ onClose, activeFilters, setActiveFilters, clearFilters })
                                                 className: "w-5 h-5 text-[#C9A050]"
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                                lineNumber: 206,
+                                                lineNumber: 203,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -503,13 +503,13 @@ function FilterModal({ onClose, activeFilters, setActiveFilters, clearFilters })
                                                 children: "Cost for Two"
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                                lineNumber: 207,
+                                                lineNumber: 204,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                        lineNumber: 205,
+                                        lineNumber: 202,
                                         columnNumber: 15
                                     }, this),
                                     [
@@ -540,7 +540,7 @@ function FilterModal({ onClose, activeFilters, setActiveFilters, clearFilters })
                                                     className: "w-4 h-4 text-[#C9A050] accent-[#C9A050]"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                                    lineNumber: 219,
+                                                    lineNumber: 216,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -551,7 +551,7 @@ function FilterModal({ onClose, activeFilters, setActiveFilters, clearFilters })
                                                             children: range.label
                                                         }, void 0, false, {
                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                                            lineNumber: 228,
+                                                            lineNumber: 225,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -559,25 +559,25 @@ function FilterModal({ onClose, activeFilters, setActiveFilters, clearFilters })
                                                             children: range.price
                                                         }, void 0, false, {
                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                                            lineNumber: 237,
+                                                            lineNumber: 233,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                                    lineNumber: 227,
+                                                    lineNumber: 224,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, range.value, true, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                            lineNumber: 215,
+                                            lineNumber: 212,
                                             columnNumber: 17
                                         }, this))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                                lineNumber: 204,
+                                lineNumber: 201,
                                 columnNumber: 13
                             }, this)
                         ]
@@ -592,7 +592,7 @@ function FilterModal({ onClose, activeFilters, setActiveFilters, clearFilters })
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "bg-white px-8 py-5 flex items-center justify-between border-t border-[#E4D7C5]",
+                    className: "bg-white px-4 sm:px-8 py-4 sm:py-5 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4 border-t border-[#E4D7C5]",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                             onClick: ()=>{
@@ -602,26 +602,26 @@ function FilterModal({ onClose, activeFilters, setActiveFilters, clearFilters })
                                 setSelectedRating("");
                                 setCostRange("");
                             },
-                            className: "px-6 py-2.5 border border-[#D7C7AD] text-[#5E4633] font-semibold  rounded-xl hover:bg-[#F7EFE3] transition-all",
+                            className: "px-6 py-2.5 border border-[#D7C7AD] text-[#5E4633] font-semibold  rounded-xl hover:bg-[#F7EFE3] transition-all text-sm sm:text-base",
                             children: "Clear All"
                         }, void 0, false, {
                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                            lineNumber: 249,
+                            lineNumber: 245,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                             onClick: applyFilters,
-                            className: "px-8 py-2.5 bg-[#C9A050] text-white font-bold rounded-xl  hover:bg-[#A68545] transition-all shadow-md hover:shadow-lg transform hover:scale-105",
+                            className: "px-8 py-2.5 bg-[#C9A050] text-white font-bold rounded-xl  hover:bg-[#A68545] transition-all shadow-md hover:shadow-lg transform hover:scale-105 text-sm sm:text-base",
                             children: "Apply Filters"
                         }, void 0, false, {
                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                            lineNumber: 263,
+                            lineNumber: 259,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/FilterModal.js",
-                    lineNumber: 248,
+                    lineNumber: 244,
                     columnNumber: 9
                 }, this)
             ]
@@ -865,7 +865,7 @@ function HeroSection() {
                 className: "jsx-4f73697aa58dfe91" + " " + "relative z-10 text-center px-4 md:px-8 max-w-6xl mx-auto",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                        className: "jsx-4f73697aa58dfe91" + " " + "text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 animate-fade-in",
+                        className: "jsx-4f73697aa58dfe91" + " " + "text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-4 sm:mb-6 animate-fade-in",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                             className: "jsx-4f73697aa58dfe91" + " " + "bg-gradient-to-r from-[#C9A050] via-[#F4D483] to-[#C9A050] bg-clip-text text-transparent",
                             children: "DineX"
@@ -880,7 +880,7 @@ function HeroSection() {
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        className: "jsx-4f73697aa58dfe91" + " " + "text-xl md:text-3xl lg:text-4xl font-semibold text-white mb-4 animate-slide-up",
+                        className: "jsx-4f73697aa58dfe91" + " " + "text-lg sm:text-xl md:text-3xl lg:text-4xl font-semibold text-white mb-3 sm:mb-4 animate-slide-up",
                         children: "Discover. Reserve. Dine."
                     }, void 0, false, {
                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/HeroSection.js",
@@ -888,7 +888,7 @@ function HeroSection() {
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        className: "jsx-4f73697aa58dfe91" + " " + "text-base md:text-xl lg:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto leading-relaxed animate-slide-up-delay",
+                        className: "jsx-4f73697aa58dfe91" + " " + "text-sm sm:text-base md:text-xl lg:text-2xl text-gray-200 mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed animate-slide-up-delay",
                         children: "Find the perfect dining spot near you and book your table in seconds."
                     }, void 0, false, {
                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/HeroSection.js",
@@ -896,13 +896,13 @@ function HeroSection() {
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "jsx-4f73697aa58dfe91" + " " + "grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 max-w-4xl mx-auto",
+                        className: "jsx-4f73697aa58dfe91" + " " + "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12 max-w-4xl mx-auto",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "jsx-4f73697aa58dfe91" + " " + "bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 transform hover:scale-105",
+                                className: "jsx-4f73697aa58dfe91" + " " + "bg-white/10 backdrop-blur-md rounded-2xl p-5 sm:p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 transform hover:scale-105",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "jsx-4f73697aa58dfe91" + " " + "text-4xl mb-3",
+                                        className: "jsx-4f73697aa58dfe91" + " " + "text-3xl sm:text-4xl mb-2 sm:mb-3",
                                         children: "📍"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/HeroSection.js",
@@ -910,7 +910,7 @@ function HeroSection() {
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                        className: "jsx-4f73697aa58dfe91" + " " + "text-lg font-bold text-white mb-2",
+                                        className: "jsx-4f73697aa58dfe91" + " " + "text-base sm:text-lg font-bold text-white mb-1 sm:mb-2",
                                         children: "Nearby Restaurants"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/HeroSection.js",
@@ -918,7 +918,7 @@ function HeroSection() {
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        className: "jsx-4f73697aa58dfe91" + " " + "text-sm text-gray-300",
+                                        className: "jsx-4f73697aa58dfe91" + " " + "text-xs sm:text-sm text-gray-300",
                                         children: "Discover top-rated restaurants in your area"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/HeroSection.js",
@@ -932,10 +932,10 @@ function HeroSection() {
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "jsx-4f73697aa58dfe91" + " " + "bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 transform hover:scale-105",
+                                className: "jsx-4f73697aa58dfe91" + " " + "bg-white/10 backdrop-blur-md rounded-2xl p-5 sm:p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 transform hover:scale-105",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "jsx-4f73697aa58dfe91" + " " + "text-4xl mb-3",
+                                        className: "jsx-4f73697aa58dfe91" + " " + "text-3xl sm:text-4xl mb-2 sm:mb-3",
                                         children: "⏰"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/HeroSection.js",
@@ -943,7 +943,7 @@ function HeroSection() {
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                        className: "jsx-4f73697aa58dfe91" + " " + "text-lg font-bold text-white mb-2",
+                                        className: "jsx-4f73697aa58dfe91" + " " + "text-base sm:text-lg font-bold text-white mb-1 sm:mb-2",
                                         children: "Easy Booking"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/HeroSection.js",
@@ -951,7 +951,7 @@ function HeroSection() {
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        className: "jsx-4f73697aa58dfe91" + " " + "text-sm text-gray-300",
+                                        className: "jsx-4f73697aa58dfe91" + " " + "text-xs sm:text-sm text-gray-300",
                                         children: "Reserve your table at your preferred time slot"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/HeroSection.js",
@@ -965,10 +965,10 @@ function HeroSection() {
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "jsx-4f73697aa58dfe91" + " " + "bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 transform hover:scale-105",
+                                className: "jsx-4f73697aa58dfe91" + " " + "bg-white/10 backdrop-blur-md rounded-2xl p-5 sm:p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 transform hover:scale-105",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "jsx-4f73697aa58dfe91" + " " + "text-4xl mb-3",
+                                        className: "jsx-4f73697aa58dfe91" + " " + "text-3xl sm:text-4xl mb-2 sm:mb-3",
                                         children: "✨"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/HeroSection.js",
@@ -976,7 +976,7 @@ function HeroSection() {
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                        className: "jsx-4f73697aa58dfe91" + " " + "text-lg font-bold text-white mb-2",
+                                        className: "jsx-4f73697aa58dfe91" + " " + "text-base sm:text-lg font-bold text-white mb-1 sm:mb-2",
                                         children: "Premium Experience"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/HeroSection.js",
@@ -984,7 +984,7 @@ function HeroSection() {
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        className: "jsx-4f73697aa58dfe91" + " " + "text-sm text-gray-300",
+                                        className: "jsx-4f73697aa58dfe91" + " " + "text-xs sm:text-sm text-gray-300",
                                         children: "Enjoy a seamless dining experience"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/HeroSection.js",
@@ -1005,14 +1005,14 @@ function HeroSection() {
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                         onClick: scrollToRestaurants,
-                        className: "jsx-4f73697aa58dfe91" + " " + "group relative inline-flex items-center gap-3 bg-gradient-to-r from-[#C9A050] to-[#8B6F3E] text-white px-8 py-4 rounded-full text-lg font-semibold shadow-2xl hover:shadow-[#C9A050]/50 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1",
+                        className: "jsx-4f73697aa58dfe91" + " " + "group relative inline-flex items-center gap-2 sm:gap-3 bg-gradient-to-r from-[#C9A050] to-[#8B6F3E] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold shadow-2xl hover:shadow-[#C9A050]/50 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1",
                         children: [
                             "Explore Restaurants",
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
                                 fill: "none",
                                 stroke: "currentColor",
                                 viewBox: "0 0 24 24",
-                                className: "jsx-4f73697aa58dfe91" + " " + "w-5 h-5 group-hover:translate-x-1 transition-transform duration-300",
+                                className: "jsx-4f73697aa58dfe91" + " " + "w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300",
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
                                     strokeLinecap: "round",
                                     strokeLinejoin: "round",
@@ -2088,10 +2088,10 @@ function Home() {
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 id: "restaurants-section",
-                className: "min-h-screen bg-[#FFF8E7] text-gray-900 px-4 md:px-10 py-8",
+                className: "min-h-screen bg-[#FFF8E7] text-gray-900 px-3 sm:px-4 md:px-10 py-6 sm:py-8",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "max-w-6xl mx-auto sticky top-0 z-20 mb-8 bg-[#FFF8E7] pt-2 ",
+                        className: "max-w-6xl mx-auto sticky top-0 z-20 mb-6 sm:mb-8 bg-[#FFF8E7] pt-2",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$components$2f$FilterBar$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                                 onFiltersChange: (f)=>setFilters(f)
@@ -2111,7 +2111,7 @@ function Home() {
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "max-w-6xl mx-auto grid md:grid-cols-3 sm:grid-cols-2 gap-8 mb-12",
+                        className: "max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-12",
                         children: currentRestaurants.map((res)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$components$2f$RestaurantCard$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                                 restaurant: res
                             }, res.restaurantId, false, {
@@ -2125,14 +2125,14 @@ function Home() {
                         columnNumber: 9
                     }, this),
                     totalPages > 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "max-w-6xl mx-auto flex items-center justify-center gap-2 pb-12",
+                        className: "max-w-6xl mx-auto flex items-center justify-center gap-1 sm:gap-2 pb-8 sm:pb-12 px-2",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                 onClick: ()=>paginate(currentPage - 1),
                                 disabled: currentPage === 1,
-                                className: `px-4 py-2 rounded-lg font-medium transition-all duration-200 ${currentPage === 1 ? 'bg-gray-200 text-gray-400 cursor-not-allowed' : 'bg-white text-gray-700 hover:bg-[#FFF8E7] hover:text-[#8B6F3E] border-2 border-gray-200 hover:border-[#C9A050]'}`,
+                                className: `px-2 sm:px-4 py-2 rounded-lg font-medium transition-all duration-200 ${currentPage === 1 ? 'bg-gray-200 text-gray-400 cursor-not-allowed' : 'bg-white text-gray-700 hover:bg-[#FFF8E7] hover:text-[#8B6F3E] border-2 border-gray-200 hover:border-[#C9A050]'}`,
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                    className: "w-5 h-5",
+                                    className: "w-4 h-4 sm:w-5 sm:h-5",
                                     fill: "none",
                                     stroke: "currentColor",
                                     viewBox: "0 0 24 24",
@@ -2157,7 +2157,7 @@ function Home() {
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "flex gap-2",
+                                className: "flex gap-1 sm:gap-2",
                                 children: [
                                     ...Array(totalPages)
                                 ].map((_, index)=>{
@@ -2166,7 +2166,7 @@ function Home() {
                                     if (pageNumber === 1 || pageNumber === totalPages || pageNumber >= currentPage - 1 && pageNumber <= currentPage + 1) {
                                         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                             onClick: ()=>paginate(pageNumber),
-                                            className: `w-10 h-10 rounded-lg font-semibold transition-all duration-200 ${currentPage === pageNumber ? 'bg-[#C9A050] text-white shadow-md' : 'bg-white text-gray-700 hover:bg-[#FFF8E7] hover:text-[#8B6F3E] border-2 border-gray-200 hover:border-[#C9A050]'}`,
+                                            className: `w-8 h-8 sm:w-10 sm:h-10 rounded-lg font-semibold transition-all duration-200 text-sm sm:text-base ${currentPage === pageNumber ? 'bg-[#C9A050] text-white shadow-md' : 'bg-white text-gray-700 hover:bg-[#FFF8E7] hover:text-[#8B6F3E] border-2 border-gray-200 hover:border-[#C9A050]'}`,
                                             children: pageNumber
                                         }, pageNumber, false, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/page.js",
@@ -2175,7 +2175,7 @@ function Home() {
                                         }, this);
                                     } else if (pageNumber === currentPage - 2 || pageNumber === currentPage + 2) {
                                         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                            className: "px-2 text-gray-400",
+                                            className: "px-1 sm:px-2 text-gray-400 text-sm",
                                             children: "..."
                                         }, pageNumber, false, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/page.js",
@@ -2193,9 +2193,9 @@ function Home() {
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                 onClick: ()=>paginate(currentPage + 1),
                                 disabled: currentPage === totalPages,
-                                className: `px-4 py-2 rounded-lg font-medium transition-all duration-200 ${currentPage === totalPages ? 'bg-gray-200 text-gray-400 cursor-not-allowed' : 'bg-white text-gray-700 hover:bg-[#FFF8E7] hover:text-[#8B6F3E] border-2 border-gray-200 hover:border-[#C9A050]'}`,
+                                className: `px-2 sm:px-4 py-2 rounded-lg font-medium transition-all duration-200 ${currentPage === totalPages ? 'bg-gray-200 text-gray-400 cursor-not-allowed' : 'bg-white text-gray-700 hover:bg-[#FFF8E7] hover:text-[#8B6F3E] border-2 border-gray-200 hover:border-[#C9A050]'}`,
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                    className: "w-5 h-5",
+                                    className: "w-4 h-4 sm:w-5 sm:h-5",
                                     fill: "none",
                                     stroke: "currentColor",
                                     viewBox: "0 0 24 24",
