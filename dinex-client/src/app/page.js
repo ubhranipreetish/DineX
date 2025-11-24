@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import RestaurantCard from "@/components/RestaurantCard";
 import FilterBar from "@/components/FilterBar";
+import SearchBar from "@/components/SearchBar";
 import HeroSection from "@/components/HeroSection";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -20,6 +21,7 @@ export default function Home() {
 
   const [filters, setFilters] = useState([]);
   const [search, setSearch] = useState("");
+  const [location, setLocation] = useState("");
 
   useEffect(() => {
     const params = new URLSearchParams();
@@ -81,15 +83,25 @@ export default function Home() {
 
   return (
     <>
-      <Navbar onSearchChange={(value) => setSearch(value)} />
+      <Navbar />
       {/* Hero Section */}
       <HeroSection />
 
       {/* Restaurants Section */}
       <div id="restaurants-section" className="min-h-screen bg-[#FFF8E7] text-gray-900 px-3 sm:px-4 md:px-10 py-6 sm:py-8">
 
+        {/* Search Bar */}
+        <div className="max-w-6xl mx-auto">
+          <SearchBar
+            searchQuery={search}
+            onSearchChange={setSearch}
+            location={location}
+            onLocationChange={setLocation}
+          />
+        </div>
+
         {/* Sticky Filter Bar */}
-        <div className="max-w-6xl mx-auto sticky top-0 z-20 mb-6 sm:mb-8 bg-[#FFF8E7] pt-2">
+        <div className="max-w-6xl mx-auto sticky top-0 z-20 bg-[#FFF8E7] pt-2">
           <div>
             <FilterBar onFiltersChange={(f) => setFilters(f)} />
           </div>

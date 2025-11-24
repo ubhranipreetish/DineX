@@ -157,46 +157,48 @@ export default function RestaurantDetail() {
     <>
       <Navbar />
       <div className="max-w-6xl mx-auto bg-white rounded-2xl shadow-sm p-6 border border-gray-100">
-        <div className="sticky top-0 z-40 bg-white py-3 sm:py-4">
+        <div className="sticky top-0 z-40 bg-white">
           {/* --- Restaurant Header --- */}
-          <div className="flex flex-col md:flex-row md:items-start justify-between gap-3 sm:gap-4">
-            <div>
-              <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">{restaurant.name}</h1>
-              <p className="text-gray-600 text-sm sm:text-base md:text-lg mt-1">{cuisinesText}</p>
-              <p className="text-gray-500 text-xs sm:text-sm mt-1 line-clamp-1">{restaurant.address}</p>
+          <div className="py-3 sm:py-4">
+            <div className="flex flex-col md:flex-row md:items-start justify-between gap-3 sm:gap-4">
+              <div>
+                <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">{restaurant.name}</h1>
+                <p className="text-gray-600 text-sm sm:text-base md:text-lg mt-1">{cuisinesText}</p>
+                <p className="text-gray-500 text-xs sm:text-sm mt-1 line-clamp-1">{restaurant.address}</p>
 
-              <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mt-2 sm:mt-3 text-xs sm:text-sm">
-                <span className="text-green-600 font-medium bg-green-100 px-2 sm:px-3 py-1 rounded-full">
-                  Open now
-                </span>
-                <span className="text-gray-600">• 10am – 11:30pm</span>
-                <span className="text-gray-600">• ₹{restaurant.priceForTwo} for two</span>
-                <span className="text-red-500 font-medium flex items-center gap-1">
-                  <Phone className="w-3 h-3 sm:w-4 sm:h-4" /> +91 {restaurant.contact}
-                </span>
+                <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mt-2 sm:mt-3 text-xs sm:text-sm">
+                  <span className="text-green-600 font-medium bg-green-100 px-2 sm:px-3 py-1 rounded-full">
+                    Open now
+                  </span>
+                  <span className="text-gray-600">• 10am – 11:30pm</span>
+                  <span className="text-gray-600">• ₹{restaurant.priceForTwo} for two</span>
+                  <span className="text-red-500 font-medium flex items-center gap-1">
+                    <Phone className="w-3 h-3 sm:w-4 sm:h-4" /> +91 {restaurant.contact}
+                  </span>
+                </div>
+              </div>
+
+              {/* --- Rating Section --- */}
+              <div className="flex flex-col items-start md:items-end gap-1.5 sm:gap-2">
+                <div className="flex items-center gap-0.5 sm:gap-1 bg-green-600 text-white px-2 sm:px-2.5 md:px-3 py-1 rounded-md text-xs sm:text-sm font-medium whitespace-nowrap">
+                  <Star className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 fill-white flex-shrink-0" /> {restaurant.rating}
+                </div>
+                <p className="text-xs sm:text-sm text-gray-600 whitespace-nowrap">2534 Dining Ratings</p>
               </div>
             </div>
 
-            {/* --- Rating Section --- */}
-            <div className="flex flex-col items-start md:items-end gap-1.5 sm:gap-2">
-              <div className="flex items-center gap-0.5 sm:gap-1 bg-green-600 text-white px-2 sm:px-2.5 md:px-3 py-1 rounded-md text-xs sm:text-sm font-medium whitespace-nowrap">
-                <Star className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 fill-white flex-shrink-0" /> {restaurant.rating}
-              </div>
-              <p className="text-xs sm:text-sm text-gray-600 whitespace-nowrap">2534 Dining Ratings</p>
+            {/* --- Action Buttons --- */}
+            <div className="flex flex-wrap gap-2 sm:gap-3 mt-3 sm:mt-5">
+              <button className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 text-gray-900 rounded-lg hover:bg-gray-50 transition text-xs sm:text-sm whitespace-nowrap">
+                <MapPin className="w-3 h-3 sm:w-4 sm:h-4 text-gray-900 flex-shrink-0" /> Direction
+              </button>
+              <button className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 text-gray-900 rounded-lg hover:bg-gray-50 transition text-xs sm:text-sm whitespace-nowrap">
+                <Share2 className="w-3 h-3 sm:w-4 sm:h-4 text-gray-900 flex-shrink-0" /> Share
+              </button>
+              <button className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 text-gray-900 rounded-lg hover:bg-gray-50 transition text-xs sm:text-sm whitespace-nowrap">
+                <MessageSquare className="w-3 h-3 sm:w-4 sm:h-4 text-gray-900 flex-shrink-0" /> Reviews
+              </button>
             </div>
-          </div>
-
-          {/* --- Action Buttons --- */}
-          <div className="flex flex-wrap gap-2 sm:gap-3 mt-3 sm:mt-5">
-            <button className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 text-gray-900 rounded-lg hover:bg-gray-50 transition text-xs sm:text-sm whitespace-nowrap">
-              <MapPin className="w-3 h-3 sm:w-4 sm:h-4 text-gray-900 flex-shrink-0" /> Direction
-            </button>
-            <button className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 text-gray-900 rounded-lg hover:bg-gray-50 transition text-xs sm:text-sm whitespace-nowrap">
-              <Share2 className="w-3 h-3 sm:w-4 sm:h-4 text-gray-900 flex-shrink-0" /> Share
-            </button>
-            <button className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 text-gray-900 rounded-lg hover:bg-gray-50 transition text-xs sm:text-sm whitespace-nowrap">
-              <MessageSquare className="w-3 h-3 sm:w-4 sm:h-4 text-gray-900 flex-shrink-0" /> Reviews
-            </button>
           </div>
         </div>
 
@@ -258,6 +260,35 @@ export default function RestaurantDetail() {
           </div>
         </div>
 
+        {/* ✅ Tabs - Sticky below header */}
+        <div className="sticky top-[185px] sm:top-[200px] md:top-[215px] z-30 bg-white border-b border-gray-400 pt-3 sm:pt-5 overflow-x-auto scrollbar-hide" id="tabs">
+          <div className="flex gap-4 sm:gap-6 md:gap-8 text-gray-600 font-medium text-sm sm:text-base md:text-lg min-w-max">
+            {["Overview", "Reviews", "Photos", "Menu", "Book a Table"].map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`pb-3 sm:pb-4 transition-all whitespace-nowrap ${activeTab === tab
+                  ? "text-[#C9A050] border-b-2 border-[#C9A050] font-semibold"
+                  : "hover:text-[#8B6F3E]"
+                  }`}
+              >
+                <span className="hidden sm:inline">{tab}</span>
+                <span className="sm:hidden">{tab === "Book a Table" ? "Book" : tab}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <style jsx>{`
+          .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+          }
+          .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+          }
+        `}</style>
+
         {/* Fullscreen Modal */}
         {selectedImageIndex !== null && (
           <div className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-2 sm:p-4">
@@ -300,37 +331,10 @@ export default function RestaurantDetail() {
         )}
 
 
-        {/* ✅ Tabs */}
-        <div className="sticky top-[180px] sm:top-[200px] md:top-[234px] z-30 bg-white border-b border-gray-400 pt-3 sm:pt-5 overflow-x-auto scrollbar-hide" id="tabs">
-          <div className="flex gap-4 sm:gap-6 md:gap-8 text-gray-600 font-medium text-sm sm:text-base md:text-lg min-w-max">
-            {["Overview", "Reviews", "Photos", "Menu", "Book a Table"].map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`cursor-pointer pb-2 sm:pb-3 relative whitespace-nowrap ${activeTab === tab
-                  ? "text-[#5E4633] after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-[#5E4633]"
-                  : "hover:text-gray-800"
-                  }`}
-              >
-                <span className="hidden sm:inline">{tab}</span>
-                <span className="sm:hidden">{tab === "Book a Table" ? "Book" : tab}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <style jsx>{`
-          .scrollbar-hide::-webkit-scrollbar {
-            display: none;
-          }
-          .scrollbar-hide {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-          }
-        `}</style>
 
         {/* ✅ Overview Section */}
         {activeTab === "Overview" && <Overview restaurant={restaurant} />}
+
 
         {/* --- Reviews Section --- */}
         {activeTab === "Reviews" && <Reviews restaurantName={restaurant.name} />}
