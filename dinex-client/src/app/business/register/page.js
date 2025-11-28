@@ -71,7 +71,7 @@ function RegisterForm() {
             }
 
             alert("Registration successful! Welcome to DineX Business.");
-            router.push("/business/home");
+            router.push("/business/owner/dashboard");
         } catch (err) {
             const errorMessage =
                 err.response?.data?.msg ||

@@ -25,7 +25,7 @@ function LoginForm() {
             }
 
             alert("Login successful! Welcome back.");
-            router.push("/business/home");
+            router.push("/business/owner/dashboard");
         } catch (err) {
             alert(err.response?.data?.msg || "Login failed");
         } finally {

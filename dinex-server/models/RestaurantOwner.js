@@ -29,6 +29,7 @@ const RestaurantOwnerSchema = new mongoose.Schema({
         },
         totalTables: { type: Number, required: true },
         createdAt: { type: Date, default: Date.now },
+        updatedAt: { type: Date, default: Date.now },
     },
 
     // ================================
@@ -44,6 +45,6 @@ const RestaurantOwnerSchema = new mongoose.Schema({
             createdAt: { type: Date, default: Date.now },
         },
     ],
-});
+}, { timestamps: true }); // Enable automatic timestamps
 
 export default mongoose.model("RestaurantOwner", RestaurantOwnerSchema);

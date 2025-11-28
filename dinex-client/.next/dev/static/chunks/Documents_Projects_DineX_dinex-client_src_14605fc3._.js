@@ -105,7 +105,7 @@ function RegisterForm() {
                 localStorage.setItem("businessOwner", JSON.stringify(res.data.owner));
             }
             alert("Registration successful! Welcome to DineX Business.");
-            router.push("/business/home");
+            router.push("/business/owner/dashboard");
         } catch (err) {
             const errorMessage = err.response?.data?.msg || err.response?.data?.message || err.message || "Registration failed. Please try again.";
             alert(errorMessage);
