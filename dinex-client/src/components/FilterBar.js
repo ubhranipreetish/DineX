@@ -42,7 +42,7 @@ export default function FilterBar({ onFiltersChange }) {
   
 
   return (
-    <div className="sticky top-16 z-30 bg-white py-4 px-4 rounded-2xl shadow-md border border-[#E4D7C5]">
+    <div className="sticky top-16 z-30 bg-white py-4 px-4 mb-8 rounded-2xl shadow-md border border-[#E4D7C5]">
       <div className="flex flex-wrap gap-3 items-center">
 
         {/* Filters button */}

@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import authRoutes from "./routes/auth.js";
 import restaurantRoutes from "./routes/restaurant.js";
 import bookingRoutes from "./routes/booking.js";
+import businessAuthRoutes from "./routes/businessAuth.js";
 
 dotenv.config();
 console.log("Loaded MONGO_URI:", process.env.MONGO_URI);
@@ -30,6 +31,7 @@ mongoose.connect(process.env.MONGO_URI, {
 app.use("/api/auth", authRoutes);
 app.use("/api/restaurants", restaurantRoutes);
 app.use("/api/bookings", bookingRoutes);
+app.use("/api/business", businessAuthRoutes);
 app.get("/", (req, res) => res.send("DineX Backend Running ✅"));
 
 const PORT = process.env.PORT || 8080;

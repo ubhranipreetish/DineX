@@ -67,7 +67,7 @@ export default function SearchBar({ searchQuery, onSearchChange, location, onLoc
                         type="text"
                         value={searchQuery}
                         onChange={(e) => onSearchChange(e.target.value)}
-                        placeholder="Search for restaurant, cuisine or dish..."
+                        placeholder="Search for restaurant, cuisine or area..."
                         className="w-full bg-transparent outline-none text-gray-800 placeholder-gray-500 text-sm sm:text-base"
                     />
                 </div>

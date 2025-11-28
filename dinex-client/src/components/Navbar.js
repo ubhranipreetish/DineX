@@ -17,7 +17,7 @@ export default function Navbar() {
     <nav className="w-full bg-white shadow-sm border-b border-gray-100">
       <div className="max-w-6xl mx-auto flex items-center justify-between px-4 sm:px-6 py-4">
         {/* Logo */}
-        <Link href="/" className="flex items-center">
+        <Link href="/customer/home" className="flex items-center">
           <Image
             src="/images/logo2.png"
             alt="DineX Logo"
@@ -31,7 +31,7 @@ export default function Navbar() {
         {/* Auth Buttons / User Profile */}
         <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
           {user ? (
-            <Link href="/profile" className="flex items-center gap-2">
+            <Link href="/customer/profile" className="flex items-center gap-2">
               <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#FFF8E7] text-[#8B6F3E] flex items-center justify-center font-semibold text-sm sm:text-base">
                 {user.name ? user.name[0].toUpperCase() : "U"}
               </div>
@@ -42,13 +42,13 @@ export default function Navbar() {
           ) : (
             <>
               <Link
-                href="/login"
+                href="/customer/login"
                 className="text-gray-600 hover:text-[#C9A050] text-sm md:text-base font-medium transition-colors"
               >
                 Login
               </Link>
               <Link
-                href="/signup"
+                href="/customer/signup"
                 className="text-gray-600 hover:text-[#C9A050] text-sm md:text-base font-medium transition-colors"
               >
                 Signup

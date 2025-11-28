@@ -62,7 +62,7 @@ export default function BookingForm({ restaurantName, restaurantId, offers = [],
     if (!user) {
       // Get current page URL and redirect to login with return URL
       const currentPath = window.location.pathname;
-      router.push(`/login?redirect=${encodeURIComponent(currentPath)}`);
+      router.push(`/customer/login?redirect=${encodeURIComponent(currentPath)}`);
       return;
     }
 
