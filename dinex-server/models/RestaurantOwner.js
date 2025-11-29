@@ -38,9 +38,9 @@ const RestaurantOwnerSchema = new mongoose.Schema({
     waiters: [
         {
             name: { type: String, required: true },
-            phone: { type: String, required: true },
+            phone: { type: String, required: true, unique: true  },
             password: { type: String, required: true }, // hashed PIN or password
-            role: { type: String, enum: ["waiter", "manager"], default: "waiter" },
+            role: { type: String, enum: ["waiter", "manager","chef","bartender"], default: "waiter" },
             isActive: { type: Boolean, default: true },
             createdAt: { type: Date, default: Date.now },
         },
