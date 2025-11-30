@@ -156,7 +156,7 @@ function BusinessDataProvider({ children }) {
     const [isLoading, setIsLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(true);
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRouter"])();
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
-        const token = localStorage.getItem("businessToken");
+        const token = localStorage.getItem("token");
         const owner = localStorage.getItem("businessOwner");
         if (!token || !owner) {
             router.push("/business/login");
@@ -166,19 +166,11 @@ function BusinessDataProvider({ children }) {
     }, []);
     const fetchAllData = async ()=>{
         try {
-            const token = localStorage.getItem("businessToken");
+            const token = localStorage.getItem("token");
             // Fetch profile and staff in parallel
             const [profileRes, staffRes] = await Promise.all([
-                __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$utils$2f$api$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["API"].get("/api/business/profile", {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                }),
-                __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$utils$2f$api$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["API"].get("/api/business/staff", {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                })
+                __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$utils$2f$api$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["API"].get("/api/business/profile"),
+                __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$utils$2f$api$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["API"].get("/api/business/staff")
             ]);
             setOwnerData(profileRes.data.owner);
             setStaff(staffRes.data.staff);
@@ -200,12 +192,7 @@ function BusinessDataProvider({ children }) {
     };
     const refreshStaff = async ()=>{
         try {
-            const token = localStorage.getItem("businessToken");
-            const res = await __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$utils$2f$api$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["API"].get("/api/business/staff", {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            });
+            const res = await __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$utils$2f$api$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["API"].get("/api/business/staff");
             setStaff(res.data.staff);
         } catch (err) {
             console.error("Error refreshing staff:", err);
@@ -224,7 +211,7 @@ function BusinessDataProvider({ children }) {
         children: children
     }, void 0, false, {
         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/owner/context/BusinessDataContext.js",
-        lineNumber: 83,
+        lineNumber: 76,
         columnNumber: 9
     }, this);
 }

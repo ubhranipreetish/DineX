@@ -19,7 +19,7 @@ function LoginForm() {
             const res = await API.post("/api/business/login", form);
             const { token, owner } = res.data;
 
-            if (token) localStorage.setItem("businessToken", token);
+            if (token) localStorage.setItem("token", token);
             if (owner) {
                 localStorage.setItem("businessOwner", JSON.stringify(owner));
             }

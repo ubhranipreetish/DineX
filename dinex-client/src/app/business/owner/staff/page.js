@@ -20,10 +20,7 @@ export default function StaffPage() {
         e.preventDefault();
 
         try {
-            const token = localStorage.getItem("businessToken");
-            await API.post("/api/business/staff", staffForm, {
-                headers: { Authorization: `Bearer ${token}` },
-            });
+            await API.post("/api/business/staff", staffForm);
 
             alert("Staff member added successfully!");
             setShowAddStaffModal(false);
@@ -36,10 +33,7 @@ export default function StaffPage() {
 
     const handleUpdateStaff = async (staffId, updates) => {
         try {
-            const token = localStorage.getItem("businessToken");
-            await API.put(`/api/business/staff/${staffId}`, updates, {
-                headers: { Authorization: `Bearer ${token}` },
-            });
+            await API.put(`/api/business/staff/${staffId}`, updates);
 
             alert("Staff member updated successfully!");
             refreshStaff();
@@ -54,10 +48,7 @@ export default function StaffPage() {
         }
 
         try {
-            const token = localStorage.getItem("businessToken");
-            await API.delete(`/api/business/staff/${staffId}`, {
-                headers: { Authorization: `Bearer ${token}` },
-            });
+            await API.delete(`/api/business/staff/${staffId}`);
 
             alert("Staff member removed successfully!");
             refreshStaff();
@@ -157,8 +148,8 @@ export default function StaffPage() {
                                         {/* Status */}
                                         <td className="px-6 py-4">
                                             <span className={`px-3 py-1 rounded-full text-xs font-semibold ${member.isActive
-                                                    ? "bg-green-100 text-green-700"
-                                                    : "bg-gray-100 text-gray-600"
+                                                ? "bg-green-100 text-green-700"
+                                                : "bg-gray-100 text-gray-600"
                                                 }`}>
                                                 {member.isActive ? "Active" : "Inactive"}
                                             </span>

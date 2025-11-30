@@ -64,7 +64,7 @@ function RegisterForm() {
 
             // Save token and owner data
             if (res.data?.token) {
-                localStorage.setItem("businessToken", res.data.token);
+                localStorage.setItem("token", res.data.token);
             }
             if (res.data?.owner) {
                 localStorage.setItem("businessOwner", JSON.stringify(res.data.owner));

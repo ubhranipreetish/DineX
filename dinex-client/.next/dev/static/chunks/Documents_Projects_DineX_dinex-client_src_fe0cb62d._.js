@@ -61,7 +61,7 @@ function LoginForm() {
         try {
             const res = await __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$utils$2f$api$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["API"].post("/api/business/login", form);
             const { token, owner } = res.data;
-            if (token) localStorage.setItem("businessToken", token);
+            if (token) localStorage.setItem("token", token);
             if (owner) {
                 localStorage.setItem("businessOwner", JSON.stringify(owner));
             }

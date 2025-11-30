@@ -40,10 +40,7 @@ export default function SettingsPage() {
         e.preventDefault();
 
         try {
-            const token = localStorage.getItem("businessToken");
-            const res = await API.put("/api/business/restaurant", restaurantForm, {
-                headers: { Authorization: `Bearer ${token}` },
-            });
+            const res = await API.put("/api/business/restaurant", restaurantForm);
 
             alert("Restaurant details updated successfully!");
             updateOwnerData(res.data.owner);
@@ -53,7 +50,7 @@ export default function SettingsPage() {
     };
 
     const handleLogout = () => {
-        localStorage.removeItem("businessToken");
+        localStorage.removeItem("token");
         localStorage.removeItem("businessOwner");
         router.push("/business/home");
     };

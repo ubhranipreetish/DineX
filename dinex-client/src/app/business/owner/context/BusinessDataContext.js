@@ -12,7 +12,7 @@ export function BusinessDataProvider({ children }) {
     const router = useRouter();
 
     useEffect(() => {
-        const token = localStorage.getItem("businessToken");
+        const token = localStorage.getItem("token");
         const owner = localStorage.getItem("businessOwner");
 
         if (!token || !owner) {
@@ -25,16 +25,12 @@ export function BusinessDataProvider({ children }) {
 
     const fetchAllData = async () => {
         try {
-            const token = localStorage.getItem("businessToken");
+            const token = localStorage.getItem("token");
 
             // Fetch profile and staff in parallel
             const [profileRes, staffRes] = await Promise.all([
-                API.get("/api/business/profile", {
-                    headers: { Authorization: `Bearer ${token}` },
-                }),
-                API.get("/api/business/staff", {
-                    headers: { Authorization: `Bearer ${token}` },
-                })
+                API.get("/api/business/profile"),
+                API.get("/api/business/staff")
             ]);
 
             setOwnerData(profileRes.data.owner);
@@ -60,10 +56,7 @@ export function BusinessDataProvider({ children }) {
 
     const refreshStaff = async () => {
         try {
-            const token = localStorage.getItem("businessToken");
-            const res = await API.get("/api/business/staff", {
-                headers: { Authorization: `Bearer ${token}` },
-            });
+            const res = await API.get("/api/business/staff");
             setStaff(res.data.staff);
         } catch (err) {
             console.error("Error refreshing staff:", err);
