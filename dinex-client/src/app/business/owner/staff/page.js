@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { API } from "@/utils/api";
 import DashboardNav from "../components/DashboardNav";
 import { useBusinessData } from "../context/BusinessDataContext";
@@ -15,6 +15,14 @@ export default function StaffPage() {
         password: "",
         role: "waiter",
     });
+
+    // Set default authorization header
+    useEffect(() => {
+        const token = localStorage.getItem("businessToken");
+        if (token) {
+            API.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        }
+    }, []);
 
     const handleAddStaff = async (e) => {
         e.preventDefault();

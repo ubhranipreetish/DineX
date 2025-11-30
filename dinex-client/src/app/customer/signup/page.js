@@ -31,14 +31,14 @@ function SignupForm() {
         try {
             const res = await API.post("/api/auth/signup", form);
 
-            // save returned user (backend returns { msg, user })
+            // save returned user and token (backend returns { msg, user, token })
+            if (res.data?.token) {
+                localStorage.setItem("userToken", res.data.token);
+            }
             if (res.data?.user) {
                 localStorage.setItem("user", JSON.stringify(res.data.user));
-                // optionally you might auto-login — if you return a token from signup store it here
-                // localStorage.setItem("token", res.data.token)
             }
 
-            localStorage.setItem("user", JSON.stringify(res.data.user));
             window.dispatchEvent(new Event("userUpdated"));
 
             // Check if there's a redirect parameter

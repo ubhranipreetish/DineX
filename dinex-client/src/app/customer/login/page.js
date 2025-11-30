@@ -21,7 +21,7 @@ function LoginForm() {
             const res = await API.post("/api/auth/login", form);
             const { token, user } = res.data;
 
-            if (token) localStorage.setItem("token", token);
+            if (token) localStorage.setItem("userToken", token);
             if (user) {
                 localStorage.setItem("user", JSON.stringify(user));
                 window.dispatchEvent(new Event("userUpdated"));

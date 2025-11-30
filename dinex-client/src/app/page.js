@@ -58,7 +58,7 @@ export default function Home() {
           playsInline
           className="absolute top-0 left-0 w-full h-full object-cover"
         >
-          <source src="/videos/hero-video.mp4" type="video/mp4" />
+          <source src="https://res.cloudinary.com/dzlge3iut/video/upload/v1764503566/hero-video_hdxkkv.mp4" type="video/mp4" />
         </video>
 
         {/* Dark Overlay */}

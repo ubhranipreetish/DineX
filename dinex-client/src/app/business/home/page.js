@@ -2,14 +2,44 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
+import { API } from "@/utils/api";
 import Footer from "@/components/Footer";
 
 export default function BusinessHome() {
     const [activeFeature, setActiveFeature] = useState(0);
     const [isWhyVisible, setIsWhyVisible] = useState(false);
     const [isTestimonialsVisible, setIsTestimonialsVisible] = useState(false);
+    const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
     const whySectionRef = useRef(null);
     const testimonialsSectionRef = useRef(null);
+    const router = useRouter();
+
+    // Check if user is already logged in and redirect to dashboard
+
+    useEffect(() => {
+        const checkAuth = async () => {
+            const token = localStorage.getItem("businessToken");
+            const businessOwner = localStorage.getItem("businessOwner");
+
+            if (token && businessOwner) {
+                try {
+                    await API.get("/api/business/profile", {
+                        headers: {
+                            Authorization: `Bearer ${token}`
+                        }
+                    });
+                    setIsUserLoggedIn(true);
+                } catch (err) {
+                    // Token is invalid, clear it
+                    localStorage.removeItem("businessToken");
+                    localStorage.removeItem("businessOwner");
+                }
+            }
+        };
+
+        checkAuth();
+    }, [router]);
 
     // Smooth scrolling function
     const scrollToSection = (sectionId) => {
@@ -409,7 +439,7 @@ export default function BusinessHome() {
                     </p>
 
                     {/* Two CTA Options */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                         {/* Register Your Restaurant */}
                         <div className="bg-white rounded-2xl p-10 shadow-2xl hover:shadow-3xl">
                             <div className="text-[#C9A050] mb-4">
@@ -421,7 +451,7 @@ export default function BusinessHome() {
                             <p className="text-gray-600 mb-6">
                                 Register your restaurant and start managing tables, orders, and staff digitally.
                             </p>
-                            <Link href="/business/register">
+                            <Link href={isUserLoggedIn ? "/business/owner/dashboard" : "/business/register"}>
                                 <button className="w-full py-4 rounded-xl font-bold text-white text-lg shadow-xl hover:shadow-2xl cursor-pointer"
                                     style={{ background: "linear-gradient(135deg, #1F2937, #374151)" }}
                                 >
@@ -441,7 +471,7 @@ export default function BusinessHome() {
                             <p className="text-gray-600 mb-6">
                                 Already have an account? Log in to access your restaurant dashboard.
                             </p>
-                            <Link href="/business/login">
+                            <Link href={isUserLoggedIn ? "/business/owner/dashboard" : "/business/owner/login"}>
                                 <button className="w-full py-4 rounded-xl font-bold text-white text-lg shadow-xl hover:shadow-2xl cursor-pointer"
                                     style={{ background: "linear-gradient(135deg, #1F2937, #374151)" }}
                                 >
@@ -451,6 +481,34 @@ export default function BusinessHome() {
                         </div>
                     </div>
 
+                    {/* STAFF LOGIN CARD */}
+                    <div className="max-w-md mx-auto mt-10 mb-12">
+                        <div className="bg-white rounded-2xl p-10 shadow-2xl hover:shadow-3xl">
+
+                            <div className="text-[#C9A050] mb-4">
+                                <svg className="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                                </svg>
+                            </div>
+
+                            <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center">
+                                Staff Login
+                            </h3>
+
+                            <p className="text-gray-600 mb-6 text-center">
+                                If you are a staff member, log in to access your assigned tables and orders.
+                            </p>
+
+                            <Link href="/business/staff/login">
+                                <button
+                                    className="w-full py-4 rounded-xl font-bold text-white text-lg shadow-xl hover:shadow-2xl cursor-pointer"
+                                    style={{ background: "linear-gradient(135deg, #1F2937, #374151)" }}
+                                >
+                                    Login as Staff →
+                                </button>
+                            </Link>
+                        </div>
+                    </div>
                     {/* Contact Alternative */}
                     <div className="text-gray-700 pt-8 border-t border-gray-300">
                         <p className="text-lg mb-3">Need help or have questions?</p>
@@ -460,6 +518,7 @@ export default function BusinessHome() {
                         <p className="text-gray-600">Our team is here to help you get started</p>
                     </div>
                 </div>
+
             </section>
 
             {/* ===== FOOTER ===== */}

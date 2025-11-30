@@ -7,10 +7,24 @@ export default function Navbar() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
+    const loadUser = () => {
+      const storedUser = localStorage.getItem("user");
+      if (storedUser) {
+        setUser(JSON.parse(storedUser));
+      } else {
+        setUser(null);
+      }
+    };
+
+    // Load user on mount
+    loadUser();
+
+    // Listen for user updates
+    window.addEventListener("userUpdated", loadUser);
+
+    return () => {
+      window.removeEventListener("userUpdated", loadUser);
+    };
   }, []);
 
   return (

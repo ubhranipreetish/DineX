@@ -123,5 +123,61 @@ router.post("/login", async (req, res) => {
         res.status(500).json({ msg: err.message });
     }
 });
+// 🟢 Staff Login
+router.post("/staff/login", async (req, res) => {
+    const { restaurantName, phone, password } = req.body;
+
+    try {
+        // Find restaurant by name
+        const owner = await RestaurantOwner.findOne({ "restaurant.name": restaurantName });
+        if (!owner) {
+            return res.status(404).json({ msg: "Restaurant not found" });
+        }
+
+        // Find staff member in the waiters array
+        const staffMember = owner.waiters.find(w => w.phone === phone);
+        if (!staffMember) {
+            return res.status(404).json({ msg: "Staff member not found" });
+        }
+
+        // Check if account is active
+        if (!staffMember.isActive) {
+            return res.status(403).json({ msg: "Account is disabled" });
+        }
+
+        // Verify password
+        const valid = await bcrypt.compare(password, staffMember.password);
+        if (!valid) {
+            return res.status(401).json({ msg: "Invalid credentials" });
+        }
+
+        // Generate JWT token
+        const token = jwt.sign(
+            {
+                id: staffMember._id,
+                ownerId: owner._id,
+                role: "staff",
+                staffRole: staffMember.role,
+                restaurantName: owner.restaurant.name,
+            },
+            process.env.JWT_SECRET,
+            { expiresIn: "24h" }
+        );
+
+        // Remove password from response
+        const staffResponse = staffMember.toObject();
+        delete staffResponse.password;
+
+        res.json({
+            msg: "Login successful",
+            token,
+            staff: staffResponse,
+            restaurantName: owner.restaurant.name
+        });
+    } catch (err) {
+        console.error("Staff login error:", err);
+        res.status(500).json({ msg: err.message });
+    }
+});
 
 export default router;

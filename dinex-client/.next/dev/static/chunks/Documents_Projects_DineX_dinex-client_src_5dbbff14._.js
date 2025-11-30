@@ -55,35 +55,40 @@ function BusinessDataProvider({ children }) {
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"])();
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "BusinessDataProvider.useEffect": ()=>{
-            const token = localStorage.getItem("token");
+            const token = localStorage.getItem("businessToken");
             const owner = localStorage.getItem("businessOwner");
             if (!token || !owner) {
-                router.push("/business/login");
+                router.push("/business/owner/login");
                 return;
             }
-            fetchAllData();
+            fetchAllData(token);
         }
     }["BusinessDataProvider.useEffect"], []);
-    const fetchAllData = async ()=>{
+    const fetchAllData = async (token)=>{
         try {
-            const token = localStorage.getItem("token");
+            // Set token in headers for API calls
+            const config = {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            };
             // Fetch profile and staff in parallel
             const [profileRes, staffRes] = await Promise.all([
-                __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$utils$2f$api$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["API"].get("/api/business/profile"),
-                __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$utils$2f$api$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["API"].get("/api/business/staff")
+                __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$utils$2f$api$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["API"].get("/api/business/profile", config),
+                __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$utils$2f$api$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["API"].get("/api/business/staff", config)
             ]);
             setOwnerData(profileRes.data.owner);
             setStaff(staffRes.data.staff);
             setIsLoading(false);
         } catch (err) {
             console.error("Error fetching data:", err);
-            setIsLoading(false);
-            if (err.response?.status === 401) {
-                alert("Session expired. Please login again.");
-                router.push("/business/login");
-            } else {
-                alert("Failed to load data. Please try again.");
+            // Check if error is due to invalid/expired token
+            if (err.response?.status === 401 || err.response?.status === 403) {
+                localStorage.removeItem("businessToken");
+                localStorage.removeItem("businessOwner");
+                router.push("/business/owner/login");
             }
+            setIsLoading(false);
         }
     };
     const updateOwnerData = (newData)=>{
@@ -111,7 +116,7 @@ function BusinessDataProvider({ children }) {
         children: children
     }, void 0, false, {
         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/owner/context/BusinessDataContext.js",
-        lineNumber: 76,
+        lineNumber: 80,
         columnNumber: 9
     }, this);
 }

@@ -1,5 +1,5 @@
 "use client";
-import { useState, Suspense } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useRouter } from "next/navigation";
 import { API } from "@/utils/api";
 import Link from "next/link";
@@ -19,7 +19,7 @@ function LoginForm() {
             const res = await API.post("/api/business/login", form);
             const { token, owner } = res.data;
 
-            if (token) localStorage.setItem("token", token);
+            if (token) localStorage.setItem("businessToken", token);
             if (owner) {
                 localStorage.setItem("businessOwner", JSON.stringify(owner));
             }
@@ -125,9 +125,7 @@ function LoginForm() {
                                         <input type="checkbox" className="w-4 h-4 text-[#C9A050] border-gray-300 rounded focus:ring-[#C9A050]" />
                                         <span className="ml-2 text-sm text-gray-600">Remember me</span>
                                     </label>
-                                    <a href="#" className="text-sm text-[#8B6F3E] hover:text-[#C9A050] font-medium">
-                                        Forgot password?
-                                    </a>
+                                    <a href="#" className="text-sm text-[#8B6F3E] hover:text-[#C9A050] font-medium">Forgot password?</a>
                                 </div>
 
                                 {/* Login Button */}
@@ -139,8 +137,8 @@ function LoginForm() {
                                     {isLoading ? (
                                         <>
                                             <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                                             </svg>
                                             Logging in...
                                         </>
@@ -154,7 +152,7 @@ function LoginForm() {
                             <div className="mt-6 text-center">
                                 <p className="text-gray-600">
                                     Don't have an account?{' '}
-                                    <Link href="/business/register" className="text-[#8B6F3E] hover:text-[#C9A050] font-semibold">
+                                    <Link href="/business/owner/register" className="text-[#8B6F3E] hover:text-[#C9A050] font-semibold">
                                         Register your restaurant
                                     </Link>
                                 </p>

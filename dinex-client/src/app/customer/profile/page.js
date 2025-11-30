@@ -316,7 +316,7 @@ export default function ProfilePage() {
                         <h4 className="text-lg font-semibold text-gray-700 mb-2">No upcoming bookings</h4>
                         <p className="text-gray-500 mb-4">Start exploring restaurants and make your first reservation!</p>
                         <button
-                          onClick={() => router.push("/")}
+                          onClick={() => router.push("/customer/home")}
                           className="px-6 py-2 bg-[#C9A050] text-white rounded-lg hover:bg-[#8B6F3E] transition"
                         >
                           Browse Restaurants

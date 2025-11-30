@@ -12,25 +12,30 @@ export function BusinessDataProvider({ children }) {
     const router = useRouter();
 
     useEffect(() => {
-        const token = localStorage.getItem("token");
+        const token = localStorage.getItem("businessToken");
         const owner = localStorage.getItem("businessOwner");
 
         if (!token || !owner) {
-            router.push("/business/login");
+            router.push("/business/owner/login");
             return;
         }
 
-        fetchAllData();
+        fetchAllData(token);
     }, []);
 
-    const fetchAllData = async () => {
+    const fetchAllData = async (token) => {
         try {
-            const token = localStorage.getItem("token");
+            // Set token in headers for API calls
+            const config = {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            };
 
             // Fetch profile and staff in parallel
             const [profileRes, staffRes] = await Promise.all([
-                API.get("/api/business/profile"),
-                API.get("/api/business/staff")
+                API.get("/api/business/profile", config),
+                API.get("/api/business/staff", config)
             ]);
 
             setOwnerData(profileRes.data.owner);
@@ -38,14 +43,13 @@ export function BusinessDataProvider({ children }) {
             setIsLoading(false);
         } catch (err) {
             console.error("Error fetching data:", err);
-            setIsLoading(false);
-
-            if (err.response?.status === 401) {
-                alert("Session expired. Please login again.");
-                router.push("/business/login");
-            } else {
-                alert("Failed to load data. Please try again.");
+            // Check if error is due to invalid/expired token
+            if (err.response?.status === 401 || err.response?.status === 403) {
+                localStorage.removeItem("businessToken");
+                localStorage.removeItem("businessOwner");
+                router.push("/business/owner/login");
             }
+            setIsLoading(false);
         }
     };
 
