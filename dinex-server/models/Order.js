@@ -8,9 +8,10 @@ const OrderSchema = new mongoose.Schema({
         index: true
     },
 
-    // Restaurant Details
+    // ✅ Restaurant Details
     restaurantId: {
-        type: Number,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "RestaurantOwner",
         required: true,
         index: true
     },
@@ -25,7 +26,6 @@ const OrderSchema = new mongoose.Schema({
         required: true
     },
 
-    // Order Status
     status: {
         type: String,
         enum: ["ongoing", "completed", "cancelled"],
@@ -33,10 +33,9 @@ const OrderSchema = new mongoose.Schema({
         index: true
     },
 
-    // All items added to the order
     items: [
         {
-            itemId: { type: String, required: true }, // id from menu
+            itemId: { type: String, required: true },
             name: { type: String, required: true },
             price: { type: Number, required: true },
             quantity: { type: Number, default: 1 },
@@ -45,19 +44,17 @@ const OrderSchema = new mongoose.Schema({
         }
     ],
 
-    // Calculated every update
     totalAmount: {
         type: Number,
         default: 0
     },
 
-    // Timestamps
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now }
 
 }, { timestamps: true });
 
-// Compound indexes for efficient queries
+// Indexes
 OrderSchema.index({ restaurantId: 1, status: 1 });
 OrderSchema.index({ restaurantId: 1, tableNo: 1 });
 

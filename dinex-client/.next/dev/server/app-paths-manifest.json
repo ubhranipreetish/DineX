@@ -1,6 +1,11 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
   "/business/home/page": "app/business/home/page.js",
+  "/business/owner/analytics/page": "app/business/owner/analytics/page.js",
+  "/business/owner/dashboard/page": "app/business/owner/dashboard/page.js",
+  "/business/owner/login/page": "app/business/owner/login/page.js",
+  "/business/owner/register/page": "app/business/owner/register/page.js",
+  "/business/owner/staff/page": "app/business/owner/staff/page.js",
   "/business/staff/home/page": "app/business/staff/home/page.js",
   "/business/staff/login/page": "app/business/staff/login/page.js",
   "/business/staff/running-orders/page": "app/business/staff/running-orders/page.js",

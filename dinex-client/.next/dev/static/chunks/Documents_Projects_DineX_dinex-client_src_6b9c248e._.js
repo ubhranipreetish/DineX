@@ -13,27 +13,22 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$Din
 const API = __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].create({
     baseURL: ("TURBOPACK compile-time value", "https://dinex-24s9.onrender.com")
 });
-// Add request interceptor to attach the correct token based on the endpoint
 API.interceptors.request.use((config)=>{
     let token = null;
-    // Determine which token to use based on the request URL
-    if (config.url?.includes('/api/business/staff/login') || config.url?.includes('/api/business/staff/profile')) {
-        // Staff member authentication endpoints
+    const url = config.url || "";
+    // Staff endpoints (orders + staff routes)
+    if (url.startsWith("/api/orders") || url.startsWith("/api/business/staff")) {
         token = localStorage.getItem("staffToken");
-    } else if (config.url?.includes('/api/business')) {
-        // Business owner endpoints (including staff management)
+    } else if (url.startsWith("/api/business")) {
         token = localStorage.getItem("businessToken");
     } else {
-        // Customer endpoints (default)
         token = localStorage.getItem("userToken");
     }
     if (token) {
         config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
-}, (error)=>{
-    return Promise.reject(error);
-});
+}, (error)=>Promise.reject(error));
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }
@@ -79,51 +74,46 @@ const OrderProvider = ({ children })=>{
                 setOrders(JSON.parse(savedOrders));
             }
             // Fetch restaurant profile to get table count
+            // Fetch restaurant profile to get table count
             const fetchRestaurantData = {
                 "OrderProvider.useEffect.fetchRestaurantData": async ()=>{
                     try {
                         const token = localStorage.getItem('staffToken');
                         if (!token) return;
-                        const res = await __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$utils$2f$api$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["API"].get('/api/business/staff/profile', {
-                            headers: {
-                                Authorization: `Bearer ${token}`
-                            }
+                        const headers = {
+                            Authorization: `Bearer ${token}`
+                        };
+                        // 1. Fetch Restaurant Profile (includes tables)
+                        const profileRes = await __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$utils$2f$api$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["API"].get('/api/business/staff/profile', {
+                            headers
                         });
-                        const restaurantData = res.data;
-                        console.log('Restaurant Data from API:', restaurantData);
+                        const restaurantData = profileRes.data;
                         setRestaurant(restaurantData);
-                        // Ensure tables count is a number
-                        const totalTables = parseInt(restaurantData.tables) || 20;
-                        // Check if we have saved tables with correct count
-                        if (savedTables) {
-                            const parsedTables = JSON.parse(savedTables);
-                            if (parsedTables.length === totalTables) {
-                                setTables(parsedTables);
-                                return;
-                            }
-                        }
-                        // Initialize tables based on restaurant data
-                        const initialTables = Array.from({
-                            length: totalTables
-                        }, {
-                            "OrderProvider.useEffect.fetchRestaurantData.initialTables": (_, i)=>({
-                                    id: i + 1,
-                                    tableNumber: i + 1,
-                                    status: 'free',
-                                    currentBill: 0,
-                                    guests: 0,
-                                    orderId: null,
-                                    seatedAt: null
-                                })
-                        }["OrderProvider.useEffect.fetchRestaurantData.initialTables"]);
-                        setTables(initialTables);
-                        localStorage.setItem('dinex_tables', JSON.stringify(initialTables));
-                    } catch (error) {
-                        console.error('Error fetching restaurant data:', error);
-                        // Fallback to saved tables or default 20 tables
-                        if (savedTables) {
-                            setTables(JSON.parse(savedTables));
+                        // 2. Fetch Ongoing Orders (to map to local state for quick access)
+                        const ordersRes = await __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$utils$2f$api$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["API"].get('/api/orders/ongoing', {
+                            headers
+                        });
+                        const activeOrders = ordersRes.data.orders;
+                        // 3. Set Tables directly from backend
+                        if (restaurantData.tables && Array.isArray(restaurantData.tables)) {
+                            const backendTables = restaurantData.tables.map({
+                                "OrderProvider.useEffect.fetchRestaurantData.backendTables": (t)=>({
+                                        id: t.tableNumber,
+                                        tableNumber: t.tableNumber,
+                                        status: t.status,
+                                        currentBill: t.currentBill,
+                                        guests: 0,
+                                        orderId: activeOrders.find({
+                                            "OrderProvider.useEffect.fetchRestaurantData.backendTables": (o)=>o.tableNo === t.tableNumber
+                                        }["OrderProvider.useEffect.fetchRestaurantData.backendTables"])?.orderId || null,
+                                        seatedAt: null
+                                    })
+                            }["OrderProvider.useEffect.fetchRestaurantData.backendTables"]);
+                            setTables(backendTables);
+                            localStorage.setItem('dinex_tables', JSON.stringify(backendTables));
                         } else {
+                            // Fallback if tables are missing (shouldn't happen with migration)
+                            console.warn("No tables found in profile, using default");
                             const defaultTables = Array.from({
                                 length: 20
                             }, {
@@ -138,8 +128,17 @@ const OrderProvider = ({ children })=>{
                                     })
                             }["OrderProvider.useEffect.fetchRestaurantData.defaultTables"]);
                             setTables(defaultTables);
-                            localStorage.setItem('dinex_tables', JSON.stringify(defaultTables));
                         }
+                        // Map orders to state object
+                        const ordersMap = {};
+                        activeOrders.forEach({
+                            "OrderProvider.useEffect.fetchRestaurantData": (o)=>{
+                                ordersMap[o.orderId] = o;
+                            }
+                        }["OrderProvider.useEffect.fetchRestaurantData"]);
+                        setOrders(ordersMap);
+                    } catch (error) {
+                        console.error('Error fetching restaurant data:', error);
                     }
                 }
             }["OrderProvider.useEffect.fetchRestaurantData"];
@@ -381,7 +380,7 @@ const OrderProvider = ({ children })=>{
         children: children
     }, void 0, false, {
         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/context/OrderContext.js",
-        lineNumber: 318,
+        lineNumber: 317,
         columnNumber: 9
     }, ("TURBOPACK compile-time value", void 0));
 };

@@ -27,49 +27,39 @@ export const OrderProvider = ({ children }) => {
         }
 
         // Fetch restaurant profile to get table count
+        // Fetch restaurant profile to get table count
         const fetchRestaurantData = async () => {
             try {
                 const token = localStorage.getItem('staffToken');
                 if (!token) return;
 
-                const res = await API.get('/api/business/staff/profile', {
-                    headers: { Authorization: `Bearer ${token}` }
-                });
+                const headers = { Authorization: `Bearer ${token}` };
 
-                const restaurantData = res.data;
-                console.log('Restaurant Data from API:', restaurantData);
+                // 1. Fetch Restaurant Profile (includes tables)
+                const profileRes = await API.get('/api/business/staff/profile', { headers });
+                const restaurantData = profileRes.data;
                 setRestaurant(restaurantData);
 
-                // Ensure tables count is a number
-                const totalTables = parseInt(restaurantData.tables) || 20;
+                // 2. Fetch Ongoing Orders (to map to local state for quick access)
+                const ordersRes = await API.get('/api/orders/ongoing', { headers });
+                const activeOrders = ordersRes.data.orders;
 
-                // Check if we have saved tables with correct count
-                if (savedTables) {
-                    const parsedTables = JSON.parse(savedTables);
-                    if (parsedTables.length === totalTables) {
-                        setTables(parsedTables);
-                        return;
-                    }
-                }
-
-                // Initialize tables based on restaurant data
-                const initialTables = Array.from({ length: totalTables }, (_, i) => ({
-                    id: i + 1,
-                    tableNumber: i + 1,
-                    status: 'free', // free or occupied (removed bill_pending)
-                    currentBill: 0,
-                    guests: 0,
-                    orderId: null,
-                    seatedAt: null
-                }));
-                setTables(initialTables);
-                localStorage.setItem('dinex_tables', JSON.stringify(initialTables));
-            } catch (error) {
-                console.error('Error fetching restaurant data:', error);
-                // Fallback to saved tables or default 20 tables
-                if (savedTables) {
-                    setTables(JSON.parse(savedTables));
+                // 3. Set Tables directly from backend
+                if (restaurantData.tables && Array.isArray(restaurantData.tables)) {
+                    const backendTables = restaurantData.tables.map(t => ({
+                        id: t.tableNumber,
+                        tableNumber: t.tableNumber,
+                        status: t.status,
+                        currentBill: t.currentBill,
+                        guests: 0,
+                        orderId: activeOrders.find(o => o.tableNo === t.tableNumber)?.orderId || null,
+                        seatedAt: null
+                    }));
+                    setTables(backendTables);
+                    localStorage.setItem('dinex_tables', JSON.stringify(backendTables));
                 } else {
+                    // Fallback if tables are missing (shouldn't happen with migration)
+                    console.warn("No tables found in profile, using default");
                     const defaultTables = Array.from({ length: 20 }, (_, i) => ({
                         id: i + 1,
                         tableNumber: i + 1,
@@ -80,8 +70,17 @@ export const OrderProvider = ({ children }) => {
                         seatedAt: null
                     }));
                     setTables(defaultTables);
-                    localStorage.setItem('dinex_tables', JSON.stringify(defaultTables));
                 }
+
+                // Map orders to state object
+                const ordersMap = {};
+                activeOrders.forEach(o => {
+                    ordersMap[o.orderId] = o;
+                });
+                setOrders(ordersMap);
+
+            } catch (error) {
+                console.error('Error fetching restaurant data:', error);
             }
         };
 

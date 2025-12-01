@@ -479,7 +479,7 @@ export default function BusinessHome() {
                             <p className="text-gray-600 mb-6">
                                 Register your restaurant and start managing tables, orders, and staff digitally.
                             </p>
-                            <Link href={isUserLoggedIn ? "/business/owner/dashboard" : "/business/register"}>
+                            <Link href={isUserLoggedIn ? "/business/owner/dashboard" : "/business/owner/register"}>
                                 <button className="w-full py-4 rounded-xl font-bold text-white text-lg shadow-xl hover:shadow-2xl cursor-pointer"
                                     style={{ background: "linear-gradient(135deg, #1F2937, #374151)" }}
                                 >

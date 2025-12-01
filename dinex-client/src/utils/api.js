@@ -6,30 +6,35 @@ export const API = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL
 });
 
-// Add request interceptor to attach the correct token based on the endpoint
 API.interceptors.request.use(
   (config) => {
     let token = null;
 
-    // Determine which token to use based on the request URL
-    if (config.url?.includes('/api/business/staff/login') ||
-      config.url?.includes('/api/business/staff/profile')) {
-      // Staff member authentication endpoints
+    const url = config.url || "";
+
+    // Staff endpoints (orders + staff routes)
+    if (
+      url.startsWith("/api/orders") ||
+      url.startsWith("/api/business/staff")
+    ) {
       token = localStorage.getItem("staffToken");
-    } else if (config.url?.includes('/api/business')) {
-      // Business owner endpoints (including staff management)
+    }
+
+    // Business owner endpoints
+    else if (url.startsWith("/api/business")) {
       token = localStorage.getItem("businessToken");
-    } else {
-      // Customer endpoints (default)
+    }
+
+    // Customer endpoints (default)
+    else {
       token = localStorage.getItem("userToken");
     }
 
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
+
     return config;
   },
-  (error) => {
-    return Promise.reject(error);
-  }
+  (error) => Promise.reject(error)
 );

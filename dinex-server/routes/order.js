@@ -29,8 +29,8 @@ const getRestaurantDetails = async (req, res, next) => {
             console.log("Restaurant not found for ID:", ownerId);
             return res.status(404).json({ msg: "Restaurant not found" });
         }
-        req.restaurantId = restaurantOwner.id;
-        req.restaurantName = restaurantOwner.restaurantName;
+        req.restaurantId = restaurantOwner._id;
+        req.restaurantName = restaurantOwner.restaurant.name;
         next();
     } catch (err) {
         console.error("Error fetching restaurant details:", err);
@@ -182,9 +182,10 @@ router.get("/:orderId", verifyBusinessToken, getRestaurantDetails, async (req, r
         }
 
         // Verify order belongs to this restaurant
-        if (order.restaurantId !== req.restaurantId) {
+        if (order.restaurantId.toString() !== req.restaurantId.toString()) {
             return res.status(403).json({ msg: "Access denied" });
         }
+
 
         res.json({ order });
     } catch (err) {
@@ -210,9 +211,10 @@ router.post("/:orderId/items", verifyBusinessToken, getRestaurantDetails, async 
         }
 
         // Verify order belongs to this restaurant
-        if (order.restaurantId !== req.restaurantId) {
+        if (order.restaurantId.toString() !== req.restaurantId.toString()) {
             return res.status(403).json({ msg: "Access denied" });
         }
+
 
         // Only allow adding items to ongoing orders
         if (order.status !== "ongoing") {
@@ -274,9 +276,10 @@ router.patch("/:orderId/items/:itemIndex", verifyBusinessToken, getRestaurantDet
         }
 
         // Verify order belongs to this restaurant
-        if (order.restaurantId !== req.restaurantId) {
+        if (order.restaurantId.toString() !== req.restaurantId.toString()) {
             return res.status(403).json({ msg: "Access denied" });
         }
+
 
         // Only allow updates to ongoing orders
         if (order.status !== "ongoing") {
@@ -335,9 +338,10 @@ router.delete("/:orderId/items/:itemIndex", verifyBusinessToken, getRestaurantDe
         }
 
         // Verify order belongs to this restaurant
-        if (order.restaurantId !== req.restaurantId) {
+        if (order.restaurantId.toString() !== req.restaurantId.toString()) {
             return res.status(403).json({ msg: "Access denied" });
         }
+
 
         // Only allow updates to ongoing orders
         if (order.status !== "ongoing") {
@@ -395,9 +399,10 @@ router.patch("/:orderId/complete", verifyBusinessToken, getRestaurantDetails, as
         }
 
         // Verify order belongs to this restaurant
-        if (order.restaurantId !== req.restaurantId) {
+        if (order.restaurantId.toString() !== req.restaurantId.toString()) {
             return res.status(403).json({ msg: "Access denied" });
         }
+
 
         // Only allow completing ongoing orders
         if (order.status !== "ongoing") {
@@ -443,9 +448,10 @@ router.patch("/:orderId/cancel", verifyBusinessToken, getRestaurantDetails, asyn
         }
 
         // Verify order belongs to this restaurant
-        if (order.restaurantId !== req.restaurantId) {
+        if (order.restaurantId.toString() !== req.restaurantId.toString()) {
             return res.status(403).json({ msg: "Access denied" });
         }
+
 
         // Only allow cancelling ongoing orders
         if (order.status !== "ongoing") {
@@ -491,9 +497,10 @@ router.delete("/:orderId", verifyBusinessToken, getRestaurantDetails, async (req
         }
 
         // Verify order belongs to this restaurant
-        if (order.restaurantId !== req.restaurantId) {
+        if (order.restaurantId.toString() !== req.restaurantId.toString()) {
             return res.status(403).json({ msg: "Access denied" });
         }
+
 
         // Only allow deleting completed or cancelled orders
         if (order.status === "ongoing") {
