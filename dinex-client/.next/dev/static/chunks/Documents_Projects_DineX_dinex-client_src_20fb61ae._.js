@@ -15,7 +15,7 @@ const API = __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Project
 });
 // Add request interceptor to attach token
 API.interceptors.request.use((config)=>{
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("userToken");
     if (token) {
         config.headers.Authorization = `Bearer ${token}`;
     }
@@ -750,6 +750,7 @@ function BusinessHome() {
     const [isWhyVisible, setIsWhyVisible] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [isTestimonialsVisible, setIsTestimonialsVisible] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [isUserLoggedIn, setIsUserLoggedIn] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [isStaffLoggedIn, setIsStaffLoggedIn] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const whySectionRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
     const testimonialsSectionRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"])();
@@ -758,20 +759,45 @@ function BusinessHome() {
         "BusinessHome.useEffect": ()=>{
             const checkAuth = {
                 "BusinessHome.useEffect.checkAuth": async ()=>{
-                    const token = localStorage.getItem("businessToken");
+                    const businessToken = localStorage.getItem("businessToken");
                     const businessOwner = localStorage.getItem("businessOwner");
-                    if (token && businessOwner) {
+                    if (businessToken && businessOwner) {
                         try {
                             await __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$utils$2f$api$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["API"].get("/api/business/profile", {
                                 headers: {
-                                    Authorization: `Bearer ${token}`
+                                    Authorization: `Bearer ${businessToken}`
                                 }
                             });
                             setIsUserLoggedIn(true);
                         } catch (err) {
-                            // Token is invalid, clear it
-                            localStorage.removeItem("businessToken");
-                            localStorage.removeItem("businessOwner");
+                            // Only clear tokens if there's an authentication error (401)
+                            if (err.response && err.response.status === 401) {
+                                localStorage.removeItem("businessToken");
+                                localStorage.removeItem("businessOwner");
+                                setIsUserLoggedIn(false);
+                            }
+                        // For other errors (like 403), just set logged in state to false
+                        // but don't remove tokens
+                        }
+                    }
+                    const staffToken = localStorage.getItem("staffToken");
+                    const staffUser = localStorage.getItem("staffUser");
+                    if (staffToken && staffUser) {
+                        try {
+                            await __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$utils$2f$api$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["API"].get("/api/business/staff/profile", {
+                                headers: {
+                                    Authorization: `Bearer ${staffToken}`
+                                }
+                            });
+                            setIsStaffLoggedIn(true);
+                        } catch (err) {
+                            // Only clear tokens if there's an authentication error (401)
+                            if (err.response && err.response.status === 401) {
+                                localStorage.removeItem("staffToken");
+                                localStorage.removeItem("staffUser");
+                                setIsStaffLoggedIn(false);
+                            }
+                        // For other errors, keep the tokens but set state to false
                         }
                     }
                 }
@@ -842,12 +868,12 @@ function BusinessHome() {
                     d: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
                 }, void 0, false, {
                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                    lineNumber: 87,
+                    lineNumber: 115,
                     columnNumber: 100
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                lineNumber: 87,
+                lineNumber: 115,
                 columnNumber: 19
             }, this),
             title: "Smart Table Management",
@@ -873,7 +899,7 @@ function BusinessHome() {
                         d: "M12 6v6m0 0v6m0-6h6m-6 0H6"
                     }, void 0, false, {
                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                        lineNumber: 93,
+                        lineNumber: 121,
                         columnNumber: 100
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
@@ -885,13 +911,13 @@ function BusinessHome() {
                         strokeWidth: 2
                     }, void 0, false, {
                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                        lineNumber: 93,
+                        lineNumber: 121,
                         columnNumber: 200
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                lineNumber: 93,
+                lineNumber: 121,
                 columnNumber: 19
             }, this),
             title: "Seamless Order Management",
@@ -916,12 +942,12 @@ function BusinessHome() {
                     d: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
                 }, void 0, false, {
                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                    lineNumber: 99,
+                    lineNumber: 127,
                     columnNumber: 100
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                lineNumber: 99,
+                lineNumber: 127,
                 columnNumber: 19
             }, this),
             title: "Staff Dashboard",
@@ -946,12 +972,12 @@ function BusinessHome() {
                     d: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
                 }, void 0, false, {
                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                    lineNumber: 105,
+                    lineNumber: 133,
                     columnNumber: 100
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                lineNumber: 105,
+                lineNumber: 133,
                 columnNumber: 19
             }, this),
             title: "Business Analytics",
@@ -976,12 +1002,12 @@ function BusinessHome() {
                     d: "M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"
                 }, void 0, false, {
                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                    lineNumber: 111,
+                    lineNumber: 139,
                     columnNumber: 100
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                lineNumber: 111,
+                lineNumber: 139,
                 columnNumber: 19
             }, this),
             title: "Integrated Billing",
@@ -1006,12 +1032,12 @@ function BusinessHome() {
                     d: "M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
                 }, void 0, false, {
                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                    lineNumber: 117,
+                    lineNumber: 145,
                     columnNumber: 100
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                lineNumber: 117,
+                lineNumber: 145,
                 columnNumber: 19
             }, this),
             title: "Mobile-First Design",
@@ -1064,12 +1090,12 @@ function BusinessHome() {
                     d: "M13 10V3L4 14h7v7l9-11h-7z"
                 }, void 0, false, {
                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                    lineNumber: 153,
+                    lineNumber: 181,
                     columnNumber: 100
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                lineNumber: 153,
+                lineNumber: 181,
                 columnNumber: 19
             }, this),
             title: "Lightning Fast",
@@ -1088,12 +1114,12 @@ function BusinessHome() {
                     d: "M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
                 }, void 0, false, {
                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                    lineNumber: 158,
+                    lineNumber: 186,
                     columnNumber: 100
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                lineNumber: 158,
+                lineNumber: 186,
                 columnNumber: 19
             }, this),
             title: "Secure & Reliable",
@@ -1112,12 +1138,12 @@ function BusinessHome() {
                     d: "M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                 }, void 0, false, {
                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                    lineNumber: 163,
+                    lineNumber: 191,
                     columnNumber: 100
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                lineNumber: 163,
+                lineNumber: 191,
                 columnNumber: 19
             }, this),
             title: "Easy to Use",
@@ -1136,12 +1162,12 @@ function BusinessHome() {
                     d: "M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
                 }, void 0, false, {
                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                    lineNumber: 168,
+                    lineNumber: 196,
                     columnNumber: 100
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                lineNumber: 168,
+                lineNumber: 196,
                 columnNumber: 19
             }, this),
             title: "Premium Support",
@@ -1160,12 +1186,12 @@ function BusinessHome() {
                     d: "M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
                 }, void 0, false, {
                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                    lineNumber: 173,
+                    lineNumber: 201,
                     columnNumber: 100
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                lineNumber: 173,
+                lineNumber: 201,
                 columnNumber: 19
             }, this),
             title: "Proven Results",
@@ -1184,12 +1210,12 @@ function BusinessHome() {
                     d: "M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
                 }, void 0, false, {
                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                    lineNumber: 178,
+                    lineNumber: 206,
                     columnNumber: 100
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                lineNumber: 178,
+                lineNumber: 206,
                 columnNumber: 19
             }, this),
             title: "Always Evolving",
@@ -1209,20 +1235,20 @@ function BusinessHome() {
                                 className: "absolute top-20 left-20 w-96 h-96 bg-[#C9A050]/20 rounded-full blur-3xl animate-pulse"
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                lineNumber: 192,
+                                lineNumber: 220,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "absolute bottom-20 right-20 w-[500px] h-[500px] bg-[#F4D483]/20 rounded-full blur-3xl animate-pulse delay-1000"
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                lineNumber: 193,
+                                lineNumber: 221,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                        lineNumber: 191,
+                        lineNumber: 219,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
@@ -1237,7 +1263,7 @@ function BusinessHome() {
                                 fill: "none"
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                lineNumber: 198,
+                                lineNumber: 226,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -1247,13 +1273,13 @@ function BusinessHome() {
                                 fill: "none"
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                lineNumber: 199,
+                                lineNumber: 227,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                        lineNumber: 197,
+                        lineNumber: 225,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1269,12 +1295,12 @@ function BusinessHome() {
                                     className: "mx-auto drop-shadow-2xl"
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                    lineNumber: 205,
+                                    lineNumber: 233,
                                     columnNumber: 25
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                lineNumber: 204,
+                                lineNumber: 232,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -1285,19 +1311,19 @@ function BusinessHome() {
                                         children: "Revolutionize"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                        lineNumber: 216,
+                                        lineNumber: 244,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                        lineNumber: 219,
+                                        lineNumber: 247,
                                         columnNumber: 25
                                     }, this),
                                     "Your Restaurant"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                lineNumber: 215,
+                                lineNumber: 243,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1305,7 +1331,7 @@ function BusinessHome() {
                                 children: "The complete digital solution for modern restaurants. Manage tables, orders, staff & analytics—all in one powerful platform."
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                lineNumber: 224,
+                                lineNumber: 252,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1320,7 +1346,7 @@ function BusinessHome() {
                                         children: "Get Started →"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                        lineNumber: 230,
+                                        lineNumber: 258,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1329,13 +1355,13 @@ function BusinessHome() {
                                         children: "Explore Features"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                        lineNumber: 237,
+                                        lineNumber: 265,
                                         columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                lineNumber: 229,
+                                lineNumber: 257,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1349,7 +1375,7 @@ function BusinessHome() {
                                                 children: "500+"
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                                lineNumber: 248,
+                                                lineNumber: 276,
                                                 columnNumber: 29
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1357,13 +1383,13 @@ function BusinessHome() {
                                                 children: "Restaurants"
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                                lineNumber: 249,
+                                                lineNumber: 277,
                                                 columnNumber: 29
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                        lineNumber: 247,
+                                        lineNumber: 275,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1374,7 +1400,7 @@ function BusinessHome() {
                                                 children: "50k+"
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                                lineNumber: 252,
+                                                lineNumber: 280,
                                                 columnNumber: 29
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1382,13 +1408,13 @@ function BusinessHome() {
                                                 children: "Orders Daily"
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                                lineNumber: 253,
+                                                lineNumber: 281,
                                                 columnNumber: 29
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                        lineNumber: 251,
+                                        lineNumber: 279,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1399,7 +1425,7 @@ function BusinessHome() {
                                                 children: "40%"
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                                lineNumber: 256,
+                                                lineNumber: 284,
                                                 columnNumber: 29
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1407,13 +1433,13 @@ function BusinessHome() {
                                                 children: "Efficiency Boost"
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                                lineNumber: 257,
+                                                lineNumber: 285,
                                                 columnNumber: 29
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                        lineNumber: 255,
+                                        lineNumber: 283,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1424,7 +1450,7 @@ function BusinessHome() {
                                                 children: "24/7"
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                                lineNumber: 260,
+                                                lineNumber: 288,
                                                 columnNumber: 29
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1432,31 +1458,31 @@ function BusinessHome() {
                                                 children: "Support"
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                                lineNumber: 261,
+                                                lineNumber: 289,
                                                 columnNumber: 29
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                        lineNumber: 259,
+                                        lineNumber: 287,
                                         columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                lineNumber: 246,
+                                lineNumber: 274,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                        lineNumber: 202,
+                        lineNumber: 230,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                lineNumber: 188,
+                lineNumber: 216,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -1477,13 +1503,13 @@ function BusinessHome() {
                                             children: "Modern Restaurants"
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                            lineNumber: 273,
+                                            lineNumber: 301,
                                             columnNumber: 51
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                    lineNumber: 272,
+                                    lineNumber: 300,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1491,13 +1517,13 @@ function BusinessHome() {
                                     children: "Everything you need to run your restaurant smoothly, efficiently, and profitably—all in one platform."
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                    lineNumber: 275,
+                                    lineNumber: 303,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                            lineNumber: 271,
+                            lineNumber: 299,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1511,7 +1537,7 @@ function BusinessHome() {
                                             children: feature.icon
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                            lineNumber: 289,
+                                            lineNumber: 317,
                                             columnNumber: 33
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -1519,7 +1545,7 @@ function BusinessHome() {
                                             children: feature.title
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                            lineNumber: 294,
+                                            lineNumber: 322,
                                             columnNumber: 33
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1527,7 +1553,7 @@ function BusinessHome() {
                                             children: feature.description
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                            lineNumber: 299,
+                                            lineNumber: 327,
                                             columnNumber: 33
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -1540,47 +1566,47 @@ function BusinessHome() {
                                                             children: "✓"
                                                         }, void 0, false, {
                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                                            lineNumber: 307,
+                                                            lineNumber: 335,
                                                             columnNumber: 45
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                             children: benefit
                                                         }, void 0, false, {
                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                                            lineNumber: 308,
+                                                            lineNumber: 336,
                                                             columnNumber: 45
                                                         }, this)
                                                     ]
                                                 }, idx, true, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                                    lineNumber: 306,
+                                                    lineNumber: 334,
                                                     columnNumber: 41
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                            lineNumber: 304,
+                                            lineNumber: 332,
                                             columnNumber: 33
                                         }, this)
                                     ]
                                 }, index, true, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                    lineNumber: 283,
+                                    lineNumber: 311,
                                     columnNumber: 29
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                            lineNumber: 281,
+                            lineNumber: 309,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                    lineNumber: 269,
+                    lineNumber: 297,
                     columnNumber: 17
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                lineNumber: 268,
+                lineNumber: 296,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -1591,14 +1617,14 @@ function BusinessHome() {
                         className: "absolute top-10 right-10 w-72 h-72 bg-[#C9A050]/10 rounded-full blur-3xl"
                     }, void 0, false, {
                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                        lineNumber: 324,
+                        lineNumber: 352,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "absolute bottom-10 left-10 w-96 h-96 bg-[#F4D483]/10 rounded-full blur-3xl"
                     }, void 0, false, {
                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                        lineNumber: 325,
+                        lineNumber: 353,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1616,14 +1642,14 @@ function BusinessHome() {
                                                 children: "DineX"
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                                lineNumber: 331,
+                                                lineNumber: 359,
                                                 columnNumber: 40
                                             }, this),
                                             "?"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                        lineNumber: 330,
+                                        lineNumber: 358,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1631,13 +1657,13 @@ function BusinessHome() {
                                         children: "We're not just a software provider—we're your partner in restaurant success."
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                        lineNumber: 333,
+                                        lineNumber: 361,
                                         columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                lineNumber: 329,
+                                lineNumber: 357,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1653,7 +1679,7 @@ function BusinessHome() {
                                                 children: reason.icon
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                                lineNumber: 347,
+                                                lineNumber: 375,
                                                 columnNumber: 33
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -1661,7 +1687,7 @@ function BusinessHome() {
                                                 children: reason.title
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                                lineNumber: 348,
+                                                lineNumber: 376,
                                                 columnNumber: 33
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1669,30 +1695,30 @@ function BusinessHome() {
                                                 children: reason.description
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                                lineNumber: 349,
+                                                lineNumber: 377,
                                                 columnNumber: 33
                                             }, this)
                                         ]
                                     }, index, true, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                        lineNumber: 341,
+                                        lineNumber: 369,
                                         columnNumber: 29
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                lineNumber: 339,
+                                lineNumber: 367,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                        lineNumber: 327,
+                        lineNumber: 355,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                lineNumber: 319,
+                lineNumber: 347,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -1713,13 +1739,13 @@ function BusinessHome() {
                                             children: "Owners"
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                            lineNumber: 365,
+                                            lineNumber: 393,
                                             columnNumber: 49
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                    lineNumber: 364,
+                                    lineNumber: 392,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1727,13 +1753,13 @@ function BusinessHome() {
                                     children: "Don't just take our word for it—hear from restaurant owners who've transformed their business with DineX."
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                    lineNumber: 367,
+                                    lineNumber: 395,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                            lineNumber: 363,
+                            lineNumber: 391,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1756,17 +1782,17 @@ function BusinessHome() {
                                                         d: "M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                                        lineNumber: 385,
+                                                        lineNumber: 413,
                                                         columnNumber: 45
                                                     }, this)
                                                 }, i, false, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                                    lineNumber: 384,
+                                                    lineNumber: 412,
                                                     columnNumber: 41
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                            lineNumber: 382,
+                                            lineNumber: 410,
                                             columnNumber: 33
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1778,7 +1804,7 @@ function BusinessHome() {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                            lineNumber: 391,
+                                            lineNumber: 419,
                                             columnNumber: 33
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1789,7 +1815,7 @@ function BusinessHome() {
                                                     children: testimonial.name.charAt(0)
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                                    lineNumber: 397,
+                                                    lineNumber: 425,
                                                     columnNumber: 37
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1799,7 +1825,7 @@ function BusinessHome() {
                                                             children: testimonial.name
                                                         }, void 0, false, {
                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                                            lineNumber: 401,
+                                                            lineNumber: 429,
                                                             columnNumber: 41
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1807,7 +1833,7 @@ function BusinessHome() {
                                                             children: testimonial.role
                                                         }, void 0, false, {
                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                                            lineNumber: 402,
+                                                            lineNumber: 430,
                                                             columnNumber: 41
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1815,41 +1841,41 @@ function BusinessHome() {
                                                             children: testimonial.location
                                                         }, void 0, false, {
                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                                            lineNumber: 403,
+                                                            lineNumber: 431,
                                                             columnNumber: 41
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                                    lineNumber: 400,
+                                                    lineNumber: 428,
                                                     columnNumber: 37
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                            lineNumber: 396,
+                                            lineNumber: 424,
                                             columnNumber: 33
                                         }, this)
                                     ]
                                 }, index, true, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                    lineNumber: 375,
+                                    lineNumber: 403,
                                     columnNumber: 29
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                            lineNumber: 373,
+                            lineNumber: 401,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                    lineNumber: 361,
+                    lineNumber: 389,
                     columnNumber: 17
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                lineNumber: 357,
+                lineNumber: 385,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -1862,26 +1888,26 @@ function BusinessHome() {
                             className: "absolute top-0 left-0 w-full h-full bg-[url('/patterns/dots.svg')] opacity-30"
                         }, void 0, false, {
                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                            lineNumber: 416,
+                            lineNumber: 444,
                             columnNumber: 21
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                        lineNumber: 415,
+                        lineNumber: 443,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "absolute top-20 left-20 w-96 h-96 bg-[#C9A050]/10 rounded-full blur-3xl animate-pulse"
                     }, void 0, false, {
                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                        lineNumber: 420,
+                        lineNumber: 448,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "absolute bottom-20 right-20 w-[500px] h-[500px] bg-[#F4D483]/10 rounded-full blur-3xl animate-pulse delay-1000"
                     }, void 0, false, {
                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                        lineNumber: 421,
+                        lineNumber: 449,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1901,17 +1927,17 @@ function BusinessHome() {
                                         d: "M13 10V3L4 14h7v7l9-11h-7z"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                        lineNumber: 427,
+                                        lineNumber: 455,
                                         columnNumber: 29
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                    lineNumber: 426,
+                                    lineNumber: 454,
                                     columnNumber: 25
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                lineNumber: 425,
+                                lineNumber: 453,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -1919,7 +1945,7 @@ function BusinessHome() {
                                 children: "Ready to Transform Your Restaurant?"
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                lineNumber: 432,
+                                lineNumber: 460,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1927,7 +1953,7 @@ function BusinessHome() {
                                 children: "Join the DineX revolution and take your restaurant management to the next level."
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                lineNumber: 437,
+                                lineNumber: 465,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1950,17 +1976,17 @@ function BusinessHome() {
                                                         d: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                                        lineNumber: 447,
+                                                        lineNumber: 475,
                                                         columnNumber: 37
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                                    lineNumber: 446,
+                                                    lineNumber: 474,
                                                     columnNumber: 33
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                                lineNumber: 445,
+                                                lineNumber: 473,
                                                 columnNumber: 29
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -1968,7 +1994,7 @@ function BusinessHome() {
                                                 children: "New Restaurant"
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                                lineNumber: 450,
+                                                lineNumber: 478,
                                                 columnNumber: 29
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1976,7 +2002,7 @@ function BusinessHome() {
                                                 children: "Register your restaurant and start managing tables, orders, and staff digitally."
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                                lineNumber: 451,
+                                                lineNumber: 479,
                                                 columnNumber: 29
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -1989,18 +2015,18 @@ function BusinessHome() {
                                                     children: "Register Your Restaurant →"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                                    lineNumber: 455,
+                                                    lineNumber: 483,
                                                     columnNumber: 33
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                                lineNumber: 454,
+                                                lineNumber: 482,
                                                 columnNumber: 29
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                        lineNumber: 444,
+                                        lineNumber: 472,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2020,17 +2046,17 @@ function BusinessHome() {
                                                         d: "M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                                        lineNumber: 467,
+                                                        lineNumber: 495,
                                                         columnNumber: 37
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                                    lineNumber: 466,
+                                                    lineNumber: 494,
                                                     columnNumber: 33
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                                lineNumber: 465,
+                                                lineNumber: 493,
                                                 columnNumber: 29
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -2038,7 +2064,7 @@ function BusinessHome() {
                                                 children: "Existing User"
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                                lineNumber: 470,
+                                                lineNumber: 498,
                                                 columnNumber: 29
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2046,7 +2072,7 @@ function BusinessHome() {
                                                 children: "Already have an account? Log in to access your restaurant dashboard."
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                                lineNumber: 471,
+                                                lineNumber: 499,
                                                 columnNumber: 29
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -2059,24 +2085,24 @@ function BusinessHome() {
                                                     children: "Log In →"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                                    lineNumber: 475,
+                                                    lineNumber: 503,
                                                     columnNumber: 33
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                                lineNumber: 474,
+                                                lineNumber: 502,
                                                 columnNumber: 29
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                        lineNumber: 464,
+                                        lineNumber: 492,
                                         columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                lineNumber: 442,
+                                lineNumber: 470,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2098,17 +2124,17 @@ function BusinessHome() {
                                                     d: "M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                                    lineNumber: 490,
+                                                    lineNumber: 518,
                                                     columnNumber: 37
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                                lineNumber: 489,
+                                                lineNumber: 517,
                                                 columnNumber: 33
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                            lineNumber: 488,
+                                            lineNumber: 516,
                                             columnNumber: 29
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -2116,7 +2142,7 @@ function BusinessHome() {
                                             children: "Staff Login"
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                            lineNumber: 494,
+                                            lineNumber: 522,
                                             columnNumber: 29
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2124,11 +2150,11 @@ function BusinessHome() {
                                             children: "If you are a staff member, log in to access your assigned tables and orders."
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                            lineNumber: 498,
+                                            lineNumber: 526,
                                             columnNumber: 29
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                                            href: "/business/staff/login",
+                                            href: isStaffLoggedIn ? "/business/staff/home" : "/business/staff/login",
                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                 className: "w-full py-4 rounded-xl font-bold text-white text-lg shadow-xl hover:shadow-2xl cursor-pointer",
                                                 style: {
@@ -2137,23 +2163,23 @@ function BusinessHome() {
                                                 children: "Login as Staff →"
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                                lineNumber: 503,
+                                                lineNumber: 531,
                                                 columnNumber: 33
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                            lineNumber: 502,
+                                            lineNumber: 530,
                                             columnNumber: 29
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                    lineNumber: 486,
+                                    lineNumber: 514,
                                     columnNumber: 25
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                lineNumber: 485,
+                                lineNumber: 513,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2164,7 +2190,7 @@ function BusinessHome() {
                                         children: "Need help or have questions?"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                        lineNumber: 514,
+                                        lineNumber: 542,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -2173,7 +2199,7 @@ function BusinessHome() {
                                         children: "📞 +91 9876543210"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                        lineNumber: 515,
+                                        lineNumber: 543,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2181,40 +2207,40 @@ function BusinessHome() {
                                         children: "Our team is here to help you get started"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                        lineNumber: 518,
+                                        lineNumber: 546,
                                         columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                                lineNumber: 513,
+                                lineNumber: 541,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                        lineNumber: 423,
+                        lineNumber: 451,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                lineNumber: 413,
+                lineNumber: 441,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$components$2f$Footer$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-                lineNumber: 525,
+                lineNumber: 553,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/home/page.js",
-        lineNumber: 185,
+        lineNumber: 213,
         columnNumber: 9
     }, this);
 }
-_s(BusinessHome, "lw7gbCyeFAO4TCnLKVcub27+v/g=", false, function() {
+_s(BusinessHome, "/VD+Ae6c4I3hGlpgRmueL8oj6PQ=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"]
     ];

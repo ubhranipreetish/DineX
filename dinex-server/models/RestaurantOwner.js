@@ -39,12 +39,12 @@ const RestaurantOwnerSchema = new mongoose.Schema({
         {
             name: { type: String, required: true },
             phone: { type: String, required: true, unique: true  },
-            password: { type: String, required: true }, // hashed PIN or password
+            password: { type: String, required: true }, 
             role: { type: String, enum: ["waiter", "manager","chef","bartender"], default: "waiter" },
             isActive: { type: Boolean, default: true },
             createdAt: { type: Date, default: Date.now },
         },
     ],
-}, { timestamps: true }); // Enable automatic timestamps
+}, { timestamps: true });
 
 export default mongoose.model("RestaurantOwner", RestaurantOwnerSchema);

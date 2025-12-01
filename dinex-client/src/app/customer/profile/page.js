@@ -232,10 +232,10 @@ export default function ProfilePage() {
               </div>
 
               {/* Edit Profile Button */}
-              <button className="w-full sm:w-auto bg-[#1E3A5F] hover:bg-[#2C4F7C] text-white font-semibold py-2 sm:py-3 px-4 sm:px-6 rounded-xl transition-all shadow-md hover:shadow-xl flex items-center justify-center gap-2 text-sm sm:text-base">
+              {/* <button className="w-full sm:w-auto bg-[#1E3A5F] hover:bg-[#2C4F7C] text-white font-semibold py-2 sm:py-3 px-4 sm:px-6 rounded-xl transition-all shadow-md hover:shadow-xl flex items-center justify-center gap-2 text-sm sm:text-base">
                 <Edit2 className="w-4 h-4" />
                 Edit Profile
-              </button>
+              </button> */}
             </div>
           </div>
 

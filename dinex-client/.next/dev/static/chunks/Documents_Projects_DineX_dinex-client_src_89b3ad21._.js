@@ -15,7 +15,7 @@ const API = __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Project
 });
 // Add request interceptor to attach token
 API.interceptors.request.use((config)=>{
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("userToken");
     if (token) {
         config.headers.Authorization = `Bearer ${token}`;
     }

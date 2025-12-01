@@ -180,4 +180,62 @@ router.post("/staff/login", async (req, res) => {
     }
 });
 
+// 🟢 Staff Profile - Get current staff member details
+router.get("/staff/profile", async (req, res) => {
+    try {
+        // Get token from Authorization header
+        const authHeader = req.headers.authorization;
+
+        if (!authHeader || !authHeader.startsWith("Bearer ")) {
+            return res.status(401).json({ msg: "No token provided, authorization denied" });
+        }
+
+        const token = authHeader.split(" ")[1];
+
+        // Verify token
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+        // Check if role is staff
+        if (decoded.role !== "staff") {
+            return res.status(403).json({ msg: "Access denied. Staff account required." });
+        }
+
+        // Find restaurant owner by ownerId in token
+        const owner = await RestaurantOwner.findById(decoded.ownerId);
+        if (!owner) {
+            return res.status(404).json({ msg: "Restaurant not found" });
+        }
+
+        // Find staff member in waiters array
+        const staffMember = owner.waiters.find(w => w._id.toString() === decoded.id.toString());
+        if (!staffMember) {
+            return res.status(404).json({ msg: "Staff member not found" });
+        }
+
+        // Check if account is active
+        if (!staffMember.isActive) {
+            return res.status(403).json({ msg: "Account is disabled" });
+        }
+
+        // Remove password from response
+        const staffResponse = staffMember.toObject();
+        delete staffResponse.password;
+
+        res.json({
+            staff: staffResponse,
+            restaurantName: owner.restaurant.name,
+            role: staffMember.role
+        });
+    } catch (err) {
+        console.error("Staff profile error:", err);
+        if (err.name === "TokenExpiredError") {
+            return res.status(401).json({ msg: "Token expired" });
+        }
+        if (err.name === "JsonWebTokenError") {
+            return res.status(401).json({ msg: "Token is not valid" });
+        }
+        res.status(500).json({ msg: err.message });
+    }
+});
+
 export default router;

@@ -11,6 +11,7 @@ export default function BusinessHome() {
     const [isWhyVisible, setIsWhyVisible] = useState(false);
     const [isTestimonialsVisible, setIsTestimonialsVisible] = useState(false);
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+    const [isStaffLoggedIn, setIsStaffLoggedIn] = useState(false);
     const whySectionRef = useRef(null);
     const testimonialsSectionRef = useRef(null);
     const router = useRouter();
@@ -19,21 +20,48 @@ export default function BusinessHome() {
 
     useEffect(() => {
         const checkAuth = async () => {
-            const token = localStorage.getItem("businessToken");
+            const businessToken = localStorage.getItem("businessToken");
             const businessOwner = localStorage.getItem("businessOwner");
 
-            if (token && businessOwner) {
+            if (businessToken && businessOwner) {
                 try {
                     await API.get("/api/business/profile", {
                         headers: {
-                            Authorization: `Bearer ${token}`
+                            Authorization: `Bearer ${businessToken}`
                         }
                     });
                     setIsUserLoggedIn(true);
                 } catch (err) {
-                    // Token is invalid, clear it
-                    localStorage.removeItem("businessToken");
-                    localStorage.removeItem("businessOwner");
+                    // Only clear tokens if there's an authentication error (401)
+                    if (err.response && err.response.status === 401) {
+                        localStorage.removeItem("businessToken");
+                        localStorage.removeItem("businessOwner");
+                        setIsUserLoggedIn(false);
+                    }
+                    // For other errors (like 403), just set logged in state to false
+                    // but don't remove tokens
+                }
+            }
+
+            const staffToken = localStorage.getItem("staffToken");
+            const staffUser = localStorage.getItem("staffUser");
+
+            if (staffToken && staffUser) {
+                try {
+                    await API.get("/api/business/staff/profile", {
+                        headers: {
+                            Authorization: `Bearer ${staffToken}`
+                        }
+                    });
+                    setIsStaffLoggedIn(true);
+                } catch (err) {
+                    // Only clear tokens if there's an authentication error (401)
+                    if (err.response && err.response.status === 401) {
+                        localStorage.removeItem("staffToken");
+                        localStorage.removeItem("staffUser");
+                        setIsStaffLoggedIn(false);
+                    }
+                    // For other errors, keep the tokens but set state to false
                 }
             }
         };
@@ -499,7 +527,7 @@ export default function BusinessHome() {
                                 If you are a staff member, log in to access your assigned tables and orders.
                             </p>
 
-                            <Link href="/business/staff/login">
+                            <Link href={isStaffLoggedIn ? "/business/staff/home" : "/business/staff/login"}>
                                 <button
                                     className="w-full py-4 rounded-xl font-bold text-white text-lg shadow-xl hover:shadow-2xl cursor-pointer"
                                     style={{ background: "linear-gradient(135deg, #1F2937, #374151)" }}

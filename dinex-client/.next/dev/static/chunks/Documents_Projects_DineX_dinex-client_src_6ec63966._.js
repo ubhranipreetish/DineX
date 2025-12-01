@@ -2467,7 +2467,7 @@ const API = __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Project
 });
 // Add request interceptor to attach token
 API.interceptors.request.use((config)=>{
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("userToken");
     if (token) {
         config.headers.Authorization = `Bearer ${token}`;
     }
@@ -4645,10 +4645,25 @@ function Navbar() {
     const [user, setUser] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "Navbar.useEffect": ()=>{
-            const storedUser = localStorage.getItem("user");
-            if (storedUser) {
-                setUser(JSON.parse(storedUser));
-            }
+            const loadUser = {
+                "Navbar.useEffect.loadUser": ()=>{
+                    const storedUser = localStorage.getItem("user");
+                    if (storedUser) {
+                        setUser(JSON.parse(storedUser));
+                    } else {
+                        setUser(null);
+                    }
+                }
+            }["Navbar.useEffect.loadUser"];
+            // Load user on mount
+            loadUser();
+            // Listen for user updates
+            window.addEventListener("userUpdated", loadUser);
+            return ({
+                "Navbar.useEffect": ()=>{
+                    window.removeEventListener("userUpdated", loadUser);
+                }
+            })["Navbar.useEffect"];
         }
     }["Navbar.useEffect"], []);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
@@ -4668,12 +4683,12 @@ function Navbar() {
                         className: "object-contain w-[80px] sm:w-[100px] h-auto"
                     }, void 0, false, {
                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Navbar.js",
-                        lineNumber: 21,
+                        lineNumber: 35,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Navbar.js",
-                    lineNumber: 20,
+                    lineNumber: 34,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4687,7 +4702,7 @@ function Navbar() {
                                 children: user.name ? user.name[0].toUpperCase() : "U"
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Navbar.js",
-                                lineNumber: 35,
+                                lineNumber: 49,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4695,13 +4710,13 @@ function Navbar() {
                                 children: user.name?.split(" ")[0] || "Profile"
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Navbar.js",
-                                lineNumber: 38,
+                                lineNumber: 52,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Navbar.js",
-                        lineNumber: 34,
+                        lineNumber: 48,
                         columnNumber: 13
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
                         children: [
@@ -4711,7 +4726,7 @@ function Navbar() {
                                 children: "Login"
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Navbar.js",
-                                lineNumber: 44,
+                                lineNumber: 58,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -4720,25 +4735,25 @@ function Navbar() {
                                 children: "Signup"
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Navbar.js",
-                                lineNumber: 50,
+                                lineNumber: 64,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, void 0, true)
                 }, void 0, false, {
                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Navbar.js",
-                    lineNumber: 32,
+                    lineNumber: 46,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Navbar.js",
-            lineNumber: 18,
+            lineNumber: 32,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/Navbar.js",
-        lineNumber: 17,
+        lineNumber: 31,
         columnNumber: 5
     }, this);
 }
