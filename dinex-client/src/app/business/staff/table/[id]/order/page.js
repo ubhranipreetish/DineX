@@ -68,17 +68,22 @@ export default function CreateOrderPage() {
         setSelectedItems(prev => prev.filter((_, i) => i !== index));
     };
 
-    const handlePlaceOrder = () => {
+    const handlePlaceOrder = async () => {
         if (selectedItems.length === 0) return;
-
+    
         setIsPlacingOrder(true);
-
-        // Simulate API call
-        setTimeout(() => {
-            const orderId = createOrder(tableId, selectedItems, 0);
+        
+        try {
+            const orderId = await createOrder(tableId, selectedItems);
             router.push(`/business/staff/table/${tableId}/manage`);
-        }, 500);
+        } catch (error) {
+            console.error("Order creation failed:", error);
+            alert("Failed to create order.");
+        } finally {
+            setIsPlacingOrder(false);
+        }
     };
+    
 
     const filteredItems = searchQuery
         ? MENU_ITEMS.filter(item =>

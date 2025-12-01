@@ -71,7 +71,7 @@ function BillPage() {
         if (confirm('Confirm payment received?')) {
             setIsProcessing(true);
             setTimeout(()=>{
-                markAsPaid(order.id);
+                markAsPaid(order.orderId);
                 router.push('/business/staff/home');
             }, 500);
         }
@@ -202,7 +202,7 @@ function BillPage() {
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                     className: "text-lg font-bold text-gray-800 font-mono",
-                                                    children: order.id.slice(-8)
+                                                    children: order.orderId.slice(-8)
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/bill/page.js",
                                                     lineNumber: 105,

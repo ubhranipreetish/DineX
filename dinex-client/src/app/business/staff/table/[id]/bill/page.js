@@ -49,7 +49,7 @@ export default function BillPage() {
         if (confirm('Confirm payment received?')) {
             setIsProcessing(true);
             setTimeout(() => {
-                markAsPaid(order.id);
+                markAsPaid(order.orderId);
                 router.push('/business/staff/home');
             }, 500);
         }
@@ -102,7 +102,7 @@ export default function BillPage() {
                             </div>
                             <div>
                                 <p className="text-sm text-gray-500 font-semibold uppercase tracking-wider">Order ID</p>
-                                <p className="text-lg font-bold text-gray-800 font-mono">{order.id.slice(-8)}</p>
+                                <p className="text-lg font-bold text-gray-800 font-mono">{order.orderId.slice(-8)}</p>
                             </div>
                             <div>
                                 <p className="text-sm text-gray-500 font-semibold uppercase tracking-wider">Date</p>

@@ -75,7 +75,11 @@ export const OrderProvider = ({ children }) => {
                 // Map orders to state object
                 const ordersMap = {};
                 activeOrders.forEach(o => {
-                    ordersMap[o.orderId] = o;
+                    ordersMap[o.orderId] = {
+                        ...o,
+                        items: o.items.map(i => ({ ...i, status: i.status || "preparing" }))
+                    };
+                    
                 });
                 setOrders(ordersMap);
 
@@ -294,8 +298,9 @@ export const OrderProvider = ({ children }) => {
     };
 
     const getActiveOrders = () => {
-        return Object.values(orders).filter(order => order.status === 'active');
+        return Object.values(orders).filter(order => order.status === "ongoing");
     };
+    
 
     const value = {
         orders,

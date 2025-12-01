@@ -26,38 +26,37 @@ export default function ManageOrderPage() {
             return;
         }
 
-        if (!table || !order) {
-            router.push('/business/staff/home');
-            return;
-        }
+        if (!table) router.push('/business/staff/home');
+        if (!order) return; 
+
     }, [table, order, router]);
 
     const handleMarkAsServed = (itemIndex) => {
         const item = order.items[itemIndex];
-        updateItemStatus(order.id, item.id, 'served');
+        updateItemStatus(order.orderId, item.id, 'served');
     };
 
     const handleRemoveItem = (itemIndex) => {
         if (confirm('Remove this item from the order?')) {
-            removeItemFromOrder(order.id, itemIndex);
+            removeItemFromOrder(order.orderId, itemIndex);
         }
     };
 
     const handleAddNewItems = () => {
         if (selectedNewItems.length === 0) return;
-        addItemsToOrder(order.id, selectedNewItems);
+        addItemsToOrder(order.orderId, selectedNewItems);
         setSelectedNewItems([]);
         setShowAddItems(false);
     };
 
     const handleGenerateBill = () => {
-        completeOrder(order.id);
+        completeOrder(order.orderId);
         router.push(`/business/staff/table/${tableId}/bill`);
     };
 
     const handleCancelOrder = () => {
         if (confirm('Are you sure you want to cancel this entire order? This cannot be undone.')) {
-            cancelOrder(order.id);
+            cancelOrder(order.orderId);
             router.push('/business/staff/home');
         }
     };
@@ -129,7 +128,7 @@ export default function ManageOrderPage() {
                                     Manage Order
                                 </h1>
                                 <p className="text-sm text-gray-500 mt-1">
-                                    Table {table.tableNumber} • Order #{order.id.slice(-6)} • {timeElapsed} min ago
+                                    Table {table.tableNumber} • Order #{order.orderId.slice(-6)} • {timeElapsed} min ago
                                 </p>
                             </div>
                         </div>

@@ -133,7 +133,15 @@ const OrderProvider = ({ children })=>{
                         const ordersMap = {};
                         activeOrders.forEach({
                             "OrderProvider.useEffect.fetchRestaurantData": (o)=>{
-                                ordersMap[o.orderId] = o;
+                                ordersMap[o.orderId] = {
+                                    ...o,
+                                    items: o.items.map({
+                                        "OrderProvider.useEffect.fetchRestaurantData": (i)=>({
+                                                ...i,
+                                                status: i.status || "preparing"
+                                            })
+                                    }["OrderProvider.useEffect.fetchRestaurantData"])
+                                };
                             }
                         }["OrderProvider.useEffect.fetchRestaurantData"]);
                         setOrders(ordersMap);
@@ -358,7 +366,7 @@ const OrderProvider = ({ children })=>{
         return orders[table.orderId];
     };
     const getActiveOrders = ()=>{
-        return Object.values(orders).filter((order)=>order.status === 'active');
+        return Object.values(orders).filter((order)=>order.status === "ongoing");
     };
     const value = {
         orders,
@@ -380,7 +388,7 @@ const OrderProvider = ({ children })=>{
         children: children
     }, void 0, false, {
         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/context/OrderContext.js",
-        lineNumber: 317,
+        lineNumber: 322,
         columnNumber: 9
     }, ("TURBOPACK compile-time value", void 0));
 };

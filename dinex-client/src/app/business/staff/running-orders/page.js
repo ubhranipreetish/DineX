@@ -27,20 +27,6 @@ export default function RunningOrdersPage() {
         return `${hours}h ${remainingMins}m`;
     };
 
-    const getStatusColor = (status) => {
-        if (status === 'occupied') {
-            return 'bg-gradient-to-br from-orange-400 to-orange-500';
-        }
-        return 'bg-gray-300';
-    };
-
-    const getStatusText = (status) => {
-        if (status === 'occupied') {
-            return 'In Progress';
-        }
-        return 'Unknown';
-    };
-
     return (
         <div className="min-h-screen bg-[#FFF8E7] text-gray-800">
             {/* Navbar */}
@@ -92,7 +78,7 @@ export default function RunningOrdersPage() {
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {activeTables.map(table => {
-                            const order = activeOrders.find(o => o.id === table.orderId);
+                            const order = activeOrders.find(o => o.orderId === table.orderId);
                             if (!order) return null;
 
                             const itemCount = order.items.filter(i => i.status !== 'removed').length;
@@ -121,7 +107,7 @@ export default function RunningOrdersPage() {
                                         <div className="bg-gray-50 rounded-xl p-4 border border-gray-100">
                                             <div className="flex items-center justify-between mb-2">
                                                 <span className="text-sm text-gray-500">Order ID</span>
-                                                <span className="font-mono font-bold text-sm text-gray-700">#{order.id.slice(-6)}</span>
+                                                <span className="font-mono font-bold text-sm text-gray-700">#{order.orderId.slice(-6)}</span>
                                             </div>
                                             <div className="flex items-center justify-between mb-2">
                                                 <span className="text-sm text-gray-500">Items</span>

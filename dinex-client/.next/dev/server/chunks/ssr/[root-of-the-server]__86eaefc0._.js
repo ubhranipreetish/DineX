@@ -17,495 +17,6 @@ const mod = __turbopack_context__.x("next/dist/server/app-render/work-async-stor
 
 module.exports = mod;
 }),
-"[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/data/menu-data.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
-"use strict";
-
-// Dummy menu data with categories and items
-__turbopack_context__.s([
-    "MENU_CATEGORIES",
-    ()=>MENU_CATEGORIES,
-    "MENU_ITEMS",
-    ()=>MENU_ITEMS,
-    "TAX_RATES",
-    ()=>TAX_RATES,
-    "getItemsByCategory",
-    ()=>getItemsByCategory
-]);
-const MENU_CATEGORIES = [
-    {
-        id: 'hot-beverages',
-        name: 'Hot Beverages',
-        icon: '☕'
-    },
-    {
-        id: 'appetizers',
-        name: 'Appetizers',
-        icon: '🥟'
-    },
-    {
-        id: 'main-course',
-        name: 'Main Course',
-        icon: '🍛'
-    },
-    {
-        id: 'desserts',
-        name: 'Desserts',
-        icon: '🍰'
-    },
-    {
-        id: 'beverages',
-        name: 'Beverages',
-        icon: '🥤'
-    }
-];
-const MENU_ITEMS = [
-    // Hot Beverages
-    {
-        id: 1,
-        name: 'Espresso',
-        category: 'hot-beverages',
-        price: 120,
-        isVeg: true,
-        image: '☕'
-    },
-    {
-        id: 2,
-        name: 'Cappuccino',
-        category: 'hot-beverages',
-        price: 150,
-        isVeg: true,
-        image: '☕'
-    },
-    {
-        id: 3,
-        name: 'Latte',
-        category: 'hot-beverages',
-        price: 160,
-        isVeg: true,
-        image: '☕'
-    },
-    {
-        id: 4,
-        name: 'Americano',
-        category: 'hot-beverages',
-        price: 130,
-        isVeg: true,
-        image: '☕'
-    },
-    {
-        id: 5,
-        name: 'Hot Chocolate',
-        category: 'hot-beverages',
-        price: 140,
-        isVeg: true,
-        image: '☕'
-    },
-    {
-        id: 6,
-        name: 'Masala Chai',
-        category: 'hot-beverages',
-        price: 80,
-        isVeg: true,
-        image: '☕'
-    },
-    {
-        id: 7,
-        name: 'Green Tea',
-        category: 'hot-beverages',
-        price: 100,
-        isVeg: true,
-        image: '☕'
-    },
-    {
-        id: 8,
-        name: 'Filter Coffee',
-        category: 'hot-beverages',
-        price: 90,
-        isVeg: true,
-        image: '☕'
-    },
-    // Appetizers
-    {
-        id: 9,
-        name: 'Paneer Tikka',
-        category: 'appetizers',
-        price: 280,
-        isVeg: true,
-        image: '🧀'
-    },
-    {
-        id: 10,
-        name: 'Veg Spring Rolls',
-        category: 'appetizers',
-        price: 220,
-        isVeg: true,
-        image: '🥟'
-    },
-    {
-        id: 11,
-        name: 'Chicken Wings',
-        category: 'appetizers',
-        price: 320,
-        isVeg: false,
-        image: '🍗'
-    },
-    {
-        id: 12,
-        name: 'Fish Fingers',
-        category: 'appetizers',
-        price: 340,
-        isVeg: false,
-        image: '🐟'
-    },
-    {
-        id: 13,
-        name: 'Hara Bhara Kabab',
-        category: 'appetizers',
-        price: 240,
-        isVeg: true,
-        image: '🥬'
-    },
-    {
-        id: 14,
-        name: 'Cheese Balls',
-        category: 'appetizers',
-        price: 260,
-        isVeg: true,
-        image: '🧀'
-    },
-    {
-        id: 15,
-        name: 'Crispy Corn',
-        category: 'appetizers',
-        price: 200,
-        isVeg: true,
-        image: '🌽'
-    },
-    {
-        id: 16,
-        name: 'Chicken Satay',
-        category: 'appetizers',
-        price: 350,
-        isVeg: false,
-        image: '🍢'
-    },
-    {
-        id: 17,
-        name: 'Mushroom Tikka',
-        category: 'appetizers',
-        price: 270,
-        isVeg: true,
-        image: '🍄'
-    },
-    {
-        id: 18,
-        name: 'Prawn Tempura',
-        category: 'appetizers',
-        price: 420,
-        isVeg: false,
-        image: '🦐'
-    },
-    // Main Course
-    {
-        id: 19,
-        name: 'Butter Chicken',
-        category: 'main-course',
-        price: 380,
-        isVeg: false,
-        image: '🍗'
-    },
-    {
-        id: 20,
-        name: 'Paneer Butter Masala',
-        category: 'main-course',
-        price: 320,
-        isVeg: true,
-        image: '🧀'
-    },
-    {
-        id: 21,
-        name: 'Dal Makhani',
-        category: 'main-course',
-        price: 240,
-        isVeg: true,
-        image: '🍲'
-    },
-    {
-        id: 22,
-        name: 'Chicken Biryani',
-        category: 'main-course',
-        price: 420,
-        isVeg: false,
-        image: '🍛'
-    },
-    {
-        id: 23,
-        name: 'Veg Biryani',
-        category: 'main-course',
-        price: 340,
-        isVeg: true,
-        image: '🍛'
-    },
-    {
-        id: 24,
-        name: 'Palak Paneer',
-        category: 'main-course',
-        price: 300,
-        isVeg: true,
-        image: '🥬'
-    },
-    {
-        id: 25,
-        name: 'Kadhai Chicken',
-        category: 'main-course',
-        price: 400,
-        isVeg: false,
-        image: '🍗'
-    },
-    {
-        id: 26,
-        name: 'Mutton Rogan Josh',
-        category: 'main-course',
-        price: 480,
-        isVeg: false,
-        image: '🍖'
-    },
-    {
-        id: 27,
-        name: 'Malai Kofta',
-        category: 'main-course',
-        price: 310,
-        isVeg: true,
-        image: '🥔'
-    },
-    {
-        id: 28,
-        name: 'Fish Curry',
-        category: 'main-course',
-        price: 440,
-        isVeg: false,
-        image: '🐟'
-    },
-    {
-        id: 29,
-        name: 'Chole Bhature',
-        category: 'main-course',
-        price: 220,
-        isVeg: true,
-        image: '🫓'
-    },
-    {
-        id: 30,
-        name: 'Chicken Korma',
-        category: 'main-course',
-        price: 390,
-        isVeg: false,
-        image: '🍗'
-    },
-    {
-        id: 31,
-        name: 'Naan (Plain)',
-        category: 'main-course',
-        price: 40,
-        isVeg: true,
-        image: '🫓'
-    },
-    {
-        id: 32,
-        name: 'Garlic Naan',
-        category: 'main-course',
-        price: 60,
-        isVeg: true,
-        image: '🫓'
-    },
-    {
-        id: 33,
-        name: 'Butter Naan',
-        category: 'main-course',
-        price: 50,
-        isVeg: true,
-        image: '🫓'
-    },
-    {
-        id: 34,
-        name: 'Jeera Rice',
-        category: 'main-course',
-        price: 140,
-        isVeg: true,
-        image: '🍚'
-    },
-    {
-        id: 35,
-        name: 'Steamed Rice',
-        category: 'main-course',
-        price: 100,
-        isVeg: true,
-        image: '🍚'
-    },
-    // Desserts
-    {
-        id: 36,
-        name: 'Gulab Jamun',
-        category: 'desserts',
-        price: 120,
-        isVeg: true,
-        image: '🍡'
-    },
-    {
-        id: 37,
-        name: 'Rasmalai',
-        category: 'desserts',
-        price: 140,
-        isVeg: true,
-        image: '🥛'
-    },
-    {
-        id: 38,
-        name: 'Ice Cream (Vanilla)',
-        category: 'desserts',
-        price: 100,
-        isVeg: true,
-        image: '🍨'
-    },
-    {
-        id: 39,
-        name: 'Ice Cream (Chocolate)',
-        category: 'desserts',
-        price: 100,
-        isVeg: true,
-        image: '🍨'
-    },
-    {
-        id: 40,
-        name: 'Brownie with Ice Cream',
-        category: 'desserts',
-        price: 180,
-        isVeg: true,
-        image: '🍰'
-    },
-    {
-        id: 41,
-        name: 'Kulfi',
-        category: 'desserts',
-        price: 90,
-        isVeg: true,
-        image: '🍦'
-    },
-    {
-        id: 42,
-        name: 'Fruit Custard',
-        category: 'desserts',
-        price: 110,
-        isVeg: true,
-        image: '🍮'
-    },
-    {
-        id: 43,
-        name: 'Gajar Halwa',
-        category: 'desserts',
-        price: 130,
-        isVeg: true,
-        image: '🥕'
-    },
-    {
-        id: 44,
-        name: 'Cheesecake',
-        category: 'desserts',
-        price: 200,
-        isVeg: true,
-        image: '🍰'
-    },
-    // Beverages
-    {
-        id: 45,
-        name: 'Fresh Lime Soda',
-        category: 'beverages',
-        price: 80,
-        isVeg: true,
-        image: '🍋'
-    },
-    {
-        id: 46,
-        name: 'Mango Lassi',
-        category: 'beverages',
-        price: 120,
-        isVeg: true,
-        image: '🥭'
-    },
-    {
-        id: 47,
-        name: 'Sweet Lassi',
-        category: 'beverages',
-        price: 100,
-        isVeg: true,
-        image: '🥛'
-    },
-    {
-        id: 48,
-        name: 'Fresh Orange Juice',
-        category: 'beverages',
-        price: 110,
-        isVeg: true,
-        image: '🍊'
-    },
-    {
-        id: 49,
-        name: 'Watermelon Juice',
-        category: 'beverages',
-        price: 100,
-        isVeg: true,
-        image: '🍉'
-    },
-    {
-        id: 50,
-        name: 'Cold Coffee',
-        category: 'beverages',
-        price: 140,
-        isVeg: true,
-        image: '☕'
-    },
-    {
-        id: 51,
-        name: 'Mojito (Virgin)',
-        category: 'beverages',
-        price: 150,
-        isVeg: true,
-        image: '🍹'
-    },
-    {
-        id: 52,
-        name: 'Iced Tea',
-        category: 'beverages',
-        price: 100,
-        isVeg: true,
-        image: '🧃'
-    },
-    {
-        id: 53,
-        name: 'Coca Cola',
-        category: 'beverages',
-        price: 60,
-        isVeg: true,
-        image: '🥤'
-    },
-    {
-        id: 54,
-        name: 'Sprite',
-        category: 'beverages',
-        price: 60,
-        isVeg: true,
-        image: '🥤'
-    }
-];
-const getItemsByCategory = (categoryId)=>{
-    return MENU_ITEMS.filter((item)=>item.category === categoryId);
-};
-const TAX_RATES = {
-    CGST: 2.5,
-    SGST: 2.5,
-    total: 5.0
-};
-}),
 "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/components/CategoryTabs.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
@@ -1269,14 +780,18 @@ function StaffNavbar() {
 
 __turbopack_context__.s([
     "default",
-    ()=>CreateOrderPage
+    ()=>OrderPage
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/next/navigation.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$left$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowLeft$3e$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/icons/arrow-left.js [app-ssr] (ecmascript) <export default as ArrowLeft>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$search$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Search$3e$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/icons/search.js [app-ssr] (ecmascript) <export default as Search>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$app$2f$business$2f$staff$2f$data$2f$menu$2d$data$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/data/menu-data.js [app-ssr] (ecmascript)");
+(()=>{
+    const e = new Error("Cannot find module '@/data/menu-data'");
+    e.code = 'MODULE_NOT_FOUND';
+    throw e;
+})();
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$app$2f$business$2f$staff$2f$components$2f$CategoryTabs$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/components/CategoryTabs.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$app$2f$business$2f$staff$2f$components$2f$MenuItem$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/components/MenuItem.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$app$2f$business$2f$staff$2f$components$2f$OrderSummary$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/components/OrderSummary.js [app-ssr] (ecmascript)");
@@ -1293,196 +808,204 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$Din
 ;
 ;
 ;
-function CreateOrderPage() {
+function OrderPage() {
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRouter"])();
     const params = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useParams"])();
     const tableId = parseInt(params.id);
-    const { createOrder, tables } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$app$2f$business$2f$staff$2f$context$2f$OrderContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useOrder"])();
-    const [activeCategory, setActiveCategory] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('hot-beverages');
-    const [selectedItems, setSelectedItems] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
-    const [searchQuery, setSearchQuery] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('');
-    const [isPlacingOrder, setIsPlacingOrder] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
+    const { tables, getOrderByTableId, createOrder, addItemsToOrder } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$app$2f$business$2f$staff$2f$context$2f$OrderContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useOrder"])();
     const table = tables.find((t)=>t.id === tableId);
+    const existingOrder = getOrderByTableId(tableId);
+    const [activeCategory, setActiveCategory] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("hot-beverages");
+    const [selectedItems, setSelectedItems] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
+    const [searchQuery, setSearchQuery] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("");
+    const [isLoading, setIsLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
+    // -----------------------
+    // AUTH + LOAD EXISTING ORDER ITEMS
+    // -----------------------
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
-        // Check auth
-        const token = localStorage.getItem('staffToken');
+        const token = localStorage.getItem("staffToken");
         if (!token) {
-            router.push('/business/staff/login');
+            router.push("/business/staff/login");
             return;
         }
-        // Check if table exists and is free
-        if (!table) {
-            router.push('/business/staff/home');
-            return;
+        // If a running order exists, load its items into selection
+        if (existingOrder) {
+            const mapped = existingOrder.items.map((item)=>({
+                    id: item.itemId,
+                    name: item.name,
+                    price: item.price,
+                    quantity: item.quantity
+                }));
+            setSelectedItems(mapped);
         }
     }, [
-        table,
+        existingOrder,
         router
     ]);
+    // -----------------------
+    // MENU ITEM LOGIC
+    // -----------------------
     const handleAddItem = (item)=>{
         setSelectedItems((prev)=>{
-            const existingIndex = prev.findIndex((i)=>i.id === item.id);
-            if (existingIndex >= 0) {
-                // Increase quantity
+            const existingIdx = prev.findIndex((i)=>i.id === item.id);
+            if (existingIdx >= 0) {
                 const updated = [
                     ...prev
                 ];
-                updated[existingIndex].quantity += 1;
+                updated[existingIdx].quantity += 1;
                 return updated;
-            } else {
-                // Add new item
-                return [
-                    ...prev,
-                    {
-                        ...item,
-                        quantity: 1
-                    }
-                ];
             }
+            return [
+                ...prev,
+                {
+                    ...item,
+                    quantity: 1
+                }
+            ];
         });
     };
-    const handleQuantityChange = (index, newQuantity)=>{
-        if (newQuantity <= 0) {
-            handleRemoveItem(index);
-            return;
-        }
+    const handleQuantityChange = (index, newQty)=>{
+        if (newQty <= 0) return handleRemoveItem(index);
         setSelectedItems((prev)=>{
             const updated = [
                 ...prev
             ];
-            updated[index].quantity = newQuantity;
+            updated[index].quantity = newQty;
             return updated;
         });
     };
     const handleRemoveItem = (index)=>{
         setSelectedItems((prev)=>prev.filter((_, i)=>i !== index));
     };
+    // -----------------------
+    // PLACE ORDER (new or update)
+    // -----------------------
     const handlePlaceOrder = async ()=>{
         if (selectedItems.length === 0) return;
-        setIsPlacingOrder(true);
+        setIsLoading(true);
         try {
-            const orderId = await createOrder(tableId, selectedItems);
+            if (existingOrder) {
+                // 🔵 ADD ITEMS TO EXISTING ORDER
+                await addItemsToOrder(existingOrder.orderId, selectedItems);
+            } else {
+                // 🟢 CREATE NEW ORDER
+                await createOrder(tableId, selectedItems);
+            }
             router.push(`/business/staff/table/${tableId}/manage`);
-        } catch (error) {
-            console.error("Order creation failed:", error);
-            alert("Failed to create order.");
+        } catch (err) {
+            console.error("Order error:", err);
+            alert("Something went wrong!");
         } finally{
-            setIsPlacingOrder(false);
+            setIsLoading(false);
         }
     };
-    const filteredItems = searchQuery ? __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$app$2f$business$2f$staff$2f$data$2f$menu$2d$data$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["MENU_ITEMS"].filter((item)=>item.name.toLowerCase().includes(searchQuery.toLowerCase())) : (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$app$2f$business$2f$staff$2f$data$2f$menu$2d$data$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["getItemsByCategory"])(activeCategory);
+    // -----------------------
+    // FILTER MENU ITEMS
+    // -----------------------
+    const filteredItems = searchQuery ? MENU_ITEMS.filter((item)=>item.name.toLowerCase().includes(searchQuery.toLowerCase())) : getItemsByCategory(activeCategory);
     const getSelectedQuantity = (itemId)=>{
         const item = selectedItems.find((i)=>i.id === itemId);
         return item ? item.quantity : 0;
     };
-    if (!table) {
-        return null;
-    }
+    if (!table) return null;
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "min-h-screen bg-[#FFF8E7] text-gray-800",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$app$2f$business$2f$staff$2f$components$2f$StaffNavbar$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/order/page.js",
-                lineNumber: 106,
+                lineNumber: 127,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "pt-6 pb-2",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "container mx-auto px-6",
-                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "flex items-center justify-between",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "flex items-center gap-4",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                        onClick: ()=>router.back(),
-                                        className: "p-2 hover:bg-amber-100 rounded-xl transition-colors text-amber-600",
-                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$left$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowLeft$3e$__["ArrowLeft"], {
-                                            className: "w-6 h-6"
+                    className: "container mx-auto px-6 flex items-center justify-between",
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "flex items-center gap-4",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                    onClick: ()=>router.back(),
+                                    className: "p-2 hover:bg-amber-100 rounded-xl text-amber-600",
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$left$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowLeft$3e$__["ArrowLeft"], {
+                                        className: "w-6 h-6"
+                                    }, void 0, false, {
+                                        fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/order/page.js",
+                                        lineNumber: 137,
+                                        columnNumber: 29
+                                    }, this)
+                                }, void 0, false, {
+                                    fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/order/page.js",
+                                    lineNumber: 133,
+                                    columnNumber: 25
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
+                                            className: "text-3xl font-bold bg-gradient-to-r from-amber-500 to-amber-600 bg-clip-text text-transparent",
+                                            children: existingOrder ? "Add More Items" : "Create Order"
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/order/page.js",
-                                            lineNumber: 117,
-                                            columnNumber: 33
+                                            lineNumber: 140,
+                                            columnNumber: 29
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                            className: "text-sm text-gray-500",
+                                            children: [
+                                                "Table ",
+                                                table.tableNumber
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/order/page.js",
+                                            lineNumber: 143,
+                                            columnNumber: 29
                                         }, this)
-                                    }, void 0, false, {
-                                        fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/order/page.js",
-                                        lineNumber: 113,
-                                        columnNumber: 29
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                                                className: "text-3xl font-bold bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 bg-clip-text text-transparent",
-                                                children: "Create Order"
-                                            }, void 0, false, {
-                                                fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/order/page.js",
-                                                lineNumber: 120,
-                                                columnNumber: 33
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                className: "text-sm text-gray-500 mt-1",
-                                                children: [
-                                                    "Table ",
-                                                    table.tableNumber
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/order/page.js",
-                                                lineNumber: 123,
-                                                columnNumber: 33
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/order/page.js",
-                                        lineNumber: 119,
-                                        columnNumber: 29
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/order/page.js",
-                                lineNumber: 112,
-                                columnNumber: 25
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "text-right",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        className: "text-sm text-gray-500",
-                                        children: "Items Selected"
-                                    }, void 0, false, {
-                                        fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/order/page.js",
-                                        lineNumber: 127,
-                                        columnNumber: 29
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        className: "text-2xl font-bold text-amber-600",
-                                        children: selectedItems.reduce((sum, item)=>sum + item.quantity, 0)
-                                    }, void 0, false, {
-                                        fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/order/page.js",
-                                        lineNumber: 128,
-                                        columnNumber: 29
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/order/page.js",
-                                lineNumber: 126,
-                                columnNumber: 25
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/order/page.js",
-                        lineNumber: 111,
-                        columnNumber: 21
-                    }, this)
-                }, void 0, false, {
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/order/page.js",
+                                    lineNumber: 139,
+                                    columnNumber: 25
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/order/page.js",
+                            lineNumber: 132,
+                            columnNumber: 21
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "text-right",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                    className: "text-sm text-gray-500",
+                                    children: "Items Selected"
+                                }, void 0, false, {
+                                    fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/order/page.js",
+                                    lineNumber: 150,
+                                    columnNumber: 25
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                    className: "text-2xl font-bold text-amber-600",
+                                    children: selectedItems.reduce((sum, i)=>sum + i.quantity, 0)
+                                }, void 0, false, {
+                                    fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/order/page.js",
+                                    lineNumber: 151,
+                                    columnNumber: 25
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/order/page.js",
+                            lineNumber: 149,
+                            columnNumber: 21
+                        }, this)
+                    ]
+                }, void 0, true, {
                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/order/page.js",
-                    lineNumber: 110,
+                    lineNumber: 131,
                     columnNumber: 17
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/order/page.js",
-                lineNumber: 109,
+                lineNumber: 130,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1494,83 +1017,60 @@ function CreateOrderPage() {
                             className: "lg:col-span-2 space-y-6",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "bg-white rounded-2xl shadow-lg shadow-amber-100/50 p-4 border border-amber-50",
+                                    className: "bg-white p-4 rounded-2xl shadow-lg border border-amber-50",
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "relative",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$search$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Search$3e$__["Search"], {
-                                                className: "absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"
+                                                className: "absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/order/page.js",
-                                                lineNumber: 143,
+                                                lineNumber: 166,
                                                 columnNumber: 33
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                 type: "text",
-                                                placeholder: "Search menu items...",
+                                                placeholder: "Search menu...",
                                                 value: searchQuery,
                                                 onChange: (e)=>setSearchQuery(e.target.value),
-                                                className: "w-full pl-12 pr-4 py-3 border-2 border-gray-100 rounded-xl focus:border-amber-400 focus:outline-none text-gray-700 transition-colors"
+                                                className: "w-full pl-12 pr-4 py-3 border-2 border-gray-100 rounded-xl focus:border-amber-400 outline-none"
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/order/page.js",
-                                                lineNumber: 144,
+                                                lineNumber: 167,
                                                 columnNumber: 33
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/order/page.js",
-                                        lineNumber: 142,
+                                        lineNumber: 165,
                                         columnNumber: 29
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/order/page.js",
-                                    lineNumber: 141,
+                                    lineNumber: 164,
                                     columnNumber: 25
                                 }, this),
                                 !searchQuery && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$app$2f$business$2f$staff$2f$components$2f$CategoryTabs$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
-                                    categories: __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$app$2f$business$2f$staff$2f$data$2f$menu$2d$data$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["MENU_CATEGORIES"],
+                                    categories: MENU_CATEGORIES,
                                     activeCategory: activeCategory,
                                     onCategoryChange: setActiveCategory
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/order/page.js",
-                                    lineNumber: 156,
+                                    lineNumber: 179,
                                     columnNumber: 29
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "bg-white rounded-3xl shadow-xl shadow-amber-100/20 p-6 border border-amber-50",
+                                    className: "bg-white rounded-3xl shadow-xl p-6 border border-amber-50",
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                                            className: "text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2",
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                    className: "w-2 h-8 bg-gradient-to-b from-amber-400 to-yellow-500 rounded-full"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/order/page.js",
-                                                    lineNumber: 166,
-                                                    columnNumber: 33
-                                                }, this),
-                                                searchQuery ? `Search Results (${filteredItems.length})` : __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$app$2f$business$2f$staff$2f$data$2f$menu$2d$data$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["MENU_CATEGORIES"].find((c)=>c.id === activeCategory)?.name
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/order/page.js",
-                                            lineNumber: 165,
-                                            columnNumber: 29
-                                        }, this),
-                                        filteredItems.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "text-center py-16",
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                className: "text-gray-400 text-lg",
-                                                children: "No items found"
-                                            }, void 0, false, {
-                                                fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/order/page.js",
-                                                lineNumber: 174,
-                                                columnNumber: 37
-                                            }, this)
+                                            className: "text-2xl font-bold mb-6",
+                                            children: searchQuery ? `Search Results (${filteredItems.length})` : MENU_CATEGORIES.find((c)=>c.id === activeCategory)?.name
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/order/page.js",
-                                            lineNumber: 173,
-                                            columnNumber: 33
-                                        }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            lineNumber: 188,
+                                            columnNumber: 29
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5",
                                             children: filteredItems.map((item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$app$2f$business$2f$staff$2f$components$2f$MenuItem$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                                                     item: item,
@@ -1578,24 +1078,24 @@ function CreateOrderPage() {
                                                     selectedQuantity: getSelectedQuantity(item.id)
                                                 }, item.id, false, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/order/page.js",
-                                                    lineNumber: 179,
-                                                    columnNumber: 41
+                                                    lineNumber: 196,
+                                                    columnNumber: 37
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/order/page.js",
-                                            lineNumber: 177,
-                                            columnNumber: 33
+                                            lineNumber: 194,
+                                            columnNumber: 29
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/order/page.js",
-                                    lineNumber: 164,
+                                    lineNumber: 187,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/order/page.js",
-                            lineNumber: 139,
+                            lineNumber: 162,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1605,37 +1105,38 @@ function CreateOrderPage() {
                                 onQuantityChange: handleQuantityChange,
                                 onRemoveItem: handleRemoveItem,
                                 onPlaceOrder: handlePlaceOrder,
-                                isPlacingOrder: isPlacingOrder,
-                                tableNumber: table.tableNumber
+                                isPlacingOrder: isLoading,
+                                tableNumber: table.tableNumber,
+                                existingOrder: existingOrder
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/order/page.js",
-                                lineNumber: 193,
+                                lineNumber: 209,
                                 columnNumber: 25
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/order/page.js",
-                            lineNumber: 192,
+                            lineNumber: 208,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/order/page.js",
-                    lineNumber: 137,
+                    lineNumber: 160,
                     columnNumber: 17
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/order/page.js",
-                lineNumber: 136,
+                lineNumber: 159,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/order/page.js",
-        lineNumber: 104,
+        lineNumber: 125,
         columnNumber: 9
     }, this);
 }
 }),
 ];
 
-//# sourceMappingURL=%5Broot-of-the-server%5D__d2f4505f._.js.map
+//# sourceMappingURL=%5Broot-of-the-server%5D__86eaefc0._.js.map

@@ -1,496 +1,4 @@
 (globalThis.TURBOPACK || (globalThis.TURBOPACK = [])).push([typeof document === "object" ? document.currentScript : undefined,
-"[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/data/menu-data.js [app-client] (ecmascript)", ((__turbopack_context__) => {
-"use strict";
-
-// Dummy menu data with categories and items
-__turbopack_context__.s([
-    "MENU_CATEGORIES",
-    ()=>MENU_CATEGORIES,
-    "MENU_ITEMS",
-    ()=>MENU_ITEMS,
-    "TAX_RATES",
-    ()=>TAX_RATES,
-    "getItemsByCategory",
-    ()=>getItemsByCategory
-]);
-const MENU_CATEGORIES = [
-    {
-        id: 'hot-beverages',
-        name: 'Hot Beverages',
-        icon: '☕'
-    },
-    {
-        id: 'appetizers',
-        name: 'Appetizers',
-        icon: '🥟'
-    },
-    {
-        id: 'main-course',
-        name: 'Main Course',
-        icon: '🍛'
-    },
-    {
-        id: 'desserts',
-        name: 'Desserts',
-        icon: '🍰'
-    },
-    {
-        id: 'beverages',
-        name: 'Beverages',
-        icon: '🥤'
-    }
-];
-const MENU_ITEMS = [
-    // Hot Beverages
-    {
-        id: 1,
-        name: 'Espresso',
-        category: 'hot-beverages',
-        price: 120,
-        isVeg: true,
-        image: '☕'
-    },
-    {
-        id: 2,
-        name: 'Cappuccino',
-        category: 'hot-beverages',
-        price: 150,
-        isVeg: true,
-        image: '☕'
-    },
-    {
-        id: 3,
-        name: 'Latte',
-        category: 'hot-beverages',
-        price: 160,
-        isVeg: true,
-        image: '☕'
-    },
-    {
-        id: 4,
-        name: 'Americano',
-        category: 'hot-beverages',
-        price: 130,
-        isVeg: true,
-        image: '☕'
-    },
-    {
-        id: 5,
-        name: 'Hot Chocolate',
-        category: 'hot-beverages',
-        price: 140,
-        isVeg: true,
-        image: '☕'
-    },
-    {
-        id: 6,
-        name: 'Masala Chai',
-        category: 'hot-beverages',
-        price: 80,
-        isVeg: true,
-        image: '☕'
-    },
-    {
-        id: 7,
-        name: 'Green Tea',
-        category: 'hot-beverages',
-        price: 100,
-        isVeg: true,
-        image: '☕'
-    },
-    {
-        id: 8,
-        name: 'Filter Coffee',
-        category: 'hot-beverages',
-        price: 90,
-        isVeg: true,
-        image: '☕'
-    },
-    // Appetizers
-    {
-        id: 9,
-        name: 'Paneer Tikka',
-        category: 'appetizers',
-        price: 280,
-        isVeg: true,
-        image: '🧀'
-    },
-    {
-        id: 10,
-        name: 'Veg Spring Rolls',
-        category: 'appetizers',
-        price: 220,
-        isVeg: true,
-        image: '🥟'
-    },
-    {
-        id: 11,
-        name: 'Chicken Wings',
-        category: 'appetizers',
-        price: 320,
-        isVeg: false,
-        image: '🍗'
-    },
-    {
-        id: 12,
-        name: 'Fish Fingers',
-        category: 'appetizers',
-        price: 340,
-        isVeg: false,
-        image: '🐟'
-    },
-    {
-        id: 13,
-        name: 'Hara Bhara Kabab',
-        category: 'appetizers',
-        price: 240,
-        isVeg: true,
-        image: '🥬'
-    },
-    {
-        id: 14,
-        name: 'Cheese Balls',
-        category: 'appetizers',
-        price: 260,
-        isVeg: true,
-        image: '🧀'
-    },
-    {
-        id: 15,
-        name: 'Crispy Corn',
-        category: 'appetizers',
-        price: 200,
-        isVeg: true,
-        image: '🌽'
-    },
-    {
-        id: 16,
-        name: 'Chicken Satay',
-        category: 'appetizers',
-        price: 350,
-        isVeg: false,
-        image: '🍢'
-    },
-    {
-        id: 17,
-        name: 'Mushroom Tikka',
-        category: 'appetizers',
-        price: 270,
-        isVeg: true,
-        image: '🍄'
-    },
-    {
-        id: 18,
-        name: 'Prawn Tempura',
-        category: 'appetizers',
-        price: 420,
-        isVeg: false,
-        image: '🦐'
-    },
-    // Main Course
-    {
-        id: 19,
-        name: 'Butter Chicken',
-        category: 'main-course',
-        price: 380,
-        isVeg: false,
-        image: '🍗'
-    },
-    {
-        id: 20,
-        name: 'Paneer Butter Masala',
-        category: 'main-course',
-        price: 320,
-        isVeg: true,
-        image: '🧀'
-    },
-    {
-        id: 21,
-        name: 'Dal Makhani',
-        category: 'main-course',
-        price: 240,
-        isVeg: true,
-        image: '🍲'
-    },
-    {
-        id: 22,
-        name: 'Chicken Biryani',
-        category: 'main-course',
-        price: 420,
-        isVeg: false,
-        image: '🍛'
-    },
-    {
-        id: 23,
-        name: 'Veg Biryani',
-        category: 'main-course',
-        price: 340,
-        isVeg: true,
-        image: '🍛'
-    },
-    {
-        id: 24,
-        name: 'Palak Paneer',
-        category: 'main-course',
-        price: 300,
-        isVeg: true,
-        image: '🥬'
-    },
-    {
-        id: 25,
-        name: 'Kadhai Chicken',
-        category: 'main-course',
-        price: 400,
-        isVeg: false,
-        image: '🍗'
-    },
-    {
-        id: 26,
-        name: 'Mutton Rogan Josh',
-        category: 'main-course',
-        price: 480,
-        isVeg: false,
-        image: '🍖'
-    },
-    {
-        id: 27,
-        name: 'Malai Kofta',
-        category: 'main-course',
-        price: 310,
-        isVeg: true,
-        image: '🥔'
-    },
-    {
-        id: 28,
-        name: 'Fish Curry',
-        category: 'main-course',
-        price: 440,
-        isVeg: false,
-        image: '🐟'
-    },
-    {
-        id: 29,
-        name: 'Chole Bhature',
-        category: 'main-course',
-        price: 220,
-        isVeg: true,
-        image: '🫓'
-    },
-    {
-        id: 30,
-        name: 'Chicken Korma',
-        category: 'main-course',
-        price: 390,
-        isVeg: false,
-        image: '🍗'
-    },
-    {
-        id: 31,
-        name: 'Naan (Plain)',
-        category: 'main-course',
-        price: 40,
-        isVeg: true,
-        image: '🫓'
-    },
-    {
-        id: 32,
-        name: 'Garlic Naan',
-        category: 'main-course',
-        price: 60,
-        isVeg: true,
-        image: '🫓'
-    },
-    {
-        id: 33,
-        name: 'Butter Naan',
-        category: 'main-course',
-        price: 50,
-        isVeg: true,
-        image: '🫓'
-    },
-    {
-        id: 34,
-        name: 'Jeera Rice',
-        category: 'main-course',
-        price: 140,
-        isVeg: true,
-        image: '🍚'
-    },
-    {
-        id: 35,
-        name: 'Steamed Rice',
-        category: 'main-course',
-        price: 100,
-        isVeg: true,
-        image: '🍚'
-    },
-    // Desserts
-    {
-        id: 36,
-        name: 'Gulab Jamun',
-        category: 'desserts',
-        price: 120,
-        isVeg: true,
-        image: '🍡'
-    },
-    {
-        id: 37,
-        name: 'Rasmalai',
-        category: 'desserts',
-        price: 140,
-        isVeg: true,
-        image: '🥛'
-    },
-    {
-        id: 38,
-        name: 'Ice Cream (Vanilla)',
-        category: 'desserts',
-        price: 100,
-        isVeg: true,
-        image: '🍨'
-    },
-    {
-        id: 39,
-        name: 'Ice Cream (Chocolate)',
-        category: 'desserts',
-        price: 100,
-        isVeg: true,
-        image: '🍨'
-    },
-    {
-        id: 40,
-        name: 'Brownie with Ice Cream',
-        category: 'desserts',
-        price: 180,
-        isVeg: true,
-        image: '🍰'
-    },
-    {
-        id: 41,
-        name: 'Kulfi',
-        category: 'desserts',
-        price: 90,
-        isVeg: true,
-        image: '🍦'
-    },
-    {
-        id: 42,
-        name: 'Fruit Custard',
-        category: 'desserts',
-        price: 110,
-        isVeg: true,
-        image: '🍮'
-    },
-    {
-        id: 43,
-        name: 'Gajar Halwa',
-        category: 'desserts',
-        price: 130,
-        isVeg: true,
-        image: '🥕'
-    },
-    {
-        id: 44,
-        name: 'Cheesecake',
-        category: 'desserts',
-        price: 200,
-        isVeg: true,
-        image: '🍰'
-    },
-    // Beverages
-    {
-        id: 45,
-        name: 'Fresh Lime Soda',
-        category: 'beverages',
-        price: 80,
-        isVeg: true,
-        image: '🍋'
-    },
-    {
-        id: 46,
-        name: 'Mango Lassi',
-        category: 'beverages',
-        price: 120,
-        isVeg: true,
-        image: '🥭'
-    },
-    {
-        id: 47,
-        name: 'Sweet Lassi',
-        category: 'beverages',
-        price: 100,
-        isVeg: true,
-        image: '🥛'
-    },
-    {
-        id: 48,
-        name: 'Fresh Orange Juice',
-        category: 'beverages',
-        price: 110,
-        isVeg: true,
-        image: '🍊'
-    },
-    {
-        id: 49,
-        name: 'Watermelon Juice',
-        category: 'beverages',
-        price: 100,
-        isVeg: true,
-        image: '🍉'
-    },
-    {
-        id: 50,
-        name: 'Cold Coffee',
-        category: 'beverages',
-        price: 140,
-        isVeg: true,
-        image: '☕'
-    },
-    {
-        id: 51,
-        name: 'Mojito (Virgin)',
-        category: 'beverages',
-        price: 150,
-        isVeg: true,
-        image: '🍹'
-    },
-    {
-        id: 52,
-        name: 'Iced Tea',
-        category: 'beverages',
-        price: 100,
-        isVeg: true,
-        image: '🧃'
-    },
-    {
-        id: 53,
-        name: 'Coca Cola',
-        category: 'beverages',
-        price: 60,
-        isVeg: true,
-        image: '🥤'
-    },
-    {
-        id: 54,
-        name: 'Sprite',
-        category: 'beverages',
-        price: 60,
-        isVeg: true,
-        image: '🥤'
-    }
-];
-const getItemsByCategory = (categoryId)=>{
-    return MENU_ITEMS.filter((item)=>item.category === categoryId);
-};
-const TAX_RATES = {
-    CGST: 2.5,
-    SGST: 2.5,
-    total: 5.0
-};
-if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
-    __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
-}
-}),
 "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/components/StaffNavbar.js [app-client] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
@@ -725,12 +233,10 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$Din
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$trash$2d$2$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Trash2$3e$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/icons/trash-2.js [app-client] (ecmascript) <export default as Trash2>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$receipt$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Receipt$3e$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/icons/receipt.js [app-client] (ecmascript) <export default as Receipt>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$app$2f$business$2f$staff$2f$context$2f$OrderContext$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/context/OrderContext.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$app$2f$business$2f$staff$2f$data$2f$menu$2d$data$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/data/menu-data.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$app$2f$business$2f$staff$2f$components$2f$StaffNavbar$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/components/StaffNavbar.js [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
 "use client";
-;
 ;
 ;
 ;
@@ -742,9 +248,6 @@ function ManageOrderPage() {
     const params = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useParams"])();
     const tableId = parseInt(params.id);
     const { tables, getOrderByTableId, addItemsToOrder, updateItemStatus, removeItemFromOrder, completeOrder, cancelOrder } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$app$2f$business$2f$staff$2f$context$2f$OrderContext$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useOrder"])();
-    const [showAddItems, setShowAddItems] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
-    const [selectedNewItems, setSelectedNewItems] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
-    const [searchQuery, setSearchQuery] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('');
     const table = tables.find((t)=>t.id === tableId);
     const order = getOrderByTableId(tableId);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
@@ -754,8 +257,11 @@ function ManageOrderPage() {
                 router.push('/business/staff/login');
                 return;
             }
-            if (!table) router.push('/business/staff/home');
-            if (!order) return;
+            if (!table) {
+                router.push('/business/staff/home');
+                return;
+            }
+        // If order is not yet loaded, just wait (render returns null)
         }
     }["ManageOrderPage.useEffect"], [
         table,
@@ -771,11 +277,9 @@ function ManageOrderPage() {
             removeItemFromOrder(order.orderId, itemIndex);
         }
     };
-    const handleAddNewItems = ()=>{
-        if (selectedNewItems.length === 0) return;
-        addItemsToOrder(order.orderId, selectedNewItems);
-        setSelectedNewItems([]);
-        setShowAddItems(false);
+    // 🔁 NEW: instead of opening a modal, go to /order page
+    const handleGoToAddItemsPage = ()=>{
+        router.push(`/business/staff/table/${tableId}/order`);
     };
     const handleGenerateBill = ()=>{
         completeOrder(order.orderId);
@@ -787,26 +291,6 @@ function ManageOrderPage() {
             router.push('/business/staff/home');
         }
     };
-    const toggleNewItem = (item)=>{
-        setSelectedNewItems((prev)=>{
-            const existingIndex = prev.findIndex((i)=>i.id === item.id);
-            if (existingIndex >= 0) {
-                const updated = [
-                    ...prev
-                ];
-                updated[existingIndex].quantity += 1;
-                return updated;
-            } else {
-                return [
-                    ...prev,
-                    {
-                        ...item,
-                        quantity: 1
-                    }
-                ];
-            }
-        });
-    };
     const getStatusBadge = (status)=>{
         switch(status){
             case 'preparing':
@@ -815,7 +299,7 @@ function ManageOrderPage() {
                     children: "Preparing"
                 }, void 0, false, {
                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                    lineNumber: 80,
+                    lineNumber: 71,
                     columnNumber: 24
                 }, this);
             case 'served':
@@ -824,7 +308,7 @@ function ManageOrderPage() {
                     children: "Served"
                 }, void 0, false, {
                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                    lineNumber: 82,
+                    lineNumber: 73,
                     columnNumber: 24
                 }, this);
             case 'removed':
@@ -833,7 +317,7 @@ function ManageOrderPage() {
                     children: "Removed"
                 }, void 0, false, {
                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                    lineNumber: 84,
+                    lineNumber: 75,
                     columnNumber: 24
                 }, this);
             default:
@@ -858,13 +342,12 @@ function ManageOrderPage() {
     }
     const bill = calculateBill();
     const timeElapsed = Math.floor((new Date() - new Date(order.createdAt)) / 60000); // minutes
-    const filteredMenuItems = searchQuery ? __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$app$2f$business$2f$staff$2f$data$2f$menu$2d$data$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["MENU_ITEMS"].filter((item)=>item.name.toLowerCase().includes(searchQuery.toLowerCase())) : __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$app$2f$business$2f$staff$2f$data$2f$menu$2d$data$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["MENU_ITEMS"];
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "min-h-screen bg-[#FFF8E7] text-gray-800",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$app$2f$business$2f$staff$2f$components$2f$StaffNavbar$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                lineNumber: 113,
+                lineNumber: 100,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -884,12 +367,12 @@ function ManageOrderPage() {
                                             className: "w-6 h-6"
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                            lineNumber: 124,
+                                            lineNumber: 111,
                                             columnNumber: 33
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                        lineNumber: 120,
+                                        lineNumber: 107,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -899,7 +382,7 @@ function ManageOrderPage() {
                                                 children: "Manage Order"
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                                lineNumber: 127,
+                                                lineNumber: 114,
                                                 columnNumber: 33
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -915,19 +398,19 @@ function ManageOrderPage() {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                                lineNumber: 130,
+                                                lineNumber: 117,
                                                 columnNumber: 33
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                        lineNumber: 126,
+                                        lineNumber: 113,
                                         columnNumber: 29
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                lineNumber: 119,
+                                lineNumber: 106,
                                 columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -938,7 +421,7 @@ function ManageOrderPage() {
                                         children: "Current Bill"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                        lineNumber: 136,
+                                        lineNumber: 123,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -949,29 +432,29 @@ function ManageOrderPage() {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                        lineNumber: 137,
+                                        lineNumber: 124,
                                         columnNumber: 29
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                lineNumber: 135,
+                                lineNumber: 122,
                                 columnNumber: 25
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                        lineNumber: 118,
+                        lineNumber: 105,
                         columnNumber: 21
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                    lineNumber: 117,
+                    lineNumber: 104,
                     columnNumber: 17
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                lineNumber: 116,
+                lineNumber: 103,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -991,14 +474,14 @@ function ManageOrderPage() {
                                                 className: "w-2 h-8 bg-gradient-to-b from-amber-400 to-yellow-500 rounded-full"
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                                lineNumber: 149,
+                                                lineNumber: 136,
                                                 columnNumber: 33
                                             }, this),
                                             "Current Order Items"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                        lineNumber: 148,
+                                        lineNumber: 135,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1019,14 +502,14 @@ function ManageOrderPage() {
                                                                             children: item.name
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                                                            lineNumber: 158,
+                                                                            lineNumber: 145,
                                                                             columnNumber: 53
                                                                         }, this),
                                                                         getStatusBadge(item.status)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                                                    lineNumber: 157,
+                                                                    lineNumber: 144,
                                                                     columnNumber: 49
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1037,7 +520,7 @@ function ManageOrderPage() {
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                                                    lineNumber: 161,
+                                                                    lineNumber: 148,
                                                                     columnNumber: 49
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1052,13 +535,13 @@ function ManageOrderPage() {
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                                                    lineNumber: 162,
+                                                                    lineNumber: 149,
                                                                     columnNumber: 49
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                                            lineNumber: 156,
+                                                            lineNumber: 143,
                                                             columnNumber: 45
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1072,12 +555,12 @@ function ManageOrderPage() {
                                                                         className: "w-5 h-5"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                                                        lineNumber: 173,
+                                                                        lineNumber: 160,
                                                                         columnNumber: 57
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                                                    lineNumber: 168,
+                                                                    lineNumber: 155,
                                                                     columnNumber: 53
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1088,45 +571,45 @@ function ManageOrderPage() {
                                                                         className: "w-5 h-5"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                                                        lineNumber: 181,
+                                                                        lineNumber: 168,
                                                                         columnNumber: 53
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                                                    lineNumber: 176,
+                                                                    lineNumber: 163,
                                                                     columnNumber: 49
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                                            lineNumber: 166,
+                                                            lineNumber: 153,
                                                             columnNumber: 45
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                                    lineNumber: 155,
+                                                    lineNumber: 142,
                                                     columnNumber: 41
                                                 }, this)
                                             }, index, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                                lineNumber: 154,
+                                                lineNumber: 141,
                                                 columnNumber: 37
                                             }, this))
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                        lineNumber: 152,
+                                        lineNumber: 139,
                                         columnNumber: 29
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                lineNumber: 147,
+                                lineNumber: 134,
                                 columnNumber: 25
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                            lineNumber: 146,
+                            lineNumber: 133,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1139,25 +622,25 @@ function ManageOrderPage() {
                                         children: "Actions"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                        lineNumber: 194,
+                                        lineNumber: 181,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                        onClick: ()=>setShowAddItems(!showAddItems),
+                                        onClick: handleGoToAddItemsPage,
                                         className: "w-full flex items-center justify-center gap-2 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-bold py-4 rounded-xl transition-all active:scale-95 shadow-lg shadow-blue-200",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$plus$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Plus$3e$__["Plus"], {
                                                 className: "w-5 h-5"
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                                lineNumber: 200,
+                                                lineNumber: 188,
                                                 columnNumber: 33
                                             }, this),
                                             "Add More Items"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                        lineNumber: 196,
+                                        lineNumber: 184,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1168,14 +651,14 @@ function ManageOrderPage() {
                                                 className: "w-5 h-5"
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                                lineNumber: 208,
+                                                lineNumber: 196,
                                                 columnNumber: 33
                                             }, this),
                                             "Generate Bill"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                        lineNumber: 204,
+                                        lineNumber: 192,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1186,14 +669,14 @@ function ManageOrderPage() {
                                                 className: "w-5 h-5"
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                                lineNumber: 216,
+                                                lineNumber: 204,
                                                 columnNumber: 33
                                             }, this),
                                             "Cancel Order"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                        lineNumber: 212,
+                                        lineNumber: 200,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1204,7 +687,7 @@ function ManageOrderPage() {
                                                 children: "Bill Summary"
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                                lineNumber: 222,
+                                                lineNumber: 210,
                                                 columnNumber: 33
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1215,7 +698,7 @@ function ManageOrderPage() {
                                                         children: "Subtotal"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                                        lineNumber: 224,
+                                                        lineNumber: 212,
                                                         columnNumber: 37
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1223,6 +706,90 @@ function ManageOrderPage() {
                                                         children: [
                                                             "₹",
                                                             bill.subtotal.toFixed(2)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
+                                                        lineNumber: 213,
+                                                        columnNumber: 37
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
+                                                lineNumber: 211,
+                                                columnNumber: 33
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "flex justify-between text-sm",
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                        className: "text-gray-500",
+                                                        children: "CGST (2.5%)"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
+                                                        lineNumber: 216,
+                                                        columnNumber: 37
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                        className: "font-semibold text-gray-800",
+                                                        children: [
+                                                            "₹",
+                                                            bill.cgst.toFixed(2)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
+                                                        lineNumber: 217,
+                                                        columnNumber: 37
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
+                                                lineNumber: 215,
+                                                columnNumber: 33
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "flex justify-between text-sm",
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                        className: "text-gray-500",
+                                                        children: "SGST (2.5%)"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
+                                                        lineNumber: 220,
+                                                        columnNumber: 37
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                        className: "font-semibold text-gray-800",
+                                                        children: [
+                                                            "₹",
+                                                            bill.sgst.toFixed(2)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
+                                                        lineNumber: 221,
+                                                        columnNumber: 37
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
+                                                lineNumber: 219,
+                                                columnNumber: 33
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "flex justify-between text-lg font-bold border-t border-dashed border-amber-200 pt-3 mt-3",
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                        className: "text-gray-800",
+                                                        children: "Total"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
+                                                        lineNumber: 224,
+                                                        columnNumber: 37
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                        className: "text-amber-600",
+                                                        children: [
+                                                            "₹",
+                                                            bill.total.toFixed(2)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
@@ -1234,278 +801,43 @@ function ManageOrderPage() {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
                                                 lineNumber: 223,
                                                 columnNumber: 33
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "flex justify-between text-sm",
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                        className: "text-gray-500",
-                                                        children: "CGST (2.5%)"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                                        lineNumber: 228,
-                                                        columnNumber: 37
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                        className: "font-semibold text-gray-800",
-                                                        children: [
-                                                            "₹",
-                                                            bill.cgst.toFixed(2)
-                                                        ]
-                                                    }, void 0, true, {
-                                                        fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                                        lineNumber: 229,
-                                                        columnNumber: 37
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                                lineNumber: 227,
-                                                columnNumber: 33
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "flex justify-between text-sm",
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                        className: "text-gray-500",
-                                                        children: "SGST (2.5%)"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                                        lineNumber: 232,
-                                                        columnNumber: 37
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                        className: "font-semibold text-gray-800",
-                                                        children: [
-                                                            "₹",
-                                                            bill.sgst.toFixed(2)
-                                                        ]
-                                                    }, void 0, true, {
-                                                        fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                                        lineNumber: 233,
-                                                        columnNumber: 37
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                                lineNumber: 231,
-                                                columnNumber: 33
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "flex justify-between text-lg font-bold border-t border-dashed border-amber-200 pt-3 mt-3",
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                        className: "text-gray-800",
-                                                        children: "Total"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                                        lineNumber: 236,
-                                                        columnNumber: 37
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                        className: "text-amber-600",
-                                                        children: [
-                                                            "₹",
-                                                            bill.total.toFixed(2)
-                                                        ]
-                                                    }, void 0, true, {
-                                                        fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                                        lineNumber: 237,
-                                                        columnNumber: 37
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                                lineNumber: 235,
-                                                columnNumber: 33
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                        lineNumber: 221,
+                                        lineNumber: 209,
                                         columnNumber: 29
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                lineNumber: 193,
+                                lineNumber: 180,
                                 columnNumber: 25
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                            lineNumber: 192,
+                            lineNumber: 179,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                    lineNumber: 144,
+                    lineNumber: 131,
                     columnNumber: 17
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                lineNumber: 143,
+                lineNumber: 130,
                 columnNumber: 13
-            }, this),
-            showAddItems && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4",
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "bg-white rounded-3xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden border border-amber-100",
-                    children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "p-6 border-b border-gray-100 bg-gray-50/50",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "flex items-center justify-between",
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                                            className: "text-2xl font-bold text-gray-800",
-                                            children: "Add Items to Order"
-                                        }, void 0, false, {
-                                            fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                            lineNumber: 251,
-                                            columnNumber: 33
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                            onClick: ()=>setShowAddItems(false),
-                                            className: "p-2 hover:bg-gray-200 rounded-xl transition-colors text-gray-500",
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$x$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__X$3e$__["X"], {
-                                                className: "w-6 h-6"
-                                            }, void 0, false, {
-                                                fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                                lineNumber: 256,
-                                                columnNumber: 37
-                                            }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                            lineNumber: 252,
-                                            columnNumber: 33
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                    lineNumber: 250,
-                                    columnNumber: 29
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                    type: "text",
-                                    placeholder: "Search items...",
-                                    value: searchQuery,
-                                    onChange: (e)=>setSearchQuery(e.target.value),
-                                    className: "w-full mt-4 px-4 py-3 border border-gray-200 rounded-xl focus:border-amber-400 focus:outline-none transition-colors"
-                                }, void 0, false, {
-                                    fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                    lineNumber: 259,
-                                    columnNumber: 29
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                            lineNumber: 249,
-                            columnNumber: 25
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "p-6 overflow-y-auto max-h-[60vh]",
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "grid grid-cols-2 md:grid-cols-3 gap-4",
-                                children: filteredMenuItems.map((item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                        onClick: ()=>toggleNewItem(item),
-                                        className: "bg-white hover:bg-amber-50 border border-gray-200 hover:border-amber-300 rounded-2xl p-4 transition-all text-left group",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "text-3xl mb-2 group-hover:scale-110 transition-transform",
-                                                children: item.image
-                                            }, void 0, false, {
-                                                fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                                lineNumber: 275,
-                                                columnNumber: 41
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
-                                                className: "font-bold text-gray-800 mb-1",
-                                                children: item.name
-                                            }, void 0, false, {
-                                                fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                                lineNumber: 276,
-                                                columnNumber: 41
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                className: "text-amber-600 font-bold",
-                                                children: [
-                                                    "₹",
-                                                    item.price
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                                lineNumber: 277,
-                                                columnNumber: 41
-                                            }, this),
-                                            selectedNewItems.find((i)=>i.id === item.id) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "mt-2 inline-block bg-amber-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-sm",
-                                                children: [
-                                                    selectedNewItems.find((i)=>i.id === item.id).quantity,
-                                                    " added"
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                                lineNumber: 279,
-                                                columnNumber: 45
-                                            }, this)
-                                        ]
-                                    }, item.id, true, {
-                                        fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                        lineNumber: 270,
-                                        columnNumber: 37
-                                    }, this))
-                            }, void 0, false, {
-                                fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                lineNumber: 268,
-                                columnNumber: 29
-                            }, this)
-                        }, void 0, false, {
-                            fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                            lineNumber: 267,
-                            columnNumber: 25
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "p-6 border-t border-gray-100 bg-gray-50/50",
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                onClick: handleAddNewItems,
-                                disabled: selectedNewItems.length === 0,
-                                className: "w-full bg-gradient-to-r from-amber-500 to-yellow-600 hover:from-amber-600 hover:to-yellow-700 disabled:from-gray-300 disabled:to-gray-400 disabled:cursor-not-allowed text-white font-bold py-4 rounded-xl transition-all active:scale-95 shadow-lg shadow-amber-200",
-                                children: [
-                                    "Add ",
-                                    selectedNewItems.reduce((sum, item)=>sum + item.quantity, 0),
-                                    " Items"
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                                lineNumber: 288,
-                                columnNumber: 29
-                            }, this)
-                        }, void 0, false, {
-                            fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                            lineNumber: 287,
-                            columnNumber: 25
-                        }, this)
-                    ]
-                }, void 0, true, {
-                    fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                    lineNumber: 248,
-                    columnNumber: 21
-                }, this)
-            }, void 0, false, {
-                fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-                lineNumber: 247,
-                columnNumber: 17
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/table/[id]/manage/page.js",
-        lineNumber: 111,
+        lineNumber: 98,
         columnNumber: 9
     }, this);
 }
-_s(ManageOrderPage, "FkgIRT/P6fI36n6IfD/+oc58A3I=", false, function() {
+_s(ManageOrderPage, "m6KCnoRx/caVe0m/3A/1kAObFwk=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"],
         __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useParams"],
@@ -1521,4 +853,4 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 }),
 ]);
 
-//# sourceMappingURL=Documents_Projects_DineX_dinex-client_src_app_business_staff_484d09b9._.js.map
+//# sourceMappingURL=Documents_Projects_DineX_dinex-client_src_app_business_staff_0e68e31b._.js.map
