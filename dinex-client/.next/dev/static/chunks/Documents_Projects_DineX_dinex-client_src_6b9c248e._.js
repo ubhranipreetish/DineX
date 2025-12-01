@@ -16,10 +16,6 @@ const API = __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Project
 // Add request interceptor to attach the correct token based on the endpoint
 API.interceptors.request.use((config)=>{
     let token = null;
-    // If Authorization header is already set, don't overwrite it
-    if (config.headers.Authorization) {
-        return config;
-    }
     // Determine which token to use based on the request URL
     if (config.url?.includes('/api/business/staff/login') || config.url?.includes('/api/business/staff/profile')) {
         // Staff member authentication endpoints
@@ -54,11 +50,9 @@ __turbopack_context__.s([
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$utils$2f$api$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/src/utils/api.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/next/navigation.js [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature(), _s1 = __turbopack_context__.k.signature();
 "use client";
-;
 ;
 ;
 const OrderContext = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["createContext"])();
@@ -76,86 +70,101 @@ const OrderProvider = ({ children })=>{
     const [orders, setOrders] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({});
     const [tables, setTables] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
     const [restaurant, setRestaurant] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
-    const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(true);
-    const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"])();
-    // Fetch initial data
-    const fetchData = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCallback"])({
-        "OrderProvider.useCallback[fetchData]": async ()=>{
-            try {
-                const token = localStorage.getItem('staffToken');
-                if (!token) {
-                    setLoading(false);
-                    return;
-                }
-                const headers = {
-                    Authorization: `Bearer ${token}`
-                };
-                // 1. Fetch Restaurant Profile (for table count)
-                const profileRes = await __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$utils$2f$api$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["API"].get('/api/business/staff/profile', {
-                    headers
-                });
-                const restaurantData = profileRes.data;
-                setRestaurant(restaurantData);
-                // 2. Fetch Ongoing Orders
-                const ordersRes = await __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$utils$2f$api$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["API"].get('/api/orders/ongoing', {
-                    headers
-                });
-                const activeOrders = ordersRes.data.orders;
-                // 3. Initialize Tables
-                const totalTables = parseInt(restaurantData.tables) || 20;
-                const initialTables = Array.from({
-                    length: totalTables
-                }, {
-                    "OrderProvider.useCallback[fetchData].initialTables": (_, i)=>{
-                        const tableNo = i + 1;
-                        const activeOrder = activeOrders.find({
-                            "OrderProvider.useCallback[fetchData].initialTables.activeOrder": (o)=>o.tableNo === tableNo
-                        }["OrderProvider.useCallback[fetchData].initialTables.activeOrder"]);
-                        if (activeOrder) {
-                            return {
-                                id: tableNo,
-                                tableNumber: tableNo,
-                                status: 'occupied',
-                                currentBill: activeOrder.totalAmount,
-                                guests: 0,
-                                orderId: activeOrder.orderId,
-                                seatedAt: activeOrder.createdAt
-                            };
-                        } else {
-                            return {
-                                id: tableNo,
-                                tableNumber: tableNo,
-                                status: 'free',
-                                currentBill: 0,
-                                guests: 0,
-                                orderId: null,
-                                seatedAt: null
-                            };
-                        }
-                    }
-                }["OrderProvider.useCallback[fetchData].initialTables"]);
-                setTables(initialTables);
-                // Map orders to state object
-                const ordersMap = {};
-                activeOrders.forEach({
-                    "OrderProvider.useCallback[fetchData]": (o)=>{
-                        ordersMap[o.orderId] = o;
-                    }
-                }["OrderProvider.useCallback[fetchData]"]);
-                setOrders(ordersMap);
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            } finally{
-                setLoading(false);
-            }
-        }
-    }["OrderProvider.useCallback[fetchData]"], []);
+    // Initialize from localStorage and fetch restaurant data
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "OrderProvider.useEffect": ()=>{
-            fetchData();
+            const savedOrders = localStorage.getItem('dinex_orders');
+            const savedTables = localStorage.getItem('dinex_tables');
+            if (savedOrders) {
+                setOrders(JSON.parse(savedOrders));
+            }
+            // Fetch restaurant profile to get table count
+            const fetchRestaurantData = {
+                "OrderProvider.useEffect.fetchRestaurantData": async ()=>{
+                    try {
+                        const token = localStorage.getItem('staffToken');
+                        if (!token) return;
+                        const res = await __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$utils$2f$api$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["API"].get('/api/business/staff/profile', {
+                            headers: {
+                                Authorization: `Bearer ${token}`
+                            }
+                        });
+                        const restaurantData = res.data;
+                        console.log('Restaurant Data from API:', restaurantData);
+                        setRestaurant(restaurantData);
+                        // Ensure tables count is a number
+                        const totalTables = parseInt(restaurantData.tables) || 20;
+                        // Check if we have saved tables with correct count
+                        if (savedTables) {
+                            const parsedTables = JSON.parse(savedTables);
+                            if (parsedTables.length === totalTables) {
+                                setTables(parsedTables);
+                                return;
+                            }
+                        }
+                        // Initialize tables based on restaurant data
+                        const initialTables = Array.from({
+                            length: totalTables
+                        }, {
+                            "OrderProvider.useEffect.fetchRestaurantData.initialTables": (_, i)=>({
+                                    id: i + 1,
+                                    tableNumber: i + 1,
+                                    status: 'free',
+                                    currentBill: 0,
+                                    guests: 0,
+                                    orderId: null,
+                                    seatedAt: null
+                                })
+                        }["OrderProvider.useEffect.fetchRestaurantData.initialTables"]);
+                        setTables(initialTables);
+                        localStorage.setItem('dinex_tables', JSON.stringify(initialTables));
+                    } catch (error) {
+                        console.error('Error fetching restaurant data:', error);
+                        // Fallback to saved tables or default 20 tables
+                        if (savedTables) {
+                            setTables(JSON.parse(savedTables));
+                        } else {
+                            const defaultTables = Array.from({
+                                length: 20
+                            }, {
+                                "OrderProvider.useEffect.fetchRestaurantData.defaultTables": (_, i)=>({
+                                        id: i + 1,
+                                        tableNumber: i + 1,
+                                        status: 'free',
+                                        currentBill: 0,
+                                        guests: 0,
+                                        orderId: null,
+                                        seatedAt: null
+                                    })
+                            }["OrderProvider.useEffect.fetchRestaurantData.defaultTables"]);
+                            setTables(defaultTables);
+                            localStorage.setItem('dinex_tables', JSON.stringify(defaultTables));
+                        }
+                    }
+                }
+            }["OrderProvider.useEffect.fetchRestaurantData"];
+            fetchRestaurantData();
+        }
+    }["OrderProvider.useEffect"], []);
+    // Save to localStorage whenever orders change
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "OrderProvider.useEffect": ()=>{
+            if (Object.keys(orders).length > 0) {
+                localStorage.setItem('dinex_orders', JSON.stringify(orders));
+            }
         }
     }["OrderProvider.useEffect"], [
-        fetchData
+        orders
+    ]);
+    // Save to localStorage whenever tables change
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "OrderProvider.useEffect": ()=>{
+            if (tables.length > 0) {
+                localStorage.setItem('dinex_tables', JSON.stringify(tables));
+            }
+        }
+    }["OrderProvider.useEffect"], [
+        tables
     ]);
     const createOrder = async (tableId, items, guests = 0)=>{
         try {
@@ -174,22 +183,23 @@ const OrderProvider = ({ children })=>{
                 }
             });
             const newOrder = res.data.order;
-            // Update local state immediately
+            // Update local state
             setOrders((prev)=>({
                     ...prev,
                     [newOrder.orderId]: newOrder
                 }));
+            // Update table state (optimistic or based on response)
             setTables((prev)=>prev.map((t)=>t.id === tableId ? {
                         ...t,
                         status: 'occupied',
                         orderId: newOrder.orderId,
                         currentBill: newOrder.totalAmount,
-                        seatedAt: newOrder.createdAt
+                        seatedAt: newOrder.createdAt,
+                        guests: guests
                     } : t));
             return newOrder.orderId;
         } catch (error) {
             console.error('Error creating order:', error);
-            alert('Failed to create order. Please try again.');
             throw error;
         }
     };
@@ -213,25 +223,22 @@ const OrderProvider = ({ children })=>{
                     ...prev,
                     [orderId]: updatedOrder
                 }));
+            // Update table bill
             setTables((prev)=>prev.map((t)=>t.orderId === orderId ? {
                         ...t,
                         currentBill: updatedOrder.totalAmount
                     } : t));
         } catch (error) {
             console.error('Error adding items:', error);
-            alert('Failed to add items.');
         }
     };
-    const updateItemStatus = async (orderId, itemId, status)=>{
-        // Currently backend doesn't support explicit item status update via API
-        // We will update local state for now, or implement a backend route if needed.
-        // For 'served', we can assume it's a local tracking for now or add a route later.
-        // Since user asked for CRUD, and we added 'status' to model, we SHOULD implement it.
-        // But for this step, I'll update local state to keep UI responsive.
+    const updateItemStatus = (orderId, itemId, status)=>{
+        // Placeholder for item status update if backend supports it
+        // For now, update local state
         setOrders((prev)=>{
             const order = prev[orderId];
             if (!order) return prev;
-            const updatedItems = order.items.map((item)=>item.itemId === itemId || item._id === itemId ? {
+            const updatedItems = order.items.map((item)=>item.id === itemId || item.itemId === itemId ? {
                     ...item,
                     status
                 } : item);
@@ -257,46 +264,16 @@ const OrderProvider = ({ children })=>{
                     ...prev,
                     [orderId]: updatedOrder
                 }));
+            // Update table bill
             setTables((prev)=>prev.map((t)=>t.orderId === orderId ? {
                         ...t,
                         currentBill: updatedOrder.totalAmount
                     } : t));
         } catch (error) {
             console.error('Error removing item:', error);
-            alert('Failed to remove item.');
         }
     };
-    const cancelOrder = async (orderId)=>{
-        try {
-            const token = localStorage.getItem('staffToken');
-            await __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$utils$2f$api$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["API"].patch(`/api/orders/${orderId}/cancel`, {}, {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            });
-            // Remove from active orders
-            setOrders((prev)=>{
-                const updated = {
-                    ...prev
-                };
-                delete updated[orderId];
-                return updated;
-            });
-            // Reset table
-            setTables((prev)=>prev.map((t)=>t.orderId === orderId ? {
-                        ...t,
-                        status: 'free',
-                        orderId: null,
-                        currentBill: 0,
-                        seatedAt: null
-                    } : t));
-        } catch (error) {
-            console.error('Error cancelling order:', error);
-            alert('Failed to cancel order.');
-        }
-    };
-    const completeOrder = async (orderId)=>{
-        // Just a state transition helper, actual completion happens in markAsPaid
+    const completeOrder = (orderId)=>{
         return orderId;
     };
     const markAsPaid = async (orderId)=>{
@@ -316,17 +293,65 @@ const OrderProvider = ({ children })=>{
                 return updated;
             });
             // Reset table
-            setTables((prev)=>prev.map((t)=>t.orderId === orderId ? {
-                        ...t,
-                        status: 'free',
-                        orderId: null,
-                        currentBill: 0,
-                        seatedAt: null
-                    } : t));
+            const order = orders[orderId];
+            if (order) {
+                setTables((prev)=>prev.map((t)=>t.id === order.tableNo // Use tableNo from order
+                         ? {
+                            ...t,
+                            status: 'free',
+                            orderId: null,
+                            currentBill: 0,
+                            seatedAt: null,
+                            guests: 0
+                        } : t));
+            }
         } catch (error) {
             console.error('Error completing order:', error);
-            alert('Failed to complete order.');
         }
+    };
+    const cancelOrder = async (orderId)=>{
+        try {
+            const token = localStorage.getItem('staffToken');
+            await __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$utils$2f$api$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["API"].patch(`/api/orders/${orderId}/cancel`, {}, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            // Remove from active orders
+            setOrders((prev)=>{
+                const updated = {
+                    ...prev
+                };
+                delete updated[orderId];
+                return updated;
+            });
+            // Reset table
+            const order = orders[orderId];
+            if (order) {
+                setTables((prev)=>prev.map((t)=>t.id === order.tableNo ? {
+                            ...t,
+                            status: 'free',
+                            orderId: null,
+                            currentBill: 0,
+                            seatedAt: null,
+                            guests: 0
+                        } : t));
+            }
+        } catch (error) {
+            console.error('Error cancelling order:', error);
+        }
+    };
+    const calculateBill = (items)=>{
+        const subtotal = items.reduce((sum, item)=>sum + item.price * item.quantity, 0);
+        const cgst = subtotal * 0.025;
+        const sgst = subtotal * 0.025;
+        const total = subtotal + cgst + sgst;
+        return {
+            subtotal: Math.round(subtotal * 100) / 100,
+            cgst: Math.round(cgst * 100) / 100,
+            sgst: Math.round(sgst * 100) / 100,
+            total: Math.round(total * 100) / 100
+        };
     };
     const getOrderByTableId = (tableId)=>{
         const table = tables.find((t)=>t.id === tableId);
@@ -334,13 +359,12 @@ const OrderProvider = ({ children })=>{
         return orders[table.orderId];
     };
     const getActiveOrders = ()=>{
-        return Object.values(orders).filter((order)=>order.status === 'ongoing');
+        return Object.values(orders).filter((order)=>order.status === 'active');
     };
     const value = {
         orders,
         tables,
         restaurant,
-        loading,
         createOrder,
         addItemsToOrder,
         updateItemStatus,
@@ -348,24 +372,20 @@ const OrderProvider = ({ children })=>{
         completeOrder,
         markAsPaid,
         cancelOrder,
+        calculateBill,
         getOrderByTableId,
-        getActiveOrders,
-        refreshData: fetchData
+        getActiveOrders
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(OrderContext.Provider, {
         value: value,
         children: children
     }, void 0, false, {
         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/context/OrderContext.js",
-        lineNumber: 278,
+        lineNumber: 318,
         columnNumber: 9
     }, ("TURBOPACK compile-time value", void 0));
 };
-_s1(OrderProvider, "+JkGOM2Y7cwoMt8huY+UrycNDpM=", false, function() {
-    return [
-        __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"]
-    ];
-});
+_s1(OrderProvider, "D0Rqr1v7I60flrY5LN9E6MRvcmk=");
 _c = OrderProvider;
 var _c;
 __turbopack_context__.k.register(_c, "OrderProvider");

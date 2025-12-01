@@ -236,67 +236,79 @@ const OrderProvider = ({ children })=>{
     }, [
         tables
     ]);
-    const createOrder = (tableId, items, guests = 0)=>{
-        const orderId = `ORD_${Date.now()}`;
-        const newOrder = {
-            id: orderId,
-            tableId,
-            items: items.map((item)=>({
-                    ...item,
-                    status: 'preparing',
-                    addedAt: new Date().toISOString()
-                })),
-            createdAt: new Date().toISOString(),
-            status: 'active'
-        };
-        setOrders((prev)=>({
-                ...prev,
-                [orderId]: newOrder
-            }));
-        // Update table status
-        setTables((prev)=>prev.map((table)=>table.id === tableId ? {
-                    ...table,
-                    status: 'occupied',
-                    orderId,
-                    guests,
-                    seatedAt: new Date().toISOString(),
-                    currentBill: calculateBill(items).total
-                } : table));
-        return orderId;
-    };
-    const addItemsToOrder = (orderId, newItems)=>{
-        setOrders((prev)=>{
-            const order = prev[orderId];
-            if (!order) return prev;
-            const updatedItems = [
-                ...order.items,
-                ...newItems.map((item)=>({
-                        ...item,
-                        status: 'preparing',
-                        addedAt: new Date().toISOString()
+    const createOrder = async (tableId, items, guests = 0)=>{
+        try {
+            const token = localStorage.getItem('staffToken');
+            const res = await __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$utils$2f$api$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["API"].post('/api/orders', {
+                tableNo: tableId,
+                items: items.map((i)=>({
+                        itemId: i.id,
+                        name: i.name,
+                        price: i.price,
+                        quantity: i.quantity
                     }))
-            ];
-            const updatedOrder = {
-                ...order,
-                items: updatedItems
-            };
+            }, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            const newOrder = res.data.order;
+            // Update local state
+            setOrders((prev)=>({
+                    ...prev,
+                    [newOrder.orderId]: newOrder
+                }));
+            // Update table state (optimistic or based on response)
+            setTables((prev)=>prev.map((t)=>t.id === tableId ? {
+                        ...t,
+                        status: 'occupied',
+                        orderId: newOrder.orderId,
+                        currentBill: newOrder.totalAmount,
+                        seatedAt: newOrder.createdAt,
+                        guests: guests
+                    } : t));
+            return newOrder.orderId;
+        } catch (error) {
+            console.error('Error creating order:', error);
+            throw error;
+        }
+    };
+    const addItemsToOrder = async (orderId, newItems)=>{
+        try {
+            const token = localStorage.getItem('staffToken');
+            const res = await __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$utils$2f$api$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["API"].post(`/api/orders/${orderId}/items`, {
+                items: newItems.map((i)=>({
+                        itemId: i.id,
+                        name: i.name,
+                        price: i.price,
+                        quantity: i.quantity
+                    }))
+            }, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            const updatedOrder = res.data.order;
+            setOrders((prev)=>({
+                    ...prev,
+                    [orderId]: updatedOrder
+                }));
             // Update table bill
-            const tableId = order.tableId;
-            setTables((tables)=>tables.map((table)=>table.id === tableId ? {
-                        ...table,
-                        currentBill: calculateBill(updatedItems).total
-                    } : table));
-            return {
-                ...prev,
-                [orderId]: updatedOrder
-            };
-        });
+            setTables((prev)=>prev.map((t)=>t.orderId === orderId ? {
+                        ...t,
+                        currentBill: updatedOrder.totalAmount
+                    } : t));
+        } catch (error) {
+            console.error('Error adding items:', error);
+        }
     };
     const updateItemStatus = (orderId, itemId, status)=>{
+        // Placeholder for item status update if backend supports it
+        // For now, update local state
         setOrders((prev)=>{
             const order = prev[orderId];
             if (!order) return prev;
-            const updatedItems = order.items.map((item)=>item.id === itemId && item.addedAt === itemId.split('_')[1] ? {
+            const updatedItems = order.items.map((item)=>item.id === itemId || item.itemId === itemId ? {
                     ...item,
                     status
                 } : item);
@@ -309,73 +321,95 @@ const OrderProvider = ({ children })=>{
             };
         });
     };
-    const removeItemFromOrder = (orderId, itemIndex)=>{
-        setOrders((prev)=>{
-            const order = prev[orderId];
-            if (!order) return prev;
-            const updatedItems = order.items.filter((_, index)=>index !== itemIndex);
-            const updatedOrder = {
-                ...order,
-                items: updatedItems
-            };
+    const removeItemFromOrder = async (orderId, itemIndex)=>{
+        try {
+            const token = localStorage.getItem('staffToken');
+            const res = await __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$utils$2f$api$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["API"].delete(`/api/orders/${orderId}/items/${itemIndex}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            const updatedOrder = res.data.order;
+            setOrders((prev)=>({
+                    ...prev,
+                    [orderId]: updatedOrder
+                }));
             // Update table bill
-            const tableId = order.tableId;
-            setTables((tables)=>tables.map((table)=>table.id === tableId ? {
-                        ...table,
-                        currentBill: calculateBill(updatedItems).total
-                    } : table));
-            return {
-                ...prev,
-                [orderId]: updatedOrder
-            };
-        });
+            setTables((prev)=>prev.map((t)=>t.orderId === orderId ? {
+                        ...t,
+                        currentBill: updatedOrder.totalAmount
+                    } : t));
+        } catch (error) {
+            console.error('Error removing item:', error);
+        }
     };
     const completeOrder = (orderId)=>{
-        // This function now goes directly to marking as paid
-        // No intermediate "bill_pending" state
         return orderId;
     };
-    const markAsPaid = (orderId)=>{
-        const order = orders[orderId];
-        if (!order) return;
-        // Archive the order
-        setOrders((prev)=>{
-            const updated = {
-                ...prev
-            };
-            delete updated[orderId];
-            return updated;
-        });
-        // Reset table to free
-        setTables((prev)=>prev.map((table)=>table.id === order.tableId ? {
-                    ...table,
-                    status: 'free',
-                    currentBill: 0,
-                    guests: 0,
-                    orderId: null,
-                    seatedAt: null
-                } : table));
+    const markAsPaid = async (orderId)=>{
+        try {
+            const token = localStorage.getItem('staffToken');
+            await __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$utils$2f$api$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["API"].patch(`/api/orders/${orderId}/complete`, {}, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            // Remove from active orders
+            setOrders((prev)=>{
+                const updated = {
+                    ...prev
+                };
+                delete updated[orderId];
+                return updated;
+            });
+            // Reset table
+            const order = orders[orderId];
+            if (order) {
+                setTables((prev)=>prev.map((t)=>t.id === order.tableNo // Use tableNo from order
+                         ? {
+                            ...t,
+                            status: 'free',
+                            orderId: null,
+                            currentBill: 0,
+                            seatedAt: null,
+                            guests: 0
+                        } : t));
+            }
+        } catch (error) {
+            console.error('Error completing order:', error);
+        }
     };
-    const cancelOrder = (orderId)=>{
-        const order = orders[orderId];
-        if (!order) return;
-        // Remove the order
-        setOrders((prev)=>{
-            const updated = {
-                ...prev
-            };
-            delete updated[orderId];
-            return updated;
-        });
-        // Reset table to free
-        setTables((prev)=>prev.map((table)=>table.id === order.tableId ? {
-                    ...table,
-                    status: 'free',
-                    currentBill: 0,
-                    guests: 0,
-                    orderId: null,
-                    seatedAt: null
-                } : table));
+    const cancelOrder = async (orderId)=>{
+        try {
+            const token = localStorage.getItem('staffToken');
+            await __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$utils$2f$api$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["API"].patch(`/api/orders/${orderId}/cancel`, {}, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            // Remove from active orders
+            setOrders((prev)=>{
+                const updated = {
+                    ...prev
+                };
+                delete updated[orderId];
+                return updated;
+            });
+            // Reset table
+            const order = orders[orderId];
+            if (order) {
+                setTables((prev)=>prev.map((t)=>t.id === order.tableNo ? {
+                            ...t,
+                            status: 'free',
+                            orderId: null,
+                            currentBill: 0,
+                            seatedAt: null,
+                            guests: 0
+                        } : t));
+            }
+        } catch (error) {
+            console.error('Error cancelling order:', error);
+        }
     };
     const calculateBill = (items)=>{
         const subtotal = items.reduce((sum, item)=>sum + item.price * item.quantity, 0);
@@ -417,7 +451,7 @@ const OrderProvider = ({ children })=>{
         children: children
     }, void 0, false, {
         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/context/OrderContext.js",
-        lineNumber: 303,
+        lineNumber: 318,
         columnNumber: 9
     }, ("TURBOPACK compile-time value", void 0));
 };

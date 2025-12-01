@@ -32,7 +32,7 @@ router.post("/register", async (req, res) => {
         const hashedPassword = await bcrypt.hash(ownerPassword, 10);
 
         // Create new restaurant owner
-        const newOwner = await RestaurantOwner.create({
+        const newOwner = new RestaurantOwner({
             owner: {
                 name: ownerName,
                 email: ownerEmail,
@@ -52,6 +52,16 @@ router.post("/register", async (req, res) => {
             },
             waiters: [], // Initialize empty waiters array
         });
+
+        // Auto-generate tables array
+        newOwner.tables = Array.from({ length: totalTables }, (_, i) => ({
+            tableNumber: i + 1,
+            status: "free",
+            currentOrder: null,
+            currentBill: 0
+        }));
+
+        await newOwner.save();
 
         // Generate JWT token
         const businessToken = jwt.sign(
@@ -229,7 +239,7 @@ router.get("/staff/profile", async (req, res) => {
             staffUser: staffResponse,
             restaurantName: owner.restaurant.name,
             restaurantType: owner.restaurant.type,
-            tables: owner.restaurant.totalTables,
+            tables: owner.tables, // Include tables in response
             address: owner.restaurant.address,
             role: staffMember.role
         });

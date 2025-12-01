@@ -105,10 +105,6 @@ const API = __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Project
 // Add request interceptor to attach the correct token based on the endpoint
 API.interceptors.request.use((config)=>{
     let token = null;
-    // If Authorization header is already set, don't overwrite it
-    if (config.headers.Authorization) {
-        return config;
-    }
     // Determine which token to use based on the request URL
     if (config.url?.includes('/api/business/staff/login') || config.url?.includes('/api/business/staff/profile')) {
         // Staff member authentication endpoints

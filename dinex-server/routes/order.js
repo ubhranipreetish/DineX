@@ -80,6 +80,18 @@ router.post("/", verifyBusinessToken, getRestaurantDetails, async (req, res) => 
 
         await newOrder.save();
 
+        // Update table status in RestaurantOwner
+        await RestaurantOwner.updateOne(
+            { _id: req.restaurantId, "tables.tableNumber": tableNo },
+            {
+                $set: {
+                    "tables.$.status": "occupied",
+                    "tables.$.currentOrder": newOrder._id,
+                    "tables.$.currentBill": newOrder.totalAmount
+                }
+            }
+        );
+
         res.status(201).json({
             msg: "Order created successfully",
             order: newOrder
@@ -225,6 +237,16 @@ router.post("/:orderId/items", verifyBusinessToken, getRestaurantDetails, async 
 
         await order.save();
 
+        // Update table bill in RestaurantOwner
+        await RestaurantOwner.updateOne(
+            { _id: req.restaurantId, "tables.tableNumber": order.tableNo },
+            {
+                $set: {
+                    "tables.$.currentBill": order.totalAmount
+                }
+            }
+        );
+
         res.json({
             msg: "Items added successfully",
             order
@@ -281,6 +303,16 @@ router.patch("/:orderId/items/:itemIndex", verifyBusinessToken, getRestaurantDet
 
         await order.save();
 
+        // Update table bill in RestaurantOwner
+        await RestaurantOwner.updateOne(
+            { _id: req.restaurantId, "tables.tableNumber": order.tableNo },
+            {
+                $set: {
+                    "tables.$.currentBill": order.totalAmount
+                }
+            }
+        );
+
         res.json({
             msg: "Item updated successfully",
             order
@@ -331,6 +363,16 @@ router.delete("/:orderId/items/:itemIndex", verifyBusinessToken, getRestaurantDe
 
         await order.save();
 
+        // Update table bill in RestaurantOwner
+        await RestaurantOwner.updateOne(
+            { _id: req.restaurantId, "tables.tableNumber": order.tableNo },
+            {
+                $set: {
+                    "tables.$.currentBill": order.totalAmount
+                }
+            }
+        );
+
         res.json({
             msg: "Item removed successfully",
             order
@@ -367,6 +409,18 @@ router.patch("/:orderId/complete", verifyBusinessToken, getRestaurantDetails, as
 
         await order.save();
 
+        // Reset table status in RestaurantOwner
+        await RestaurantOwner.updateOne(
+            { _id: req.restaurantId, "tables.tableNumber": order.tableNo },
+            {
+                $set: {
+                    "tables.$.status": "free",
+                    "tables.$.currentOrder": null,
+                    "tables.$.currentBill": 0
+                }
+            }
+        );
+
         res.json({
             msg: "Order completed successfully",
             order
@@ -402,6 +456,18 @@ router.patch("/:orderId/cancel", verifyBusinessToken, getRestaurantDetails, asyn
         order.updatedAt = new Date();
 
         await order.save();
+
+        // Reset table status in RestaurantOwner
+        await RestaurantOwner.updateOne(
+            { _id: req.restaurantId, "tables.tableNumber": order.tableNo },
+            {
+                $set: {
+                    "tables.$.status": "free",
+                    "tables.$.currentOrder": null,
+                    "tables.$.currentBill": 0
+                }
+            }
+        );
 
         res.json({
             msg: "Order cancelled successfully",
