@@ -19,11 +19,11 @@ function StaffLoginForm() {
 
         try {
             const res = await API.post("/api/business/staff/login", form);
-            const { token, staff } = res.data;
+            const { staffToken, staffUser } = res.data;
 
-            if (token) localStorage.setItem("staffToken", token);
-            if (staff) {
-                localStorage.setItem("staffUser", JSON.stringify(staff));
+            if (staffToken) localStorage.setItem("staffToken", staffToken);
+            if (staffUser) {
+                localStorage.setItem("staffUser", JSON.stringify(staffUser));
             }
 
             alert("Login successful! Welcome back.");

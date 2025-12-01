@@ -31,9 +31,9 @@ function SignupForm() {
         try {
             const res = await API.post("/api/auth/signup", form);
 
-            // save returned user and token (backend returns { msg, user, token })
-            if (res.data?.token) {
-                localStorage.setItem("userToken", res.data.token);
+            // save returned user and userToken (backend returns { msg, user, userToken })
+            if (res.data?.userToken) {
+                localStorage.setItem("userToken", res.data.userToken);
             }
             if (res.data?.user) {
                 localStorage.setItem("user", JSON.stringify(res.data.user));

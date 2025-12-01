@@ -27,7 +27,7 @@ router.get("/profile", verifyBusinessToken, async (req, res) => {
             });
         }
 
-        res.json({ owner: ownerResponse });
+        res.json({ businessOwner: ownerResponse });
     } catch (err) {
         console.error("Error fetching profile:", err);
         res.status(500).json({ msg: err.message });
@@ -73,7 +73,7 @@ router.put("/restaurant", verifyBusinessToken, async (req, res) => {
 
         res.json({
             msg: "Restaurant details updated successfully",
-            owner: ownerResponse,
+            businessOwner: ownerResponse,
         });
     } catch (err) {
         console.error("Error updating restaurant:", err);

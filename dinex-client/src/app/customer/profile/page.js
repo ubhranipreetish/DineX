@@ -71,7 +71,7 @@ export default function ProfilePage() {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
+    localStorage.removeItem("userToken");
     localStorage.removeItem("user");
     window.dispatchEvent(new Event("userUpdated"));
     router.push("/customer/home");

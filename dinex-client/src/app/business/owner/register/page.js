@@ -52,11 +52,18 @@ function RegisterForm() {
         setIsLoading(true);
         try {
             const res = await API.post("/api/business/register", form);
-            if (res.data?.token) {
-                localStorage.setItem("businessToken", res.data.token);
+
+            // Clear any existing customer tokens to prevent conflicts
+            // localStorage.removeItem("user");
+            // localStorage.removeItem("userToken");
+            // localStorage.removeItem("staffToken");
+            // localStorage.removeItem("staffUser");
+
+            if (res.data?.businessToken) {
+                localStorage.setItem("businessToken", res.data.businessToken);
             }
             if (res.data?.owner) {
-                localStorage.setItem("businessOwner", JSON.stringify(res.data.owner));
+                localStorage.setItem("businessOwner", JSON.stringify(res.data.businessOwner));
             }
             alert("Registration successful! Welcome to DineX Business.");
             router.push("/business/owner/dashboard");

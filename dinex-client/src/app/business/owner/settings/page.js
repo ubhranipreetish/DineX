@@ -43,14 +43,14 @@ export default function SettingsPage() {
             const res = await API.put("/api/business/restaurant", restaurantForm);
 
             alert("Restaurant details updated successfully!");
-            updateOwnerData(res.data.owner);
+            updateOwnerData(res.data.businessOwner);
         } catch (err) {
             alert(err.response?.data?.msg || "Failed to update restaurant details");
         }
     };
 
     const handleLogout = () => {
-        localStorage.removeItem("token");
+        localStorage.removeItem("businessToken");
         localStorage.removeItem("businessOwner");
         router.push("/business/home");
     };

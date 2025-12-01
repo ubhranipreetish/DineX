@@ -155,21 +155,31 @@ function BusinessDataProvider({ children }) {
     const [staff, setStaff] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
     const [isLoading, setIsLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(true);
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRouter"])();
+    const pathname = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["usePathname"])();
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
-        const token = localStorage.getItem("businessToken");
-        const owner = localStorage.getItem("businessOwner");
-        if (!token || !owner) {
-            router.push("/business/owner/login");
+        // Don't check auth on login/register pages
+        const isAuthPage = pathname?.includes("/login") || pathname?.includes("/register");
+        if (isAuthPage) {
+            setIsLoading(false);
             return;
         }
-        fetchAllData(token);
-    }, []);
-    const fetchAllData = async (token)=>{
+        const businessToken = localStorage.getItem("businessToken");
+        const businessOwner = localStorage.getItem("businessOwner");
+        if (!businessToken || !businessOwner) {
+            router.push("/business/owner/login");
+            setIsLoading(false);
+            return;
+        }
+        fetchAllData(businessToken);
+    }, [
+        pathname
+    ]);
+    const fetchAllData = async (businessToken)=>{
         try {
-            // Set token in headers for API calls
+            // Set businessToken in headers for API calls
             const config = {
                 headers: {
-                    Authorization: `Bearer ${token}`
+                    Authorization: `Bearer ${businessToken}`
                 }
             };
             // Fetch profile and staff in parallel
@@ -177,12 +187,12 @@ function BusinessDataProvider({ children }) {
                 __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$utils$2f$api$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["API"].get("/api/business/profile", config),
                 __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$utils$2f$api$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["API"].get("/api/business/staff", config)
             ]);
-            setOwnerData(profileRes.data.owner);
+            setOwnerData(profileRes.data.businessOwner);
             setStaff(staffRes.data.staff);
             setIsLoading(false);
         } catch (err) {
             console.error("Error fetching data:", err);
-            // Check if error is due to invalid/expired token
+            // Check if error is due to invalid/expired businessToken
             if (err.response?.status === 401 || err.response?.status === 403) {
                 localStorage.removeItem("businessToken");
                 localStorage.removeItem("businessOwner");
@@ -216,7 +226,7 @@ function BusinessDataProvider({ children }) {
         children: children
     }, void 0, false, {
         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/owner/context/BusinessDataContext.js",
-        lineNumber: 80,
+        lineNumber: 90,
         columnNumber: 9
     }, this);
 }

@@ -863,13 +863,13 @@ function SettingsPage() {
         try {
             const res = await __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$utils$2f$api$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["API"].put("/api/business/restaurant", restaurantForm);
             alert("Restaurant details updated successfully!");
-            updateOwnerData(res.data.owner);
+            updateOwnerData(res.data.businessOwner);
         } catch (err) {
             alert(err.response?.data?.msg || "Failed to update restaurant details");
         }
     };
     const handleLogout = ()=>{
-        localStorage.removeItem("token");
+        localStorage.removeItem("businessToken");
         localStorage.removeItem("businessOwner");
         router.push("/business/home");
     };

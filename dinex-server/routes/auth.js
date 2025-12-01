@@ -28,7 +28,7 @@ router.post("/signup", async (req, res) => {
     });
 
     // Generate JWT token
-    const token = jwt.sign(
+    const userToken = jwt.sign(
       { id: newUser._id, email: newUser.email, role: newUser.role },
       process.env.JWT_SECRET,
       { expiresIn: "7d" }
@@ -38,7 +38,7 @@ router.post("/signup", async (req, res) => {
     const userResponse = newUser.toObject();
     delete userResponse.password;
 
-    res.json({ msg: "Signup successful", token, user: userResponse });
+    res.json({ msg: "Signup successful", userToken, user: userResponse });
   } catch (err) {
     res.status(500).json({ msg: err.message });
   }
@@ -55,7 +55,7 @@ router.post("/login", async (req, res) => {
     const valid = await bcrypt.compare(password, user.password);
     if (!valid) return res.status(401).json({ msg: "Invalid credentials" });
 
-    const token = jwt.sign(
+    const userToken = jwt.sign(
       { id: user._id, email: user.email, role: user.role },
       process.env.JWT_SECRET,
       { expiresIn: "7d" }
@@ -65,7 +65,7 @@ router.post("/login", async (req, res) => {
     const userResponse = user.toObject();
     delete userResponse.password;
 
-    res.json({ msg: "Login successful", token, user: userResponse });
+    res.json({ msg: "Login successful", userToken, user: userResponse });
   } catch (err) {
     res.status(500).json({ msg: err.message });
   }

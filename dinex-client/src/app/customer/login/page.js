@@ -19,9 +19,9 @@ function LoginForm() {
 
         try {
             const res = await API.post("/api/auth/login", form);
-            const { token, user } = res.data;
+            const { userToken, user } = res.data;
 
-            if (token) localStorage.setItem("userToken", token);
+            if (userToken) localStorage.setItem("userToken", userToken);
             if (user) {
                 localStorage.setItem("user", JSON.stringify(user));
                 window.dispatchEvent(new Event("userUpdated"));

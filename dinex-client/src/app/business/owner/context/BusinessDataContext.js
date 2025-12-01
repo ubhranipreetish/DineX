@@ -1,6 +1,6 @@
 "use client";
 import { createContext, useContext, useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { API } from "@/utils/api";
 
 const BusinessDataContext = createContext(null);
@@ -10,25 +10,35 @@ export function BusinessDataProvider({ children }) {
     const [staff, setStaff] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const router = useRouter();
+    const pathname = usePathname();
 
     useEffect(() => {
-        const token = localStorage.getItem("businessToken");
-        const owner = localStorage.getItem("businessOwner");
+        // Don't check auth on login/register pages
+        const isAuthPage = pathname?.includes("/login") || pathname?.includes("/register");
 
-        if (!token || !owner) {
-            router.push("/business/owner/login");
+        if (isAuthPage) {
+            setIsLoading(false);
             return;
         }
 
-        fetchAllData(token);
-    }, []);
+        const businessToken = localStorage.getItem("businessToken");
+        const businessOwner = localStorage.getItem("businessOwner");
 
-    const fetchAllData = async (token) => {
+        if (!businessToken || !businessOwner) {
+            router.push("/business/owner/login");
+            setIsLoading(false);
+            return;
+        }
+
+        fetchAllData(businessToken);
+    }, [pathname]);
+
+    const fetchAllData = async (businessToken) => {
         try {
-            // Set token in headers for API calls
+            // Set businessToken in headers for API calls
             const config = {
                 headers: {
-                    Authorization: `Bearer ${token}`
+                    Authorization: `Bearer ${businessToken}`
                 }
             };
 
@@ -38,12 +48,12 @@ export function BusinessDataProvider({ children }) {
                 API.get("/api/business/staff", config)
             ]);
 
-            setOwnerData(profileRes.data.owner);
+            setOwnerData(profileRes.data.businessOwner);
             setStaff(staffRes.data.staff);
             setIsLoading(false);
         } catch (err) {
             console.error("Error fetching data:", err);
-            // Check if error is due to invalid/expired token
+            // Check if error is due to invalid/expired businessToken
             if (err.response?.status === 401 || err.response?.status === 403) {
                 localStorage.removeItem("businessToken");
                 localStorage.removeItem("businessOwner");

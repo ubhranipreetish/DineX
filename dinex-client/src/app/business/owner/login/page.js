@@ -17,11 +17,17 @@ function LoginForm() {
 
         try {
             const res = await API.post("/api/business/login", form);
-            const { token, owner } = res.data;
+            const { businessToken, businessOwner } = res.data;
 
-            if (token) localStorage.setItem("businessToken", token);
-            if (owner) {
-                localStorage.setItem("businessOwner", JSON.stringify(owner));
+            // Clear any existing customer tokens to prevent conflicts
+            // localStorage.removeItem("user");
+            // localStorage.removeItem("userToken");
+            // localStorage.removeItem("staffToken");
+            // localStorage.removeItem("staffUser");
+
+            if (businessToken) localStorage.setItem("businessToken", businessToken);
+            if (businessOwner) {
+                localStorage.setItem("businessOwner", JSON.stringify(businessOwner));
             }
 
             alert("Login successful! Welcome back.");

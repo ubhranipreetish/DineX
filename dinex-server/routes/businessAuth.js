@@ -54,7 +54,7 @@ router.post("/register", async (req, res) => {
         });
 
         // Generate JWT token
-        const token = jwt.sign(
+        const businessToken = jwt.sign(
             {
                 id: newOwner._id,
                 email: newOwner.owner.email,
@@ -71,8 +71,8 @@ router.post("/register", async (req, res) => {
 
         res.json({
             msg: "Restaurant registered successfully",
-            token,
-            owner: ownerResponse,
+            businessToken,
+            businessOwner: ownerResponse,
         });
     } catch (err) {
         console.error("Registration error:", err);
@@ -98,7 +98,7 @@ router.post("/login", async (req, res) => {
         }
 
         // Generate JWT token
-        const token = jwt.sign(
+        const businessToken = jwt.sign(
             {
                 id: owner._id,
                 email: owner.owner.email,
@@ -115,8 +115,8 @@ router.post("/login", async (req, res) => {
 
         res.json({
             msg: "Login successful",
-            token,
-            owner: ownerResponse,
+            businessToken,
+            businessOwner: ownerResponse,
         });
     } catch (err) {
         console.error("Login error:", err);
@@ -152,7 +152,7 @@ router.post("/staff/login", async (req, res) => {
         }
 
         // Generate JWT token
-        const token = jwt.sign(
+        const staffToken = jwt.sign(
             {
                 id: staffMember._id,
                 ownerId: owner._id,
@@ -170,8 +170,8 @@ router.post("/staff/login", async (req, res) => {
 
         res.json({
             msg: "Login successful",
-            token,
-            staff: staffResponse,
+            staffToken,
+            staffUser: staffResponse,
             restaurantName: owner.restaurant.name
         });
     } catch (err) {
@@ -222,7 +222,7 @@ router.get("/staff/profile", async (req, res) => {
         delete staffResponse.password;
 
         res.json({
-            staff: staffResponse,
+            staffUser: staffResponse,
             restaurantName: owner.restaurant.name,
             role: staffMember.role
         });

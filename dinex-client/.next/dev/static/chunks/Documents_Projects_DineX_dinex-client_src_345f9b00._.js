@@ -15,7 +15,7 @@ const API = __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Project
 });
 // Add request interceptor to attach token
 API.interceptors.request.use((config)=>{
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("userToken");
     if (token) {
         config.headers.Authorization = `Bearer ${token}`;
     }
@@ -205,8 +205,8 @@ function LoginForm() {
         setIsLoading(true);
         try {
             const res = await __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$utils$2f$api$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["API"].post("/api/auth/login", form);
-            const { token, user } = res.data;
-            if (token) localStorage.setItem("userToken", token);
+            const { userToken, user } = res.data;
+            if (userToken) localStorage.setItem("userToken", userToken);
             if (user) {
                 localStorage.setItem("user", JSON.stringify(user));
                 window.dispatchEvent(new Event("userUpdated"));

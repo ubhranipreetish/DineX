@@ -18,9 +18,9 @@ export default function StaffPage() {
 
     // Set default authorization header
     useEffect(() => {
-        const token = localStorage.getItem("businessToken");
-        if (token) {
-            API.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        const businessToken = localStorage.getItem("businessToken");
+        if (businessToken) {
+            API.defaults.headers.common['Authorization'] = `Bearer ${businessToken}`;
         }
     }, []);
 

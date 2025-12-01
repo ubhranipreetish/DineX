@@ -7,15 +7,15 @@ export default function StaffHomePage() {
     const router = useRouter();
 
     useEffect(() => {
-        const token = localStorage.getItem("staffToken");
-        const user = localStorage.getItem("staffUser");
+        const staffToken = localStorage.getItem("staffToken");
+        const staffUser = localStorage.getItem("staffUser");
 
-        if (!token || !user) {
+        if (!staffToken || !staffUser) {
             router.push("/business/staff/login");
             return;
         }
 
-        setStaffUser(JSON.parse(user));
+        setStaffUser(JSON.parse(staffUser));
     }, []);
 
     const handleLogout = () => {
