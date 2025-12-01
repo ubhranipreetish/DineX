@@ -17,12 +17,16 @@ const getRestaurantDetails = async (req, res, next) => {
     try {
         // Determine the owner ID based on user role
         let ownerId = req.user.id;
+        console.log("User Role:", req.user.role);
+
         if (req.user.role === 'staff') {
             ownerId = req.user.ownerId;
         }
+        console.log("Resolved Owner ID:", ownerId);
 
         const restaurantOwner = await RestaurantOwner.findById(ownerId);
         if (!restaurantOwner) {
+            console.log("Restaurant not found for ID:", ownerId);
             return res.status(404).json({ msg: "Restaurant not found" });
         }
         req.restaurantId = restaurantOwner.id;

@@ -109,33 +109,33 @@ export default function ManageOrderPage() {
         : MENU_ITEMS;
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-gray-50 via-orange-50 to-gray-50">
+        <div className="min-h-screen bg-[#FFF8E7] text-gray-800">
             {/* Navbar */}
             <StaffNavbar />
 
             {/* Sub Header */}
-            <div className="bg-white shadow-md border-b-2 border-orange-200">
-                <div className="container mx-auto px-6 py-4">
+            <div className="pt-6 pb-2">
+                <div className="container mx-auto px-6">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-4">
                             <button
                                 onClick={() => router.push('/business/staff/home')}
-                                className="p-2 hover:bg-gray-100 rounded-xl transition-colors"
+                                className="p-2 hover:bg-amber-100 rounded-xl transition-colors text-amber-600"
                             >
-                                <ArrowLeft className="w-6 h-6 text-gray-700" />
+                                <ArrowLeft className="w-6 h-6" />
                             </button>
                             <div>
-                                <h1 className="text-2xl font-bold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
+                                <h1 className="text-3xl font-bold bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 bg-clip-text text-transparent">
                                     Manage Order
                                 </h1>
-                                <p className="text-sm text-gray-600 mt-1">
+                                <p className="text-sm text-gray-500 mt-1">
                                     Table {table.tableNumber} • Order #{order.id.slice(-6)} • {timeElapsed} min ago
                                 </p>
                             </div>
                         </div>
                         <div className="text-right">
-                            <p className="text-sm text-gray-600">Current Bill</p>
-                            <p className="text-2xl font-bold text-orange-600">₹{bill.total.toFixed(2)}</p>
+                            <p className="text-sm text-gray-500">Current Bill</p>
+                            <p className="text-2xl font-bold text-amber-600">₹{bill.total.toFixed(2)}</p>
                         </div>
                     </div>
                 </div>
@@ -145,19 +145,22 @@ export default function ManageOrderPage() {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     {/* Left - Order Items */}
                     <div className="lg:col-span-2 space-y-6">
-                        <div className="bg-white rounded-3xl shadow-2xl p-6">
-                            <h2 className="text-2xl font-bold text-gray-800 mb-6">Current Order Items</h2>
+                        <div className="bg-white rounded-3xl shadow-xl shadow-amber-100/20 p-6 border border-amber-50">
+                            <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+                                <span className="w-2 h-8 bg-gradient-to-b from-amber-400 to-yellow-500 rounded-full"></span>
+                                Current Order Items
+                            </h2>
                             <div className="space-y-4">
                                 {order.items.filter(item => item.status !== 'removed').map((item, index) => (
-                                    <div key={index} className="bg-gray-50 rounded-2xl p-5 border-2 border-gray-200">
+                                    <div key={index} className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm hover:shadow-md hover:border-amber-100 transition-all">
                                         <div className="flex items-start justify-between">
                                             <div className="flex-1">
                                                 <div className="flex items-center gap-3 mb-2">
                                                     <h3 className="text-lg font-bold text-gray-800">{item.name}</h3>
                                                     {getStatusBadge(item.status)}
                                                 </div>
-                                                <p className="text-sm text-gray-600">Quantity: {item.quantity}</p>
-                                                <p className="text-lg font-bold text-orange-600 mt-2">
+                                                <p className="text-sm text-gray-500">Quantity: {item.quantity}</p>
+                                                <p className="text-lg font-bold text-amber-600 mt-2">
                                                     ₹{item.price} × {item.quantity} = ₹{item.price * item.quantity}
                                                 </p>
                                             </div>
@@ -165,7 +168,7 @@ export default function ManageOrderPage() {
                                                 {item.status === 'preparing' && (
                                                     <button
                                                         onClick={() => handleMarkAsServed(index)}
-                                                        className="p-2 bg-green-500 hover:bg-green-600 text-white rounded-xl transition-colors"
+                                                        className="p-2 bg-green-50 hover:bg-green-100 text-green-600 rounded-xl transition-colors border border-green-200"
                                                         title="Mark as served"
                                                     >
                                                         <Check className="w-5 h-5" />
@@ -173,7 +176,7 @@ export default function ManageOrderPage() {
                                                 )}
                                                 <button
                                                     onClick={() => handleRemoveItem(index)}
-                                                    className="p-2 bg-red-500 hover:bg-red-600 text-white rounded-xl transition-colors"
+                                                    className="p-2 bg-red-50 hover:bg-red-100 text-red-600 rounded-xl transition-colors border border-red-200"
                                                     title="Remove item"
                                                 >
                                                     <Trash2 className="w-5 h-5" />
@@ -188,12 +191,12 @@ export default function ManageOrderPage() {
 
                     {/* Right - Actions */}
                     <div className="lg:col-span-1">
-                        <div className="bg-white rounded-3xl shadow-2xl p-6 sticky top-24 space-y-4">
+                        <div className="bg-white rounded-3xl shadow-xl shadow-amber-100/20 p-6 sticky top-24 space-y-4 border border-amber-50">
                             <h2 className="text-2xl font-bold text-gray-800 mb-4">Actions</h2>
 
                             <button
                                 onClick={() => setShowAddItems(!showAddItems)}
-                                className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-bold py-4 rounded-xl transition-all active:scale-95 shadow-lg"
+                                className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-bold py-4 rounded-xl transition-all active:scale-95 shadow-lg shadow-blue-200"
                             >
                                 <Plus className="w-5 h-5" />
                                 Add More Items
@@ -201,7 +204,7 @@ export default function ManageOrderPage() {
 
                             <button
                                 onClick={handleGenerateBill}
-                                className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-4 rounded-xl transition-all active:scale-95 shadow-lg"
+                                className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-4 rounded-xl transition-all active:scale-95 shadow-lg shadow-green-200"
                             >
                                 <Receipt className="w-5 h-5" />
                                 Generate Bill
@@ -209,30 +212,30 @@ export default function ManageOrderPage() {
 
                             <button
                                 onClick={handleCancelOrder}
-                                className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-bold py-4 rounded-xl transition-all active:scale-95 shadow-lg"
+                                className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-bold py-4 rounded-xl transition-all active:scale-95 shadow-lg shadow-red-200"
                             >
                                 <X className="w-5 h-5" />
                                 Cancel Order
                             </button>
 
                             {/* Bill Summary */}
-                            <div className="border-t-2 border-gray-200 pt-4 mt-6 space-y-2">
+                            <div className="border-t border-gray-100 pt-4 mt-6 space-y-2">
                                 <h3 className="font-bold text-gray-700 mb-3">Bill Summary</h3>
                                 <div className="flex justify-between text-sm">
-                                    <span className="text-gray-600">Subtotal</span>
-                                    <span className="font-semibold">₹{bill.subtotal.toFixed(2)}</span>
+                                    <span className="text-gray-500">Subtotal</span>
+                                    <span className="font-semibold text-gray-800">₹{bill.subtotal.toFixed(2)}</span>
                                 </div>
                                 <div className="flex justify-between text-sm">
-                                    <span className="text-gray-600">CGST (2.5%)</span>
-                                    <span className="font-semibold">₹{bill.cgst.toFixed(2)}</span>
+                                    <span className="text-gray-500">CGST (2.5%)</span>
+                                    <span className="font-semibold text-gray-800">₹{bill.cgst.toFixed(2)}</span>
                                 </div>
                                 <div className="flex justify-between text-sm">
-                                    <span className="text-gray-600">SGST (2.5%)</span>
-                                    <span className="font-semibold">₹{bill.sgst.toFixed(2)}</span>
+                                    <span className="text-gray-500">SGST (2.5%)</span>
+                                    <span className="font-semibold text-gray-800">₹{bill.sgst.toFixed(2)}</span>
                                 </div>
-                                <div className="flex justify-between text-lg font-bold border-t-2 border-orange-200 pt-3 mt-3">
+                                <div className="flex justify-between text-lg font-bold border-t border-dashed border-amber-200 pt-3 mt-3">
                                     <span className="text-gray-800">Total</span>
-                                    <span className="text-orange-600">₹{bill.total.toFixed(2)}</span>
+                                    <span className="text-amber-600">₹{bill.total.toFixed(2)}</span>
                                 </div>
                             </div>
                         </div>
@@ -242,14 +245,14 @@ export default function ManageOrderPage() {
 
             {/* Add Items Modal */}
             {showAddItems && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-                    <div className="bg-white rounded-3xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
-                        <div className="p-6 border-b-2 border-gray-200">
+                <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+                    <div className="bg-white rounded-3xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden border border-amber-100">
+                        <div className="p-6 border-b border-gray-100 bg-gray-50/50">
                             <div className="flex items-center justify-between">
                                 <h2 className="text-2xl font-bold text-gray-800">Add Items to Order</h2>
                                 <button
                                     onClick={() => setShowAddItems(false)}
-                                    className="p-2 hover:bg-gray-100 rounded-xl transition-colors"
+                                    className="p-2 hover:bg-gray-200 rounded-xl transition-colors text-gray-500"
                                 >
                                     <X className="w-6 h-6" />
                                 </button>
@@ -259,7 +262,7 @@ export default function ManageOrderPage() {
                                 placeholder="Search items..."
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
-                                className="w-full mt-4 px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-orange-500 focus:outline-none"
+                                className="w-full mt-4 px-4 py-3 border border-gray-200 rounded-xl focus:border-amber-400 focus:outline-none transition-colors"
                             />
                         </div>
                         <div className="p-6 overflow-y-auto max-h-[60vh]">
@@ -268,13 +271,13 @@ export default function ManageOrderPage() {
                                     <button
                                         key={item.id}
                                         onClick={() => toggleNewItem(item)}
-                                        className="bg-gray-50 hover:bg-orange-50 border-2 border-gray-200 hover:border-orange-300 rounded-2xl p-4 transition-all text-left"
+                                        className="bg-white hover:bg-amber-50 border border-gray-200 hover:border-amber-300 rounded-2xl p-4 transition-all text-left group"
                                     >
-                                        <div className="text-3xl mb-2">{item.image}</div>
+                                        <div className="text-3xl mb-2 group-hover:scale-110 transition-transform">{item.image}</div>
                                         <h4 className="font-bold text-gray-800 mb-1">{item.name}</h4>
-                                        <p className="text-orange-600 font-bold">₹{item.price}</p>
+                                        <p className="text-amber-600 font-bold">₹{item.price}</p>
                                         {selectedNewItems.find(i => i.id === item.id) && (
-                                            <span className="mt-2 inline-block bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                                            <span className="mt-2 inline-block bg-amber-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-sm">
                                                 {selectedNewItems.find(i => i.id === item.id).quantity} added
                                             </span>
                                         )}
@@ -282,11 +285,11 @@ export default function ManageOrderPage() {
                                 ))}
                             </div>
                         </div>
-                        <div className="p-6 border-t-2 border-gray-200">
+                        <div className="p-6 border-t border-gray-100 bg-gray-50/50">
                             <button
                                 onClick={handleAddNewItems}
                                 disabled={selectedNewItems.length === 0}
-                                className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 disabled:from-gray-300 disabled:to-gray-400 disabled:cursor-not-allowed text-white font-bold py-4 rounded-xl transition-all active:scale-95"
+                                className="w-full bg-gradient-to-r from-amber-500 to-yellow-600 hover:from-amber-600 hover:to-yellow-700 disabled:from-gray-300 disabled:to-gray-400 disabled:cursor-not-allowed text-white font-bold py-4 rounded-xl transition-all active:scale-95 shadow-lg shadow-amber-200"
                             >
                                 Add {selectedNewItems.reduce((sum, item) => sum + item.quantity, 0)} Items
                             </button>

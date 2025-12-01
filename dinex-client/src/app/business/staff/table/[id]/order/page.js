@@ -96,43 +96,44 @@ export default function CreateOrderPage() {
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-gray-50 via-orange-50 to-gray-50">
+        <div className="min-h-screen bg-[#FFF8E7] text-gray-800">
             {/* Navbar */}
             <StaffNavbar />
 
             {/* Sub Header */}
-            <div className="bg-white shadow-md border-b-2 border-orange-200">
-                <div className="container mx-auto px-6 py-4">
+            <div className="pt-6 pb-2">
+                <div className="container mx-auto px-6">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-4">
                             <button
                                 onClick={() => router.back()}
-                                className="p-2 hover:bg-gray-100 rounded-xl transition-colors"
+                                className="p-2 hover:bg-amber-100 rounded-xl transition-colors text-amber-600"
                             >
-                                <ArrowLeft className="w-6 h-6 text-gray-700" />
+                                <ArrowLeft className="w-6 h-6" />
                             </button>
                             <div>
-                                <h1 className="text-2xl font-bold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
+                                <h1 className="text-3xl font-bold bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 bg-clip-text text-transparent">
                                     Create Order
                                 </h1>
-                                <p className="text-sm text-gray-600 mt-1">Table {table.tableNumber}</p>
+                                <p className="text-sm text-gray-500 mt-1">Table {table.tableNumber}</p>
                             </div>
                         </div>
                         <div className="text-right">
-                            <p className="text-sm text-gray-600">Items Selected</p>
-                            <p className="text-2xl font-bold text-orange-600">
+                            <p className="text-sm text-gray-500">Items Selected</p>
+                            <p className="text-2xl font-bold text-amber-600">
                                 {selectedItems.reduce((sum, item) => sum + item.quantity, 0)}
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
+
             <div className="container mx-auto px-6 py-8">
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     {/* Left Column - Menu */}
                     <div className="lg:col-span-2 space-y-6">
                         {/* Search Bar */}
-                        <div className="bg-white rounded-2xl shadow-lg p-4">
+                        <div className="bg-white rounded-2xl shadow-lg shadow-amber-100/50 p-4 border border-amber-50">
                             <div className="relative">
                                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                                 <input
@@ -140,7 +141,7 @@ export default function CreateOrderPage() {
                                     placeholder="Search menu items..."
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
-                                    className="w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:border-orange-500 focus:outline-none text-gray-700"
+                                    className="w-full pl-12 pr-4 py-3 border-2 border-gray-100 rounded-xl focus:border-amber-400 focus:outline-none text-gray-700 transition-colors"
                                 />
                             </div>
                         </div>
@@ -155,8 +156,9 @@ export default function CreateOrderPage() {
                         )}
 
                         {/* Menu Items Grid */}
-                        <div className="bg-white rounded-3xl shadow-2xl p-6">
-                            <h2 className="text-2xl font-bold text-gray-800 mb-6">
+                        <div className="bg-white rounded-3xl shadow-xl shadow-amber-100/20 p-6 border border-amber-50">
+                            <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+                                <span className="w-2 h-8 bg-gradient-to-b from-amber-400 to-yellow-500 rounded-full"></span>
                                 {searchQuery
                                     ? `Search Results (${filteredItems.length})`
                                     : MENU_CATEGORIES.find(c => c.id === activeCategory)?.name

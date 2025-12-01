@@ -14,9 +14,11 @@ export const verifyBusinessToken = async (req, res, next) => {
 
         // Verify token
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        console.log("Middleware Decoded Token:", decoded);
 
         // Check if it's a business or staff token
         if (decoded.role !== "business" && decoded.role !== "staff") {
+            console.log("Access denied: Invalid role", decoded.role);
             return res.status(403).json({ msg: "Access denied. Business or Staff account required." });
         }
 

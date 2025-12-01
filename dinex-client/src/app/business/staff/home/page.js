@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { useOrder } from '../context/OrderContext';
 import StaffNavbar from '../components/StaffNavbar';
+import Footer from "@/components/Footer";
 
 export default function StaffHome() {
   const router = useRouter();
@@ -51,11 +52,19 @@ export default function StaffHome() {
   const getTableColor = (status) => {
     switch (status) {
       case "free":
-        return "bg-gradient-to-br from-emerald-400 to-emerald-500 hover:from-emerald-500 hover:to-emerald-600 text-white shadow-lg hover:shadow-xl";
+        return "border-emerald-500 bg-white hover:bg-emerald-50";
       case "occupied":
-        return "bg-gradient-to-br from-orange-400 to-red-500 hover:from-orange-500 hover:to-red-600 text-white shadow-lg hover:shadow-xl";
+        return "border-orange-500 bg-white hover:bg-orange-50";
       default:
-        return "bg-gray-300 text-gray-700";
+        return "border-gray-300 bg-gray-50";
+    }
+  };
+
+  const getStatusTextColor = (status) => {
+    switch (status) {
+      case "free": return "text-emerald-600";
+      case "occupied": return "text-orange-600";
+      default: return "text-gray-600";
     }
   };
 
@@ -79,7 +88,7 @@ export default function StaffHome() {
   const shift = currentHour < 16 ? "Morning" : currentHour < 20 ? "Evening" : "Night";
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-orange-50 to-gray-50">
+    <div className="min-h-screen bg-[#FFF8E7]">
       {/* NAVBAR */}
       <StaffNavbar />
 
@@ -152,47 +161,49 @@ export default function StaffHome() {
           </div>
 
           {/* TABLE GRID */}
-          <div className="bg-white p-8 rounded-3xl shadow-2xl">
-            <div className="flex items-center justify-between mb-8">
-              <h2 className="text-3xl font-bold text-gray-800">Table Management</h2>
+          <div className="mt-8">
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-2xl font-bold text-gray-800">Tables</h2>
               <div className="flex gap-4 text-sm font-medium">
                 <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 bg-gradient-to-br from-emerald-400 to-emerald-500 rounded"></div>
-                  <span>Available</span>
+                  <div className="w-3 h-3 bg-emerald-500 rounded-full"></div>
+                  <span className="text-gray-600">Available</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 bg-gradient-to-br from-orange-400 to-red-500 rounded"></div>
-                  <span>Occupied</span>
+                  <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
+                  <span className="text-gray-600">Occupied</span>
                 </div>
               </div>
             </div>
 
             {tables.length === 0 ? (
-              <div className="text-center py-16">
+              <div className="text-center py-16 bg-white rounded-3xl shadow-lg">
                 <div className="text-6xl mb-4">🍽️</div>
                 <p className="text-gray-400 text-lg">Loading tables...</p>
               </div>
             ) : (
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
                 {tables.map((table) => (
                   <button
                     key={table.id}
                     onClick={() => handleTableClick(table)}
-                    className={`${getTableColor(table.status)} rounded-2xl p-6 transition-all transform hover:scale-105 active:scale-95`}
+                    className={`relative flex flex-col justify-between p-4 rounded-xl border-l-4 shadow-md hover:shadow-xl transition-all transform hover:-translate-y-1 ${getTableColor(table.status)}`}
+                    style={{ minHeight: '140px' }}
                   >
-                    <div className="text-center">
-                      <p className="text-6xl font-bold mb-3">{table.tableNumber}</p>
-                      <div className="bg-white bg-opacity-25 backdrop-blur-sm rounded-xl py-2 px-3 mb-2">
-                        <p className="text-sm font-bold uppercase tracking-wide">{getStatusText(table.status)}</p>
-                      </div>
-                      {table.currentBill > 0 && (
-                        <div className="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg py-1 px-2 mt-2">
-                          <p className="text-sm font-semibold">₹{table.currentBill.toFixed(0)}</p>
-                        </div>
-                      )}
-                      {table.guests > 0 && (
-                        <p className="text-xs mt-2 opacity-90">{table.guests} guests</p>
-                      )}
+                    {/* Header: Table No + Status */}
+                    <div className="flex justify-between items-start w-full mb-2">
+                      <h3 className="text-xl font-bold text-gray-800">Table {table.tableNumber}</h3>
+                      <span className={`text-xs font-bold uppercase tracking-wider ${getStatusTextColor(table.status)}`}>
+                        {getStatusText(table.status)}
+                      </span>
+                    </div>
+
+                    {/* Body: Bill Amount */}
+                    <div className="mt-auto text-left">
+                      <p className="text-xs text-gray-500 font-medium uppercase tracking-wide mb-1">Current Bill</p>
+                      <p className="text-2xl font-bold text-gray-800">
+                        ₹{table.currentBill ? table.currentBill.toFixed(2) : "0.00"}
+                      </p>
                     </div>
                   </button>
                 ))}
@@ -201,6 +212,7 @@ export default function StaffHome() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

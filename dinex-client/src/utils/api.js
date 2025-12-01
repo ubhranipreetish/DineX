@@ -11,6 +11,11 @@ API.interceptors.request.use(
   (config) => {
     let token = null;
 
+    // If Authorization header is already set, don't overwrite it
+    if (config.headers.Authorization) {
+      return config;
+    }
+
     // Determine which token to use based on the request URL
     if (config.url?.includes('/api/business/staff/login') ||
       config.url?.includes('/api/business/staff/profile')) {
