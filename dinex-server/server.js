@@ -7,6 +7,7 @@ import restaurantRoutes from "./routes/restaurant.js";
 import bookingRoutes from "./routes/booking.js";
 import businessAuthRoutes from "./routes/businessAuth.js";
 import businessDashboardRoutes from "./routes/businessDashboard.js";
+import orderRoutes from "./routes/order.js";
 
 dotenv.config();
 console.log("Loaded MONGO_URI:", process.env.MONGO_URI);
@@ -34,6 +35,7 @@ app.use("/api/restaurants", restaurantRoutes);
 app.use("/api/bookings", bookingRoutes);
 app.use("/api/business", businessAuthRoutes);
 app.use("/api/business", businessDashboardRoutes);
+app.use("/api/orders", orderRoutes);
 app.get("/", (req, res) => res.send("DineX Backend Running ✅"));
 
 const PORT = process.env.PORT || 8080;

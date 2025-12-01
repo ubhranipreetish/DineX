@@ -13,9 +13,20 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$Din
 const API = __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].create({
     baseURL: ("TURBOPACK compile-time value", "https://dinex-24s9.onrender.com")
 });
-// Add request interceptor to attach token
+// Add request interceptor to attach the correct token based on the endpoint
 API.interceptors.request.use((config)=>{
-    const token = localStorage.getItem("userToken");
+    let token = null;
+    // Determine which token to use based on the request URL
+    if (config.url?.includes('/api/business/staff/login') || config.url?.includes('/api/business/staff/profile')) {
+        // Staff member authentication endpoints
+        token = localStorage.getItem("staffToken");
+    } else if (config.url?.includes('/api/business')) {
+        // Business owner endpoints (including staff management)
+        token = localStorage.getItem("businessToken");
+    } else {
+        // Customer endpoints (default)
+        token = localStorage.getItem("userToken");
+    }
     if (token) {
         config.headers.Authorization = `Bearer ${token}`;
     }

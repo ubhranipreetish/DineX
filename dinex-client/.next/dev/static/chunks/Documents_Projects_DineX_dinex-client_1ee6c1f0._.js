@@ -20,13 +20,13 @@ function StaffHomePage() {
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"])();
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "StaffHomePage.useEffect": ()=>{
-            const token = localStorage.getItem("staffToken");
-            const user = localStorage.getItem("staffUser");
-            if (!token || !user) {
+            const staffToken = localStorage.getItem("staffToken");
+            const staffUser = localStorage.getItem("staffUser");
+            if (!staffToken || !staffUser) {
                 router.push("/business/staff/login");
                 return;
             }
-            setStaffUser(JSON.parse(user));
+            setStaffUser(JSON.parse(staffUser));
         }
     }["StaffHomePage.useEffect"], []);
     const handleLogout = ()=>{

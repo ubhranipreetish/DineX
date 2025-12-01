@@ -59,10 +59,10 @@ function StaffLoginForm() {
         setIsLoading(true);
         try {
             const res = await __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$utils$2f$api$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["API"].post("/api/business/staff/login", form);
-            const { token, staff } = res.data;
-            if (token) localStorage.setItem("staffToken", token);
-            if (staff) {
-                localStorage.setItem("staffUser", JSON.stringify(staff));
+            const { staffToken, staffUser } = res.data;
+            if (staffToken) localStorage.setItem("staffToken", staffToken);
+            if (staffUser) {
+                localStorage.setItem("staffUser", JSON.stringify(staffUser));
             }
             alert("Login successful! Welcome back.");
             router.push("/business/staff/home");

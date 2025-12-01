@@ -172,7 +172,10 @@ router.post("/staff/login", async (req, res) => {
             msg: "Login successful",
             staffToken,
             staffUser: staffResponse,
-            restaurantName: owner.restaurant.name
+            restaurantName: owner.restaurant.name,
+            restaurantType: owner.restaurant.type,
+            tables: owner.restaurant.totalTables,
+            address: owner.restaurant.address
         });
     } catch (err) {
         console.error("Staff login error:", err);
@@ -221,9 +224,13 @@ router.get("/staff/profile", async (req, res) => {
         const staffResponse = staffMember.toObject();
         delete staffResponse.password;
 
+        // Return full restaurant details for staff use
         res.json({
             staffUser: staffResponse,
             restaurantName: owner.restaurant.name,
+            restaurantType: owner.restaurant.type,
+            tables: owner.restaurant.totalTables,
+            address: owner.restaurant.address,
             role: staffMember.role
         });
     } catch (err) {
