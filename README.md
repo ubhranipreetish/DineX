@@ -104,3 +104,20 @@ Below are some core REST API routes:
 | `/api/orders/:orderId/complete` | PATCH | Mark order as complete | Staff |
 | `/api/orders/:orderId/cancel` | PATCH | Cancel order | Staff |
 | `/api/orders/:orderId` | DELETE | Delete order | Staff |
+
+Total Endpoints: 31
+
+By Category:
+Customer Auth: 2 endpoints
+Restaurants: 2 endpoints
+Bookings: 6 endpoints
+Business Auth: 3 endpoints
+Business Dashboard: 6 endpoints
+Orders: 12 endpoints
+
+By HTTP Method:
+GET: 11 endpoints
+POST: 7 endpoints
+PUT: 2 endpoints
+PATCH: 6 endpoints
+DELETE: 4 endpoints

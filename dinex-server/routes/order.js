@@ -5,17 +5,14 @@ import RestaurantOwner from "../models/RestaurantOwner.js";
 
 const router = express.Router();
 
-// Helper function to generate unique order ID
 const generateOrderId = () => {
     const timestamp = Date.now();
     const random = Math.floor(Math.random() * 1000);
     return `ORD_${timestamp}_${random}`;
 };
 
-// Middleware to get restaurant details from auth token
 const getRestaurantDetails = async (req, res, next) => {
     try {
-        // Determine the owner ID based on user role
         let ownerId = req.user.id;
         console.log("User Role:", req.user.role);
 
@@ -38,27 +35,22 @@ const getRestaurantDetails = async (req, res, next) => {
     }
 };
 
-// CREATE - Create a new order
 router.post("/", verifyBusinessToken, getRestaurantDetails, async (req, res) => {
     try {
         const { tableNo, items } = req.body;
 
-        // Validate required fields
         if (!tableNo || !items || !Array.isArray(items) || items.length === 0) {
             return res.status(400).json({ msg: "Missing required fields: tableNo and items" });
         }
 
-        // Validate items structure
         for (const item of items) {
             if (!item.itemId || !item.name || !item.price) {
                 return res.status(400).json({ msg: "Each item must have itemId, name, and price" });
             }
         }
 
-        // Generate unique order ID
         const orderId = generateOrderId();
 
-        // Create new order
         const newOrder = new Order({
             orderId,
             restaurantId: req.restaurantId,
@@ -75,12 +67,10 @@ router.post("/", verifyBusinessToken, getRestaurantDetails, async (req, res) => 
             status: "ongoing"
         });
 
-        // Calculate total amount
         newOrder.calculateTotal();
 
         await newOrder.save();
 
-        // Update table status in RestaurantOwner
         await RestaurantOwner.updateOne(
             { _id: req.restaurantId, "tables.tableNumber": tableNo },
             {
@@ -102,12 +92,10 @@ router.post("/", verifyBusinessToken, getRestaurantDetails, async (req, res) => 
     }
 });
 
-// READ - Get all orders for a restaurant
 router.get("/", verifyBusinessToken, getRestaurantDetails, async (req, res) => {
     try {
         const { status, tableNo } = req.query;
 
-        // Build query
         const query = { restaurantId: req.restaurantId };
 
         if (status) {
@@ -130,7 +118,6 @@ router.get("/", verifyBusinessToken, getRestaurantDetails, async (req, res) => {
     }
 });
 
-// READ - Get ongoing orders for a restaurant
 router.get("/ongoing", verifyBusinessToken, getRestaurantDetails, async (req, res) => {
     try {
         const orders = await Order.find({
@@ -148,7 +135,6 @@ router.get("/ongoing", verifyBusinessToken, getRestaurantDetails, async (req, re
     }
 });
 
-// READ - Get order by table number
 router.get("/table/:tableNo", verifyBusinessToken, getRestaurantDetails, async (req, res) => {
     try {
         const { tableNo } = req.params;
@@ -170,7 +156,6 @@ router.get("/table/:tableNo", verifyBusinessToken, getRestaurantDetails, async (
     }
 });
 
-// READ - Get a single order by orderId
 router.get("/:orderId", verifyBusinessToken, getRestaurantDetails, async (req, res) => {
     try {
         const { orderId } = req.params;
@@ -181,7 +166,6 @@ router.get("/:orderId", verifyBusinessToken, getRestaurantDetails, async (req, r
             return res.status(404).json({ msg: "Order not found" });
         }
 
-        // Verify order belongs to this restaurant
         if (order.restaurantId.toString() !== req.restaurantId.toString()) {
             return res.status(403).json({ msg: "Access denied" });
         }
@@ -194,7 +178,6 @@ router.get("/:orderId", verifyBusinessToken, getRestaurantDetails, async (req, r
     }
 });
 
-// UPDATE - Add items to an existing order
 router.post("/:orderId/items", verifyBusinessToken, getRestaurantDetails, async (req, res) => {
     try {
         const { orderId } = req.params;
@@ -210,18 +193,15 @@ router.post("/:orderId/items", verifyBusinessToken, getRestaurantDetails, async 
             return res.status(404).json({ msg: "Order not found" });
         }
 
-        // Verify order belongs to this restaurant
         if (order.restaurantId.toString() !== req.restaurantId.toString()) {
             return res.status(403).json({ msg: "Access denied" });
         }
 
 
-        // Only allow adding items to ongoing orders
         if (order.status !== "ongoing") {
             return res.status(400).json({ msg: "Can only add items to ongoing orders" });
         }
 
-        // Add new items
         items.forEach(item => {
             order.items.push({
                 itemId: item.itemId,
@@ -233,13 +213,11 @@ router.post("/:orderId/items", verifyBusinessToken, getRestaurantDetails, async 
             });
         });
 
-        // Recalculate total
         order.calculateTotal();
         order.updatedAt = new Date();
 
         await order.save();
 
-        // Update table bill in RestaurantOwner
         await RestaurantOwner.updateOne(
             { _id: req.restaurantId, "tables.tableNumber": order.tableNo },
             {
@@ -259,7 +237,6 @@ router.post("/:orderId/items", verifyBusinessToken, getRestaurantDetails, async 
     }
 });
 
-// UPDATE - Update item quantity
 router.patch("/:orderId/items/:itemIndex", verifyBusinessToken, getRestaurantDetails, async (req, res) => {
     try {
         const { orderId, itemIndex } = req.params;
@@ -275,13 +252,11 @@ router.patch("/:orderId/items/:itemIndex", verifyBusinessToken, getRestaurantDet
             return res.status(404).json({ msg: "Order not found" });
         }
 
-        // Verify order belongs to this restaurant
         if (order.restaurantId.toString() !== req.restaurantId.toString()) {
             return res.status(403).json({ msg: "Access denied" });
         }
 
 
-        // Only allow updates to ongoing orders
         if (order.status !== "ongoing") {
             return res.status(400).json({ msg: "Can only update ongoing orders" });
         }
@@ -291,22 +266,18 @@ router.patch("/:orderId/items/:itemIndex", verifyBusinessToken, getRestaurantDet
             return res.status(400).json({ msg: "Invalid item index" });
         }
 
-        // Update quantity
         if (quantity === 0) {
-            // Remove item if quantity is 0
             order.items.splice(index, 1);
         } else {
             order.items[index].quantity = quantity;
             order.items[index].updatedAt = new Date();
         }
 
-        // Recalculate total
         order.calculateTotal();
         order.updatedAt = new Date();
 
         await order.save();
 
-        // Update table bill in RestaurantOwner
         await RestaurantOwner.updateOne(
             { _id: req.restaurantId, "tables.tableNumber": order.tableNo },
             {
@@ -326,7 +297,6 @@ router.patch("/:orderId/items/:itemIndex", verifyBusinessToken, getRestaurantDet
     }
 });
 
-// UPDATE - Remove item from order
 router.delete("/:orderId/items/:itemIndex", verifyBusinessToken, getRestaurantDetails, async (req, res) => {
     try {
         const { orderId, itemIndex } = req.params;
@@ -337,13 +307,11 @@ router.delete("/:orderId/items/:itemIndex", verifyBusinessToken, getRestaurantDe
             return res.status(404).json({ msg: "Order not found" });
         }
 
-        // Verify order belongs to this restaurant
         if (order.restaurantId.toString() !== req.restaurantId.toString()) {
             return res.status(403).json({ msg: "Access denied" });
         }
 
 
-        // Only allow updates to ongoing orders
         if (order.status !== "ongoing") {
             return res.status(400).json({ msg: "Can only update ongoing orders" });
         }
@@ -353,21 +321,17 @@ router.delete("/:orderId/items/:itemIndex", verifyBusinessToken, getRestaurantDe
             return res.status(400).json({ msg: "Invalid item index" });
         }
 
-        // Remove item
         order.items.splice(index, 1);
 
-        // Check if order has no more items
         if (order.items.length === 0) {
             return res.status(400).json({ msg: "Cannot remove last item. Cancel the order instead." });
         }
 
-        // Recalculate total
         order.calculateTotal();
         order.updatedAt = new Date();
 
         await order.save();
 
-        // Update table bill in RestaurantOwner
         await RestaurantOwner.updateOne(
             { _id: req.restaurantId, "tables.tableNumber": order.tableNo },
             {
@@ -387,7 +351,6 @@ router.delete("/:orderId/items/:itemIndex", verifyBusinessToken, getRestaurantDe
     }
 });
 
-// UPDATE - Mark order as completed
 router.patch("/:orderId/complete", verifyBusinessToken, getRestaurantDetails, async (req, res) => {
     try {
         const { orderId } = req.params;
@@ -398,13 +361,11 @@ router.patch("/:orderId/complete", verifyBusinessToken, getRestaurantDetails, as
             return res.status(404).json({ msg: "Order not found" });
         }
 
-        // Verify order belongs to this restaurant
         if (order.restaurantId.toString() !== req.restaurantId.toString()) {
             return res.status(403).json({ msg: "Access denied" });
         }
 
 
-        // Only allow completing ongoing orders
         if (order.status !== "ongoing") {
             return res.status(400).json({ msg: "Can only complete ongoing orders" });
         }
@@ -414,7 +375,6 @@ router.patch("/:orderId/complete", verifyBusinessToken, getRestaurantDetails, as
 
         await order.save();
 
-        // Reset table status in RestaurantOwner
         await RestaurantOwner.updateOne(
             { _id: req.restaurantId, "tables.tableNumber": order.tableNo },
             {
@@ -436,7 +396,6 @@ router.patch("/:orderId/complete", verifyBusinessToken, getRestaurantDetails, as
     }
 });
 
-// UPDATE - Cancel order
 router.patch("/:orderId/cancel", verifyBusinessToken, getRestaurantDetails, async (req, res) => {
     try {
         const { orderId } = req.params;
@@ -447,13 +406,11 @@ router.patch("/:orderId/cancel", verifyBusinessToken, getRestaurantDetails, asyn
             return res.status(404).json({ msg: "Order not found" });
         }
 
-        // Verify order belongs to this restaurant
         if (order.restaurantId.toString() !== req.restaurantId.toString()) {
             return res.status(403).json({ msg: "Access denied" });
         }
 
 
-        // Only allow cancelling ongoing orders
         if (order.status !== "ongoing") {
             return res.status(400).json({ msg: "Can only cancel ongoing orders" });
         }
@@ -463,7 +420,6 @@ router.patch("/:orderId/cancel", verifyBusinessToken, getRestaurantDetails, asyn
 
         await order.save();
 
-        // Reset table status in RestaurantOwner
         await RestaurantOwner.updateOne(
             { _id: req.restaurantId, "tables.tableNumber": order.tableNo },
             {
@@ -485,7 +441,6 @@ router.patch("/:orderId/cancel", verifyBusinessToken, getRestaurantDetails, asyn
     }
 });
 
-// DELETE - Delete a completed or cancelled order
 router.delete("/:orderId", verifyBusinessToken, getRestaurantDetails, async (req, res) => {
     try {
         const { orderId } = req.params;
@@ -496,13 +451,11 @@ router.delete("/:orderId", verifyBusinessToken, getRestaurantDetails, async (req
             return res.status(404).json({ msg: "Order not found" });
         }
 
-        // Verify order belongs to this restaurant
         if (order.restaurantId.toString() !== req.restaurantId.toString()) {
             return res.status(403).json({ msg: "Access denied" });
         }
 
 
-        // Only allow deleting completed or cancelled orders
         if (order.status === "ongoing") {
             return res.status(400).json({ msg: "Cannot delete ongoing orders. Complete or cancel first." });
         }

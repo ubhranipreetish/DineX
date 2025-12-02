@@ -18,7 +18,6 @@ router.get("/", async (req, res) => {
 
     const query = {};
 
-    // 🔎 SEARCH
     if (search) {
       const searchRegex = new RegExp(search, "i");
       query.$or = [
@@ -28,18 +27,15 @@ router.get("/", async (req, res) => {
       ];
     }
 
-    // 🍽 MULTIPLE CUISINES
     if (cuisines) {
-      const cuisineArr = cuisines.split(","); // example : "Italian,Chinese"
+      const cuisineArr = cuisines.split(",");
       query.cuisines = { $in: cuisineArr };
     }
 
-    // ⭐ RATING FILTER
     if (rating) {
-      query.rating = { $gte: Number(rating) }; // 4 => 4+
+      query.rating = { $gte: Number(rating) }; 
     }
 
-    // 💰 COST FILTER
     if (cost === "Low") {
       query.priceForTwo = { $lt: 800 };
     } else if (cost === "Medium") {
@@ -48,10 +44,6 @@ router.get("/", async (req, res) => {
       query.priceForTwo = { $gt: 1600 };
     }
 
-    // 🎛 FEATURE FILTERS
-    /*
-      filters = "Offers,Pet Friendly,Outdoor Seating"
-    */
     if (filters) {
       const f = filters.split(",");
 
@@ -62,7 +54,6 @@ router.get("/", async (req, res) => {
       if (f.includes("Open Now")) query.isOpenNow = true;
     }
 
-    // 🔽 SORTING
     let sortQuery = {};
 
     switch (sort) {
@@ -85,12 +76,10 @@ router.get("/", async (req, res) => {
         sortQuery = {};
     }
 
-    // 📊 PAGINATION
     const pageNum = parseInt(page);
     const limitNum = parseInt(limit);
     const skip = (pageNum - 1) * limitNum;
 
-    // Get total count for pagination metadata
     const totalCount = await Restaurant.countDocuments(query);
 
     const restaurants = await Restaurant.find(query)
@@ -116,7 +105,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-// GET restaurant by restaurantId (not _id)
 router.get("/:restaurantId", async (req, res) => {
   const { restaurantId } = req.params;
 

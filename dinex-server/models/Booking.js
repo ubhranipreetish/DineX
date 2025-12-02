@@ -56,7 +56,6 @@ const bookingSchema = new mongoose.Schema({
     timestamps: true
 });
 
-// Compound index for efficient queries
 bookingSchema.index({ userId: 1, status: 1 });
 
 export default mongoose.model("Booking", bookingSchema);

@@ -5,7 +5,6 @@ import { verifyBusinessToken } from "../middleware/businessAuth.js";
 
 const router = express.Router();
 
-// 🟢 Get Business Owner Profile
 router.get("/profile", verifyBusinessToken, async (req, res) => {
     try {
         const owner = await RestaurantOwner.findById(req.businessOwnerId);
@@ -14,11 +13,9 @@ router.get("/profile", verifyBusinessToken, async (req, res) => {
             return res.status(404).json({ msg: "Owner not found" });
         }
 
-        // Remove password from response
         const ownerResponse = owner.toObject();
         delete ownerResponse.owner.password;
 
-        // Remove passwords from all staff members
         if (ownerResponse.waiters) {
             ownerResponse.waiters = ownerResponse.waiters.map(waiter => {
                 const waiterObj = { ...waiter };
@@ -34,7 +31,6 @@ router.get("/profile", verifyBusinessToken, async (req, res) => {
     }
 });
 
-// 🟢 Update Restaurant Details
 router.put("/restaurant", verifyBusinessToken, async (req, res) => {
     const {
         restaurantName,
@@ -53,7 +49,6 @@ router.put("/restaurant", verifyBusinessToken, async (req, res) => {
             return res.status(404).json({ msg: "Owner not found" });
         }
 
-        // Update restaurant details
         if (restaurantName) owner.restaurant.name = restaurantName;
         if (restaurantType) owner.restaurant.type = restaurantType;
         if (addressFull) owner.restaurant.address.full = addressFull;
@@ -62,12 +57,10 @@ router.put("/restaurant", verifyBusinessToken, async (req, res) => {
         if (addressPincode) owner.restaurant.address.pincode = addressPincode;
         if (totalTables) owner.restaurant.totalTables = totalTables;
 
-        // Update timestamp
         owner.restaurant.updatedAt = new Date();
 
         await owner.save();
 
-        // Remove password from response
         const ownerResponse = owner.toObject();
         delete ownerResponse.owner.password;
 
@@ -81,7 +74,6 @@ router.put("/restaurant", verifyBusinessToken, async (req, res) => {
     }
 });
 
-// 🟢 Get All Staff Members
 router.get("/staff", verifyBusinessToken, async (req, res) => {
     try {
         const owner = await RestaurantOwner.findById(req.businessOwnerId);
@@ -90,7 +82,6 @@ router.get("/staff", verifyBusinessToken, async (req, res) => {
             return res.status(404).json({ msg: "Owner not found" });
         }
 
-        // Remove passwords from staff members
         const staff = owner.waiters.map(waiter => {
             const waiterObj = waiter.toObject();
             delete waiterObj.password;
@@ -104,7 +95,6 @@ router.get("/staff", verifyBusinessToken, async (req, res) => {
     }
 });
 
-// 🟢 Add New Staff Member
 router.post("/staff", verifyBusinessToken, async (req, res) => {
     const { name, phone, password, role } = req.body;
 
@@ -115,10 +105,8 @@ router.post("/staff", verifyBusinessToken, async (req, res) => {
             return res.status(404).json({ msg: "Owner not found" });
         }
 
-        // Hash password
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        // Create new staff member
         const newStaff = {
             name,
             phone,
@@ -131,7 +119,6 @@ router.post("/staff", verifyBusinessToken, async (req, res) => {
         owner.waiters.push(newStaff);
         await owner.save();
 
-        // Get the newly added staff member without password
         const addedStaff = owner.waiters[owner.waiters.length - 1].toObject();
         delete addedStaff.password;
 
@@ -145,7 +132,6 @@ router.post("/staff", verifyBusinessToken, async (req, res) => {
     }
 });
 
-// 🟢 Update Staff Member
 router.put("/staff/:staffId", verifyBusinessToken, async (req, res) => {
     const { staffId } = req.params;
     const { name, phone, password, role, isActive } = req.body;
@@ -157,14 +143,12 @@ router.put("/staff/:staffId", verifyBusinessToken, async (req, res) => {
             return res.status(404).json({ msg: "Owner not found" });
         }
 
-        // Find staff member
         const staffMember = owner.waiters.id(staffId);
 
         if (!staffMember) {
             return res.status(404).json({ msg: "Staff member not found" });
         }
 
-        // Update fields
         if (name) staffMember.name = name;
         if (phone) staffMember.phone = phone;
         if (password) {
@@ -175,7 +159,6 @@ router.put("/staff/:staffId", verifyBusinessToken, async (req, res) => {
 
         await owner.save();
 
-        // Return updated staff member without password
         const updatedStaff = staffMember.toObject();
         delete updatedStaff.password;
 
@@ -189,7 +172,6 @@ router.put("/staff/:staffId", verifyBusinessToken, async (req, res) => {
     }
 });
 
-// 🟢 Delete Staff Member
 router.delete("/staff/:staffId", verifyBusinessToken, async (req, res) => {
     const { staffId } = req.params;
 
@@ -200,7 +182,6 @@ router.delete("/staff/:staffId", verifyBusinessToken, async (req, res) => {
             return res.status(404).json({ msg: "Owner not found" });
         }
 
-        // Find and remove staff member
         const staffMember = owner.waiters.id(staffId);
 
         if (!staffMember) {

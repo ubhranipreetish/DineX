@@ -8,7 +8,6 @@ const router = express.Router();
 console.log("User model is:", User);
 
 
-// 🟢 Signup
 router.post("/signup", async (req, res) => {
   console.log("Connected DB name:", mongoose.connection.name);
 
@@ -27,14 +26,12 @@ router.post("/signup", async (req, res) => {
       role,
     });
 
-    // Generate JWT token
     const userToken = jwt.sign(
       { id: newUser._id, email: newUser.email, role: newUser.role },
       process.env.JWT_SECRET,
       { expiresIn: "7d" }
     );
 
-    // Remove password from response
     const userResponse = newUser.toObject();
     delete userResponse.password;
 
@@ -44,7 +41,6 @@ router.post("/signup", async (req, res) => {
   }
 });
 
-// 🟢 Login
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
@@ -61,7 +57,6 @@ router.post("/login", async (req, res) => {
       { expiresIn: "7d" }
     );
 
-    // Remove password from response
     const userResponse = user.toObject();
     delete userResponse.password;
 

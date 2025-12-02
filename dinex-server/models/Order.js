@@ -8,7 +8,6 @@ const OrderSchema = new mongoose.Schema({
         index: true
     },
 
-    // ✅ Restaurant Details
     restaurantId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "RestaurantOwner",
@@ -54,11 +53,9 @@ const OrderSchema = new mongoose.Schema({
 
 }, { timestamps: true });
 
-// Indexes
 OrderSchema.index({ restaurantId: 1, status: 1 });
 OrderSchema.index({ restaurantId: 1, tableNo: 1 });
 
-// Method to calculate total amount
 OrderSchema.methods.calculateTotal = function () {
     this.totalAmount = this.items.reduce((sum, item) => {
         return sum + (item.price * item.quantity);

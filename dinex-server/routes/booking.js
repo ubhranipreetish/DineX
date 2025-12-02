@@ -4,7 +4,6 @@ import { authMiddleware } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
-// Helper function to check and update booking status based on time
 const checkAndUpdateStatus = async (booking) => {
     if (booking.status !== "confirmed") return booking;
 
@@ -16,7 +15,6 @@ const checkAndUpdateStatus = async (booking) => {
     console.log("Booking date (UTC):", bookingDateTime.toISOString());
     console.log("Booking time string (IST):", booking.time);
 
-    // Parse time (format: "7:30 PM" - this is IST time)
     const timeParts = booking.time.match(/(\d+):(\d+)\s*(AM|PM)/i);
     if (timeParts) {
         let hours = parseInt(timeParts[1]);
@@ -30,8 +28,6 @@ const checkAndUpdateStatus = async (booking) => {
 
         console.log("Adjusted IST hours:", hours);
 
-        // Convert IST to UTC by subtracting 5 hours 30 minutes
-        // IST is UTC+5:30, so to get UTC time, we subtract 5.5 hours
         let utcHours = hours - 5;
         let utcMinutes = minutes - 30;
 
@@ -42,13 +38,11 @@ const checkAndUpdateStatus = async (booking) => {
 
         if (utcHours < 0) {
             utcHours += 24;
-            // Subtract one day from the date
             bookingDateTime.setUTCDate(bookingDateTime.getUTCDate() - 1);
         }
 
         console.log("Converted to UTC - hours:", utcHours, "minutes:", utcMinutes);
 
-        // Set the UTC time on the booking date
         bookingDateTime.setUTCHours(utcHours, utcMinutes, 0, 0);
     }
 
@@ -56,7 +50,6 @@ const checkAndUpdateStatus = async (booking) => {
     console.log("Current time (UTC):", now.toISOString());
     console.log("Is now > bookingDateTime?", now > bookingDateTime);
 
-    // If booking time has passed, update status to completed
     if (now > bookingDateTime && booking.status === "confirmed") {
         console.log("✅ Updating booking status to completed");
         booking.status = "completed";
@@ -66,7 +59,6 @@ const checkAndUpdateStatus = async (booking) => {
     return booking;
 };
 
-// Helper to check if booking time has passed
 const hasBookingTimePassed = (booking) => {
     const now = new Date();
     const bookingDateTime = new Date(booking.date);
@@ -80,7 +72,6 @@ const hasBookingTimePassed = (booking) => {
         if (period === "PM" && hours !== 12) hours += 12;
         if (period === "AM" && hours === 12) hours = 0;
 
-        // Convert IST to UTC by subtracting 5 hours 30 minutes
         let utcHours = hours - 5;
         let utcMinutes = minutes - 30;
 
@@ -100,7 +91,6 @@ const hasBookingTimePassed = (booking) => {
     return now > bookingDateTime;
 };
 
-// CREATE - Create a new booking
 router.post("/", authMiddleware, async (req, res) => {
     try {
         const {
@@ -115,12 +105,10 @@ router.post("/", authMiddleware, async (req, res) => {
             paymentMethod
         } = req.body;
 
-        // Validate required fields
         if (!restaurantId || !restaurantName || !date || !time || !people || !amount || !paymentMethod) {
             return res.status(400).json({ msg: "Missing required fields" });
         }
 
-        // Create new booking
         const newBooking = await Booking.create({
             userId: req.user.id,
             restaurantId,
@@ -142,20 +130,16 @@ router.post("/", authMiddleware, async (req, res) => {
     }
 });
 
-// READ - Get all bookings for a user
 router.get("/user/:userId", authMiddleware, async (req, res) => {
     try {
         const { userId } = req.params;
 
-        // Verify user is requesting their own bookings
         if (req.user.id !== userId) {
             return res.status(403).json({ msg: "Access denied" });
         }
 
-        // Fetch all bookings for user
         let bookings = await Booking.find({ userId }).sort({ date: -1, createdAt: -1 });
 
-        // Update status for each booking if needed
         bookings = await Promise.all(bookings.map(booking => checkAndUpdateStatus(booking)));
 
         res.json({ bookings });
@@ -165,7 +149,6 @@ router.get("/user/:userId", authMiddleware, async (req, res) => {
     }
 });
 
-// READ - Get a single booking by ID
 router.get("/:id", authMiddleware, async (req, res) => {
     try {
         const { id } = req.params;
@@ -176,12 +159,10 @@ router.get("/:id", authMiddleware, async (req, res) => {
             return res.status(404).json({ msg: "Booking not found" });
         }
 
-        // Verify booking belongs to user
         if (booking.userId.toString() !== req.user.id) {
             return res.status(403).json({ msg: "Access denied" });
         }
 
-        // Update status if needed
         booking = await checkAndUpdateStatus(booking);
 
         res.json({ booking });
@@ -191,7 +172,6 @@ router.get("/:id", authMiddleware, async (req, res) => {
     }
 });
 
-// UPDATE - Update booking details
 router.patch("/:id", authMiddleware, async (req, res) => {
     try {
         const { id } = req.params;
@@ -203,22 +183,18 @@ router.patch("/:id", authMiddleware, async (req, res) => {
             return res.status(404).json({ msg: "Booking not found" });
         }
 
-        // Verify booking belongs to user
         if (booking.userId.toString() !== req.user.id) {
             return res.status(403).json({ msg: "Access denied" });
         }
 
-        // Check if booking time has passed
         if (hasBookingTimePassed(booking)) {
             return res.status(400).json({ msg: "Cannot update booking after the scheduled time" });
         }
 
-        // Only allow updates if status is confirmed
         if (booking.status !== "confirmed") {
             return res.status(400).json({ msg: "Can only update confirmed bookings" });
         }
 
-        // Update allowed fields
         if (people !== undefined) booking.people = people;
         if (date !== undefined) booking.date = date;
         if (time !== undefined) booking.time = time;
@@ -233,7 +209,6 @@ router.patch("/:id", authMiddleware, async (req, res) => {
     }
 });
 
-// CANCEL - Cancel a booking
 router.patch("/:id/cancel", authMiddleware, async (req, res) => {
     try {
         const { id } = req.params;
@@ -244,17 +219,14 @@ router.patch("/:id/cancel", authMiddleware, async (req, res) => {
             return res.status(404).json({ msg: "Booking not found" });
         }
 
-        // Verify booking belongs to user
         if (booking.userId.toString() !== req.user.id) {
             return res.status(403).json({ msg: "Access denied" });
         }
 
-        // Check if booking time has passed
         if (hasBookingTimePassed(booking)) {
             return res.status(400).json({ msg: "Cannot cancel booking after the scheduled time" });
         }
 
-        // Only allow cancel if status is confirmed
         if (booking.status !== "confirmed") {
             return res.status(400).json({ msg: "Can only cancel confirmed bookings" });
         }
@@ -269,7 +241,6 @@ router.patch("/:id/cancel", authMiddleware, async (req, res) => {
     }
 });
 
-// DELETE - Delete a cancelled booking
 router.delete("/:id", authMiddleware, async (req, res) => {
     try {
         const { id } = req.params;
@@ -280,12 +251,10 @@ router.delete("/:id", authMiddleware, async (req, res) => {
             return res.status(404).json({ msg: "Booking not found" });
         }
 
-        // Verify booking belongs to user
         if (booking.userId.toString() !== req.user.id) {
             return res.status(403).json({ msg: "Access denied" });
         }
 
-        // Only allow delete if status is cancelled
         if (booking.status !== "cancelled") {
             return res.status(400).json({ msg: "Can only delete cancelled bookings" });
         }

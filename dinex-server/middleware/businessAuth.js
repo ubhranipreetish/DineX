@@ -1,9 +1,7 @@
 import jwt from "jsonwebtoken";
 
-// Middleware to verify business JWT token
 export const verifyBusinessToken = async (req, res, next) => {
     try {
-        // Get token from header
         const authHeader = req.headers.authorization;
 
         if (!authHeader || !authHeader.startsWith("Bearer ")) {
@@ -12,15 +10,12 @@ export const verifyBusinessToken = async (req, res, next) => {
 
         const token = authHeader.split(" ")[1];
 
-        // Verify token
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-        // Check if it's a business or staff token
         if (decoded.role !== "business" && decoded.role !== "staff") {
             return res.status(403).json({ msg: "Access denied. Business or Staff account required." });
         }
 
-        // Attach user info to request
         if (decoded.role === "business") {
             req.businessOwnerId = decoded.id;
         } else if (decoded.role === "staff") {
@@ -28,7 +23,7 @@ export const verifyBusinessToken = async (req, res, next) => {
             req.staffId = decoded.id;
         }
 
-        req.user = decoded; // Attach full decoded token for flexibility
+        req.user = decoded; 
         req.businessEmail = decoded.email;
         req.restaurantName = decoded.restaurantName;
 
