@@ -12,7 +12,7 @@ export default function QuantityControl({ quantity, onIncrease, onDecrease, size
             <button
                 onClick={onDecrease}
                 disabled={quantity <= 0}
-                className={`${buttonSize} rounded-lg bg-red-500 hover:bg-red-600 disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-bold transition-all active:scale-95 flex items-center justify-center shadow-md`}
+                className={`${buttonSize} rounded-lg bg-red-500 hover:bg-red-600 disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-bold transition-all active:scale-95 flex items-center justify-center shadow-md cursor-pointer`}
             >
                 −
             </button>
@@ -21,7 +21,7 @@ export default function QuantityControl({ quantity, onIncrease, onDecrease, size
             </span>
             <button
                 onClick={onIncrease}
-                className={`${buttonSize} rounded-lg bg-green-500 hover:bg-green-600 text-white font-bold transition-all active:scale-95 flex items-center justify-center shadow-md`}
+                className={`${buttonSize} rounded-lg bg-green-500 hover:bg-green-600 text-white font-bold transition-all active:scale-95 flex items-center justify-center shadow-md cursor-pointer`}
             >
                 +
             </button>

@@ -10,12 +10,23 @@ import Footer from "@/components/Footer";
 export default function Home() {
     const [restaurants, setRestaurants] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
+    const [pagination, setPagination] = useState({
+        totalPages: 1,
+        totalCount: 0,
+        hasNextPage: false,
+        hasPrevPage: false
+    });
     const restaurantsPerPage = 12;
 
     useEffect(() => {
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/restaurants`)
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/restaurants?page=1&limit=${restaurantsPerPage}`)
             .then((res) => res.json())
-            .then((data) => setRestaurants(data))
+            .then((data) => {
+                setRestaurants(data.restaurants || data);
+                if (data.pagination) {
+                    setPagination(data.pagination);
+                }
+            })
             .catch((err) => console.error("Error:", err));
     }, []);
 
@@ -57,20 +68,27 @@ export default function Home() {
         const sort = filters.find(f => f.startsWith("Sort: "));
         if (sort) params.append("sort", sort.replace("Sort: ", ""));
 
+        // 📄 Pagination
+        params.append("page", currentPage);
+        params.append("limit", restaurantsPerPage);
+
         // Fetch
         fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/restaurants?${params.toString()}`)
             .then(res => res.json())
-            .then(data => setRestaurants(data));
+            .then(data => {
+                setRestaurants(data.restaurants || data);
+                if (data.pagination) {
+                    setPagination(data.pagination);
+                }
+            });
 
+    }, [filters, search, currentPage]);
+
+
+    // Reset to page 1 when filters change
+    useEffect(() => {
+        setCurrentPage(1);
     }, [filters, search]);
-
-
-    // Calculate pagination
-    const indexOfLastRestaurant = currentPage * restaurantsPerPage;
-    const indexOfFirstRestaurant = indexOfLastRestaurant - restaurantsPerPage;
-    const currentRestaurants = restaurants.slice(indexOfFirstRestaurant, indexOfLastRestaurant);
-    const totalPages = Math.ceil(restaurants.length / restaurantsPerPage);
-
 
     // Change page
     const paginate = (pageNumber) => {
@@ -116,13 +134,13 @@ export default function Home() {
 
                 {/* Restaurant Grid */}
                 <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-12">
-                    {currentRestaurants.map((res) => (
+                    {restaurants.map((res) => (
                         <RestaurantCard key={res.restaurantId} restaurant={res} />
                     ))}
                 </div>
 
                 {/* Pagination */}
-                {totalPages > 1 && (
+                {pagination.totalPages > 1 && (
                     <div className="max-w-6xl mx-auto flex items-center justify-center gap-1 sm:gap-2 pb-8 sm:pb-12 px-2">
                         {/* Previous Button */}
                         <button
@@ -139,13 +157,13 @@ export default function Home() {
 
                         {/* Page Numbers */}
                         <div className="flex gap-1 sm:gap-2">
-                            {[...Array(totalPages)].map((_, index) => {
+                            {[...Array(pagination.totalPages)].map((_, index) => {
                                 const pageNumber = index + 1;
 
                                 // Show first page, last page, current page, and pages around current
                                 if (
                                     pageNumber === 1 ||
-                                    pageNumber === totalPages ||
+                                    pageNumber === pagination.totalPages ||
                                     (pageNumber >= currentPage - 1 && pageNumber <= currentPage + 1)
                                 ) {
                                     return (
@@ -172,8 +190,8 @@ export default function Home() {
                         {/* Next Button */}
                         <button
                             onClick={() => paginate(currentPage + 1)}
-                            disabled={currentPage === totalPages}
-                            className={`px-2 sm:px-4 py-2 rounded-lg font-medium transition-all duration-200 ${currentPage === totalPages
+                            disabled={currentPage === pagination.totalPages}
+                            className={`px-2 sm:px-4 py-2 rounded-lg font-medium transition-all duration-200 ${currentPage === pagination.totalPages
                                 ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
                                 : 'bg-white text-gray-700 hover:bg-[#FFF8E7] hover:text-[#8B6F3E] border-2 border-gray-200 hover:border-[#C9A050]'
                                 }`}    >

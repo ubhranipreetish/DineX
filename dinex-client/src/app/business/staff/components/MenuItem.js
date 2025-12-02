@@ -34,7 +34,7 @@ export default function MenuItem({ item, onAdd, selectedQuantity = 0 }) {
                 </span>
                 <button
                     onClick={() => onAdd(item)}
-                    className="flex items-center gap-1 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-4 py-2 rounded-xl font-semibold transition-all active:scale-95 shadow-md hover:shadow-lg"
+                    className="flex items-center gap-1 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-4 py-2 rounded-xl font-semibold transition-all active:scale-95 shadow-md hover:shadow-lg cursor-pointer"
                 >
                     <Plus className="w-4 h-4" />
                     Add

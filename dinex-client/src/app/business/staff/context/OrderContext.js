@@ -16,6 +16,7 @@ export const OrderProvider = ({ children }) => {
     const [orders, setOrders] = useState({});
     const [tables, setTables] = useState([]);
     const [restaurant, setRestaurant] = useState(null);
+    const [cancelledOrders, setCancelledOrders] = useState([]);
 
     // Initialize from localStorage and fetch restaurant data
     useEffect(() => {
@@ -79,7 +80,7 @@ export const OrderProvider = ({ children }) => {
                         ...o,
                         items: o.items.map(i => ({ ...i, status: i.status || "preparing" }))
                     };
-                    
+
                 });
                 setOrders(ordersMap);
 
@@ -300,12 +301,41 @@ export const OrderProvider = ({ children }) => {
     const getActiveOrders = () => {
         return Object.values(orders).filter(order => order.status === "ongoing");
     };
-    
+
+    const getCancelledOrders = async () => {
+        try {
+            const token = localStorage.getItem('staffToken');
+            if (!token) return;
+
+            const headers = { Authorization: `Bearer ${token}` };
+            const res = await API.get('/api/orders?status=cancelled', { headers });
+            setCancelledOrders(res.data.orders || []);
+        } catch (error) {
+            console.error('Error fetching cancelled orders:', error);
+        }
+    };
+
+    const deleteOrder = async (orderId) => {
+        try {
+            const token = localStorage.getItem('staffToken');
+            await API.delete(`/api/orders/${orderId}`, {
+                headers: { Authorization: `Bearer ${token}` }
+            });
+
+            // Remove from cancelled orders list
+            setCancelledOrders(prev => prev.filter(o => o.orderId !== orderId));
+        } catch (error) {
+            console.error('Error deleting order:', error);
+            throw error;
+        }
+    };
+
 
     const value = {
         orders,
         tables,
         restaurant,
+        cancelledOrders,
         createOrder,
         addItemsToOrder,
         updateItemStatus,
@@ -315,7 +345,9 @@ export const OrderProvider = ({ children }) => {
         cancelOrder,
         calculateBill,
         getOrderByTableId,
-        getActiveOrders
+        getActiveOrders,
+        getCancelledOrders,
+        deleteOrder
     };
 
     return (

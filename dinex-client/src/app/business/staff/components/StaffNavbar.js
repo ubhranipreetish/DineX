@@ -46,7 +46,7 @@ export default function StaffNavbar() {
     };
 
     return (
-        <nav className="w-full bg-white shadow-md border-b-2 border-orange-200 sticky top-0 z-50">
+        <nav className="w-full bg-white shadow-md border-b-2 border-[#D4C5B0] sticky top-0 z-50">
             <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 py-4">
                 {/* Logo and Restaurant Name */}
                 <div className="flex items-center gap-4">
@@ -69,15 +69,15 @@ export default function StaffNavbar() {
                             {/* Profile Info */}
                             <div className="flex items-center gap-2 sm:gap-3">
                                 {/* Avatar */}
-                                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-orange-400 to-red-500 text-white flex items-center justify-center font-bold text-base sm:text-lg shadow-md">
+                                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#C9A050] text-white flex items-center justify-center font-bold text-base sm:text-lg shadow-md">
                                     {staff.name ? staff.name[0].toUpperCase() : "S"}
                                 </div>
                                 {/* Name */}
                                 <div className="hidden sm:block">
-                                    <p className="font-semibold text-gray-800 text-sm">
+                                    <p className="font-semibold text-[#4A3F35] text-sm">
                                         {staff.name || "Staff Member"}
                                     </p>
-                                    <p className="text-xs text-gray-600">
+                                    <p className="text-xs text-[#6B5B4A]">
                                         {staff.role || "Staff"}
                                     </p>
                                 </div>
@@ -86,7 +86,7 @@ export default function StaffNavbar() {
                             {/* Logout Button */}
                             <button
                                 onClick={handleLogout}
-                                className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-xl transition-all font-semibold shadow-md hover:shadow-lg active:scale-95 text-sm"
+                                className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-[#8B6F47] hover:from-[#7A5F3C] hover:to-[#5A4A39] text-white rounded-xl transition-all font-semibold shadow-md hover:shadow-lg active:scale-95 text-sm cursor-pointer"
                                 title="Logout"
                             >
                                 <LogOut className="w-4 h-4" />
@@ -96,7 +96,7 @@ export default function StaffNavbar() {
                     ) : (
                         <Link
                             href="/business/staff/login"
-                            className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white rounded-xl transition-all font-semibold shadow-md hover:shadow-lg text-sm"
+                            className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#C9A050] to-[#F4D483] hover:from-[#B8903D] hover:to-[#E8C670] text-white rounded-xl transition-all font-semibold shadow-md hover:shadow-lg text-sm"
                         >
                             <User className="w-4 h-4" />
                             Login

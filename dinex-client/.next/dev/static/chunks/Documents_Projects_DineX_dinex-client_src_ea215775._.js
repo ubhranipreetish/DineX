@@ -2089,13 +2089,24 @@ function Home() {
     _s();
     const [restaurants, setRestaurants] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
     const [currentPage, setCurrentPage] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(1);
+    const [pagination, setPagination] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({
+        totalPages: 1,
+        totalCount: 0,
+        hasNextPage: false,
+        hasPrevPage: false
+    });
     const restaurantsPerPage = 12;
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "Home.useEffect": ()=>{
-            fetch(`${("TURBOPACK compile-time value", "https://dinex-24s9.onrender.com")}/api/restaurants`).then({
+            fetch(`${("TURBOPACK compile-time value", "http://localhost:8080")}/api/restaurants?page=1&limit=${restaurantsPerPage}`).then({
                 "Home.useEffect": (res)=>res.json()
             }["Home.useEffect"]).then({
-                "Home.useEffect": (data)=>setRestaurants(data)
+                "Home.useEffect": (data)=>{
+                    setRestaurants(data.restaurants || data);
+                    if (data.pagination) {
+                        setPagination(data.pagination);
+                    }
+                }
             }["Home.useEffect"]).catch({
                 "Home.useEffect": (err)=>console.error("Error:", err)
             }["Home.useEffect"]);
@@ -2152,22 +2163,35 @@ function Home() {
                 "Home.useEffect.sort": (f)=>f.startsWith("Sort: ")
             }["Home.useEffect.sort"]);
             if (sort) params.append("sort", sort.replace("Sort: ", ""));
+            // 📄 Pagination
+            params.append("page", currentPage);
+            params.append("limit", restaurantsPerPage);
             // Fetch
-            fetch(`${("TURBOPACK compile-time value", "https://dinex-24s9.onrender.com")}/api/restaurants?${params.toString()}`).then({
+            fetch(`${("TURBOPACK compile-time value", "http://localhost:8080")}/api/restaurants?${params.toString()}`).then({
                 "Home.useEffect": (res)=>res.json()
             }["Home.useEffect"]).then({
-                "Home.useEffect": (data)=>setRestaurants(data)
+                "Home.useEffect": (data)=>{
+                    setRestaurants(data.restaurants || data);
+                    if (data.pagination) {
+                        setPagination(data.pagination);
+                    }
+                }
             }["Home.useEffect"]);
+        }
+    }["Home.useEffect"], [
+        filters,
+        search,
+        currentPage
+    ]);
+    // Reset to page 1 when filters change
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "Home.useEffect": ()=>{
+            setCurrentPage(1);
         }
     }["Home.useEffect"], [
         filters,
         search
     ]);
-    // Calculate pagination
-    const indexOfLastRestaurant = currentPage * restaurantsPerPage;
-    const indexOfFirstRestaurant = indexOfLastRestaurant - restaurantsPerPage;
-    const currentRestaurants = restaurants.slice(indexOfFirstRestaurant, indexOfLastRestaurant);
-    const totalPages = Math.ceil(restaurants.length / restaurantsPerPage);
     // Change page
     const paginate = (pageNumber)=>{
         setCurrentPage(pageNumber);
@@ -2182,12 +2206,12 @@ function Home() {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$components$2f$Navbar$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/home/page.js",
-                lineNumber: 86,
+                lineNumber: 104,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$components$2f$HeroSection$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/home/page.js",
-                lineNumber: 88,
+                lineNumber: 106,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2203,12 +2227,12 @@ function Home() {
                             onLocationChange: setLocation
                         }, void 0, false, {
                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/home/page.js",
-                            lineNumber: 95,
+                            lineNumber: 113,
                             columnNumber: 21
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/home/page.js",
-                        lineNumber: 94,
+                        lineNumber: 112,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2218,34 +2242,34 @@ function Home() {
                                 onFiltersChange: (f)=>setFilters(f)
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/home/page.js",
-                                lineNumber: 106,
+                                lineNumber: 124,
                                 columnNumber: 25
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/home/page.js",
-                            lineNumber: 105,
+                            lineNumber: 123,
                             columnNumber: 21
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/home/page.js",
-                        lineNumber: 104,
+                        lineNumber: 122,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-12",
-                        children: currentRestaurants.map((res)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$components$2f$RestaurantCard$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                        children: restaurants.map((res)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$components$2f$RestaurantCard$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                 restaurant: res
                             }, res.restaurantId, false, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/home/page.js",
-                                lineNumber: 120,
+                                lineNumber: 138,
                                 columnNumber: 25
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/home/page.js",
-                        lineNumber: 118,
+                        lineNumber: 136,
                         columnNumber: 17
                     }, this),
-                    totalPages > 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    pagination.totalPages > 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "max-w-6xl mx-auto flex items-center justify-center gap-1 sm:gap-2 pb-8 sm:pb-12 px-2",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2264,34 +2288,34 @@ function Home() {
                                         d: "M15 19l-7-7 7-7"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/home/page.js",
-                                        lineNumber: 136,
+                                        lineNumber: 154,
                                         columnNumber: 33
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/home/page.js",
-                                    lineNumber: 135,
+                                    lineNumber: 153,
                                     columnNumber: 29
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/home/page.js",
-                                lineNumber: 128,
+                                lineNumber: 146,
                                 columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "flex gap-1 sm:gap-2",
                                 children: [
-                                    ...Array(totalPages)
+                                    ...Array(pagination.totalPages)
                                 ].map((_, index)=>{
                                     const pageNumber = index + 1;
                                     // Show first page, last page, current page, and pages around current
-                                    if (pageNumber === 1 || pageNumber === totalPages || pageNumber >= currentPage - 1 && pageNumber <= currentPage + 1) {
+                                    if (pageNumber === 1 || pageNumber === pagination.totalPages || pageNumber >= currentPage - 1 && pageNumber <= currentPage + 1) {
                                         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                             onClick: ()=>paginate(pageNumber),
                                             className: `w-8 h-8 sm:w-10 sm:h-10 rounded-lg font-semibold transition-all duration-200 text-sm sm:text-base ${currentPage === pageNumber ? 'bg-[#C9A050] text-white shadow-md' : 'bg-white text-gray-700 hover:bg-[#FFF8E7] hover:text-[#8B6F3E] border-2 border-gray-200 hover:border-[#C9A050]'}`,
                                             children: pageNumber
                                         }, pageNumber, false, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/home/page.js",
-                                            lineNumber: 152,
+                                            lineNumber: 170,
                                             columnNumber: 41
                                         }, this);
                                     } else if (pageNumber === currentPage - 2 || pageNumber === currentPage + 2) {
@@ -2300,7 +2324,7 @@ function Home() {
                                             children: "..."
                                         }, pageNumber, false, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/home/page.js",
-                                            lineNumber: 166,
+                                            lineNumber: 184,
                                             columnNumber: 44
                                         }, this);
                                     }
@@ -2308,13 +2332,13 @@ function Home() {
                                 })
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/home/page.js",
-                                lineNumber: 141,
+                                lineNumber: 159,
                                 columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                 onClick: ()=>paginate(currentPage + 1),
-                                disabled: currentPage === totalPages,
-                                className: `px-2 sm:px-4 py-2 rounded-lg font-medium transition-all duration-200 ${currentPage === totalPages ? 'bg-gray-200 text-gray-400 cursor-not-allowed' : 'bg-white text-gray-700 hover:bg-[#FFF8E7] hover:text-[#8B6F3E] border-2 border-gray-200 hover:border-[#C9A050]'}`,
+                                disabled: currentPage === pagination.totalPages,
+                                className: `px-2 sm:px-4 py-2 rounded-lg font-medium transition-all duration-200 ${currentPage === pagination.totalPages ? 'bg-gray-200 text-gray-400 cursor-not-allowed' : 'bg-white text-gray-700 hover:bg-[#FFF8E7] hover:text-[#8B6F3E] border-2 border-gray-200 hover:border-[#C9A050]'}`,
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
                                     className: "w-4 h-4 sm:w-5 sm:h-5",
                                     fill: "none",
@@ -2327,40 +2351,40 @@ function Home() {
                                         d: "M9 5l7 7-7 7"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/home/page.js",
-                                        lineNumber: 181,
+                                        lineNumber: 199,
                                         columnNumber: 33
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/home/page.js",
-                                    lineNumber: 180,
+                                    lineNumber: 198,
                                     columnNumber: 29
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/home/page.js",
-                                lineNumber: 173,
+                                lineNumber: 191,
                                 columnNumber: 25
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/home/page.js",
-                        lineNumber: 126,
+                        lineNumber: 144,
                         columnNumber: 21
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/home/page.js",
-                lineNumber: 91,
+                lineNumber: 109,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$components$2f$Footer$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/home/page.js",
-                lineNumber: 188,
+                lineNumber: 206,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true);
 }
-_s(Home, "2o7SqNca5O+IdlrAQeAlpC/meZM=");
+_s(Home, "XISP5GNNwTLF12PihKv8gd6+OBI=");
 _c = Home;
 var _c;
 __turbopack_context__.k.register(_c, "Home");

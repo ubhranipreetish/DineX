@@ -12,6 +12,8 @@ router.get("/", async (req, res) => {
       cost,
       sort,
       filters,
+      page = 1,
+      limit = 12,
     } = req.query;
 
     const query = {};
@@ -83,10 +85,30 @@ router.get("/", async (req, res) => {
         sortQuery = {};
     }
 
+    // 📊 PAGINATION
+    const pageNum = parseInt(page);
+    const limitNum = parseInt(limit);
+    const skip = (pageNum - 1) * limitNum;
+
+    // Get total count for pagination metadata
+    const totalCount = await Restaurant.countDocuments(query);
+
     const restaurants = await Restaurant.find(query)
       .sort(sortQuery)
+      .skip(skip)
+      .limit(limitNum);
 
-    res.json(restaurants);
+    res.json({
+      restaurants,
+      pagination: {
+        currentPage: pageNum,
+        totalPages: Math.ceil(totalCount / limitNum),
+        totalCount,
+        limit: limitNum,
+        hasNextPage: pageNum < Math.ceil(totalCount / limitNum),
+        hasPrevPage: pageNum > 1
+      }
+    });
 
   } catch (err) {
     console.error("FILTER ERROR:", err);
@@ -96,15 +118,15 @@ router.get("/", async (req, res) => {
 
 // GET restaurant by restaurantId (not _id)
 router.get("/:restaurantId", async (req, res) => {
-    const { restaurantId } = req.params;
-  
-    const restaurant = await Restaurant.findOne({ restaurantId: Number(restaurantId) });
-  
-    if (!restaurant) {
-      return res.status(404).json({ msg: "Restaurant not found" });
-    }
-  
-    res.json(restaurant);
-  });
+  const { restaurantId } = req.params;
+
+  const restaurant = await Restaurant.findOne({ restaurantId: Number(restaurantId) });
+
+  if (!restaurant) {
+    return res.status(404).json({ msg: "Restaurant not found" });
+  }
+
+  res.json(restaurant);
+});
 
 export default router;

@@ -8,10 +8,10 @@ export default function CategoryTabs({ categories, activeCategory, onCategoryCha
                     key={category.id}
                     onClick={() => onCategoryChange(category.id)}
                     className={`
-            flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all whitespace-nowrap shadow-md hover:shadow-lg active:scale-95
+            flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all whitespace-nowrap shadow-md hover:shadow-lg active:scale-95 cursor-pointer
             ${activeCategory === category.id
-                            ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white scale-105'
-                            : 'bg-white text-gray-700 hover:bg-orange-50'
+                            ? 'bg-[#C9A050] text-white scale-105'
+                            : 'bg-gradient-to-br from-[#F5F0E8] to-[#EDE4D8] text-[#6B5B4A] hover:bg-gradient-to-br hover:from-[#EDE4D8] hover:to-[#E5D9C8]'
                         }
           `}
                 >

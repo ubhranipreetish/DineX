@@ -9,12 +9,15 @@ import {
 } from "lucide-react";
 import { useOrder } from '../context/OrderContext';
 import StaffNavbar from '../components/StaffNavbar';
+import OrderTabs from '../components/OrderTabs';
+import OrderCard from '../components/OrderCard';
 import Footer from "@/components/Footer";
 
 export default function StaffHome() {
   const router = useRouter();
   const [staff, setStaff] = useState(null);
-  const { tables, restaurant } = useOrder();
+  const { tables, restaurant, getActiveOrders, cancelledOrders, getCancelledOrders, deleteOrder } = useOrder();
+  const [activeTab, setActiveTab] = useState('running');
   const [stats, setStats] = useState({
     free: 0,
     occupied: 0,
@@ -41,6 +44,9 @@ export default function StaffHome() {
 
     // Update stats
     updateStats();
+
+    // Fetch cancelled orders
+    getCancelledOrders();
   }, [tables, router]);
 
   const updateStats = () => {
@@ -84,6 +90,16 @@ export default function StaffHome() {
     }
   };
 
+  const handleDeleteOrder = async (orderId) => {
+    if (confirm('Are you sure you want to delete this order? This action cannot be undone.')) {
+      try {
+        await deleteOrder(orderId);
+      } catch (error) {
+        alert('Failed to delete order. Please try again.');
+      }
+    }
+  };
+
   const currentHour = new Date().getHours();
   const shift = currentHour < 16 ? "Morning" : currentHour < 20 ? "Evening" : "Night";
 
@@ -107,14 +123,58 @@ export default function StaffHome() {
               })}
             </p>
             <p className="font-semibold">Staff: {staff?.name || "Staff Member"}</p>
-            {stats.totalOrders > 0 && (
-              <button
-                onClick={() => router.push("/business/staff/running-orders")}
-                className="flex items-center gap-2 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-4 py-2 rounded-xl font-semibold transition-all active:scale-95 shadow-lg hover:shadow-xl text-sm"
-              >
-                <Receipt className="w-4 h-4" />
-                Active Orders ({stats.totalOrders})
-              </button>
+          </div>
+        </div>
+
+        {/* ORDERS SECTION WITH TABS */}
+        <div className="mb-8 bg-white rounded-2xl shadow-lg p-6">
+          <OrderTabs
+            activeTab={activeTab}
+            onTabChange={setActiveTab}
+            runningCount={getActiveOrders().length}
+            cancelledCount={cancelledOrders.length}
+          />
+
+          <div className="mt-6">
+            {activeTab === 'running' ? (
+              getActiveOrders().length === 0 ? (
+                <div className="text-center py-16">
+                  <div className="text-6xl mb-4">🍽️</div>
+                  <p className="text-gray-400 text-lg">No active orders</p>
+                  <p className="text-gray-400 text-sm mt-2">All tables are currently free</p>
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {getActiveOrders().map(order => (
+                    <OrderCard
+                      key={order.orderId}
+                      order={order}
+                      onView={() => router.push(`/business/staff/table/${order.tableNo}/manage`)}
+                      showDeleteButton={false}
+                    />
+                  ))}
+                </div>
+              )
+            ) : (
+              cancelledOrders.length === 0 ? (
+                <div className="text-center py-16">
+                  <div className="text-6xl mb-4">✅</div>
+                  <p className="text-gray-400 text-lg">No cancelled orders</p>
+                  <p className="text-gray-400 text-sm mt-2">Cancelled orders will appear here</p>
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {cancelledOrders.map(order => (
+                    <OrderCard
+                      key={order.orderId}
+                      order={order}
+                      onView={() => router.push(`/business/staff/table/${order.tableNo}/manage`)}
+                      onDelete={() => handleDeleteOrder(order.orderId)}
+                      showDeleteButton={true}
+                    />
+                  ))}
+                </div>
+              )
             )}
           </div>
         </div>
@@ -187,7 +247,7 @@ export default function StaffHome() {
                   <button
                     key={table.id}
                     onClick={() => handleTableClick(table)}
-                    className={`relative flex flex-col justify-between p-4 rounded-xl border-l-4 shadow-md hover:shadow-xl transition-all transform hover:-translate-y-1 ${getTableColor(table.status)}`}
+                    className={`relative flex flex-col justify-between p-4 rounded-xl border-l-4 shadow-md hover:shadow-xl transition-all transform hover:-translate-y-1 cursor-pointer ${getTableColor(table.status)}`}
                     style={{ minHeight: '140px' }}
                   >
                     {/* Header: Table No + Status */}

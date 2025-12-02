@@ -119,7 +119,7 @@ export default function ManageOrderPage() {
                         <div className="flex items-center gap-4">
                             <button
                                 onClick={() => router.push('/business/staff/home')}
-                                className="p-2 hover:bg-amber-100 rounded-xl transition-colors text-amber-600"
+                                className="p-2 hover:bg-amber-100 rounded-xl transition-colors text-amber-600 cursor-pointer"
                             >
                                 <ArrowLeft className="w-6 h-6" />
                             </button>
@@ -164,15 +164,6 @@ export default function ManageOrderPage() {
                                                 </p>
                                             </div>
                                             <div className="flex gap-2">
-                                                {item.status === 'preparing' && (
-                                                    <button
-                                                        onClick={() => handleMarkAsServed(index)}
-                                                        className="p-2 bg-green-50 hover:bg-green-100 text-green-600 rounded-xl transition-colors border border-green-200"
-                                                        title="Mark as served"
-                                                    >
-                                                        <Check className="w-5 h-5" />
-                                                    </button>
-                                                )}
                                                 <button
                                                     onClick={() => handleRemoveItem(index)}
                                                     className="p-2 bg-red-50 hover:bg-red-100 text-red-600 rounded-xl transition-colors border border-red-200"
@@ -195,7 +186,7 @@ export default function ManageOrderPage() {
 
                             <button
                                 onClick={() => setShowAddItems(!showAddItems)}
-                                className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-bold py-4 rounded-xl transition-all active:scale-95 shadow-lg shadow-blue-200"
+                                className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-bold py-4 rounded-xl transition-all active:scale-95 shadow-lg shadow-blue-200 cursor-pointer"
                             >
                                 <Plus className="w-5 h-5" />
                                 Add More Items
@@ -203,7 +194,7 @@ export default function ManageOrderPage() {
 
                             <button
                                 onClick={handleGenerateBill}
-                                className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-4 rounded-xl transition-all active:scale-95 shadow-lg shadow-green-200"
+                                className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-4 rounded-xl transition-all active:scale-95 shadow-lg shadow-green-200 cursor-pointer"
                             >
                                 <Receipt className="w-5 h-5" />
                                 Generate Bill
@@ -211,7 +202,7 @@ export default function ManageOrderPage() {
 
                             <button
                                 onClick={handleCancelOrder}
-                                className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-bold py-4 rounded-xl transition-all active:scale-95 shadow-lg shadow-red-200"
+                                className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-bold py-4 rounded-xl transition-all active:scale-95 shadow-lg shadow-red-200 cursor-pointer"
                             >
                                 <X className="w-5 h-5" />
                                 Cancel Order
@@ -251,7 +242,7 @@ export default function ManageOrderPage() {
                                 <h2 className="text-2xl font-bold text-gray-800">Add Items to Order</h2>
                                 <button
                                     onClick={() => setShowAddItems(false)}
-                                    className="p-2 hover:bg-gray-200 rounded-xl transition-colors text-gray-500"
+                                    className="p-2 hover:bg-gray-200 rounded-xl transition-colors text-gray-500 cursor-pointer"
                                 >
                                     <X className="w-6 h-6" />
                                 </button>
@@ -270,7 +261,7 @@ export default function ManageOrderPage() {
                                     <button
                                         key={item.id}
                                         onClick={() => toggleNewItem(item)}
-                                        className="bg-white hover:bg-amber-50 border border-gray-200 hover:border-amber-300 rounded-2xl p-4 transition-all text-left group"
+                                        className="bg-white hover:bg-amber-50 border border-gray-200 hover:border-amber-300 rounded-2xl p-4 transition-all text-left group cursor-pointer"
                                     >
                                         <div className="text-3xl mb-2 group-hover:scale-110 transition-transform">{item.image}</div>
                                         <h4 className="font-bold text-gray-800 mb-1">{item.name}</h4>
@@ -288,7 +279,7 @@ export default function ManageOrderPage() {
                             <button
                                 onClick={handleAddNewItems}
                                 disabled={selectedNewItems.length === 0}
-                                className="w-full bg-gradient-to-r from-amber-500 to-yellow-600 hover:from-amber-600 hover:to-yellow-700 disabled:from-gray-300 disabled:to-gray-400 disabled:cursor-not-allowed text-white font-bold py-4 rounded-xl transition-all active:scale-95 shadow-lg shadow-amber-200"
+                                className="w-full bg-gradient-to-r from-amber-500 to-yellow-600 hover:from-amber-600 hover:to-yellow-700 disabled:from-gray-300 disabled:to-gray-400 disabled:cursor-not-allowed text-white font-bold py-4 rounded-xl transition-all active:scale-95 shadow-lg shadow-amber-200 cursor-pointer"
                             >
                                 Add {selectedNewItems.reduce((sum, item) => sum + item.quantity, 0)} Items
                             </button>

@@ -72,7 +72,7 @@ export default function BillPage() {
                 {/* Back Button */}
                 <button
                     onClick={() => router.back()}
-                    className="flex items-center gap-2 text-gray-600 hover:text-amber-600 mb-6 transition-colors"
+                    className="flex items-center gap-2 text-gray-600 hover:text-amber-600 mb-6 transition-colors cursor-pointer"
                 >
                     <ArrowLeft className="w-5 h-5" />
                     <span className="font-semibold">Back</span>
@@ -185,7 +185,7 @@ export default function BillPage() {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
                             <button
                                 onClick={handleDownloadBill}
-                                className="flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-gray-700 border border-gray-200 font-bold py-4 rounded-xl transition-all active:scale-95 shadow-sm hover:shadow-md"
+                                className="flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-gray-700 border border-gray-200 font-bold py-4 rounded-xl transition-all active:scale-95 shadow-sm hover:shadow-md cursor-pointer"
                             >
                                 <Download className="w-5 h-5" />
                                 Download Bill
@@ -193,7 +193,7 @@ export default function BillPage() {
                             <button
                                 onClick={handleConfirmPayment}
                                 disabled={isProcessing}
-                                className="flex items-center justify-center gap-2 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 disabled:from-gray-300 disabled:to-gray-400 disabled:cursor-not-allowed text-white font-bold py-4 rounded-xl transition-all active:scale-95 shadow-lg shadow-green-200"
+                                className="flex items-center justify-center gap-2 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 disabled:from-gray-300 disabled:to-gray-400 disabled:cursor-not-allowed text-white font-bold py-4 rounded-xl transition-all active:scale-95 shadow-lg shadow-green-200 cursor-pointer"
                             >
                                 <CheckCircle className="w-5 h-5" />
                                 {isProcessing ? 'Processing...' : 'Confirm Payment'}

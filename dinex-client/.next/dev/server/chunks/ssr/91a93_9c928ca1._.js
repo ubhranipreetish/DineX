@@ -2343,7 +2343,7 @@ const createLucideIcon = (iconName, iconNode)=>{
 ;
  //# sourceMappingURL=createLucideIcon.js.map
 }),
-"[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/icons/arrow-left.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/icons/utensils-crossed.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
 /**
@@ -2355,7 +2355,7 @@ const createLucideIcon = (iconName, iconNode)=>{
     "__iconNode",
     ()=>__iconNode,
     "default",
-    ()=>ArrowLeft
+    ()=>UtensilsCrossed
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$createLucideIcon$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/createLucideIcon.js [app-ssr] (ecmascript)");
 ;
@@ -2363,32 +2363,46 @@ const __iconNode = [
     [
         "path",
         {
-            d: "m12 19-7-7 7-7",
-            key: "1l729n"
+            d: "m16 2-2.3 2.3a3 3 0 0 0 0 4.2l1.8 1.8a3 3 0 0 0 4.2 0L22 8",
+            key: "n7qcjb"
         }
     ],
     [
         "path",
         {
-            d: "M19 12H5",
-            key: "x3x0zl"
+            d: "M15 15 3.3 3.3a4.2 4.2 0 0 0 0 6l7.3 7.3c.7.7 2 .7 2.8 0L15 15Zm0 0 7 7",
+            key: "d0u48b"
+        }
+    ],
+    [
+        "path",
+        {
+            d: "m2.1 21.8 6.4-6.3",
+            key: "yn04lh"
+        }
+    ],
+    [
+        "path",
+        {
+            d: "m19 5-7 7",
+            key: "194lzd"
         }
     ]
 ];
-const ArrowLeft = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$createLucideIcon$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])("arrow-left", __iconNode);
+const UtensilsCrossed = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$createLucideIcon$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])("utensils-crossed", __iconNode);
 ;
- //# sourceMappingURL=arrow-left.js.map
+ //# sourceMappingURL=utensils-crossed.js.map
 }),
-"[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/icons/arrow-left.js [app-ssr] (ecmascript) <export default as ArrowLeft>", ((__turbopack_context__) => {
+"[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/icons/utensils-crossed.js [app-ssr] (ecmascript) <export default as UtensilsCrossed>", ((__turbopack_context__) => {
 "use strict";
 
 __turbopack_context__.s([
-    "ArrowLeft",
-    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$left$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"]
+    "UtensilsCrossed",
+    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$utensils$2d$crossed$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"]
 ]);
-var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$left$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/icons/arrow-left.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$utensils$2d$crossed$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/icons/utensils-crossed.js [app-ssr] (ecmascript)");
 }),
-"[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/icons/search.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/icons/clock.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
 /**
@@ -2400,7 +2414,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$Din
     "__iconNode",
     ()=>__iconNode,
     "default",
-    ()=>Search
+    ()=>Clock
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$createLucideIcon$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/createLucideIcon.js [app-ssr] (ecmascript)");
 ;
@@ -2408,181 +2422,32 @@ const __iconNode = [
     [
         "path",
         {
-            d: "m21 21-4.34-4.34",
-            key: "14j7rj"
+            d: "M12 6v6l4 2",
+            key: "mmk7yg"
         }
     ],
     [
         "circle",
         {
-            cx: "11",
-            cy: "11",
-            r: "8",
-            key: "4ej97u"
+            cx: "12",
+            cy: "12",
+            r: "10",
+            key: "1mglay"
         }
     ]
 ];
-const Search = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$createLucideIcon$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])("search", __iconNode);
+const Clock = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$createLucideIcon$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])("clock", __iconNode);
 ;
- //# sourceMappingURL=search.js.map
+ //# sourceMappingURL=clock.js.map
 }),
-"[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/icons/search.js [app-ssr] (ecmascript) <export default as Search>", ((__turbopack_context__) => {
+"[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/icons/clock.js [app-ssr] (ecmascript) <export default as Clock>", ((__turbopack_context__) => {
 "use strict";
 
 __turbopack_context__.s([
-    "Search",
-    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$search$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"]
+    "Clock",
+    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$clock$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"]
 ]);
-var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$search$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/icons/search.js [app-ssr] (ecmascript)");
-}),
-"[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/icons/chevron-right.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
-"use strict";
-
-/**
- * @license lucide-react v0.553.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */ __turbopack_context__.s([
-    "__iconNode",
-    ()=>__iconNode,
-    "default",
-    ()=>ChevronRight
-]);
-var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$createLucideIcon$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/createLucideIcon.js [app-ssr] (ecmascript)");
-;
-const __iconNode = [
-    [
-        "path",
-        {
-            d: "m9 18 6-6-6-6",
-            key: "mthhwq"
-        }
-    ]
-];
-const ChevronRight = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$createLucideIcon$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])("chevron-right", __iconNode);
-;
- //# sourceMappingURL=chevron-right.js.map
-}),
-"[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/icons/chevron-right.js [app-ssr] (ecmascript) <export default as ChevronRight>", ((__turbopack_context__) => {
-"use strict";
-
-__turbopack_context__.s([
-    "ChevronRight",
-    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$right$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"]
-]);
-var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$right$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/icons/chevron-right.js [app-ssr] (ecmascript)");
-}),
-"[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/icons/plus.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
-"use strict";
-
-/**
- * @license lucide-react v0.553.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */ __turbopack_context__.s([
-    "__iconNode",
-    ()=>__iconNode,
-    "default",
-    ()=>Plus
-]);
-var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$createLucideIcon$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/createLucideIcon.js [app-ssr] (ecmascript)");
-;
-const __iconNode = [
-    [
-        "path",
-        {
-            d: "M5 12h14",
-            key: "1ays0h"
-        }
-    ],
-    [
-        "path",
-        {
-            d: "M12 5v14",
-            key: "s699le"
-        }
-    ]
-];
-const Plus = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$createLucideIcon$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])("plus", __iconNode);
-;
- //# sourceMappingURL=plus.js.map
-}),
-"[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/icons/plus.js [app-ssr] (ecmascript) <export default as Plus>", ((__turbopack_context__) => {
-"use strict";
-
-__turbopack_context__.s([
-    "Plus",
-    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$plus$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"]
-]);
-var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$plus$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/icons/plus.js [app-ssr] (ecmascript)");
-}),
-"[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/icons/trash-2.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
-"use strict";
-
-/**
- * @license lucide-react v0.553.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */ __turbopack_context__.s([
-    "__iconNode",
-    ()=>__iconNode,
-    "default",
-    ()=>Trash2
-]);
-var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$createLucideIcon$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/createLucideIcon.js [app-ssr] (ecmascript)");
-;
-const __iconNode = [
-    [
-        "path",
-        {
-            d: "M10 11v6",
-            key: "nco0om"
-        }
-    ],
-    [
-        "path",
-        {
-            d: "M14 11v6",
-            key: "outv1u"
-        }
-    ],
-    [
-        "path",
-        {
-            d: "M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6",
-            key: "miytrc"
-        }
-    ],
-    [
-        "path",
-        {
-            d: "M3 6h18",
-            key: "d0wm0j"
-        }
-    ],
-    [
-        "path",
-        {
-            d: "M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2",
-            key: "e791ji"
-        }
-    ]
-];
-const Trash2 = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$createLucideIcon$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])("trash-2", __iconNode);
-;
- //# sourceMappingURL=trash-2.js.map
-}),
-"[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/icons/trash-2.js [app-ssr] (ecmascript) <export default as Trash2>", ((__turbopack_context__) => {
-"use strict";
-
-__turbopack_context__.s([
-    "Trash2",
-    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$trash$2d$2$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"]
-]);
-var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$trash$2d$2$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/icons/trash-2.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$clock$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/icons/clock.js [app-ssr] (ecmascript)");
 }),
 "[project]/Documents/Projects/DineX/dinex-client/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-runtime.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
 "use strict";
@@ -13534,109 +13399,6 @@ const configEnv = ("TURBOPACK compile-time value", {
         ("TURBOPACK compile-time value", 70),
         ("TURBOPACK compile-time value", 70),
         ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
-        ("TURBOPACK compile-time value", 70),
         ("TURBOPACK compile-time value", 70)
     ]),
     "path": ("TURBOPACK compile-time value", "/_next/image"),
@@ -13996,109 +13758,6 @@ function getImageProps(imgProps) {
                 ("TURBOPACK compile-time value", 70),
                 ("TURBOPACK compile-time value", 70),
                 ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
-                ("TURBOPACK compile-time value", 70),
                 ("TURBOPACK compile-time value", 70)
             ]),
             "path": ("TURBOPACK compile-time value", "/_next/image"),
@@ -14232,6 +13891,312 @@ __turbopack_context__.s([
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$user$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/icons/user.js [app-ssr] (ecmascript)");
 }),
+"[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/icons/eye.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+/**
+ * @license lucide-react v0.553.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */ __turbopack_context__.s([
+    "__iconNode",
+    ()=>__iconNode,
+    "default",
+    ()=>Eye
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$createLucideIcon$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/createLucideIcon.js [app-ssr] (ecmascript)");
+;
+const __iconNode = [
+    [
+        "path",
+        {
+            d: "M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0",
+            key: "1nclc0"
+        }
+    ],
+    [
+        "circle",
+        {
+            cx: "12",
+            cy: "12",
+            r: "3",
+            key: "1v7zrd"
+        }
+    ]
+];
+const Eye = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$createLucideIcon$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])("eye", __iconNode);
+;
+ //# sourceMappingURL=eye.js.map
+}),
+"[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/icons/eye.js [app-ssr] (ecmascript) <export default as Eye>", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "Eye",
+    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$eye$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"]
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$eye$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/icons/eye.js [app-ssr] (ecmascript)");
+}),
+"[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/icons/trash-2.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+/**
+ * @license lucide-react v0.553.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */ __turbopack_context__.s([
+    "__iconNode",
+    ()=>__iconNode,
+    "default",
+    ()=>Trash2
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$createLucideIcon$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/createLucideIcon.js [app-ssr] (ecmascript)");
+;
+const __iconNode = [
+    [
+        "path",
+        {
+            d: "M10 11v6",
+            key: "nco0om"
+        }
+    ],
+    [
+        "path",
+        {
+            d: "M14 11v6",
+            key: "outv1u"
+        }
+    ],
+    [
+        "path",
+        {
+            d: "M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6",
+            key: "miytrc"
+        }
+    ],
+    [
+        "path",
+        {
+            d: "M3 6h18",
+            key: "d0wm0j"
+        }
+    ],
+    [
+        "path",
+        {
+            d: "M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2",
+            key: "e791ji"
+        }
+    ]
+];
+const Trash2 = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$createLucideIcon$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])("trash-2", __iconNode);
+;
+ //# sourceMappingURL=trash-2.js.map
+}),
+"[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/icons/trash-2.js [app-ssr] (ecmascript) <export default as Trash2>", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "Trash2",
+    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$trash$2d$2$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"]
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$trash$2d$2$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/icons/trash-2.js [app-ssr] (ecmascript)");
+}),
+"[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/icons/facebook.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+/**
+ * @license lucide-react v0.553.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */ __turbopack_context__.s([
+    "__iconNode",
+    ()=>__iconNode,
+    "default",
+    ()=>Facebook
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$createLucideIcon$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/createLucideIcon.js [app-ssr] (ecmascript)");
+;
+const __iconNode = [
+    [
+        "path",
+        {
+            d: "M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z",
+            key: "1jg4f8"
+        }
+    ]
+];
+const Facebook = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$createLucideIcon$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])("facebook", __iconNode);
+;
+ //# sourceMappingURL=facebook.js.map
+}),
+"[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/icons/facebook.js [app-ssr] (ecmascript) <export default as Facebook>", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "Facebook",
+    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$facebook$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"]
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$facebook$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/icons/facebook.js [app-ssr] (ecmascript)");
+}),
+"[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/icons/instagram.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+/**
+ * @license lucide-react v0.553.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */ __turbopack_context__.s([
+    "__iconNode",
+    ()=>__iconNode,
+    "default",
+    ()=>Instagram
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$createLucideIcon$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/createLucideIcon.js [app-ssr] (ecmascript)");
+;
+const __iconNode = [
+    [
+        "rect",
+        {
+            width: "20",
+            height: "20",
+            x: "2",
+            y: "2",
+            rx: "5",
+            ry: "5",
+            key: "2e1cvw"
+        }
+    ],
+    [
+        "path",
+        {
+            d: "M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z",
+            key: "9exkf1"
+        }
+    ],
+    [
+        "line",
+        {
+            x1: "17.5",
+            x2: "17.51",
+            y1: "6.5",
+            y2: "6.5",
+            key: "r4j83e"
+        }
+    ]
+];
+const Instagram = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$createLucideIcon$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])("instagram", __iconNode);
+;
+ //# sourceMappingURL=instagram.js.map
+}),
+"[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/icons/instagram.js [app-ssr] (ecmascript) <export default as Instagram>", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "Instagram",
+    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$instagram$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"]
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$instagram$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/icons/instagram.js [app-ssr] (ecmascript)");
+}),
+"[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/icons/linkedin.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+/**
+ * @license lucide-react v0.553.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */ __turbopack_context__.s([
+    "__iconNode",
+    ()=>__iconNode,
+    "default",
+    ()=>Linkedin
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$createLucideIcon$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/createLucideIcon.js [app-ssr] (ecmascript)");
+;
+const __iconNode = [
+    [
+        "path",
+        {
+            d: "M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z",
+            key: "c2jq9f"
+        }
+    ],
+    [
+        "rect",
+        {
+            width: "4",
+            height: "12",
+            x: "2",
+            y: "9",
+            key: "mk3on5"
+        }
+    ],
+    [
+        "circle",
+        {
+            cx: "4",
+            cy: "4",
+            r: "2",
+            key: "bt5ra8"
+        }
+    ]
+];
+const Linkedin = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$createLucideIcon$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])("linkedin", __iconNode);
+;
+ //# sourceMappingURL=linkedin.js.map
+}),
+"[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/icons/linkedin.js [app-ssr] (ecmascript) <export default as Linkedin>", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "Linkedin",
+    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$linkedin$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"]
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$linkedin$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/icons/linkedin.js [app-ssr] (ecmascript)");
+}),
+"[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/icons/twitter.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+/**
+ * @license lucide-react v0.553.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */ __turbopack_context__.s([
+    "__iconNode",
+    ()=>__iconNode,
+    "default",
+    ()=>Twitter
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$createLucideIcon$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/createLucideIcon.js [app-ssr] (ecmascript)");
+;
+const __iconNode = [
+    [
+        "path",
+        {
+            d: "M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z",
+            key: "pff0z6"
+        }
+    ]
+];
+const Twitter = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$createLucideIcon$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])("twitter", __iconNode);
+;
+ //# sourceMappingURL=twitter.js.map
+}),
+"[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/icons/twitter.js [app-ssr] (ecmascript) <export default as Twitter>", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "Twitter",
+    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$twitter$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"]
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$twitter$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/icons/twitter.js [app-ssr] (ecmascript)");
+}),
 ];
 
-//# sourceMappingURL=91a93_845557b0._.js.map
+//# sourceMappingURL=91a93_9c928ca1._.js.map
