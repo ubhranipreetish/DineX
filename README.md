@@ -52,8 +52,7 @@ DineX solves these problems by offering:
 - View their order history  
 
 ### Restaurant Interface
-- Manage menu items (CRUD)  
-- Manage offline orders  
+- Manage offline orders (CRUD)   
 - Update order status (Accepted / Preparing / Ready / Completed)  
 - Add walk-in customer orders  
 
@@ -84,9 +83,24 @@ Below are some core REST API routes:
 | `/api/bookings/:id` | PATCH | Update a booking | Customer |
 | `/api/bookings/:id/cancel` | PATCH | Cancel a booking | Customer |
 | `/api/bookings/:id` | DELETE | Delete cancelled booking | Customer |
-| `/api/orders` | POST | Place new order | Restaurant |
-| `/api/orders` | GET | View all orders | Restaurant |
-| `/api/orders/:id` | GET | View order details | Restaurant |
-| `/api/orders/:id` | PUT | Update order status | Restaurant |
-| `/api/orders/:id` | DELETE | Delete an order | Restaurant |
-
+| `/api/business/register` | POST | Register new restaurant owner | Business Owner |
+| `/api/business/login` | POST | Login restaurant owner | Business Owner |
+| `/api/business/profile` | GET | Get owner profile & restaurant data | Business Owner |
+| `/api/business/restaurant` | PUT | Update restaurant details | Business Owner |
+| `/api/business/staff` | GET | Get all staff members | Business Owner |
+| `/api/business/staff` | POST | Add new staff members | Business Owner |
+| `/api/business/staff/:staffId` | PUT | Update staff member | Business Owner |
+| `/api/business/staff/:staffId` | DELETE | Remove staff member | Business Owner |
+| `/api/business/staff/login` | POST | Login staff | Staff |
+| `/api/business/staff/profile` | GET | Get Staff Profile | Staff |
+| `/api/orders` | POST | Create new order | Staff |
+| `/api/orders` | GET | Get all orders | Staff |
+| `/api/orders/ongoing` | GET | Get ongoing orders | Staff |
+| `/api/orders/table/:tableNo` | GET | Get order for specific table | Staff |
+| `/api/orders/:orderId` | GET | Get specific order details | Staff |
+| `/api/orders/:orderId/items` | POST | Add items to order | Staff |
+| `/api/orders/:orderId/items/:itemIndex` | PATCH | Update order item (quantity/status) | Staff |
+| `/api/orders/:orderId/items/:itemIndex` | DELETE | Update order item (quantity/status) | Staff |
+| `/api/orders/:orderId/complete` | PATCH | Mark order as complete | Staff |
+| `/api/orders/:orderId/cancel` | PATCH | Cancel order | Staff |
+| `/api/orders/:orderId` | DELETE | Delete order | Staff |

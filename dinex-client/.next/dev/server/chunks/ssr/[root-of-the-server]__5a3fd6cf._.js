@@ -118,29 +118,24 @@ __turbopack_context__.s([
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/axios/lib/axios.js [app-ssr] (ecmascript)");
 ;
 const API = __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].create({
-    baseURL: ("TURBOPACK compile-time value", "https://dinex-24s9.onrender.com")
+    baseURL: ("TURBOPACK compile-time value", "http://localhost:8080")
 });
-// Add request interceptor to attach the correct token based on the endpoint
 API.interceptors.request.use((config)=>{
     let token = null;
-    // Determine which token to use based on the request URL
-    if (config.url?.includes('/api/business/staff/login') || config.url?.includes('/api/business/staff/profile')) {
-        // Staff member authentication endpoints
+    const url = config.url || "";
+    // Staff endpoints (orders + staff routes)
+    if (url.startsWith("/api/orders") || url.startsWith("/api/business/staff")) {
         token = localStorage.getItem("staffToken");
-    } else if (config.url?.includes('/api/business')) {
-        // Business owner endpoints (including staff management)
+    } else if (url.startsWith("/api/business")) {
         token = localStorage.getItem("businessToken");
     } else {
-        // Customer endpoints (default)
         token = localStorage.getItem("userToken");
     }
     if (token) {
         config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
-}, (error)=>{
-    return Promise.reject(error);
-});
+}, (error)=>Promise.reject(error));
 }),
 "[project]/Documents/Projects/DineX/dinex-client/src/components/Footer.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
