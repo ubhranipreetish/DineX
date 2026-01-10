@@ -3,10 +3,12 @@ import { useState } from "react";
 import BookingForm from "./BookingForm";
 import ReviewBooking from "./ReviewBooking";
 import Payment from "./Payment";
+import { useNotification } from "@/context/NotificationContext";
 
 export default function BookingFlow({ restaurantName, restaurantId, offers = [] }) {
   const [step, setStep] = useState(1);
   const [bookingData, setBookingData] = useState(null);
+  const { showToast } = useNotification();
 
   const handleBookingSubmit = (data) => {
     setBookingData(data);
@@ -15,7 +17,7 @@ export default function BookingFlow({ restaurantName, restaurantId, offers = [] 
 
   const handleProceedToPayment = () => setStep(3);
   const handlePaymentComplete = () => {
-    alert("✅ Payment successful! Your table has been reserved.");
+    showToast("Payment successful! Your table has been reserved.", "success");
     setStep(1);
     setBookingData(null);
   };

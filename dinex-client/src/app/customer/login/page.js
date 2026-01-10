@@ -4,11 +4,13 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { API } from "@/utils/api";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
+import { useNotification } from "@/context/NotificationContext";
 
 function LoginForm() {
     const [form, setForm] = useState({ email: "", password: "" });
     const [showPassword, setShowPassword] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const { showToast } = useNotification();
 
     const router = useRouter();
     const searchParams = useSearchParams();
@@ -35,7 +37,7 @@ function LoginForm() {
                 router.push("/customer/home");
             }
         } catch (err) {
-            alert(err.response?.data?.msg || "Login failed");
+            showToast(err.response?.data?.msg || "Login failed", "error");
         } finally {
             setIsLoading(false);
         }

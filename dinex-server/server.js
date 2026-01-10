@@ -38,5 +38,10 @@ app.use("/api/business", businessDashboardRoutes);
 app.use("/api/orders", orderRoutes);
 app.get("/", (req, res) => res.send("DineX Backend Running ✅"));
 
+// Warmup endpoint to prevent cold starts on Render
+app.get("/warmup", (req, res) => {
+  res.status(200).json({ status: "warm", timestamp: new Date().toISOString() });
+});
+
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));

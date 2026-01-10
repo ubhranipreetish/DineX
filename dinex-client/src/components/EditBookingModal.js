@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { X, Calendar, Clock, Users } from "lucide-react";
+import { useNotification } from "@/context/NotificationContext";
 
 export default function EditBookingModal({ booking, onClose, onSave }) {
     const [formData, setFormData] = useState({
@@ -11,6 +12,7 @@ export default function EditBookingModal({ booking, onClose, onSave }) {
     });
     const [timeSlots, setTimeSlots] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+    const { showToast } = useNotification();
 
     // Generate available time slots
     const generateAvailableSlots = () => {
@@ -82,7 +84,7 @@ export default function EditBookingModal({ booking, onClose, onSave }) {
             await onSave(updateData);
         } catch (error) {
             console.error("Error updating booking:", error);
-            alert("Failed to update booking. Please try again.");
+            showToast("Failed to update booking. Please try again.", "error");
         } finally {
             setIsLoading(false);
         }
@@ -173,8 +175,8 @@ export default function EditBookingModal({ booking, onClose, onSave }) {
                                     type="button"
                                     onClick={() => setFormData(prev => ({ ...prev, time: slot }))}
                                     className={`px-3 py-2 rounded-lg border text-sm transition ${formData.time === slot
-                                            ? "bg-red-100 border-red-400 text-red-600 font-medium"
-                                            : "hover:bg-gray-100 text-gray-700"
+                                        ? "bg-red-100 border-red-400 text-red-600 font-medium"
+                                        : "hover:bg-gray-100 text-gray-700"
                                         }`}
                                 >
                                     {formatTime(slot)}

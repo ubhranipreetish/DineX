@@ -11,6 +11,19 @@ export default function Home() {
   const aboutSectionRef = useRef(null);
   const ecosystemSectionRef = useRef(null);
 
+  // Warmup the backend to prevent cold starts on Render
+  useEffect(() => {
+    const warmupBackend = async () => {
+      try {
+        await fetch(`${process.env.NEXT_PUBLIC_API_URL}/warmup`);
+      } catch (error) {
+        // Silently fail - warmup is a best-effort operation
+        console.log("Backend warmup call completed");
+      }
+    };
+    warmupBackend();
+  }, []);
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -322,8 +335,8 @@ export default function Home() {
 
             {/* CTA → Redirect to business home */}
             <Link href="/customer/home">
-              <button 
-                  className="w-full py-3 rounded-xl font-semibold text-gray-700 shadow-lg bg-gradient-to-r from-[#FFD700] to-[#F5C542] hover:shadow-xl hover:-translate-y-[2px] transition-all duration-300 cursor-pointer"
+              <button
+                className="w-full py-3 rounded-xl font-semibold text-gray-700 shadow-lg bg-gradient-to-r from-[#FFD700] to-[#F5C542] hover:shadow-xl hover:-translate-y-[2px] transition-all duration-300 cursor-pointer"
               >
                 Explore DineX →
               </button>
@@ -366,9 +379,9 @@ export default function Home() {
 
             {/* CTA → Redirect to business home */}
             <Link href="/business/home">
-              <button 
-                  className="w-full py-3 rounded-xl font-semibold text-gray-700 shadow-lg bg-gradient-to-r from-[#FFD700] to-[#F5C542] hover:shadow-xl hover:-translate-y-[2px] transition-all duration-300 cursor-pointer"
-                >
+              <button
+                className="w-full py-3 rounded-xl font-semibold text-gray-700 shadow-lg bg-gradient-to-r from-[#FFD700] to-[#F5C542] hover:shadow-xl hover:-translate-y-[2px] transition-all duration-300 cursor-pointer"
+              >
                 Explore Business Portal →
               </button>
             </Link>

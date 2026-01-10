@@ -2,6 +2,7 @@
 import { useState, Suspense } from "react";
 import { useRouter } from "next/navigation";
 import { API } from "@/utils/api";
+import { useNotification } from "@/context/NotificationContext";
 
 function StaffLoginForm() {
     const [form, setForm] = useState({
@@ -12,6 +13,7 @@ function StaffLoginForm() {
     const [showPassword, setShowPassword] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
+    const { showToast } = useNotification();
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -26,10 +28,10 @@ function StaffLoginForm() {
                 localStorage.setItem("staffUser", JSON.stringify(staffUser));
             }
 
-            alert("Login successful! Welcome back.");
+            showToast("Login successful! Welcome back.", "success");
             router.push("/business/staff/home");
         } catch (err) {
-            alert(err.response?.data?.msg || "Login failed");
+            showToast(err.response?.data?.msg || "Login failed", "error");
         } finally {
             setIsLoading(false);
         }

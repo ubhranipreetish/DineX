@@ -8,12 +8,14 @@ import MenuItem from '../../../components/MenuItem';
 import OrderSummary from '../../../components/OrderSummary';
 import { useOrder } from '../../../context/OrderContext';
 import StaffNavbar from '../../../components/StaffNavbar';
+import { useNotification } from "@/context/NotificationContext";
 
 export default function CreateOrderPage() {
     const router = useRouter();
     const params = useParams();
     const tableId = parseInt(params.id);
     const { createOrder, tables } = useOrder();
+    const { showToast } = useNotification();
 
     const [activeCategory, setActiveCategory] = useState('hot-beverages');
     const [selectedItems, setSelectedItems] = useState([]);
@@ -70,20 +72,20 @@ export default function CreateOrderPage() {
 
     const handlePlaceOrder = async () => {
         if (selectedItems.length === 0) return;
-    
+
         setIsPlacingOrder(true);
-        
+
         try {
             const orderId = await createOrder(tableId, selectedItems);
             router.push(`/business/staff/table/${tableId}/manage`);
         } catch (error) {
             console.error("Order creation failed:", error);
-            alert("Failed to create order.");
+            showToast("Failed to create order.", "error");
         } finally {
             setIsPlacingOrder(false);
         }
     };
-    
+
 
     const filteredItems = searchQuery
         ? MENU_ITEMS.filter(item =>

@@ -61,6 +61,7 @@ router.post("/", verifyBusinessToken, getRestaurantDetails, async (req, res) => 
                 name: item.name,
                 price: item.price,
                 quantity: item.quantity || 1,
+                isVeg: item.isVeg !== undefined ? item.isVeg : true,
                 addedAt: new Date(),
                 updatedAt: new Date()
             })),
@@ -208,6 +209,7 @@ router.post("/:orderId/items", verifyBusinessToken, getRestaurantDetails, async 
                 name: item.name,
                 price: item.price,
                 quantity: item.quantity || 1,
+                isVeg: item.isVeg !== undefined ? item.isVeg : true,
                 addedAt: new Date(),
                 updatedAt: new Date()
             });

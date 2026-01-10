@@ -5,11 +5,13 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { LogOut, User } from "lucide-react";
 import { useOrder } from '../context/OrderContext';
+import { useNotification } from "@/context/NotificationContext";
 
 export default function StaffNavbar() {
     const [staff, setStaff] = useState(null);
     const router = useRouter();
     const { restaurant } = useOrder();
+    const { showDialog } = useNotification();
 
     useEffect(() => {
         const loadStaff = () => {
@@ -36,8 +38,15 @@ export default function StaffNavbar() {
         };
     }, []);
 
-    const handleLogout = () => {
-        if (confirm("Are you sure you want to logout?")) {
+    const handleLogout = async () => {
+        const confirmed = await showDialog({
+            title: "Logout",
+            message: "Are you sure you want to logout?",
+            confirmText: "Logout",
+            cancelText: "Cancel",
+            type: "warning",
+        });
+        if (confirmed) {
             localStorage.removeItem("staffToken");
             localStorage.removeItem("staffUser");
             window.dispatchEvent(new Event("staffUpdated"));

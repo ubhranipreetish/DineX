@@ -3,12 +3,14 @@ import { useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { API } from "@/utils/api";
 import Link from "next/link";
+import { useNotification } from "@/context/NotificationContext";
 
 function SignupForm() {
     const [form, setForm] = useState({ name: "", email: "", password: "", role: "customer" });
     const [showPassword, setShowPassword] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [confirmPassword, setConfirmPassword] = useState("");
+    const { showToast } = useNotification();
 
 
     const router = useRouter();
@@ -18,12 +20,12 @@ function SignupForm() {
         e.preventDefault();
 
         if (form.password !== confirmPassword) {
-            alert("Passwords don't match!");
+            showToast("Passwords don't match!", "error");
             return;
         }
 
         if (form.password.length < 6) {
-            alert("Password must be at least 6 characters long!");
+            showToast("Password must be at least 6 characters long!", "error");
             return;
         }
 
@@ -56,7 +58,7 @@ function SignupForm() {
                 err.response?.data?.error ||
                 err.message ||
                 "Signup failed. Please try again.";
-            alert(errorMessage);
+            showToast(errorMessage, "error");
         } finally {
             setIsLoading(false);
         }

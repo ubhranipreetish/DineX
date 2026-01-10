@@ -28,6 +28,7 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import EditBookingModal from "@/components/EditBookingModal";
 import { API } from "@/utils/api";
+import { useNotification } from "@/context/NotificationContext";
 
 export default function ProfilePage() {
   const [user, setUser] = useState(null);
@@ -37,6 +38,7 @@ export default function ProfilePage() {
   const [showEditModal, setShowEditModal] = useState(false);
   const [activeTab, setActiveTab] = useState("bookings");
   const router = useRouter();
+  const { showToast, showDialog } = useNotification();
 
   useEffect(() => {
     const stored = localStorage.getItem("user");
@@ -85,7 +87,7 @@ export default function ProfilePage() {
   const handleSaveBooking = async (updateData) => {
     try {
       await API.patch(`/api/bookings/${editingBooking._id}`, updateData);
-      alert("✅ Booking updated successfully!");
+      showToast("Booking updated successfully!", "success");
       setShowEditModal(false);
       setEditingBooking(null);
       fetchBookings(user._id);
@@ -96,28 +98,42 @@ export default function ProfilePage() {
   };
 
   const handleCancelBooking = async (bookingId) => {
-    if (!confirm("Are you sure you want to cancel this booking?")) return;
+    const confirmed = await showDialog({
+      title: "Cancel Booking",
+      message: "Are you sure you want to cancel this booking?",
+      confirmText: "Yes, Cancel",
+      cancelText: "Keep Booking",
+      type: "warning",
+    });
+    if (!confirmed) return;
 
     try {
       await API.patch(`/api/bookings/${bookingId}/cancel`);
-      alert("✅ Booking cancelled successfully!");
+      showToast("Booking cancelled successfully!", "success");
       fetchBookings(user._id);
     } catch (error) {
       console.error("Error cancelling booking:", error);
-      alert(error.response?.data?.msg || "Failed to cancel booking");
+      showToast(error.response?.data?.msg || "Failed to cancel booking", "error");
     }
   };
 
   const handleDeleteBooking = async (bookingId) => {
-    if (!confirm("Are you sure you want to permanently delete this booking?")) return;
+    const confirmed = await showDialog({
+      title: "Delete Booking",
+      message: "Are you sure you want to permanently delete this booking?",
+      confirmText: "Delete",
+      cancelText: "Cancel",
+      type: "danger",
+    });
+    if (!confirmed) return;
 
     try {
       await API.delete(`/api/bookings/${bookingId}`);
-      alert("✅ Booking deleted successfully!");
+      showToast("Booking deleted successfully!", "success");
       fetchBookings(user._id);
     } catch (error) {
       console.error("Error deleting booking:", error);
-      alert(error.response?.data?.msg || "Failed to delete booking");
+      showToast(error.response?.data?.msg || "Failed to delete booking", "error");
     }
   };
 

@@ -43,7 +43,7 @@ const RestaurantOwnerSchema = new mongoose.Schema({
     waiters: [
         {
             name: { type: String, required: true },
-            phone: { type: String, required: true, unique: true },
+            phone: { type: String, required: true },
             password: { type: String, required: true },
             role: {
                 type: String,

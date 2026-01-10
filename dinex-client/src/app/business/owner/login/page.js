@@ -3,11 +3,13 @@ import { useState, useEffect, Suspense } from "react";
 import { useRouter } from "next/navigation";
 import { API } from "@/utils/api";
 import Link from "next/link";
+import { useNotification } from "@/context/NotificationContext";
 
 function LoginForm() {
     const [form, setForm] = useState({ email: "", password: "" });
     const [showPassword, setShowPassword] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const { showToast } = useNotification();
 
     const router = useRouter();
 
@@ -30,10 +32,10 @@ function LoginForm() {
                 localStorage.setItem("businessOwner", JSON.stringify(businessOwner));
             }
 
-            alert("Login successful! Welcome back.");
+            showToast("Login successful! Welcome back.", "success");
             router.push("/business/owner/dashboard");
         } catch (err) {
-            alert(err.response?.data?.msg || "Login failed");
+            showToast(err.response?.data?.msg || "Login failed", "error");
         } finally {
             setIsLoading(false);
         }

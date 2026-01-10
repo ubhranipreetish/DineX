@@ -848,9 +848,11 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$Din
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$calendar$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Calendar$3e$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/icons/calendar.js [app-client] (ecmascript) <export default as Calendar>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$clock$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Clock$3e$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/icons/clock.js [app-client] (ecmascript) <export default as Clock>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$users$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Users$3e$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/lucide-react/dist/esm/icons/users.js [app-client] (ecmascript) <export default as Users>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$context$2f$NotificationContext$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/src/context/NotificationContext.js [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
 "use client";
+;
 ;
 ;
 function EditBookingModal({ booking, onClose, onSave }) {
@@ -863,6 +865,7 @@ function EditBookingModal({ booking, onClose, onSave }) {
     });
     const [timeSlots, setTimeSlots] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
     const [isLoading, setIsLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const { showToast } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$context$2f$NotificationContext$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useNotification"])();
     // Generate available time slots
     const generateAvailableSlots = ()=>{
         const slots = [];
@@ -927,7 +930,7 @@ function EditBookingModal({ booking, onClose, onSave }) {
             await onSave(updateData);
         } catch (error) {
             console.error("Error updating booking:", error);
-            alert("Failed to update booking. Please try again.");
+            showToast("Failed to update booking. Please try again.", "error");
         } finally{
             setIsLoading(false);
         }
@@ -945,7 +948,7 @@ function EditBookingModal({ booking, onClose, onSave }) {
                             children: "Edit Booking"
                         }, void 0, false, {
                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/EditBookingModal.js",
-                            lineNumber: 96,
+                            lineNumber: 98,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -955,18 +958,18 @@ function EditBookingModal({ booking, onClose, onSave }) {
                                 className: "w-6 h-6 text-gray-600"
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/EditBookingModal.js",
-                                lineNumber: 101,
+                                lineNumber: 103,
                                 columnNumber: 25
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/EditBookingModal.js",
-                            lineNumber: 97,
+                            lineNumber: 99,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/EditBookingModal.js",
-                    lineNumber: 95,
+                    lineNumber: 97,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -980,7 +983,7 @@ function EditBookingModal({ booking, onClose, onSave }) {
                                     children: "Restaurant"
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/EditBookingModal.js",
-                                    lineNumber: 109,
+                                    lineNumber: 111,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -988,13 +991,13 @@ function EditBookingModal({ booking, onClose, onSave }) {
                                     children: booking.restaurantName
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/EditBookingModal.js",
-                                    lineNumber: 112,
+                                    lineNumber: 114,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/EditBookingModal.js",
-                            lineNumber: 108,
+                            lineNumber: 110,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1006,14 +1009,14 @@ function EditBookingModal({ booking, onClose, onSave }) {
                                             className: "w-4 h-4 inline mr-2 text-red-500"
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/EditBookingModal.js",
-                                            lineNumber: 120,
+                                            lineNumber: 122,
                                             columnNumber: 29
                                         }, this),
                                         "Number of Guests"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/EditBookingModal.js",
-                                    lineNumber: 119,
+                                    lineNumber: 121,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1024,7 +1027,7 @@ function EditBookingModal({ booking, onClose, onSave }) {
                                             children: "Guests"
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/EditBookingModal.js",
-                                            lineNumber: 124,
+                                            lineNumber: 126,
                                             columnNumber: 29
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1040,7 +1043,7 @@ function EditBookingModal({ booking, onClose, onSave }) {
                                                     children: "−"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/EditBookingModal.js",
-                                                    lineNumber: 126,
+                                                    lineNumber: 128,
                                                     columnNumber: 33
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1048,7 +1051,7 @@ function EditBookingModal({ booking, onClose, onSave }) {
                                                     children: formData.people
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/EditBookingModal.js",
-                                                    lineNumber: 133,
+                                                    lineNumber: 135,
                                                     columnNumber: 33
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1061,25 +1064,25 @@ function EditBookingModal({ booking, onClose, onSave }) {
                                                     children: "+"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/EditBookingModal.js",
-                                                    lineNumber: 136,
+                                                    lineNumber: 138,
                                                     columnNumber: 33
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/EditBookingModal.js",
-                                            lineNumber: 125,
+                                            lineNumber: 127,
                                             columnNumber: 29
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/EditBookingModal.js",
-                                    lineNumber: 123,
+                                    lineNumber: 125,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/EditBookingModal.js",
-                            lineNumber: 118,
+                            lineNumber: 120,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1091,14 +1094,14 @@ function EditBookingModal({ booking, onClose, onSave }) {
                                             className: "w-4 h-4 inline mr-2 text-red-500"
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/EditBookingModal.js",
-                                            lineNumber: 150,
+                                            lineNumber: 152,
                                             columnNumber: 29
                                         }, this),
                                         "Select Date"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/EditBookingModal.js",
-                                    lineNumber: 149,
+                                    lineNumber: 151,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1113,13 +1116,13 @@ function EditBookingModal({ booking, onClose, onSave }) {
                                     required: true
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/EditBookingModal.js",
-                                    lineNumber: 153,
+                                    lineNumber: 155,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/EditBookingModal.js",
-                            lineNumber: 148,
+                            lineNumber: 150,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1131,14 +1134,14 @@ function EditBookingModal({ booking, onClose, onSave }) {
                                             className: "w-4 h-4 inline mr-2 text-red-500"
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/EditBookingModal.js",
-                                            lineNumber: 166,
+                                            lineNumber: 168,
                                             columnNumber: 29
                                         }, this),
                                         "Select Time Slot"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/EditBookingModal.js",
-                                    lineNumber: 165,
+                                    lineNumber: 167,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1153,18 +1156,18 @@ function EditBookingModal({ booking, onClose, onSave }) {
                                             children: formatTime(slot)
                                         }, slot, false, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/EditBookingModal.js",
-                                            lineNumber: 171,
+                                            lineNumber: 173,
                                             columnNumber: 33
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/EditBookingModal.js",
-                                    lineNumber: 169,
+                                    lineNumber: 171,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/EditBookingModal.js",
-                            lineNumber: 164,
+                            lineNumber: 166,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1174,7 +1177,7 @@ function EditBookingModal({ booking, onClose, onSave }) {
                                     children: "Special Requests (Optional)"
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/EditBookingModal.js",
-                                    lineNumber: 188,
+                                    lineNumber: 190,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
@@ -1188,13 +1191,13 @@ function EditBookingModal({ booking, onClose, onSave }) {
                                     rows: "3"
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/EditBookingModal.js",
-                                    lineNumber: 191,
+                                    lineNumber: 193,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/EditBookingModal.js",
-                            lineNumber: 187,
+                            lineNumber: 189,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1207,7 +1210,7 @@ function EditBookingModal({ booking, onClose, onSave }) {
                                     children: "Cancel"
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/EditBookingModal.js",
-                                    lineNumber: 202,
+                                    lineNumber: 204,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1217,34 +1220,38 @@ function EditBookingModal({ booking, onClose, onSave }) {
                                     children: isLoading ? "Saving..." : "Save Changes"
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/EditBookingModal.js",
-                                    lineNumber: 209,
+                                    lineNumber: 211,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/EditBookingModal.js",
-                            lineNumber: 201,
+                            lineNumber: 203,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/EditBookingModal.js",
-                    lineNumber: 106,
+                    lineNumber: 108,
                     columnNumber: 17
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/EditBookingModal.js",
-            lineNumber: 93,
+            lineNumber: 95,
             columnNumber: 13
         }, this)
     }, void 0, false, {
         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/components/EditBookingModal.js",
-        lineNumber: 92,
+        lineNumber: 94,
         columnNumber: 9
     }, this);
 }
-_s(EditBookingModal, "diYsc6ecic3zZ+qvGAsJHMSHLUs=");
+_s(EditBookingModal, "Fz7oT04+mh9ChAWAvVpVMkJOi7Y=", false, function() {
+    return [
+        __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$context$2f$NotificationContext$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useNotification"]
+    ];
+});
 _c = EditBookingModal;
 var _c;
 __turbopack_context__.k.register(_c, "EditBookingModal");
@@ -1264,18 +1271,24 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$Din
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/axios/lib/axios.js [app-client] (ecmascript)");
 ;
 const API = __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].create({
-    baseURL: ("TURBOPACK compile-time value", "https://dinex-24s9.onrender.com")
+    baseURL: ("TURBOPACK compile-time value", "http://localhost:8080")
 });
-// Add request interceptor to attach token
 API.interceptors.request.use((config)=>{
-    const token = localStorage.getItem("userToken");
+    let token = null;
+    const url = config.url || "";
+    // Staff endpoints (orders + staff routes)
+    if (url.startsWith("/api/orders") || url.startsWith("/api/business/staff")) {
+        token = localStorage.getItem("staffToken");
+    } else if (url.startsWith("/api/business")) {
+        token = localStorage.getItem("businessToken");
+    } else {
+        token = localStorage.getItem("userToken");
+    }
     if (token) {
         config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
-}, (error)=>{
-    return Promise.reject(error);
-});
+}, (error)=>Promise.reject(error));
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }
@@ -1310,9 +1323,11 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$Din
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$components$2f$Navbar$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/src/components/Navbar.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$components$2f$EditBookingModal$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/src/components/EditBookingModal.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$utils$2f$api$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/src/utils/api.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$context$2f$NotificationContext$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/src/context/NotificationContext.js [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
 "use client";
+;
 ;
 ;
 ;
@@ -1329,6 +1344,7 @@ function ProfilePage() {
     const [showEditModal, setShowEditModal] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [activeTab, setActiveTab] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("bookings");
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"])();
+    const { showToast, showDialog } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$context$2f$NotificationContext$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useNotification"])();
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "ProfilePage.useEffect": ()=>{
             const stored = localStorage.getItem("user");
@@ -1378,7 +1394,7 @@ function ProfilePage() {
     const handleSaveBooking = async (updateData)=>{
         try {
             await __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$utils$2f$api$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["API"].patch(`/api/bookings/${editingBooking._id}`, updateData);
-            alert("✅ Booking updated successfully!");
+            showToast("Booking updated successfully!", "success");
             setShowEditModal(false);
             setEditingBooking(null);
             fetchBookings(user._id);
@@ -1388,25 +1404,39 @@ function ProfilePage() {
         }
     };
     const handleCancelBooking = async (bookingId)=>{
-        if (!confirm("Are you sure you want to cancel this booking?")) return;
+        const confirmed = await showDialog({
+            title: "Cancel Booking",
+            message: "Are you sure you want to cancel this booking?",
+            confirmText: "Yes, Cancel",
+            cancelText: "Keep Booking",
+            type: "warning"
+        });
+        if (!confirmed) return;
         try {
             await __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$utils$2f$api$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["API"].patch(`/api/bookings/${bookingId}/cancel`);
-            alert("✅ Booking cancelled successfully!");
+            showToast("Booking cancelled successfully!", "success");
             fetchBookings(user._id);
         } catch (error) {
             console.error("Error cancelling booking:", error);
-            alert(error.response?.data?.msg || "Failed to cancel booking");
+            showToast(error.response?.data?.msg || "Failed to cancel booking", "error");
         }
     };
     const handleDeleteBooking = async (bookingId)=>{
-        if (!confirm("Are you sure you want to permanently delete this booking?")) return;
+        const confirmed = await showDialog({
+            title: "Delete Booking",
+            message: "Are you sure you want to permanently delete this booking?",
+            confirmText: "Delete",
+            cancelText: "Cancel",
+            type: "danger"
+        });
+        if (!confirmed) return;
         try {
             await __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$utils$2f$api$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["API"].delete(`/api/bookings/${bookingId}`);
-            alert("✅ Booking deleted successfully!");
+            showToast("Booking deleted successfully!", "success");
             fetchBookings(user._id);
         } catch (error) {
             console.error("Error deleting booking:", error);
-            alert(error.response?.data?.msg || "Failed to delete booking");
+            showToast(error.response?.data?.msg || "Failed to delete booking", "error");
         }
     };
     const getStatusBadge = (status)=>{
@@ -1482,7 +1512,7 @@ function ProfilePage() {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$components$2f$Navbar$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                lineNumber: 206,
+                lineNumber: 222,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1502,7 +1532,7 @@ function ProfilePage() {
                                             children: user.name?.charAt(0).toUpperCase()
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                            lineNumber: 215,
+                                            lineNumber: 231,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1512,7 +1542,7 @@ function ProfilePage() {
                                                     children: user.name
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                    lineNumber: 221,
+                                                    lineNumber: 237,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1522,7 +1552,7 @@ function ProfilePage() {
                                                             className: "w-4 h-4"
                                                         }, void 0, false, {
                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                            lineNumber: 225,
+                                                            lineNumber: 241,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1530,13 +1560,13 @@ function ProfilePage() {
                                                             children: user.email
                                                         }, void 0, false, {
                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                            lineNumber: 226,
+                                                            lineNumber: 242,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                    lineNumber: 224,
+                                                    lineNumber: 240,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1550,29 +1580,29 @@ function ProfilePage() {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                    lineNumber: 228,
+                                                    lineNumber: 244,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                            lineNumber: 220,
+                                            lineNumber: 236,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                    lineNumber: 213,
+                                    lineNumber: 229,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                lineNumber: 212,
+                                lineNumber: 228,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                            lineNumber: 211,
+                            lineNumber: 227,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1594,7 +1624,7 @@ function ProfilePage() {
                                                                 className: "w-4 h-4 lg:w-5 lg:h-5"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                lineNumber: 256,
+                                                                lineNumber: 272,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1602,7 +1632,7 @@ function ProfilePage() {
                                                                 children: "Your Bookings"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                lineNumber: 257,
+                                                                lineNumber: 273,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1610,13 +1640,13 @@ function ProfilePage() {
                                                                 children: "Bookings"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                lineNumber: 258,
+                                                                lineNumber: 274,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                        lineNumber: 249,
+                                                        lineNumber: 265,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1627,14 +1657,14 @@ function ProfilePage() {
                                                                 className: "w-4 h-4 lg:w-5 lg:h-5"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                lineNumber: 268,
+                                                                lineNumber: 284,
                                                                 columnNumber: 21
                                                             }, this),
                                                             "Reviews"
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                        lineNumber: 261,
+                                                        lineNumber: 277,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1645,20 +1675,20 @@ function ProfilePage() {
                                                                 className: "w-4 h-4 lg:w-5 lg:h-5"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                lineNumber: 279,
+                                                                lineNumber: 295,
                                                                 columnNumber: 21
                                                             }, this),
                                                             "Settings"
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                        lineNumber: 272,
+                                                        lineNumber: 288,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                lineNumber: 248,
+                                                lineNumber: 264,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1671,30 +1701,30 @@ function ProfilePage() {
                                                             className: "w-5 h-5"
                                                         }, void 0, false, {
                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                            lineNumber: 290,
+                                                            lineNumber: 306,
                                                             columnNumber: 21
                                                         }, this),
                                                         "Logout"
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                    lineNumber: 286,
+                                                    lineNumber: 302,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                lineNumber: 285,
+                                                lineNumber: 301,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                        lineNumber: 247,
+                                        lineNumber: 263,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                    lineNumber: 246,
+                                    lineNumber: 262,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1711,7 +1741,7 @@ function ProfilePage() {
                                                             children: "Upcoming Bookings"
                                                         }, void 0, false, {
                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                            lineNumber: 306,
+                                                            lineNumber: 322,
                                                             columnNumber: 21
                                                         }, this),
                                                         loadingBookings ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1721,7 +1751,7 @@ function ProfilePage() {
                                                                     className: "animate-spin w-12 h-12 border-4 border-[#C9A050] border-t-transparent rounded-full mx-auto mb-4"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                    lineNumber: 310,
+                                                                    lineNumber: 326,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1729,13 +1759,13 @@ function ProfilePage() {
                                                                     children: "Loading bookings..."
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                    lineNumber: 311,
+                                                                    lineNumber: 327,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                            lineNumber: 309,
+                                                            lineNumber: 325,
                                                             columnNumber: 23
                                                         }, this) : upcomingBookings.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                             className: "text-center py-12",
@@ -1744,7 +1774,7 @@ function ProfilePage() {
                                                                     className: "w-16 h-16 text-gray-300 mx-auto mb-4"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                    lineNumber: 315,
+                                                                    lineNumber: 331,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
@@ -1752,7 +1782,7 @@ function ProfilePage() {
                                                                     children: "No upcoming bookings"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                    lineNumber: 316,
+                                                                    lineNumber: 332,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1760,7 +1790,7 @@ function ProfilePage() {
                                                                     children: "Start exploring restaurants and make your first reservation!"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                    lineNumber: 317,
+                                                                    lineNumber: 333,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1769,13 +1799,13 @@ function ProfilePage() {
                                                                     children: "Browse Restaurants"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                    lineNumber: 318,
+                                                                    lineNumber: 334,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                            lineNumber: 314,
+                                                            lineNumber: 330,
                                                             columnNumber: 23
                                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                             className: "space-y-4",
@@ -1788,7 +1818,7 @@ function ProfilePage() {
                                                                             className: "w-full sm:w-20 md:w-24 h-32 sm:h-20 md:h-24 rounded-lg object-cover flex-shrink-0"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                            lineNumber: 332,
+                                                                            lineNumber: 348,
                                                                             columnNumber: 29
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1802,7 +1832,7 @@ function ProfilePage() {
                                                                                             children: booking.restaurantName
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                            lineNumber: 341,
+                                                                                            lineNumber: 357,
                                                                                             columnNumber: 33
                                                                                         }, this),
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1812,20 +1842,20 @@ function ProfilePage() {
                                                                                                     className: "w-3 h-3"
                                                                                                 }, void 0, false, {
                                                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                                    lineNumber: 343,
+                                                                                                    lineNumber: 359,
                                                                                                     columnNumber: 35
                                                                                                 }, this),
                                                                                                 booking.status
                                                                                             ]
                                                                                         }, void 0, true, {
                                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                            lineNumber: 342,
+                                                                                            lineNumber: 358,
                                                                                             columnNumber: 33
                                                                                         }, this)
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                    lineNumber: 340,
+                                                                                    lineNumber: 356,
                                                                                     columnNumber: 31
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1838,7 +1868,7 @@ function ProfilePage() {
                                                                                                     className: "w-3 h-3 sm:w-4 sm:h-4"
                                                                                                 }, void 0, false, {
                                                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                                    lineNumber: 350,
+                                                                                                    lineNumber: 366,
                                                                                                     columnNumber: 35
                                                                                                 }, this),
                                                                                                 new Date(booking.date).toLocaleDateString('en-US', {
@@ -1849,7 +1879,7 @@ function ProfilePage() {
                                                                                             ]
                                                                                         }, void 0, true, {
                                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                            lineNumber: 349,
+                                                                                            lineNumber: 365,
                                                                                             columnNumber: 33
                                                                                         }, this),
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1859,14 +1889,14 @@ function ProfilePage() {
                                                                                                     className: "w-3 h-3 sm:w-4 sm:h-4"
                                                                                                 }, void 0, false, {
                                                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                                    lineNumber: 354,
+                                                                                                    lineNumber: 370,
                                                                                                     columnNumber: 35
                                                                                                 }, this),
                                                                                                 booking.time
                                                                                             ]
                                                                                         }, void 0, true, {
                                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                            lineNumber: 353,
+                                                                                            lineNumber: 369,
                                                                                             columnNumber: 33
                                                                                         }, this),
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1876,7 +1906,7 @@ function ProfilePage() {
                                                                                                     className: "w-3 h-3 sm:w-4 sm:h-4"
                                                                                                 }, void 0, false, {
                                                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                                    lineNumber: 358,
+                                                                                                    lineNumber: 374,
                                                                                                     columnNumber: 35
                                                                                                 }, this),
                                                                                                 booking.people,
@@ -1885,13 +1915,13 @@ function ProfilePage() {
                                                                                             ]
                                                                                         }, void 0, true, {
                                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                            lineNumber: 357,
+                                                                                            lineNumber: 373,
                                                                                             columnNumber: 33
                                                                                         }, this)
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                    lineNumber: 348,
+                                                                                    lineNumber: 364,
                                                                                     columnNumber: 31
                                                                                 }, this),
                                                                                 booking.specialRequests && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1902,7 +1932,7 @@ function ProfilePage() {
                                                                                             children: "Special Requests: "
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                            lineNumber: 366,
+                                                                                            lineNumber: 382,
                                                                                             columnNumber: 35
                                                                                         }, this),
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1910,13 +1940,13 @@ function ProfilePage() {
                                                                                             children: booking.specialRequests
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                            lineNumber: 367,
+                                                                                            lineNumber: 383,
                                                                                             columnNumber: 35
                                                                                         }, this)
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                    lineNumber: 365,
+                                                                                    lineNumber: 381,
                                                                                     columnNumber: 33
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1931,14 +1961,14 @@ function ProfilePage() {
                                                                                                         className: "w-3 h-3 sm:w-4 sm:h-4"
                                                                                                     }, void 0, false, {
                                                                                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                                        lineNumber: 379,
+                                                                                                        lineNumber: 395,
                                                                                                         columnNumber: 39
                                                                                                     }, this),
                                                                                                     "Edit"
                                                                                                 ]
                                                                                             }, void 0, true, {
                                                                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                                lineNumber: 375,
+                                                                                                lineNumber: 391,
                                                                                                 columnNumber: 37
                                                                                             }, this),
                                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1947,37 +1977,37 @@ function ProfilePage() {
                                                                                                 children: "Cancel"
                                                                                             }, void 0, false, {
                                                                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                                lineNumber: 382,
+                                                                                                lineNumber: 398,
                                                                                                 columnNumber: 37
                                                                                             }, this)
                                                                                         ]
                                                                                     }, void 0, true)
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                    lineNumber: 372,
+                                                                                    lineNumber: 388,
                                                                                     columnNumber: 31
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                            lineNumber: 339,
+                                                                            lineNumber: 355,
                                                                             columnNumber: 29
                                                                         }, this)
                                                                     ]
                                                                 }, booking._id, true, {
                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                    lineNumber: 328,
+                                                                    lineNumber: 344,
                                                                     columnNumber: 27
                                                                 }, this))
                                                         }, void 0, false, {
                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                            lineNumber: 326,
+                                                            lineNumber: 342,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                    lineNumber: 305,
+                                                    lineNumber: 321,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1988,7 +2018,7 @@ function ProfilePage() {
                                                             children: "Past Bookings"
                                                         }, void 0, false, {
                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                            lineNumber: 400,
+                                                            lineNumber: 416,
                                                             columnNumber: 21
                                                         }, this),
                                                         pastBookings.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1998,7 +2028,7 @@ function ProfilePage() {
                                                                     className: "w-16 h-16 text-gray-300 mx-auto mb-4"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                    lineNumber: 404,
+                                                                    lineNumber: 420,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2006,13 +2036,13 @@ function ProfilePage() {
                                                                     children: "No past bookings yet"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                    lineNumber: 405,
+                                                                    lineNumber: 421,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                            lineNumber: 403,
+                                                            lineNumber: 419,
                                                             columnNumber: 23
                                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                             className: "space-y-4",
@@ -2025,7 +2055,7 @@ function ProfilePage() {
                                                                             className: "w-full sm:w-20 md:w-24 h-32 sm:h-20 md:h-24 rounded-lg object-cover flex-shrink-0"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                            lineNumber: 415,
+                                                                            lineNumber: 431,
                                                                             columnNumber: 29
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2039,7 +2069,7 @@ function ProfilePage() {
                                                                                             children: booking.restaurantName
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                            lineNumber: 424,
+                                                                                            lineNumber: 440,
                                                                                             columnNumber: 33
                                                                                         }, this),
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2047,13 +2077,13 @@ function ProfilePage() {
                                                                                             children: booking.status
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                            lineNumber: 425,
+                                                                                            lineNumber: 441,
                                                                                             columnNumber: 33
                                                                                         }, this)
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                    lineNumber: 423,
+                                                                                    lineNumber: 439,
                                                                                     columnNumber: 31
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2066,7 +2096,7 @@ function ProfilePage() {
                                                                                                     className: "w-3 h-3 sm:w-4 sm:h-4"
                                                                                                 }, void 0, false, {
                                                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                                    lineNumber: 432,
+                                                                                                    lineNumber: 448,
                                                                                                     columnNumber: 35
                                                                                                 }, this),
                                                                                                 new Date(booking.date).toLocaleDateString('en-US', {
@@ -2077,7 +2107,7 @@ function ProfilePage() {
                                                                                             ]
                                                                                         }, void 0, true, {
                                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                            lineNumber: 431,
+                                                                                            lineNumber: 447,
                                                                                             columnNumber: 33
                                                                                         }, this),
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2087,14 +2117,14 @@ function ProfilePage() {
                                                                                                     className: "w-3 h-3 sm:w-4 sm:h-4"
                                                                                                 }, void 0, false, {
                                                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                                    lineNumber: 436,
+                                                                                                    lineNumber: 452,
                                                                                                     columnNumber: 35
                                                                                                 }, this),
                                                                                                 booking.time
                                                                                             ]
                                                                                         }, void 0, true, {
                                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                            lineNumber: 435,
+                                                                                            lineNumber: 451,
                                                                                             columnNumber: 33
                                                                                         }, this),
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2104,7 +2134,7 @@ function ProfilePage() {
                                                                                                     className: "w-3 h-3 sm:w-4 sm:h-4"
                                                                                                 }, void 0, false, {
                                                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                                    lineNumber: 440,
+                                                                                                    lineNumber: 456,
                                                                                                     columnNumber: 35
                                                                                                 }, this),
                                                                                                 booking.people,
@@ -2113,13 +2143,13 @@ function ProfilePage() {
                                                                                             ]
                                                                                         }, void 0, true, {
                                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                            lineNumber: 439,
+                                                                                            lineNumber: 455,
                                                                                             columnNumber: 33
                                                                                         }, this)
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                    lineNumber: 430,
+                                                                                    lineNumber: 446,
                                                                                     columnNumber: 31
                                                                                 }, this),
                                                                                 booking.specialRequests && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2130,7 +2160,7 @@ function ProfilePage() {
                                                                                             children: "Special Requests: "
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                            lineNumber: 448,
+                                                                                            lineNumber: 464,
                                                                                             columnNumber: 35
                                                                                         }, this),
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2138,13 +2168,13 @@ function ProfilePage() {
                                                                                             children: booking.specialRequests
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                            lineNumber: 449,
+                                                                                            lineNumber: 465,
                                                                                             columnNumber: 35
                                                                                         }, this)
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                    lineNumber: 447,
+                                                                                    lineNumber: 463,
                                                                                     columnNumber: 33
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2155,7 +2185,7 @@ function ProfilePage() {
                                                                                             children: "Write a Review"
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                            lineNumber: 456,
+                                                                                            lineNumber: 472,
                                                                                             columnNumber: 35
                                                                                         }, this),
                                                                                         booking.status === "cancelled" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2166,14 +2196,14 @@ function ProfilePage() {
                                                                                                     className: "w-3 h-3 sm:w-4 sm:h-4"
                                                                                                 }, void 0, false, {
                                                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                                    lineNumber: 465,
+                                                                                                    lineNumber: 481,
                                                                                                     columnNumber: 37
                                                                                                 }, this),
                                                                                                 "Delete"
                                                                                             ]
                                                                                         }, void 0, true, {
                                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                            lineNumber: 461,
+                                                                                            lineNumber: 477,
                                                                                             columnNumber: 35
                                                                                         }, this),
                                                                                         booking.status === "completed" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2181,42 +2211,42 @@ function ProfilePage() {
                                                                                             children: "Book Again"
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                            lineNumber: 470,
+                                                                                            lineNumber: 486,
                                                                                             columnNumber: 35
                                                                                         }, this)
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                    lineNumber: 454,
+                                                                                    lineNumber: 470,
                                                                                     columnNumber: 31
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                            lineNumber: 422,
+                                                                            lineNumber: 438,
                                                                             columnNumber: 29
                                                                         }, this)
                                                                     ]
                                                                 }, booking._id, true, {
                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                    lineNumber: 410,
+                                                                    lineNumber: 426,
                                                                     columnNumber: 27
                                                                 }, this))
                                                         }, void 0, false, {
                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                            lineNumber: 408,
+                                                            lineNumber: 424,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                    lineNumber: 399,
+                                                    lineNumber: 415,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                            lineNumber: 302,
+                                            lineNumber: 318,
                                             columnNumber: 17
                                         }, this),
                                         activeTab === "reviews" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2227,7 +2257,7 @@ function ProfilePage() {
                                                     children: "Your Reviews"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                    lineNumber: 487,
+                                                    lineNumber: 503,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2241,7 +2271,7 @@ function ProfilePage() {
                                                                     className: "w-full sm:w-20 md:w-24 h-32 sm:h-20 md:h-24 rounded-lg object-cover flex-shrink-0"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                    lineNumber: 496,
+                                                                    lineNumber: 512,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2255,7 +2285,7 @@ function ProfilePage() {
                                                                                     children: review.restaurantName
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                    lineNumber: 505,
+                                                                                    lineNumber: 521,
                                                                                     columnNumber: 29
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2266,18 +2296,18 @@ function ProfilePage() {
                                                                                             className: `w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0 ${i < review.rating ? "fill-[#FFD700] text-[#FFD700]" : "text-gray-300"}`
                                                                                         }, i, false, {
                                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                            lineNumber: 508,
+                                                                                            lineNumber: 524,
                                                                                             columnNumber: 33
                                                                                         }, this))
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                    lineNumber: 506,
+                                                                                    lineNumber: 522,
                                                                                     columnNumber: 29
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                            lineNumber: 504,
+                                                                            lineNumber: 520,
                                                                             columnNumber: 27
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2285,7 +2315,7 @@ function ProfilePage() {
                                                                             children: review.text
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                            lineNumber: 519,
+                                                                            lineNumber: 535,
                                                                             columnNumber: 27
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2300,30 +2330,30 @@ function ProfilePage() {
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                            lineNumber: 521,
+                                                                            lineNumber: 537,
                                                                             columnNumber: 27
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                    lineNumber: 503,
+                                                                    lineNumber: 519,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, review.id, true, {
                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                            lineNumber: 491,
+                                                            lineNumber: 507,
                                                             columnNumber: 23
                                                         }, this))
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                    lineNumber: 489,
+                                                    lineNumber: 505,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                            lineNumber: 486,
+                                            lineNumber: 502,
                                             columnNumber: 17
                                         }, this),
                                         activeTab === "settings" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2334,7 +2364,7 @@ function ProfilePage() {
                                                     children: "Settings"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                    lineNumber: 534,
+                                                    lineNumber: 550,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2352,12 +2382,12 @@ function ProfilePage() {
                                                                                 className: "w-5 h-5 text-[#1E3A5F]"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                lineNumber: 542,
+                                                                                lineNumber: 558,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                            lineNumber: 541,
+                                                                            lineNumber: 557,
                                                                             columnNumber: 25
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -2365,13 +2395,13 @@ function ProfilePage() {
                                                                             children: "Notification Preferences"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                            lineNumber: 544,
+                                                                            lineNumber: 560,
                                                                             columnNumber: 25
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                    lineNumber: 540,
+                                                                    lineNumber: 556,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2385,7 +2415,7 @@ function ProfilePage() {
                                                                                     children: "Email notifications"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                    lineNumber: 548,
+                                                                                    lineNumber: 564,
                                                                                     columnNumber: 27
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -2394,13 +2424,13 @@ function ProfilePage() {
                                                                                     className: "w-5 h-5 text-[#1E3A5F] rounded"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                    lineNumber: 549,
+                                                                                    lineNumber: 565,
                                                                                     columnNumber: 27
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                            lineNumber: 547,
+                                                                            lineNumber: 563,
                                                                             columnNumber: 25
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -2411,7 +2441,7 @@ function ProfilePage() {
                                                                                     children: "SMS notifications"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                    lineNumber: 552,
+                                                                                    lineNumber: 568,
                                                                                     columnNumber: 27
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -2420,13 +2450,13 @@ function ProfilePage() {
                                                                                     className: "w-5 h-5 text-[#1E3A5F] rounded"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                    lineNumber: 553,
+                                                                                    lineNumber: 569,
                                                                                     columnNumber: 27
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                            lineNumber: 551,
+                                                                            lineNumber: 567,
                                                                             columnNumber: 25
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -2437,7 +2467,7 @@ function ProfilePage() {
                                                                                     children: "Promotional offers"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                    lineNumber: 556,
+                                                                                    lineNumber: 572,
                                                                                     columnNumber: 27
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -2445,25 +2475,25 @@ function ProfilePage() {
                                                                                     className: "w-5 h-5 text-[#1E3A5F] rounded"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                    lineNumber: 557,
+                                                                                    lineNumber: 573,
                                                                                     columnNumber: 27
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                            lineNumber: 555,
+                                                                            lineNumber: 571,
                                                                             columnNumber: 25
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                    lineNumber: 546,
+                                                                    lineNumber: 562,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                            lineNumber: 539,
+                                                            lineNumber: 555,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2478,12 +2508,12 @@ function ProfilePage() {
                                                                                 className: "w-5 h-5 text-[#684D8A]"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                lineNumber: 566,
+                                                                                lineNumber: 582,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                            lineNumber: 565,
+                                                                            lineNumber: 581,
                                                                             columnNumber: 25
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -2491,13 +2521,13 @@ function ProfilePage() {
                                                                             children: "Privacy Settings"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                            lineNumber: 568,
+                                                                            lineNumber: 584,
                                                                             columnNumber: 25
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                    lineNumber: 564,
+                                                                    lineNumber: 580,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2511,7 +2541,7 @@ function ProfilePage() {
                                                                                     children: "Show profile to public"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                    lineNumber: 572,
+                                                                                    lineNumber: 588,
                                                                                     columnNumber: 27
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -2519,13 +2549,13 @@ function ProfilePage() {
                                                                                     className: "w-5 h-5 text-[#684D8A] rounded"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                    lineNumber: 573,
+                                                                                    lineNumber: 589,
                                                                                     columnNumber: 27
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                            lineNumber: 571,
+                                                                            lineNumber: 587,
                                                                             columnNumber: 25
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -2536,7 +2566,7 @@ function ProfilePage() {
                                                                                     children: "Share dining history"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                    lineNumber: 576,
+                                                                                    lineNumber: 592,
                                                                                     columnNumber: 27
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -2544,25 +2574,25 @@ function ProfilePage() {
                                                                                     className: "w-5 h-5 text-[#684D8A] rounded"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                    lineNumber: 577,
+                                                                                    lineNumber: 593,
                                                                                     columnNumber: 27
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                            lineNumber: 575,
+                                                                            lineNumber: 591,
                                                                             columnNumber: 25
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                    lineNumber: 570,
+                                                                    lineNumber: 586,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                            lineNumber: 563,
+                                                            lineNumber: 579,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2577,12 +2607,12 @@ function ProfilePage() {
                                                                                 className: "w-5 h-5 text-[#3C7A55]"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                lineNumber: 586,
+                                                                                lineNumber: 602,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                            lineNumber: 585,
+                                                                            lineNumber: 601,
                                                                             columnNumber: 25
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -2590,13 +2620,13 @@ function ProfilePage() {
                                                                             children: "Account Settings"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                            lineNumber: 588,
+                                                                            lineNumber: 604,
                                                                             columnNumber: 25
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                    lineNumber: 584,
+                                                                    lineNumber: 600,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2607,12 +2637,12 @@ function ProfilePage() {
                                                                             children: "Change password"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                            lineNumber: 591,
+                                                                            lineNumber: 607,
                                                                             columnNumber: 25
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                            lineNumber: 594,
+                                                                            lineNumber: 610,
                                                                             columnNumber: 25
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2620,12 +2650,12 @@ function ProfilePage() {
                                                                             children: "Update email address"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                            lineNumber: 595,
+                                                                            lineNumber: 611,
                                                                             columnNumber: 25
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                            lineNumber: 598,
+                                                                            lineNumber: 614,
                                                                             columnNumber: 25
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2633,19 +2663,19 @@ function ProfilePage() {
                                                                             children: "Delete account"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                            lineNumber: 599,
+                                                                            lineNumber: 615,
                                                                             columnNumber: 25
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                    lineNumber: 590,
+                                                                    lineNumber: 606,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                            lineNumber: 583,
+                                                            lineNumber: 599,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2660,12 +2690,12 @@ function ProfilePage() {
                                                                                 className: "w-5 h-5 text-[#C9A050]"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                lineNumber: 609,
+                                                                                lineNumber: 625,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                            lineNumber: 608,
+                                                                            lineNumber: 624,
                                                                             columnNumber: 25
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -2673,13 +2703,13 @@ function ProfilePage() {
                                                                             children: "Language Preferences"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                            lineNumber: 611,
+                                                                            lineNumber: 627,
                                                                             columnNumber: 25
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                    lineNumber: 607,
+                                                                    lineNumber: 623,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2691,45 +2721,45 @@ function ProfilePage() {
                                                                                 children: "English"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                lineNumber: 615,
+                                                                                lineNumber: 631,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                                                                                 children: "Hindi"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                lineNumber: 616,
+                                                                                lineNumber: 632,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                                                                                 children: "Spanish"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                lineNumber: 617,
+                                                                                lineNumber: 633,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                                                                                 children: "French"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                                lineNumber: 618,
+                                                                                lineNumber: 634,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                        lineNumber: 614,
+                                                                        lineNumber: 630,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                    lineNumber: 613,
+                                                                    lineNumber: 629,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                            lineNumber: 606,
+                                                            lineNumber: 622,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2739,36 +2769,36 @@ function ProfilePage() {
                                                                 children: "Save Changes"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                                lineNumber: 625,
+                                                                lineNumber: 641,
                                                                 columnNumber: 23
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                            lineNumber: 624,
+                                                            lineNumber: 640,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                                    lineNumber: 536,
+                                                    lineNumber: 552,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                            lineNumber: 533,
+                                            lineNumber: 549,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                    lineNumber: 298,
+                                    lineNumber: 314,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                            lineNumber: 243,
+                            lineNumber: 259,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2781,30 +2811,30 @@ function ProfilePage() {
                                         className: "w-5 h-5"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                        lineNumber: 641,
+                                        lineNumber: 657,
                                         columnNumber: 15
                                     }, this),
                                     "Logout"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                                lineNumber: 637,
+                                lineNumber: 653,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                            lineNumber: 636,
+                            lineNumber: 652,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                    lineNumber: 208,
+                    lineNumber: 224,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                lineNumber: 207,
+                lineNumber: 223,
                 columnNumber: 7
             }, this),
             showEditModal && editingBooking && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$components$2f$EditBookingModal$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -2816,20 +2846,21 @@ function ProfilePage() {
                 onSave: handleSaveBooking
             }, void 0, false, {
                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                lineNumber: 650,
+                lineNumber: 666,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$components$2f$Footer$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/customer/profile/page.js",
-                lineNumber: 660,
+                lineNumber: 676,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true);
 }
-_s(ProfilePage, "DmY0rf+hsPRwOiYr1YB/2THZ1os=", false, function() {
+_s(ProfilePage, "2aRbK7e0LhTsCzzEUVgNJfa3gF8=", false, function() {
     return [
-        __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"]
+        __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"],
+        __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$src$2f$context$2f$NotificationContext$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useNotification"]
     ];
 });
 _c = ProfilePage;

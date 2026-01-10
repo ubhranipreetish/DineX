@@ -5,12 +5,14 @@ import { ArrowLeft, Plus, Check, X, Trash2, Receipt } from 'lucide-react';
 import { useOrder } from '../../../context/OrderContext';
 import { MENU_ITEMS } from '../../../data/menu-data';
 import StaffNavbar from '../../../components/StaffNavbar';
+import { useNotification } from "@/context/NotificationContext";
 
 export default function ManageOrderPage() {
     const router = useRouter();
     const params = useParams();
     const tableId = parseInt(params.id);
     const { tables, getOrderByTableId, addItemsToOrder, updateItemStatus, removeItemFromOrder, completeOrder, cancelOrder } = useOrder();
+    const { showToast, showDialog } = useNotification();
 
     const [showAddItems, setShowAddItems] = useState(false);
     const [selectedNewItems, setSelectedNewItems] = useState([]);
@@ -27,7 +29,7 @@ export default function ManageOrderPage() {
         }
 
         if (!table) router.push('/business/staff/home');
-        if (!order) return; 
+        if (!order) return;
 
     }, [table, order, router]);
 
@@ -36,9 +38,17 @@ export default function ManageOrderPage() {
         updateItemStatus(order.orderId, item.id, 'served');
     };
 
-    const handleRemoveItem = (itemIndex) => {
-        if (confirm('Remove this item from the order?')) {
+    const handleRemoveItem = async (itemIndex) => {
+        const confirmed = await showDialog({
+            title: "Remove Item",
+            message: "Remove this item from the order?",
+            confirmText: "Remove",
+            cancelText: "Cancel",
+            type: "warning",
+        });
+        if (confirmed) {
             removeItemFromOrder(order.orderId, itemIndex);
+            showToast("Item removed from order", "success");
         }
     };
 
@@ -54,9 +64,17 @@ export default function ManageOrderPage() {
         router.push(`/business/staff/table/${tableId}/bill`);
     };
 
-    const handleCancelOrder = () => {
-        if (confirm('Are you sure you want to cancel this entire order? This cannot be undone.')) {
+    const handleCancelOrder = async () => {
+        const confirmed = await showDialog({
+            title: "Cancel Order",
+            message: "Are you sure you want to cancel this entire order? This cannot be undone.",
+            confirmText: "Cancel Order",
+            cancelText: "Keep Order",
+            type: "danger",
+        });
+        if (confirmed) {
             cancelOrder(order.orderId);
+            showToast("Order cancelled", "success");
             router.push('/business/staff/home');
         }
     };

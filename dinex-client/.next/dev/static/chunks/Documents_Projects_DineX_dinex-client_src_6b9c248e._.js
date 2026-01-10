@@ -183,7 +183,8 @@ const OrderProvider = ({ children })=>{
                         itemId: i.id,
                         name: i.name,
                         price: i.price,
-                        quantity: i.quantity
+                        quantity: i.quantity,
+                        isVeg: i.isVeg
                     }))
             }, {
                 headers: {
@@ -219,7 +220,8 @@ const OrderProvider = ({ children })=>{
                         itemId: i.id,
                         name: i.name,
                         price: i.price,
-                        quantity: i.quantity
+                        quantity: i.quantity,
+                        isVeg: i.isVeg
                     }))
             }, {
                 headers: {
@@ -422,7 +424,7 @@ const OrderProvider = ({ children })=>{
         children: children
     }, void 0, false, {
         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/context/OrderContext.js",
-        lineNumber: 354,
+        lineNumber: 356,
         columnNumber: 9
     }, ("TURBOPACK compile-time value", void 0));
 };

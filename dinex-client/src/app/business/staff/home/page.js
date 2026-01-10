@@ -12,12 +12,14 @@ import StaffNavbar from '../components/StaffNavbar';
 import OrderTabs from '../components/OrderTabs';
 import OrderCard from '../components/OrderCard';
 import Footer from "@/components/Footer";
+import { useNotification } from "@/context/NotificationContext";
 
 export default function StaffHome() {
   const router = useRouter();
   const [staff, setStaff] = useState(null);
   const { tables, restaurant, getActiveOrders, cancelledOrders, getCancelledOrders, deleteOrder } = useOrder();
   const [activeTab, setActiveTab] = useState('running');
+  const { showToast, showDialog } = useNotification();
   const [stats, setStats] = useState({
     free: 0,
     occupied: 0,
@@ -91,11 +93,19 @@ export default function StaffHome() {
   };
 
   const handleDeleteOrder = async (orderId) => {
-    if (confirm('Are you sure you want to delete this order? This action cannot be undone.')) {
+    const confirmed = await showDialog({
+      title: "Delete Order",
+      message: "Are you sure you want to delete this order? This action cannot be undone.",
+      confirmText: "Delete",
+      cancelText: "Cancel",
+      type: "danger",
+    });
+    if (confirmed) {
       try {
         await deleteOrder(orderId);
+        showToast("Order deleted successfully", "success");
       } catch (error) {
-        alert('Failed to delete order. Please try again.');
+        showToast("Failed to delete order. Please try again.", "error");
       }
     }
   };
@@ -247,24 +257,13 @@ export default function StaffHome() {
                   <button
                     key={table.id}
                     onClick={() => handleTableClick(table)}
-                    className={`relative flex flex-col justify-between p-4 rounded-xl border-l-4 shadow-md hover:shadow-xl transition-all transform hover:-translate-y-1 cursor-pointer ${getTableColor(table.status)}`}
-                    style={{ minHeight: '140px' }}
+                    className={`relative flex flex-col items-center justify-center p-4 rounded-xl border-l-4 shadow-md hover:shadow-xl transition-all transform hover:-translate-y-1 cursor-pointer ${getTableColor(table.status)}`}
+                    style={{ minHeight: '100px' }}
                   >
-                    {/* Header: Table No + Status */}
-                    <div className="flex justify-between items-start w-full mb-2">
-                      <h3 className="text-xl font-bold text-gray-800">Table {table.tableNumber}</h3>
-                      <span className={`text-xs font-bold uppercase tracking-wider ${getStatusTextColor(table.status)}`}>
-                        {getStatusText(table.status)}
-                      </span>
-                    </div>
-
-                    {/* Body: Bill Amount */}
-                    <div className="mt-auto text-left">
-                      <p className="text-xs text-gray-500 font-medium uppercase tracking-wide mb-1">Current Bill</p>
-                      <p className="text-2xl font-bold text-gray-800">
-                        ₹{table.currentBill ? table.currentBill.toFixed(2) : "0.00"}
-                      </p>
-                    </div>
+                    <h3 className="text-xl font-bold text-gray-800 mb-1">Table {table.tableNumber}</h3>
+                    <span className={`text-xs font-bold uppercase tracking-wider ${getStatusTextColor(table.status)}`}>
+                      {getStatusText(table.status)}
+                    </span>
                   </button>
                 ))}
               </div>

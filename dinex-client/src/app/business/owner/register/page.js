@@ -3,11 +3,13 @@ import { useState, useEffect, Suspense } from "react";
 import { useRouter } from "next/navigation";
 import { API } from "@/utils/api";
 import Link from "next/link";
+import { useNotification } from "@/context/NotificationContext";
 
 function RegisterForm() {
     const [currentStep, setCurrentStep] = useState(1);
     const [showPassword, setShowPassword] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const { showToast } = useNotification();
     const [form, setForm] = useState({
         ownerName: "",
         ownerEmail: "",
@@ -26,15 +28,15 @@ function RegisterForm() {
     const handleNext = () => {
         if (currentStep === 1) {
             if (!form.ownerName || !form.ownerEmail || !form.ownerPhone || !form.ownerPassword) {
-                alert("Please fill in all owner details");
+                showToast("Please fill in all owner details", "error");
                 return;
             }
             if (form.ownerPassword !== form.confirmPassword) {
-                alert("Passwords don't match!");
+                showToast("Passwords don't match!", "error");
                 return;
             }
             if (form.ownerPassword.length < 6) {
-                alert("Password must be at least 6 characters long!");
+                showToast("Password must be at least 6 characters long!", "error");
                 return;
             }
         }
@@ -46,7 +48,7 @@ function RegisterForm() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!form.restaurantName || !form.addressFull || !form.addressCity || !form.addressState || !form.addressPincode || !form.totalTables) {
-            alert("Please fill in all restaurant details");
+            showToast("Please fill in all restaurant details", "error");
             return;
         }
         setIsLoading(true);
@@ -60,11 +62,11 @@ function RegisterForm() {
             if (res.data?.businessOwner) {
                 localStorage.setItem("businessOwner", JSON.stringify(res.data.businessOwner));
             }
-            alert("Registration successful! Welcome to DineX Business.");
+            showToast("Registration successful! Welcome to DineX Business.", "success");
             router.push("/business/owner/dashboard");
         } catch (err) {
             const errorMessage = err.response?.data?.msg || err.response?.data?.message || err.message || "Registration failed. Please try again.";
-            alert(errorMessage);
+            showToast(errorMessage, "error");
         } finally {
             setIsLoading(false);
         }

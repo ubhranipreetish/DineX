@@ -115,7 +115,8 @@ export const OrderProvider = ({ children }) => {
                     itemId: i.id,
                     name: i.name,
                     price: i.price,
-                    quantity: i.quantity
+                    quantity: i.quantity,
+                    isVeg: i.isVeg
                 }))
             }, {
                 headers: { Authorization: `Bearer ${token}` }
@@ -155,7 +156,8 @@ export const OrderProvider = ({ children }) => {
                     itemId: i.id,
                     name: i.name,
                     price: i.price,
-                    quantity: i.quantity
+                    quantity: i.quantity,
+                    isVeg: i.isVeg
                 }))
             }, {
                 headers: { Authorization: `Bearer ${token}` }

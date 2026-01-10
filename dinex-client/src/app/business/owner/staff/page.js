@@ -4,10 +4,12 @@ import { API } from "@/utils/api";
 import DashboardNav from "../components/DashboardNav";
 import { useBusinessData } from "../context/BusinessDataContext";
 import Footer from "@/components/Footer";
+import { useNotification } from "@/context/NotificationContext";
 
 export default function StaffPage() {
     const { staff, isLoading, refreshStaff } = useBusinessData();
     const [showAddStaffModal, setShowAddStaffModal] = useState(false);
+    const { showToast, showDialog } = useNotification();
 
     const [staffForm, setStaffForm] = useState({
         name: "",
@@ -30,12 +32,12 @@ export default function StaffPage() {
         try {
             await API.post("/api/business/staff", staffForm);
 
-            alert("Staff member added successfully!");
+            showToast("Staff member added successfully!", "success");
             setShowAddStaffModal(false);
             setStaffForm({ name: "", phone: "", password: "", role: "waiter" });
             refreshStaff();
         } catch (err) {
-            alert(err.response?.data?.msg || "Failed to add staff member");
+            showToast(err.response?.data?.msg || "Failed to add staff member", "error");
         }
     };
 
@@ -43,25 +45,30 @@ export default function StaffPage() {
         try {
             await API.put(`/api/business/staff/${staffId}`, updates);
 
-            alert("Staff member updated successfully!");
+            showToast("Staff member updated successfully!", "success");
             refreshStaff();
         } catch (err) {
-            alert(err.response?.data?.msg || "Failed to update staff member");
+            showToast(err.response?.data?.msg || "Failed to update staff member", "error");
         }
     };
 
     const handleDeleteStaff = async (staffId) => {
-        if (!confirm("Are you sure you want to remove this staff member?")) {
-            return;
-        }
+        const confirmed = await showDialog({
+            title: "Remove Staff Member",
+            message: "Are you sure you want to remove this staff member?",
+            confirmText: "Remove",
+            cancelText: "Cancel",
+            type: "danger",
+        });
+        if (!confirmed) return;
 
         try {
             await API.delete(`/api/business/staff/${staffId}`);
 
-            alert("Staff member removed successfully!");
+            showToast("Staff member removed successfully!", "success");
             refreshStaff();
         } catch (err) {
-            alert(err.response?.data?.msg || "Failed to remove staff member");
+            showToast(err.response?.data?.msg || "Failed to remove staff member", "error");
         }
     };
 

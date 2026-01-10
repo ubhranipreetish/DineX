@@ -5,11 +5,13 @@ import { API } from "@/utils/api";
 import DashboardNav from "../components/DashboardNav";
 import { useBusinessData } from "../context/BusinessDataContext";
 import Footer from "@/components/Footer";
+import { useNotification } from "@/context/NotificationContext";
 
 export default function SettingsPage() {
     const { ownerData, isLoading, updateOwnerData } = useBusinessData();
     const [activeTab, setActiveTab] = useState("restaurant");
     const router = useRouter();
+    const { showToast } = useNotification();
 
     const [restaurantForm, setRestaurantForm] = useState({
         restaurantName: "",
@@ -42,10 +44,10 @@ export default function SettingsPage() {
         try {
             const res = await API.put("/api/business/restaurant", restaurantForm);
 
-            alert("Restaurant details updated successfully!");
+            showToast("Restaurant details updated successfully!", "success");
             updateOwnerData(res.data.businessOwner);
         } catch (err) {
-            alert(err.response?.data?.msg || "Failed to update restaurant details");
+            showToast(err.response?.data?.msg || "Failed to update restaurant details", "error");
         }
     };
 

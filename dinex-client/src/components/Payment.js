@@ -2,10 +2,12 @@
 import { useState } from "react";
 import { CreditCard, Smartphone, Wallet, Building2, CheckCircle, ChevronRight, Lock } from 'lucide-react';
 import { API } from "@/utils/api";
+import { useNotification } from "@/context/NotificationContext";
 
 export default function Payment({ data, onComplete }) {
   const [method, setMethod] = useState("card");
   const [isProcessing, setIsProcessing] = useState(false);
+  const { showToast } = useNotification();
 
   const paymentMethods = [
     {
@@ -57,12 +59,12 @@ export default function Payment({ data, onComplete }) {
         const response = await API.post("/api/bookings", bookingData);
 
         if (response.data.booking) {
-          // alert(`✅ Payment successful! Booking ID: ${response.data.booking._id}`);
+          showToast("Payment successful! Your booking is confirmed.", "success");
           onComplete();
         }
       } catch (error) {
         console.error("Error saving booking:", error);
-        alert("Payment successful but failed to save booking. Please contact support.");
+        showToast("Payment successful but failed to save booking. Please contact support.", "error");
         setIsProcessing(false);
       }
     }, 2000);

@@ -230,3 +230,71 @@ body {
   background-color: #f3f4f6;
   border-radius: 3px;
 }
+
+/* --------------------------------------------------
+   Clickable Elements - Cursor Pointer
+-------------------------------------------------- */
+
+/* All buttons should have pointer cursor */
+button,
+[role="button"],
+input[type="submit"],
+input[type="button"],
+input[type="reset"] {
+  cursor: pointer;
+}
+
+/* Links and anchor tags */
+a,
+[role="link"] {
+  cursor: pointer;
+}
+
+/* Select dropdowns */
+select {
+  cursor: pointer;
+}
+
+/* Clickable labels (for checkboxes/radios) */
+label[for],
+label:has(input[type="checkbox"]),
+label:has(input[type="radio"]) {
+  cursor: pointer;
+}
+
+/* Clickable table rows */
+tr[onclick],
+tr[role="button"],
+.clickable-row {
+  cursor: pointer;
+}
+
+/* Interactive cards and divs */
+[onclick],
+[role="menuitem"],
+[role="option"],
+[role="tab"],
+[role="listitem"][onclick] {
+  cursor: pointer;
+}
+
+/* Navigation items */
+nav a,
+nav button {
+  cursor: pointer;
+}
+
+/* Tab buttons */
+[role="tablist"] button,
+[role="tablist"] [role="tab"] {
+  cursor: pointer;
+}
+
+/* Disabled elements should show not-allowed cursor */
+button:disabled,
+input:disabled,
+select:disabled,
+[aria-disabled="true"] {
+  cursor: not-allowed;
+}
+

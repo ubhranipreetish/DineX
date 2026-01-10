@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { ArrowLeft, Download, CheckCircle } from 'lucide-react';
 import { useOrder } from '../../../context/OrderContext';
+import { useNotification } from "@/context/NotificationContext";
 
 export default function BillPage() {
     const router = useRouter();
@@ -10,6 +11,7 @@ export default function BillPage() {
     const tableId = parseInt(params.id);
     const { tables, getOrderByTableId, markAsPaid, restaurant } = useOrder();
     const [isProcessing, setIsProcessing] = useState(false);
+    const { showToast, showDialog } = useNotification();
 
     const table = tables.find(t => t.id === tableId);
     const order = getOrderByTableId(tableId);
@@ -45,18 +47,26 @@ export default function BillPage() {
         };
     };
 
-    const handleConfirmPayment = () => {
-        if (confirm('Confirm payment received?')) {
+    const handleConfirmPayment = async () => {
+        const confirmed = await showDialog({
+            title: "Confirm Payment",
+            message: "Confirm payment received?",
+            confirmText: "Yes, Payment Received",
+            cancelText: "Cancel",
+            type: "success",
+        });
+        if (confirmed) {
             setIsProcessing(true);
             setTimeout(() => {
                 markAsPaid(order.orderId);
+                showToast("Payment confirmed successfully!", "success");
                 router.push('/business/staff/home');
             }, 500);
         }
     };
 
     const handleDownloadBill = () => {
-        alert('Download functionality will be implemented with backend integration');
+        showToast("Download functionality will be implemented with backend integration", "info");
     };
 
     if (!table || !order) {
@@ -136,11 +146,6 @@ export default function BillPage() {
                                     <div key={index} className="flex items-start justify-between py-3 border-b border-gray-100 last:border-0 hover:bg-gray-50 px-2 rounded-lg transition-colors">
                                         <div className="flex-1">
                                             <div className="flex items-center gap-2 mb-1">
-                                                <div className={`w-4 h-4 rounded border-2 flex items-center justify-center ${item.isVeg ? 'border-green-600' : 'border-red-600'
-                                                    }`}>
-                                                    <div className={`w-2 h-2 rounded-full ${item.isVeg ? 'bg-green-600' : 'bg-red-600'
-                                                        }`}></div>
-                                                </div>
                                                 <h3 className="font-semibold text-gray-800">{item.name}</h3>
                                             </div>
                                             <p className="text-sm text-gray-500">₹{item.price} × {item.quantity}</p>

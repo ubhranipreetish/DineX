@@ -3,12 +3,14 @@ import { Plus, Minus } from 'lucide-react';
 export default function MenuItem({ item, onAdd, selectedQuantity = 0 }) {
     return (
         <div className="bg-white rounded-2xl p-5 shadow-lg hover:shadow-xl transition-all border border-gray-100 group hover:border-orange-300">
-            {/* Veg/Non-veg indicator */}
+            {/* Veg/Non-veg indicator (Standard Indian food labeling) */}
             <div className="flex items-start justify-between mb-3">
-                <div className={`w-5 h-5 rounded border-2 flex items-center justify-center ${item.isVeg ? 'border-green-600' : 'border-red-600'
-                    }`}>
-                    <div className={`w-2.5 h-2.5 rounded-full ${item.isVeg ? 'bg-green-600' : 'bg-red-600'
-                        }`}></div>
+                <div className={`w-5 h-5 border-2 flex items-center justify-center ${item.isVeg ? 'border-green-600' : 'border-red-700'}`}>
+                    {item.isVeg ? (
+                        <div className="w-2.5 h-2.5 rounded-full bg-green-600"></div>
+                    ) : (
+                        <div className="w-0 h-0 border-l-[5px] border-r-[5px] border-b-[8px] border-l-transparent border-r-transparent border-b-red-700"></div>
+                    )}
                 </div>
                 {selectedQuantity > 0 && (
                     <span className="bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded-full">

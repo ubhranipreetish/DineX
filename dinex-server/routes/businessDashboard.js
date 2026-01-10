@@ -105,6 +105,12 @@ router.post("/staff", verifyBusinessToken, async (req, res) => {
             return res.status(404).json({ msg: "Owner not found" });
         }
 
+        // Check if phone number already exists in this restaurant's staff
+        const existingStaff = owner.waiters.find(w => w.phone === phone);
+        if (existingStaff) {
+            return res.status(400).json({ msg: "A staff member with this phone number already exists" });
+        }
+
         const hashedPassword = await bcrypt.hash(password, 10);
 
         const newStaff = {
@@ -147,6 +153,14 @@ router.put("/staff/:staffId", verifyBusinessToken, async (req, res) => {
 
         if (!staffMember) {
             return res.status(404).json({ msg: "Staff member not found" });
+        }
+
+        // Check if phone number already exists in another staff member
+        if (phone && phone !== staffMember.phone) {
+            const existingStaff = owner.waiters.find(w => w.phone === phone && w._id.toString() !== staffId);
+            if (existingStaff) {
+                return res.status(400).json({ msg: "A staff member with this phone number already exists" });
+            }
         }
 
         if (name) staffMember.name = name;
