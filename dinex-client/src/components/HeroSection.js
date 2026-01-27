@@ -35,43 +35,13 @@ export default function HeroSection() {
 
                 {/* Tagline */}
                 <p className="text-lg sm:text-xl md:text-3xl lg:text-4xl font-semibold text-white mb-3 sm:mb-4 animate-slide-up">
-                    Discover. Reserve. Dine.
+                  Discover. Reserve. Dine.
                 </p>
 
                 {/* Description */}
-                <p className="text-sm sm:text-base md:text-xl lg:text-2xl text-gray-200 mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed animate-slide-up-delay">
-                    Find the perfect dining spot near you and book your table in seconds.
+                <p className="text-sm sm:text-base md:text-xl lg:text-2xl text-gray-200 mb-8 sm:mb-10 max-w-3xl mx-auto leading-relaxed animate-slide-up-delay">
+                    Skip the calls and queues. Instant reservations at top rated restaurants.
                 </p>
-
-                {/* Features */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12 max-w-4xl mx-auto">
-                    {/* Feature 1 */}
-                    <div className="bg-white/10 backdrop-blur-md rounded-2xl p-5 sm:p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 transform hover:scale-105">
-                        <div className="text-3xl sm:text-4xl mb-2 sm:mb-3">📍</div>
-                        <h3 className="text-base sm:text-lg font-bold text-white mb-1 sm:mb-2">Nearby Restaurants</h3>
-                        <p className="text-xs sm:text-sm text-gray-300">
-                            Discover top-rated restaurants in your area
-                        </p>
-                    </div>
-
-                    {/* Feature 2 */}
-                    <div className="bg-white/10 backdrop-blur-md rounded-2xl p-5 sm:p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 transform hover:scale-105">
-                        <div className="text-3xl sm:text-4xl mb-2 sm:mb-3">⏰</div>
-                        <h3 className="text-base sm:text-lg font-bold text-white mb-1 sm:mb-2">Easy Booking</h3>
-                        <p className="text-xs sm:text-sm text-gray-300">
-                            Reserve your table at your preferred time slot
-                        </p>
-                    </div>
-
-                    {/* Feature 3 */}
-                    <div className="bg-white/10 backdrop-blur-md rounded-2xl p-5 sm:p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 transform hover:scale-105">
-                        <div className="text-3xl sm:text-4xl mb-2 sm:mb-3">✨</div>
-                        <h3 className="text-base sm:text-lg font-bold text-white mb-1 sm:mb-2">Premium Experience</h3>
-                        <p className="text-xs sm:text-sm text-gray-300">
-                            Enjoy a seamless dining experience
-                        </p>
-                    </div>
-                </div>
 
                 {/* CTA Button */}
                 <button

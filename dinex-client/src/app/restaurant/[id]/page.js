@@ -107,6 +107,17 @@ export default function RestaurantDetail() {
     ? restaurant.cuisines.join(", ")
     : restaurant.cuisines || "";
 
+  const scrollToTabs = () => {
+    setTimeout(() => {
+      const anchor = document.getElementById("tabs-anchor");
+      if (anchor) {
+        const offset = 225; // adjust this based on your header+tabs height
+        const top = anchor.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: "smooth" });
+      }
+    }, 100);
+  };
+
   if (loading || !restaurant)
     return (
       <>
@@ -237,12 +248,7 @@ export default function RestaurantDetail() {
               className="relative group cursor-pointer overflow-hidden rounded-xl"
               onClick={() => {
                 setActiveTab("Photos");
-                setTimeout(() => {
-                  const tabs = document.getElementById("tabs");
-                  const offset = 230; // adjust this based on your header+tabs height
-                  const top = tabs.getBoundingClientRect().top + window.scrollY - offset;
-                  window.scrollTo({ top, behavior: "smooth" });
-                }, 150);
+                scrollToTabs();
               }}
             >
               {/* Background image */}
@@ -260,13 +266,19 @@ export default function RestaurantDetail() {
           </div>
         </div>
 
+        {/* anchor for scrolling */}
+        <div id="tabs-anchor" className="scroll-mt-32"></div>
+
         {/* ✅ Tabs - Sticky below header */}
         <div className="sticky top-[185px] sm:top-[200px] md:top-[215px] z-30 bg-white border-b border-gray-400 pt-3 sm:pt-5 overflow-x-auto scrollbar-hide" id="tabs">
           <div className="flex gap-4 sm:gap-6 md:gap-8 text-gray-600 font-medium text-sm sm:text-base md:text-lg min-w-max">
             {["Overview", "Reviews", "Photos", "Menu", "Book a Table"].map((tab) => (
               <button
                 key={tab}
-                onClick={() => setActiveTab(tab)}
+                onClick={() => {
+                  setActiveTab(tab);
+                  scrollToTabs();
+                }}
                 className={`pb-3 sm:pb-4 transition-all whitespace-nowrap ${activeTab === tab
                   ? "text-[#C9A050] border-b-2 border-[#C9A050] font-semibold"
                   : "hover:text-[#8B6F3E]"
@@ -354,6 +366,7 @@ export default function RestaurantDetail() {
             restaurantName={restaurant.name}
             restaurantId={restaurant.restaurantId}
             offers={offers}
+            scrollToTop={scrollToTabs}
           />
         )}
       </div>

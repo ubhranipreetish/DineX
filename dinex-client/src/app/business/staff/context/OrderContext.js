@@ -220,6 +220,14 @@ export const OrderProvider = ({ children }) => {
         }
     };
 
+    const generateBill = (tableId) => {
+        setTables(prev => prev.map(t =>
+            t.id === tableId || t.tableNumber === tableId
+                ? { ...t, status: 'bill-pending' }
+                : t
+        ));
+    };
+
     const completeOrder = (orderId) => {
         return orderId;
     };
@@ -345,6 +353,7 @@ export const OrderProvider = ({ children }) => {
         completeOrder,
         markAsPaid,
         cancelOrder,
+        generateBill,
         calculateBill,
         getOrderByTableId,
         getActiveOrders,

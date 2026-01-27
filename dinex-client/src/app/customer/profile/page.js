@@ -41,9 +41,11 @@ export default function ProfilePage() {
   const { showToast, showDialog } = useNotification();
 
   useEffect(() => {
-    const stored = localStorage.getItem("user");
-    if (stored) {
-      const userData = JSON.parse(stored);
+    const storedUser = localStorage.getItem("user");
+    const storedToken = localStorage.getItem("userToken");
+
+    if (storedUser && storedToken) {
+      const userData = JSON.parse(storedUser);
       setUser(userData);
       fetchBookings(userData._id);
 
@@ -55,6 +57,9 @@ export default function ProfilePage() {
       // Cleanup interval on unmount
       return () => clearInterval(intervalId);
     } else {
+      // If either user or token is missing, force logout/login
+      localStorage.removeItem("userToken");
+      localStorage.removeItem("user");
       router.push("/customer/login");
     }
   }, [router]);
@@ -66,7 +71,13 @@ export default function ProfilePage() {
       setBookings(response.data.bookings || []);
     } catch (error) {
       console.error("Error fetching bookings:", error);
-      setBookings([]);
+
+      // Handle 401 Unauthorized - Token expired or invalid
+      if (error.response && error.response.status === 401) {
+        handleLogout();
+      } else {
+        setBookings([]);
+      }
     } finally {
       setLoadingBookings(false);
     }
@@ -184,33 +195,8 @@ export default function ProfilePage() {
     return images[index % images.length];
   };
 
-  // Dummy reviews data
-  const dummyReviews = [
-    {
-      id: 1,
-      restaurantName: "The Grand Brasserie",
-      image: "/images/ambience/amb1.png",
-      rating: 5,
-      text: "Amazing experience! The food was exceptional and the service was top-notch. Highly recommend the signature pasta.",
-      date: "2023-11-15",
-    },
-    {
-      id: 2,
-      restaurantName: "Ocean's Catch",
-      image: "/images/food/food1.png",
-      rating: 4,
-      text: "Great seafood selection. The ambiance was lovely and perfect for a romantic dinner.",
-      date: "2023-11-10",
-    },
-    {
-      id: 3,
-      restaurantName: "Pasta Palace",
-      image: "/images/cafe/cafe1.png",
-      rating: 5,
-      text: "Best Italian food in town! The carbonara was absolutely divine. Will definitely come back.",
-      date: "2023-10-28",
-    },
-  ];
+  // No dummy reviews needed - keeping clean state
+  const dummyReviews = [];
 
   if (!user) return null;
 
@@ -329,8 +315,8 @@ export default function ProfilePage() {
                     ) : upcomingBookings.length === 0 ? (
                       <div className="text-center py-12">
                         <Utensils className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-                        <h4 className="text-lg font-semibold text-gray-700 mb-2">No upcoming bookings</h4>
-                        <p className="text-gray-500 mb-4">Start exploring restaurants and make your first reservation!</p>
+                        <h4 className="text-lg font-semibold text-gray-700 mb-2">Your dining calendar is clear</h4>
+                        <p className="text-gray-500 mb-4">Ready to book your next experience?</p>
                         <button
                           onClick={() => router.push("/customer/home")}
                           className="px-6 py-2 bg-[#C9A050] text-white rounded-lg hover:bg-[#8B6F3E] transition"
@@ -418,7 +404,7 @@ export default function ProfilePage() {
                     {pastBookings.length === 0 ? (
                       <div className="text-center py-12">
                         <History className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-                        <p className="text-gray-500">No past bookings yet</p>
+                        <p className="text-gray-500">Your dining history will appear here once you've dined with us.</p>
                       </div>
                     ) : (
                       <div className="space-y-4">
@@ -503,43 +489,51 @@ export default function ProfilePage() {
                   <h2 className="text-xl sm:text-2xl font-bold text-[#4A3F35] mb-4 sm:mb-6">Your Reviews</h2>
 
                   <div className="space-y-3 sm:space-y-4">
-                    {dummyReviews.map((review) => (
-                      <div
-                        key={review.id}
-                        className="flex flex-col sm:flex-row gap-3 sm:gap-4 p-3 sm:p-4 bg-[#FAF6EF] rounded-xl border border-[#E8E1D5]"
-                      >
-                        {/* Restaurant Image */}
-                        <img
-                          src={review.image}
-                          alt={review.restaurantName}
-                          className="w-full sm:w-20 md:w-24 h-32 sm:h-20 md:h-24 rounded-lg object-cover flex-shrink-0"
-                        />
-
-                        {/* Review Details */}
-                        <div className="flex-1 min-w-0">
-                          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-2">
-                            <h3 className="font-bold text-[#4A3F35] text-base sm:text-lg truncate">{review.restaurantName}</h3>
-                            <div className="flex items-center gap-0.5 sm:gap-1 flex-shrink-0">
-                              {[...Array(5)].map((_, i) => (
-                                <Star
-                                  key={i}
-                                  className={`w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0 ${i < review.rating
-                                    ? "fill-[#FFD700] text-[#FFD700]"
-                                    : "text-gray-300"
-                                    }`}
-                                />
-                              ))}
-                            </div>
-                          </div>
-
-                          <p className="text-[#6B625A] mb-2 text-sm sm:text-base line-clamp-2">{review.text}</p>
-
-                          <p className="text-xs sm:text-sm text-[#8B7355]">
-                            Posted on {new Date(review.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
-                          </p>
-                        </div>
+                    {dummyReviews.length === 0 ? (
+                      <div className="text-center py-12">
+                        <Star className="w-16 h-16 text-gray-200 mx-auto mb-4" />
+                        <h4 className="text-lg font-semibold text-gray-700 mb-2">No reviews yet</h4>
+                        <p className="text-gray-500">Your reviews will appear here.</p>
                       </div>
-                    ))}
+                    ) : (
+                      dummyReviews.map((review) => (
+                        <div
+                          key={review.id}
+                          className="flex flex-col sm:flex-row gap-3 sm:gap-4 p-3 sm:p-4 bg-[#FAF6EF] rounded-xl border border-[#E8E1D5]"
+                        >
+                          {/* Restaurant Image */}
+                          <img
+                            src={review.image}
+                            alt={review.restaurantName}
+                            className="w-full sm:w-20 md:w-24 h-32 sm:h-20 md:h-24 rounded-lg object-cover flex-shrink-0"
+                          />
+
+                          {/* Review Details */}
+                          <div className="flex-1 min-w-0">
+                            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-2">
+                              <h3 className="font-bold text-[#4A3F35] text-base sm:text-lg truncate">{review.restaurantName}</h3>
+                              <div className="flex items-center gap-0.5 sm:gap-1 flex-shrink-0">
+                                {[...Array(5)].map((_, i) => (
+                                  <Star
+                                    key={i}
+                                    className={`w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0 ${i < review.rating
+                                      ? "fill-[#FFD700] text-[#FFD700]"
+                                      : "text-gray-300"
+                                      }`}
+                                  />
+                                ))}
+                              </div>
+                            </div>
+
+                            <p className="text--[#6B625A] mb-2 text-sm sm:text-base line-clamp-2">{review.text}</p>
+
+                            <p className="text-xs sm:text-sm text-[#8B7355]">
+                              Posted on {new Date(review.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+                            </p>
+                          </div>
+                        </div>
+                      ))
+                    )}
                   </div>
                 </div>
               )}
@@ -553,56 +547,41 @@ export default function ProfilePage() {
 
                     {/* Notification Preferences */}
                     <div className="border-b border-[#E8E1D5] pb-6">
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="w-10 h-10 bg-[#E8F0FE] rounded-lg flex items-center justify-center">
-                          <Bell className="w-5 h-5 text-[#1E3A5F]" />
-                        </div>
-                        <h3 className="text-lg font-bold text-[#4A3F35]">Notification Preferences</h3>
-                      </div>
-                      <div className="space-y-3 ml-13">
-                        <label className="flex items-center justify-between cursor-pointer">
-                          <span className="text-[#6B625A]">Email notifications</span>
-                          <input type="checkbox" defaultChecked className="w-5 h-5 text-[#1E3A5F] rounded" />
+                      <h3 className="text-lg font-bold text-[#4A3F35] mb-4">Notification Preferences</h3>
+                      <div className="space-y-4">
+                        <label className="flex items-center justify-between cursor-pointer group">
+                          <span className="text-[#6B625A] group-hover:text-[#4A3F35] transition-colors">Notify me when my table is almost ready</span>
+                          <input type="checkbox" defaultChecked className="w-5 h-5 text-[#1E3A5F] rounded border-gray-300 focus:ring-[#C9A050]" />
                         </label>
-                        <label className="flex items-center justify-between cursor-pointer">
-                          <span className="text-[#6B625A]">SMS notifications</span>
-                          <input type="checkbox" defaultChecked className="w-5 h-5 text-[#1E3A5F] rounded" />
+                        <label className="flex items-center justify-between cursor-pointer group">
+                          <span className="text-[#6B625A] group-hover:text-[#4A3F35] transition-colors">Remind me 30 mins before booking</span>
+                          <input type="checkbox" defaultChecked className="w-5 h-5 text-[#1E3A5F] rounded border-gray-300 focus:ring-[#C9A050]" />
                         </label>
-                        <label className="flex items-center justify-between cursor-pointer">
-                          <span className="text-[#6B625A]">Promotional offers</span>
-                          <input type="checkbox" className="w-5 h-5 text-[#1E3A5F] rounded" />
+                        <label className="flex items-center justify-between cursor-pointer group">
+                          <span className="text-[#6B625A] group-hover:text-[#4A3F35] transition-colors">Restaurant recommendations near me</span>
+                          <input type="checkbox" className="w-5 h-5 text-[#1E3A5F] rounded border-gray-300 focus:ring-[#C9A050]" />
                         </label>
                       </div>
                     </div>
 
                     {/* Privacy Settings */}
                     <div className="border-b border-[#E8E1D5] pb-6">
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="w-10 h-10 bg-[#EFE4F6] rounded-lg flex items-center justify-center">
-                          <Lock className="w-5 h-5 text-[#684D8A]" />
-                        </div>
-                        <h3 className="text-lg font-bold text-[#4A3F35]">Privacy Settings</h3>
-                      </div>
-                      <div className="space-y-3 ml-13">
-                        <label className="flex items-center justify-between cursor-pointer">
-                          <span className="text-[#6B625A]">Show profile to public</span>
-                          <input type="checkbox" className="w-5 h-5 text-[#684D8A] rounded" />
+                      <h3 className="text-lg font-bold text-[#4A3F35] mb-4">Privacy Settings</h3>
+                      <div className="space-y-4">
+                        <label className="flex items-center justify-between cursor-pointer group">
+                          <span className="text-[#6B625A] group-hover:text-[#4A3F35] transition-colors">Show profile to public</span>
+                          <input type="checkbox" className="w-5 h-5 text-[#684D8A] rounded border-gray-300 focus:ring-[#684D8A]" />
                         </label>
-                        <label className="flex items-center justify-between cursor-pointer">
-                          <span className="text-[#6B625A]">Share dining history</span>
-                          <input type="checkbox" className="w-5 h-5 text-[#684D8A] rounded" />
+                        <label className="flex items-center justify-between cursor-pointer group">
+                          <span className="text-[#6B625A] group-hover:text-[#4A3F35] transition-colors">Share dining history with friends</span>
+                          <input type="checkbox" className="w-5 h-5 text-[#684D8A] rounded border-gray-300 focus:ring-[#684D8A]" />
                         </label>
                       </div>
                     </div>
 
                     {/* Account Settings */}
                     <div className="border-b border-[#E8E1D5] pb-6">
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="w-10 h-10 bg-[#E3F6EB] rounded-lg flex items-center justify-center">
-                          <Shield className="w-5 h-5 text-[#3C7A55]" />
-                        </div>
-                        <h3 className="text-lg font-bold text-[#4A3F35]">Account Settings</h3>
-                      </div>
+                      <h3 className="text-lg font-bold text-[#4A3F35] mb-4">Account Settings</h3>
                       <div className="space-y-3 ml-13">
                         <button className="text-[#6B625A] hover:text-[#4A3F35] transition text-left">
                           Change password

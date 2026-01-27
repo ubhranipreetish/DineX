@@ -120,7 +120,7 @@ export default function StaffPage() {
                 <div className="flex justify-end mb-6">
                     <button
                         onClick={() => setShowAddStaffModal(true)}
-                        className="px-6 py-3 bg-gradient-to-r from-[#FF6B35] to-[#FF8C42] hover:from-[#FF5722] hover:to-[#FF6B35] text-white font-semibold rounded-lg flex items-center gap-2 transition-all shadow-md"
+                        className="px-6 py-3 bg-[#C9A050] hover:bg-[#B08D45] text-white font-semibold rounded-lg flex items-center gap-2 transition-all shadow-md"
                     >
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
@@ -276,7 +276,7 @@ export default function StaffPage() {
                                 </button>
                                 <button
                                     type="submit"
-                                    className="flex-1 px-4 py-3 bg-gradient-to-r from-[#FF6B35] to-[#FF8C42] hover:from-[#FF5722] hover:to-[#FF6B35] text-white font-semibold rounded-lg transition-all duration-300"
+                                    className="flex-1 px-4 py-3 bg-[#C9A050] hover:bg-[#B08D45] text-white font-semibold rounded-lg transition-all duration-300"
                                 >
                                     Add Staff
                                 </button>

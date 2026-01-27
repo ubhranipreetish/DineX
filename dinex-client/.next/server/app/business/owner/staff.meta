@@ -1,0 +1,17 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/business/layout,_N_T_/business/owner/layout,_N_T_/business/owner/staff/layout,_N_T_/business/owner/staff/page,_N_T_/business/owner/staff"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/business/owner/staff/__PAGE__",
+    "/business/owner/staff",
+    "/business/owner",
+    "/business",
+    "/_index",
+    "/_head"
+  ]
+}

@@ -25,60 +25,55 @@ export default function Footer() {
 
         {/* ===== Footer Links Grid ===== */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-sm mb-5 text-[#8B6F3E]">
-
           {/* Company */}
           <div>
             <h3 className="mb-4 text-base font-semibold text-gray-800 uppercase">
               Company
             </h3>
             <ul className="space-y-2">
-              <li><Link href="/" className="hover:text-gray-800 transition-colors">About DineX</Link></li>
+              <li><Link href="/" className="hover:text-gray-800 transition-colors">About Us</Link></li>
               <li><Link href="/" className="hover:text-gray-800 transition-colors">Careers</Link></li>
               <li><Link href="/" className="hover:text-gray-800 transition-colors">Press & Media</Link></li>
-              <li><Link href="/" className="hover:text-gray-800 transition-colors">Partnerships</Link></li>
               <li><Link href="/" className="hover:text-gray-800 transition-colors">Contact Us</Link></li>
             </ul>
           </div>
 
-          {/* Explore */}
+          {/* For Diners */}
           <div>
             <h3 className="mb-4 text-base font-semibold text-gray-800 uppercase">
-              Explore
+              For Diners
             </h3>
             <ul className="space-y-2">
-              <li><Link href="/" className="hover:text-gray-800 transition-colors">Top Restaurants</Link></li>
-              <li><Link href="/" className="hover:text-gray-800 transition-colors">Cuisines Near You</Link></li>
-              <li><Link href="/" className="hover:text-gray-800 transition-colors">Offers & Deals</Link></li>
-              <li><Link href="/" className="hover:text-gray-800 transition-colors">Book a Table</Link></li>
+              <li><Link href="/customer/home" className="hover:text-gray-800 transition-colors">Book a Table</Link></li>
+              <li><Link href="/" className="hover:text-gray-800 transition-colors">Trending Restaurants</Link></li>
               <li><Link href="/" className="hover:text-gray-800 transition-colors">DineX Rewards</Link></li>
+              <li><Link href="/" className="hover:text-gray-800 transition-colors">Upcoming Events</Link></li>
             </ul>
           </div>
 
-          {/* Support */}
+          {/* For Business */}
           <div>
             <h3 className="mb-4 text-base font-semibold text-gray-800 uppercase">
-              Support
+              For Business
             </h3>
             <ul className="space-y-2">
-              <li><Link href="/" className="hover:text-gray-800 transition-colors">Help Center</Link></li>
-              <li><Link href="/" className="hover:text-gray-800 transition-colors">FAQs</Link></li>
-              <li><Link href="/" className="hover:text-gray-800 transition-colors">Cancellation Policy</Link></li>
-              <li><Link href="/" className="hover:text-gray-800 transition-colors">Report an Issue</Link></li>
-              <li><Link href="/" className="hover:text-gray-800 transition-colors">Feedback</Link></li>
+              <li><Link href="/business/home" className="hover:text-gray-800 transition-colors">Partner with DineX</Link></li>
+              <li><Link href="/business/home" className="hover:text-gray-800 transition-colors">Business Login</Link></li>
+              <li><Link href="/" className="hover:text-gray-800 transition-colors">Restaurant Dashboard</Link></li>
+              <li><Link href="/" className="hover:text-gray-800 transition-colors">Success Stories</Link></li>
             </ul>
           </div>
 
-          {/* Legal */}
+          {/* Legal & Support */}
           <div>
             <h3 className="mb-4 text-base font-semibold text-gray-800 uppercase">
-              Legal
+              Legal & Support
             </h3>
             <ul className="space-y-2">
               <li><Link href="/" className="hover:text-gray-800 transition-colors">Terms & Conditions</Link></li>
               <li><Link href="/" className="hover:text-gray-800 transition-colors">Privacy Policy</Link></li>
-              <li><Link href="/" className="hover:text-gray-800 transition-colors">Cookie Policy</Link></li>
-              <li><Link href="/" className="hover:text-gray-800 transition-colors">Security</Link></li>
-              <li><Link href="/" className="hover:text-gray-800 transition-colors">Accessibility</Link></li>
+              <li><Link href="/" className="hover:text-gray-800 transition-colors">Help Center</Link></li>
+              <li><Link href="/" className="hover:text-gray-800 transition-colors">FAQs</Link></li>
             </ul>
           </div>
         </div>
@@ -140,6 +135,6 @@ export default function Footer() {
           </p>
         </div>
       </div>
-    </footer>
+    </footer >
   );
 }

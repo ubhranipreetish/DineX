@@ -3551,16 +3551,16 @@ const __TURBOPACK__default__export__ = speedometer;
 "[project]/Documents/Projects/DineX/dinex-client/node_modules/axios/lib/helpers/throttle.js [app-client] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
+__turbopack_context__.s([
+    "default",
+    ()=>__TURBOPACK__default__export__
+]);
 /**
  * Throttle decorator
  * @param {Function} fn
  * @param {Number} freq
  * @return {Function}
- */ __turbopack_context__.s([
-    "default",
-    ()=>__TURBOPACK__default__export__
-]);
-function throttle(fn, freq) {
+ */ function throttle(fn, freq) {
     let timestamp = 0;
     let threshold = 1000 / freq;
     let lastArgs;
@@ -4651,7 +4651,7 @@ __turbopack_context__.s([
     "VERSION",
     ()=>VERSION
 ]);
-const VERSION = "1.13.1";
+const VERSION = "1.13.2";
 }),
 "[project]/Documents/Projects/DineX/dinex-client/node_modules/axios/lib/helpers/validator.js [app-client] (ecmascript)", ((__turbopack_context__) => {
 "use strict";

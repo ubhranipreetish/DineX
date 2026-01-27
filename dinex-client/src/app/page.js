@@ -100,9 +100,9 @@ export default function Home() {
             className="text-base sm:text-lg md:text-xl max-w-2xl mb-8 leading-relaxed drop-shadow-md 
                     bg-gradient-to-r from-white/90 via-[#F4E7C7] to-white/90 bg-clip-text text-transparent"
           >
-            Experience seamless table booking & restaurant management
+            The all-in-one platform for effortless booking
             <br />
-            on the DineX platform
+            and smarter restaurant operations.
           </p>
 
 
@@ -191,21 +191,21 @@ export default function Home() {
           <div className="mt-16 max-w-4xl mx-auto bg-white shadow-xl rounded-3xl p-6 sm:p-10 flex flex-col sm:flex-row justify-between items-center gap-10">
 
             <div className="text-center">
-              <p className="text-3xl font-bold text-gray-900">500+</p>
+              <p className="text-3xl font-bold text-gray-900">480+</p>
               <p className="text-gray-500 text-sm">Restaurants onboarded</p>
             </div>
 
             <div className="hidden sm:block h-10 w-px bg-gray-200"></div>
 
             <div className="text-center">
-              <p className="text-3xl font-bold text-gray-900">50k+</p>
+              <p className="text-3xl font-bold text-gray-900">47k+</p>
               <p className="text-gray-500 text-sm">Tables booked</p>
             </div>
 
             <div className="hidden sm:block h-10 w-px bg-gray-200"></div>
 
             <div className="text-center">
-              <p className="text-3xl font-bold text-gray-900">10k+</p>
+              <p className="text-3xl font-bold text-gray-900">9.6k+</p>
               <p className="text-gray-500 text-sm">Offline orders processed</p>
             </div>
 
@@ -220,17 +220,17 @@ export default function Home() {
       >
 
         {/* Golden Background Mesh */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#FFF9E8] via-white to-white opacity-70 pointer-events-none"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#FFF9E8] via-white to-[#FFF9E8] opacity-70 pointer-events-none"></div>
 
-        {/* Golden Curved Lines */}
+        {/* Golden Curved Lines - Top & Bottom Bookends */}
         <svg className="absolute inset-0 w-full h-full opacity-[0.35] pointer-events-none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-          <path d="M0,150 C400,50 800,250 1400,100" stroke="#D4AF37" strokeWidth="2" fill="none" />
-          <path d="M0,350 C500,250 900,500 1400,300" stroke="#F0D58C" strokeWidth="2" fill="none" />
+          <path d="M0,80 C300,30 700,90 1400,50" stroke="#D4AF37" strokeWidth="2" fill="none" />
+          <path d="M0,800 C400,730 900,830 1400,750" stroke="#F0D58C" strokeWidth="2" fill="none" />
         </svg>
 
-        {/* Soft Glow Circles */}
-        <div className="absolute top-20 left-20 w-72 h-72 bg-[#C9A050]/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-24 w-96 h-96 bg-[#F4D483]/10 rounded-full blur-3xl"></div>
+        {/* Soft Glow Circles - Moved Up */}
+        <div className="absolute top-0 left-20 w-72 h-72 bg-[#C9A050]/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-10 right-24 w-96 h-96 bg-[#F4D483]/10 rounded-full blur-3xl"></div>
 
         <div className="relative z-10 max-w-6xl mx-auto text-center">
 
@@ -240,55 +240,48 @@ export default function Home() {
             The <span className="text-[#C9A050]">DineX</span> Ecosystem
           </h2>
 
-          <p className={`text-lg text-gray-600 max-w-3xl mx-auto mb-20 transition-all ${isEcosystemVisible ? 'animate-fade-up delay-200' : 'opacity-0'
+          <p className={`text-lg text-gray-600 max-w-3xl mx-auto mb-10 transition-all ${isEcosystemVisible ? 'animate-fade-up delay-200' : 'opacity-0'
             }`}>
             A unified dining ecosystem connecting diners and restaurants through discovery, experience,
             and smart digital empowerment — all under one seamless platform.
           </p>
 
           {/* Ecosystem Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mt-10">
+          {/* Ecosystem Editorial List */}
+          <div className="flex flex-col mt-4 border-t border-gray-200/60">
 
-            {/* Card 1 - Discovery */}
-            <div className={`ecosystem-card transition-all ${isEcosystemVisible ? 'animate-slide-up' : 'opacity-0'
-              }`}>
-              <div className="icon-wrapper">
-                <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
+            {/* Item 1 - Discovery */}
+            <div className={`group flex flex-col md:flex-row items-center justify-between py-8 border-b border-gray-200/60 hover:bg-gray-50/50 transition-colors duration-500 cursor-default ${isEcosystemVisible ? 'animate-fade-up' : 'opacity-0'}`}>
+              <div className="flex items-center gap-6 md:gap-12">
+                <span className="text-6xl sm:text-8xl font-thin font-mono text-[#C9A050] opacity-80 leading-none">01</span>
+                <h3 className="text-3xl sm:text-4xl font-serif font-medium text-gray-900">Discovery</h3>
               </div>
-              <h3 className="ecosystem-title">Discovery</h3>
-              <p className="ecosystem-text">
-                Helping people explore restaurants, cuisines, and amazing dining experiences across India.
+              <p className="mt-4 md:mt-0 text-base sm:text-lg text-gray-500 max-w-sm md:text-right font-light leading-relaxed">
+                Find restaurants near you that are open and accepting bookings.
               </p>
             </div>
 
-            {/* Card 2 - Experience */}
-            <div className={`ecosystem-card transition-all ${isEcosystemVisible ? 'animate-slide-up delay-150' : 'opacity-0'
-              }`}>
-              <div className="icon-wrapper">
-                <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-                </svg>
+            {/* Item 2 - Experience */}
+            <div className={`group flex flex-col md:flex-row items-center justify-between py-8 border-b border-gray-200/60 hover:bg-gray-50/50 transition-colors duration-500 cursor-default delay-100 ${isEcosystemVisible ? 'animate-fade-up' : 'opacity-0'}`}>
+              <div className="flex items-center gap-6 md:gap-12">
+                <span className="text-6xl sm:text-8xl font-thin font-mono text-[#C9A050] opacity-80 leading-none">02</span>
+                <h3 className="text-3xl sm:text-4xl font-serif font-medium text-gray-900">Experience</h3>
               </div>
-              <h3 className="ecosystem-title">Experience</h3>
-              <p className="ecosystem-text">
-                Delivering smooth, connected dining journeys for users and restaurants.
+              <p className="mt-4 md:mt-0 text-base sm:text-lg text-gray-500 max-w-sm md:text-right font-light leading-relaxed">
+                Book tables in advance and avoid waiting.
               </p>
             </div>
 
-            {/* Card 3 - Empowerment */}
-            <div className={`ecosystem-card transition-all ${isEcosystemVisible ? 'animate-slide-up delay-300' : 'opacity-0'
-              }`}>
-              <div className="icon-wrapper">
-                <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
+            {/* Item 3 - Empowerment */}
+            <div className={`group flex flex-col md:flex-row items-center justify-between py-8 border-b border-gray-200/60 hover:bg-gray-50/50 transition-colors duration-500 cursor-default delay-200 ${isEcosystemVisible ? 'animate-fade-up' : 'opacity-0'}`}>
+              <div className="flex items-center gap-6 md:gap-12">
+                <span className="text-6xl sm:text-8xl font-thin font-mono text-[#C9A050] opacity-80 leading-none">03</span>
+                <h3 className="text-3xl sm:text-4xl font-serif font-medium text-gray-900">Empowerment</h3>
               </div>
-              <h3 className="ecosystem-title">Empowerment</h3>
-              <p className="ecosystem-text">
-                Equipping restaurants with powerful digital tools that make operations smarter and effortless.
+              <p className="mt-4 md:mt-0 text-base sm:text-lg text-gray-500 max-w-sm md:text-right font-light leading-relaxed">
+                Restaurants manage tables, orders, and customers from one dashboard.
               </p>
+
             </div>
 
           </div>
@@ -297,95 +290,121 @@ export default function Home() {
 
 
 
-      {/* ===== PRODUCT CARDS ===== */}
-      <section className="pb-28 px-6">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+      {/* ===== PRODUCT FEATURE SECTION (ZIG-ZAG) ===== */}
+      <section className="py-24 px-6 bg-gray-50/50">
+        <div className="max-w-7xl mx-auto flex flex-col gap-24">
 
-          {/* ========= DineX Customer App ========= */}
-          <div className="group rounded-3xl p-8 shadow-xl border border-gray-200 hover:shadow-2xl hover:border-[#C9A050]/30 transition-all duration-300 bg-white">
-            <div className="relative w-full h-80 rounded-2xl overflow-hidden mb-6">
-              <Image
-                src="/images/dinex-product.png"
-                alt="DineX Customer"
-                fill
-                className="object-cover transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent group-hover:from-black/30 transition-all duration-300"></div>
+          {/* feature 1: Customer App (Image Left, Text Right) */}
+          <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20">
+            {/* Image Side */}
+            <div className="w-full md:w-1/2 relative group">
+              <div className="relative h-[400px] md:h-[500px] w-full rounded-3xl overflow-hidden shadow-md border border-gray-200 group-hover:shadow-xl group-hover:border-[#C9A050]/30 transition-all duration-500 bg-white">
+                <Image
+                  src="/images/dinex-product.png"
+                  alt="DineX Customer App"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+              </div>
+
+              {/* Decorative Element */}
+              <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-[#D4AF37]/10 rounded-full blur-2xl -z-10"></div>
             </div>
 
-            <div className="flex justify-between items-center mb-3">
-              <h3 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#D4AF37] to-[#FFD700]">
-                DineX
-              </h3>
+            {/* Content Side */}
+            <div className="w-full md:w-1/2">
+              <div className="flex items-center gap-4 mb-6">
+                <h3 className="text-4xl sm:text-5xl font-bold text-[#D4AF37]">
+                  DineX
+                </h3>
+                <span className="px-3 py-1 rounded-full bg-green-100 text-green-700 text-xs font-bold tracking-wide uppercase">
+                  Live
+                </span>
+              </div>
 
-              <span className="px-4 py-1 rounded-full bg-green-100 text-green-700 text-sm font-semibold">
-                LIVE
-              </span>
+              <h4 className="text-2xl font-serif text-gray-900 mb-6 font-medium">
+                Dining made simple.
+              </h4>
+
+              <p className="text-lg text-gray-600 leading-relaxed mb-8">
+                Discover restaurants, explore menus, check live availability, and book tables instantly — all from your phone. No more calling ahead or waiting in lines.
+              </p>
+
+              <ul className="space-y-4 mb-10">
+                {['Instant Table Booking', 'Menus, Reviews & Offers', 'Real-Time Availability'].map((item, i) => (
+                  <li key={i} className="flex items-center gap-3 text-gray-700">
+                    <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[#C9A050]/20 flex items-center justify-center text-[#C9A050] text-sm">✓</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+
+              <Link href="/customer/home">
+                <button className="flex items-center gap-3 px-8 py-3 rounded-full bg-[#C9A050] text-white text-lg font-semibold shadow-lg hover:shadow-xl hover:bg-[#B0892F] hover:-translate-y-1 transition-all group">
+                  Explore DineX
+                  <span className="group-hover:translate-x-1 transition-transform">→</span>
+                </button>
+              </Link>
             </div>
-
-            <p className="text-lg text-gray-700 leading-relaxed mb-6">
-              Discover restaurants, explore menus, check live availability, and book tables instantly — from anywhere.
-            </p>
-
-            <ul className="space-y-3 text-gray-700 mb-8">
-              <li>✓ Instant Table Booking</li>
-              <li>✓ Menus, Reviews & Offers</li>
-              <li>✓ Real-Time Availability</li>
-            </ul>
-
-            {/* CTA → Redirect to business home */}
-            <Link href="/customer/home">
-              <button
-                className="w-full py-3 rounded-xl font-semibold text-gray-700 shadow-lg bg-gradient-to-r from-[#FFD700] to-[#F5C542] hover:shadow-xl hover:-translate-y-[2px] transition-all duration-300 cursor-pointer"
-              >
-                Explore DineX →
-              </button>
-            </Link>
           </div>
 
-
-
-          {/* ========= DineX BUSINESS ========= */}
-          <div className="group rounded-3xl p-8 shadow-xl border border-gray-200 hover:shadow-2xl hover:border-[#C9A050]/30 transition-all duration-300 bg-white">
-            <div className="relative w-full h-80 rounded-2xl overflow-hidden mb-6">
-              <Image
-                src="/images/dinex-business-product.png"
-                alt="DineX Business"
-                fill
-                className="object-cover transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent group-hover:from-black/30 transition-all duration-300"></div>
+          {/* feature 2: Business App (Text Left, Image Right) */}
+          <div className="flex flex-col md:flex-row-reverse items-center gap-12 md:gap-20">
+            {/* Image Side */}
+            <div className="w-full md:w-1/2 relative group">
+              <div className="relative h-[400px] md:h-[500px] w-full rounded-3xl overflow-hidden shadow-md border border-gray-200 group-hover:shadow-xl group-hover:border-[#C9A050]/30 transition-all duration-500 bg-white">
+                <Image
+                  src="/images/dinex-business-product.png"
+                  alt="DineX Business Dashboard"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+              </div>
+              {/* Decorative Element */}
+              <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-[#D4AF37]/10 rounded-full blur-2xl -z-10"></div>
             </div>
 
-            <div className="flex justify-between items-center mb-3">
-              <h3 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#D4AF37] to-[#FFD700]">
-                DineX for Business
-              </h3>
+            {/* Content Side */}
+            <div className="w-full md:w-1/2">
+              <div className="flex items-center gap-4 mb-6">
+                <h3 className="text-4xl sm:text-5xl font-bold text-[#D4AF37]">
+                  DineX <span className="text-gray-900 font-serif font-normal italic opacity-80">for Business</span>
+                </h3>
+                <span className="px-3 py-1 rounded-full bg-green-100 text-green-700 text-xs font-bold tracking-wide uppercase">
+                  Live
+                </span>
+              </div>
 
-              <span className="px-4 py-1 rounded-full bg-green-100 text-green-700 text-sm font-semibold">
-                LIVE
-              </span>
+              <h4 className="text-2xl font-serif text-gray-900 mb-6 font-medium">
+                Powering smart restaurants.
+              </h4>
+
+              <p className="text-lg text-gray-600 leading-relaxed mb-8">
+                A complete offline-order management solution for restaurants. Manage tables, orders, billing, staff, and insights from one powerful dashboard.
+              </p>
+
+              <ul className="space-y-4 mb-10 text-left">
+                {['Table & Order Management', 'Staff Dashboard', 'Real-Time Analytics'].map((item, i) => (
+                  <li key={i} className="flex items-center gap-3 text-gray-700">
+                    <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[#C9A050]/20 flex items-center justify-center text-[#C9A050] text-sm">✓</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+
+              <div className="flex">
+                <Link href="/business/home">
+                  <button className="flex items-center gap-3 px-8 py-3 rounded-full bg-[#C9A050] text-white text-lg font-semibold shadow-lg hover:shadow-xl hover:bg-[#B0892F] hover:-translate-y-1 transition-all group">
+                    Explore Business Portal
+                    <span className="group-hover:-translate-x-1 transition-transform ">→</span>
+                  </button>
+                </Link>
+              </div>
             </div>
-
-            <p className="text-lg text-gray-700 leading-relaxed mb-6">
-              A complete offline-order management solution for restaurants — tables, orders, billing, staff, insights and more.
-            </p>
-
-            <ul className="space-y-3 text-gray-700 mb-8">
-              <li>✓ Table & Order Management</li>
-              <li>✓ Staff Dashboard</li>
-              <li>✓ Real-Time Analytics</li>
-            </ul>
-
-            {/* CTA → Redirect to business home */}
-            <Link href="/business/home">
-              <button
-                className="w-full py-3 rounded-xl font-semibold text-gray-700 shadow-lg bg-gradient-to-r from-[#FFD700] to-[#F5C542] hover:shadow-xl hover:-translate-y-[2px] transition-all duration-300 cursor-pointer"
-              >
-                Explore Business Portal →
-              </button>
-            </Link>
           </div>
+
         </div>
       </section>
 

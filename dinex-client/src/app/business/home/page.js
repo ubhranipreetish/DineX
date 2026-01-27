@@ -113,39 +113,27 @@ export default function BusinessHome() {
     const features = [
         {
             icon: <svg className="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" /></svg>,
-            title: "Smart Table Management",
-            description: "Effortlessly manage table bookings, real-time availability, and optimize seating arrangements with our intelligent system.",
-            benefits: ["Real-time table status", "Automated booking confirmations", "Waitlist management", "Table turnover optimization"]
+            title: "Table Management",
+            description: "Effortlessly manage bookings, real time availability and optimize seating arrangements.",
+            benefits: ["Real time status", "Waitlist management", "Turnover optimization"]
         },
         {
             icon: <svg className="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" /><circle cx="12" cy="12" r="10" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} /></svg>,
-            title: "Seamless Order Management",
-            description: "Streamline offline orders from table to kitchen with digital tracking, reducing errors and improving service speed.",
-            benefits: ["Digital order tracking", "Kitchen display system", "Order modification tracking", "Bill splitting support"]
+            title: "Order Management",
+            description: "Streamline offline orders from table to kitchen with digital tracking.",
+            benefits: ["Digital tracking", "Kitchen display system", "Modification tracking"]
         },
         {
             icon: <svg className="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>,
             title: "Staff Dashboard",
-            description: "Empower your team with role-based access, performance tracking, and real-time communication tools.",
-            benefits: ["Role-based permissions", "Performance analytics", "Shift management", "Real-time notifications"]
-        },
-        {
-            icon: <svg className="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>,
-            title: "Business Analytics",
-            description: "Gain actionable insights with comprehensive reports on sales, customer behavior, and operational efficiency.",
-            benefits: ["Revenue analytics", "Customer insights", "Peak hours analysis", "Menu performance tracking"]
+            description: "Empower your team with role based access and performance tracking.",
+            benefits: ["Role based permissions", "Performance analytics", "Shift management"]
         },
         {
             icon: <svg className="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" /></svg>,
             title: "Integrated Billing",
-            description: "Simplify payments with integrated billing, multiple payment methods, and automated invoice generation.",
-            benefits: ["Multiple payment options", "Automated invoicing", "Tax calculations", "Transaction history"]
-        },
-        {
-            icon: <svg className="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>,
-            title: "Mobile-First Design",
-            description: "Manage your restaurant on-the-go with our responsive platform accessible from any device, anywhere.",
-            benefits: ["Cross-device sync", "Offline mode support", "Push notifications", "Cloud-based backup"]
+            description: "Simplify payments with integrated billing and automated invoice generation.",
+            benefits: ["Automated invoicing", "Tax calculations", "Transaction history"]
         }
     ];
 
@@ -215,10 +203,9 @@ export default function BusinessHome() {
             {/* ===== HERO SECTION ===== */}
             <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#FFF9E8] via-white to-[#FFF5E1]">
 
-                {/* Animated Background Elements */}
-                <div className="absolute inset-0 overflow-hidden opacity-40">
-                    <div className="absolute top-20 left-20 w-96 h-96 bg-[#C9A050]/20 rounded-full blur-3xl animate-pulse"></div>
-                    <div className="absolute bottom-20 right-20 w-[500px] h-[500px] bg-[#F4D483]/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+                {/* Animated Background Elements - Reduced Noise */}
+                <div className="absolute inset-0 overflow-hidden opacity-20">
+                    {/* Removed pulsing blobs for cleaner look */}
                 </div>
 
                 {/* Golden Curves */}
@@ -270,22 +257,22 @@ export default function BusinessHome() {
                         </button>
                     </div>
 
-                    {/* Stats */}
+                    {/* Stats - Imperfect numbers for credibility */}
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto animate-fade-up delay-500">
                         <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
-                            <div className="text-4xl font-bold text-[#C9A050] mb-2">500+</div>
+                            <div className="text-4xl font-bold text-[#C9A050] mb-2">480+</div>
                             <div className="text-sm text-gray-600">Restaurants</div>
                         </div>
                         <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
-                            <div className="text-4xl font-bold text-[#C9A050] mb-2">50k+</div>
+                            <div className="text-4xl font-bold text-[#C9A050] mb-2">47k+</div>
                             <div className="text-sm text-gray-600">Orders Daily</div>
                         </div>
                         <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
-                            <div className="text-4xl font-bold text-[#C9A050] mb-2">40%</div>
+                            <div className="text-4xl font-bold text-[#C9A050] mb-2">38%</div>
                             <div className="text-sm text-gray-600">Efficiency Boost</div>
                         </div>
                         <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
-                            <div className="text-4xl font-bold text-[#C9A050] mb-2">24/7</div>
+                            <div className="text-4xl font-bold text-[#C9A050] mb-2">24h</div>
                             <div className="text-sm text-gray-600">Support</div>
                         </div>
                     </div>
@@ -306,7 +293,7 @@ export default function BusinessHome() {
                     </div>
 
                     {/* Features Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                         {features.map((feature, index) => (
                             <div
                                 key={index}
@@ -372,7 +359,7 @@ export default function BusinessHome() {
                                     }`}
                                 style={{ animationDelay: `${index * 100}ms` }}
                             >
-                                <div className="text-[#C9A050] mb-4">{reason.icon}</div>
+                                {/* Icons removed for cleaner look, letting typography lead */}
                                 <h3 className="text-2xl font-bold text-gray-900 mb-3">{reason.title}</h3>
                                 <p className="text-gray-600 leading-relaxed">{reason.description}</p>
                             </div>
@@ -393,7 +380,7 @@ export default function BusinessHome() {
                             Loved by Restaurant <span className="text-[#C9A050]">Owners</span>
                         </h2>
                         <p className={`text-xl text-gray-600 max-w-3xl mx-auto transition-all ${isTestimonialsVisible ? 'animate-fade-up delay-200' : 'opacity-0'}`}>
-                            Don't just take our word for it—hear from restaurant owners who've transformed their business with DineX.
+                            Sample testimonials (for demo purposes)
                         </p>
                     </div>
 

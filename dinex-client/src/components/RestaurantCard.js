@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Star } from "lucide-react";
+import { Star, Tag } from "lucide-react";
 
 export default function RestaurantCard({ restaurant }) {
   return (
@@ -16,7 +16,7 @@ export default function RestaurantCard({ restaurant }) {
           {/* Offer Banner */}
           {restaurant.offer && (
             <div className="absolute bottom-2 left-0 bg-blue-600 text-white text-sm font-semibold px-3 py-1 rounded-r-lg flex items-center gap-2">
-              <span className="text-lg">💠</span> {restaurant.offer}% OFF
+              <Tag className="w-4 h-4 fill-white/20" /> {restaurant.offer}% OFF
             </div>
           )}
         </div>

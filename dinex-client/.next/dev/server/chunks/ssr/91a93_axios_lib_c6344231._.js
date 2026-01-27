@@ -2008,7 +2008,7 @@ __turbopack_context__.s([
     "VERSION",
     ()=>VERSION
 ]);
-const VERSION = "1.13.1";
+const VERSION = "1.13.2";
 }),
 "[project]/Documents/Projects/DineX/dinex-client/node_modules/axios/lib/helpers/parseProtocol.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
@@ -2412,16 +2412,16 @@ const __TURBOPACK__default__export__ = speedometer;
 "[project]/Documents/Projects/DineX/dinex-client/node_modules/axios/lib/helpers/throttle.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
+__turbopack_context__.s([
+    "default",
+    ()=>__TURBOPACK__default__export__
+]);
 /**
  * Throttle decorator
  * @param {Function} fn
  * @param {Number} freq
  * @return {Function}
- */ __turbopack_context__.s([
-    "default",
-    ()=>__TURBOPACK__default__export__
-]);
-function throttle(fn, freq) {
+ */ function throttle(fn, freq) {
     let timestamp = 0;
     let threshold = 1000 / freq;
     let lastArgs;
@@ -2586,7 +2586,6 @@ __turbopack_context__.s([
     "default",
     ()=>__TURBOPACK__default__export__
 ]);
-var __TURBOPACK__imported__module__$5b$externals$5d2f$http2__$5b$external$5d$__$28$http2$2c$__cjs$29$__ = __turbopack_context__.i("[externals]/http2 [external] (http2, cjs)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$axios$2f$lib$2f$utils$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/axios/lib/utils.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$axios$2f$lib$2f$core$2f$settle$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/axios/lib/core/settle.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$axios$2f$lib$2f$core$2f$buildFullPath$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/axios/lib/core/buildFullPath.js [app-ssr] (ecmascript)");
@@ -2594,6 +2593,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$Din
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$proxy$2d$from$2d$env$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/proxy-from-env/index.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$externals$5d2f$http__$5b$external$5d$__$28$http$2c$__cjs$29$__ = __turbopack_context__.i("[externals]/http [external] (http, cjs)");
 var __TURBOPACK__imported__module__$5b$externals$5d2f$https__$5b$external$5d$__$28$https$2c$__cjs$29$__ = __turbopack_context__.i("[externals]/https [external] (https, cjs)");
+var __TURBOPACK__imported__module__$5b$externals$5d2f$http2__$5b$external$5d$__$28$http2$2c$__cjs$29$__ = __turbopack_context__.i("[externals]/http2 [external] (http2, cjs)");
 var __TURBOPACK__imported__module__$5b$externals$5d2f$util__$5b$external$5d$__$28$util$2c$__cjs$29$__ = __turbopack_context__.i("[externals]/util [external] (util, cjs)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$follow$2d$redirects$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/follow-redirects/index.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$externals$5d2f$zlib__$5b$external$5d$__$28$zlib$2c$__cjs$29$__ = __turbopack_context__.i("[externals]/zlib [external] (zlib, cjs)");
@@ -2648,7 +2648,6 @@ const brotliOptions = {
     flush: __TURBOPACK__imported__module__$5b$externals$5d2f$zlib__$5b$external$5d$__$28$zlib$2c$__cjs$29$__["default"].constants.BROTLI_OPERATION_FLUSH,
     finishFlush: __TURBOPACK__imported__module__$5b$externals$5d2f$zlib__$5b$external$5d$__$28$zlib$2c$__cjs$29$__["default"].constants.BROTLI_OPERATION_FLUSH
 };
-const { HTTP2_HEADER_SCHEME, HTTP2_HEADER_METHOD, HTTP2_HEADER_PATH, HTTP2_HEADER_STATUS } = __TURBOPACK__imported__module__$5b$externals$5d2f$http2__$5b$external$5d$__$28$http2$2c$__cjs$29$__["constants"];
 const isBrotliSupported = __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$axios$2f$lib$2f$utils$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].isFunction(__TURBOPACK__imported__module__$5b$externals$5d2f$zlib__$5b$external$5d$__$28$zlib$2c$__cjs$29$__["default"].createBrotliDecompress);
 const { http: httpFollow, https: httpsFollow } = __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$follow$2d$redirects$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"];
 const isHttps = /https:?/;
@@ -2667,8 +2666,8 @@ class Http2Sessions {
         options = Object.assign({
             sessionTimeout: 1000
         }, options);
-        let authoritySessions;
-        if (authoritySessions = this.sessions[authority]) {
+        let authoritySessions = this.sessions[authority];
+        if (authoritySessions) {
             let len = authoritySessions.length;
             for(let i = 0; i < len; i++){
                 const [sessionHandle, sessionOptions] = authoritySessions[i];
@@ -2677,7 +2676,7 @@ class Http2Sessions {
                 }
             }
         }
-        const session = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$http2__$5b$external$5d$__$28$http2$2c$__cjs$29$__["connect"])(authority, options);
+        const session = __TURBOPACK__imported__module__$5b$externals$5d2f$http2__$5b$external$5d$__$28$http2$2c$__cjs$29$__["default"].connect(authority, options);
         let removed;
         const removeSession = ()=>{
             if (removed) {
@@ -2687,11 +2686,12 @@ class Http2Sessions {
             let entries = authoritySessions, len = entries.length, i = len;
             while(i--){
                 if (entries[i][0] === session) {
-                    entries.splice(i, 1);
                     if (len === 1) {
                         delete this.sessions[authority];
-                        return;
+                    } else {
+                        entries.splice(i, 1);
                     }
+                    return;
                 }
             }
         };
@@ -2719,11 +2719,11 @@ class Http2Sessions {
             };
         }
         session.once('close', removeSession);
-        let entries = this.sessions[authority], entry = [
+        let entry = [
             session,
             options
         ];
-        entries ? this.sessions[authority].push(entry) : authoritySessions = this.sessions[authority] = [
+        authoritySessions ? authoritySessions.push(entry) : authoritySessions = this.sessions[authority] = [
             entry
         ];
         return session;
@@ -2831,6 +2831,7 @@ const http2Transport = {
         const authority = options.protocol + '//' + options.hostname + ':' + (options.port || 80);
         const { http2Options, headers } = options;
         const session = http2Sessions.getSession(authority, http2Options);
+        const { HTTP2_HEADER_SCHEME, HTTP2_HEADER_METHOD, HTTP2_HEADER_PATH, HTTP2_HEADER_STATUS } = __TURBOPACK__imported__module__$5b$externals$5d2f$http2__$5b$external$5d$__$28$http2$2c$__cjs$29$__["default"].constants;
         const http2Headers = {
             [HTTP2_HEADER_SCHEME]: options.protocol.replace(':', ''),
             [HTTP2_HEADER_METHOD]: options.method,
@@ -3270,6 +3271,9 @@ const __TURBOPACK__default__export__ = isHttpAdapterSupported && function httpAd
                 }
                 abort(new __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$axios$2f$lib$2f$core$2f$AxiosError$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"](timeoutErrorMessage, transitional.clarifyTimeoutError ? __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$axios$2f$lib$2f$core$2f$AxiosError$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].ETIMEDOUT : __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$axios$2f$lib$2f$core$2f$AxiosError$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].ECONNABORTED, config, req));
             });
+        } else {
+            // explicitly reset the socket timeout value for a possible `keep-alive` request
+            req.setTimeout(0);
         }
         // Send the request
         if (__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$axios$2f$lib$2f$utils$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].isStream(data)) {

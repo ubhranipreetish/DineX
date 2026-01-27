@@ -86,11 +86,11 @@ module.exports = mod;
 "[project]/Documents/Projects/DineX/dinex-client/src/utils/api.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
-// src/utils/api.js
 __turbopack_context__.s([
     "API",
     ()=>API
 ]);
+// src/utils/api.js
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Projects/DineX/dinex-client/node_modules/axios/lib/axios.js [app-ssr] (ecmascript)");
 ;
 const API = __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Projects$2f$DineX$2f$dinex$2d$client$2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].create({
@@ -341,6 +341,12 @@ const OrderProvider = ({ children })=>{
             console.error('Error removing item:', error);
         }
     };
+    const generateBill = (tableId)=>{
+        setTables((prev)=>prev.map((t)=>t.id === tableId || t.tableNumber === tableId ? {
+                    ...t,
+                    status: 'bill-pending'
+                } : t));
+    };
     const completeOrder = (orderId)=>{
         return orderId;
     };
@@ -471,6 +477,7 @@ const OrderProvider = ({ children })=>{
         completeOrder,
         markAsPaid,
         cancelOrder,
+        generateBill,
         calculateBill,
         getOrderByTableId,
         getActiveOrders,
@@ -482,7 +489,7 @@ const OrderProvider = ({ children })=>{
         children: children
     }, void 0, false, {
         fileName: "[project]/Documents/Projects/DineX/dinex-client/src/app/business/staff/context/OrderContext.js",
-        lineNumber: 356,
+        lineNumber: 365,
         columnNumber: 9
     }, ("TURBOPACK compile-time value", void 0));
 };

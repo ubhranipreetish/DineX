@@ -14,13 +14,16 @@ export default function CreateOrderPage() {
     const router = useRouter();
     const params = useParams();
     const tableId = parseInt(params.id);
-    const { createOrder, tables } = useOrder();
-    const { showToast } = useNotification();
+    const { createOrder, tables, getOrderByTableId, addItemsToOrder, generateBill, cancelOrder, removeItemFromOrder } = useOrder();
+    const { showToast, showDialog } = useNotification();
 
     const [activeCategory, setActiveCategory] = useState('hot-beverages');
     const [selectedItems, setSelectedItems] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
     const [isPlacingOrder, setIsPlacingOrder] = useState(false);
+
+    // Existing Order State
+    const [existingOrder, setExistingOrder] = useState(null);
 
     const table = tables.find(t => t.id === tableId);
 
@@ -32,20 +35,31 @@ export default function CreateOrderPage() {
             return;
         }
 
-        // Check if table exists and is free
+        // Check if table exists
         if (!table) {
             router.push('/business/staff/home');
             return;
         }
-    }, [table, router]);
+
+        // If occupied, fetch existing order
+        if (table.status === 'occupied') {
+            const order = getOrderByTableId(tableId);
+            if (order) {
+                setExistingOrder(order);
+            }
+        }
+    }, [table, router, getOrderByTableId, tableId]);
 
     const handleAddItem = (item) => {
         setSelectedItems(prev => {
             const existingIndex = prev.findIndex(i => i.id === item.id);
             if (existingIndex >= 0) {
-                // Increase quantity
+                // Increase quantity immutably
                 const updated = [...prev];
-                updated[existingIndex].quantity += 1;
+                updated[existingIndex] = {
+                    ...updated[existingIndex],
+                    quantity: updated[existingIndex].quantity + 1
+                };
                 return updated;
             } else {
                 // Add new item
@@ -61,7 +75,7 @@ export default function CreateOrderPage() {
         }
         setSelectedItems(prev => {
             const updated = [...prev];
-            updated[index].quantity = newQuantity;
+            updated[index] = { ...updated[index], quantity: newQuantity };
             return updated;
         });
     };
@@ -70,22 +84,83 @@ export default function CreateOrderPage() {
         setSelectedItems(prev => prev.filter((_, i) => i !== index));
     };
 
+    const handleRemoveExistingItem = async (filteredIndex) => {
+        if (!existingOrder) return;
+
+        const confirmed = await showDialog({
+            title: "Remove Item",
+            message: "Remove this item from the existing order?",
+            confirmText: "Remove",
+            cancelText: "Cancel",
+            type: "warning",
+        });
+
+        if (confirmed) {
+            // Find the actual item index in the full list
+            const visibleItems = existingOrder.items.filter(i => i.status !== 'removed');
+            const targetItem = visibleItems[filteredIndex];
+
+            if (targetItem) {
+                const realIndex = existingOrder.items.indexOf(targetItem);
+                if (realIndex !== -1) {
+                    await removeItemFromOrder(existingOrder.orderId, realIndex);
+                    showToast("Item removed", "success");
+                    // Refresh existing order
+                    const updatedOrder = getOrderByTableId(tableId);
+                    setExistingOrder(updatedOrder);
+                }
+            }
+        }
+    };
+
     const handlePlaceOrder = async () => {
         if (selectedItems.length === 0) return;
 
         setIsPlacingOrder(true);
 
         try {
-            const orderId = await createOrder(tableId, selectedItems);
-            router.push(`/business/staff/table/${tableId}/manage`);
+            if (existingOrder) {
+                // UPDATE EXISTING ORDER
+                await addItemsToOrder(existingOrder.orderId, selectedItems);
+                showToast("Order updated successfully", "success");
+                setSelectedItems([]); // Clear selection
+                // Refresh existing order
+                const updatedOrder = getOrderByTableId(tableId);
+                setExistingOrder(updatedOrder);
+            } else {
+                // CREATE NEW ORDER
+                await createOrder(tableId, selectedItems);
+                router.push('/business/staff/home');
+            }
         } catch (error) {
-            console.error("Order creation failed:", error);
-            showToast("Failed to create order.", "error");
+            console.error("Order action failed:", error);
+            showToast("Failed to update order.", "error");
         } finally {
             setIsPlacingOrder(false);
         }
     };
 
+    const handleGenerateBill = () => {
+        if (!existingOrder) return;
+        generateBill(tableId);
+        router.push(`/business/staff/table/${table.id}/bill`);
+    };
+
+    const handleCancelOrder = async () => {
+        if (!existingOrder) return;
+        const confirmed = await showDialog({
+            title: "Cancel Order",
+            message: "Are you sure you want to cancel this entire order? This cannot be undone.",
+            confirmText: "Cancel Order",
+            cancelText: "Keep Order",
+            type: "danger",
+        });
+        if (confirmed) {
+            cancelOrder(existingOrder.orderId);
+            showToast("Order cancelled", "success");
+            router.push('/business/staff/home');
+        }
+    };
 
     const filteredItems = searchQuery
         ? MENU_ITEMS.filter(item =>
@@ -102,8 +177,10 @@ export default function CreateOrderPage() {
         return null;
     }
 
+    const isUpdating = !!existingOrder;
+
     return (
-        <div className="min-h-screen bg-[#FFF8E7] text-gray-800">
+        <div className="min-h-screen bg-[#F9F9F9] text-gray-800">
             {/* Navbar */}
             <StaffNavbar />
 
@@ -113,21 +190,23 @@ export default function CreateOrderPage() {
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-4">
                             <button
-                                onClick={() => router.back()}
-                                className="p-2 hover:bg-amber-100 rounded-xl transition-colors text-amber-600"
+                                onClick={() => router.push('/business/staff/home')} // Always go home on back
+                                className="p-2 hover:bg-gray-100 rounded-xl transition-colors text-gray-600 cursor-pointer"
                             >
                                 <ArrowLeft className="w-6 h-6" />
                             </button>
                             <div>
-                                <h1 className="text-3xl font-bold bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 bg-clip-text text-transparent">
-                                    Create Order
+                                <h1 className="text-3xl font-bold text-gray-900">
+                                    {isUpdating ? 'Update Order' : 'Create Order'}
                                 </h1>
-                                <p className="text-sm text-gray-500 mt-1">Table {table.tableNumber}</p>
+                                <p className="text-sm text-gray-500 mt-1">
+                                    Table {table.tableNumber} {isUpdating && `• Order #${existingOrder?.orderId?.slice(-6) || ''}`}
+                                </p>
                             </div>
                         </div>
                         <div className="text-right">
-                            <p className="text-sm text-gray-500">Items Selected</p>
-                            <p className="text-2xl font-bold text-amber-600">
+                            <p className="text-sm text-gray-500">New Items Selected</p>
+                            <p className="text-2xl font-bold text-[#C9A050]">
                                 {selectedItems.reduce((sum, item) => sum + item.quantity, 0)}
                             </p>
                         </div>
@@ -140,7 +219,7 @@ export default function CreateOrderPage() {
                     {/* Left Column - Menu */}
                     <div className="lg:col-span-2 space-y-6">
                         {/* Search Bar */}
-                        <div className="bg-white rounded-2xl shadow-lg shadow-amber-100/50 p-4 border border-amber-50">
+                        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
                             <div className="relative">
                                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                                 <input
@@ -148,7 +227,7 @@ export default function CreateOrderPage() {
                                     placeholder="Search menu items..."
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
-                                    className="w-full pl-12 pr-4 py-3 border-2 border-gray-100 rounded-xl focus:border-amber-400 focus:outline-none text-gray-700 transition-colors"
+                                    className="w-full pl-12 pr-4 py-3 border-2 border-gray-100 rounded-xl focus:border-[#C9A050] focus:outline-none text-gray-700 transition-colors"
                                 />
                             </div>
                         </div>
@@ -163,9 +242,9 @@ export default function CreateOrderPage() {
                         )}
 
                         {/* Menu Items Grid */}
-                        <div className="bg-white rounded-3xl shadow-xl shadow-amber-100/20 p-6 border border-amber-50">
-                            <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
-                                <span className="w-2 h-8 bg-gradient-to-b from-amber-400 to-yellow-500 rounded-full"></span>
+                        <div className="bg-white rounded-3xl shadow-sm border border-gray-100 p-6">
+                            <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+                                <span className="w-2 h-8 bg-[#C9A050] rounded-full"></span>
                                 {searchQuery
                                     ? `Search Results (${filteredItems.length})`
                                     : MENU_CATEGORIES.find(c => c.id === activeCategory)?.name
@@ -194,9 +273,13 @@ export default function CreateOrderPage() {
                     <div className="lg:col-span-1">
                         <OrderSummary
                             items={selectedItems}
+                            existingItems={existingOrder?.items?.filter(i => i.status !== 'removed') || []}
                             onQuantityChange={handleQuantityChange}
                             onRemoveItem={handleRemoveItem}
+                            onRemoveExistingItem={handleRemoveExistingItem}
                             onPlaceOrder={handlePlaceOrder}
+                            onGenerateBill={handleGenerateBill}
+                            onCancelOrder={handleCancelOrder}
                             isPlacingOrder={isPlacingOrder}
                             tableNumber={table.tableNumber}
                         />

@@ -1,12 +1,119 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect, useMemo } from "react";
 import DashboardNav from "../components/DashboardNav";
 import { useBusinessData } from "../context/BusinessDataContext";
 import Footer from "@/components/Footer";
+import {
+    AreaChart,
+    Area,
+    XAxis,
+    YAxis,
+    CartesianGrid,
+    Tooltip,
+    ResponsiveContainer,
+    PieChart,
+    Pie,
+    Cell,
+    BarChart,
+    Bar
+} from "recharts";
+
+// Mock Data Generators for different time periods
+const generateData = (period) => {
+    // Top Selling Items (Indian Context)
+    const topItems = {
+        today: [
+            { name: "Butter Chicken", value: 12 },
+            { name: "Paneer Tikka", value: 10 },
+            { name: "Garlic Naan", value: 25 },
+            { name: "Masala Chai", value: 18 },
+            { name: "Gulab Jamun", value: 8 },
+        ],
+        week: [
+            { name: "Butter Chicken", value: 85 },
+            { name: "Dal Makhani", value: 72 },
+            { name: "Paneer Tikka", value: 68 },
+            { name: "Chicken Biryani", value: 65 },
+            { name: "Garlic Naan", value: 140 },
+        ],
+        month: [
+            { name: "Chicken Biryani", value: 320 },
+            { name: "Butter Chicken", value: 290 },
+            { name: "Paneer Butter Masala", value: 245 },
+            { name: "Tandoori Roti", value: 850 },
+            { name: "Jeera Rice", value: 210 },
+        ]
+    };
+
+    // Sales Data for Chart
+    const salesData = {
+        today: Array.from({ length: 12 }, (_, i) => ({
+            name: `${i * 2}h`,
+            sales: Math.floor(Math.random() * 5000) + 1000
+        })),
+        week: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map(day => ({
+            name: day,
+            sales: Math.floor(Math.random() * 25000) + 10000
+        })),
+        month: Array.from({ length: 4 }, (_, i) => ({
+            name: `Week ${i + 1}`,
+            sales: Math.floor(Math.random() * 150000) + 80000
+        }))
+    };
+
+    // Stats
+    const stats = {
+        today: { revenue: "12,845", orders: "42", avg: "305", newCust: "8" },
+        week: { revenue: "84,210", orders: "892", avg: "450", newCust: "76" },
+        month: { revenue: "345,920", orders: "3,120", avg: "480", newCust: "245" }
+    };
+
+    return {
+        items: topItems[period],
+        chart: salesData[period],
+        stats: stats[period]
+    };
+};
+
+const recentOrders = [
+    { id: "#ORD-0012", customer: "Rahul Sharma", status: "Completed", amount: "₹850.00" },
+    { id: "#ORD-0011", customer: "Priya Patel", status: "Completed", amount: "₹1,240.00" },
+    { id: "#ORD-0010", customer: "Amit Singh", status: "Pending", amount: "₹650.00" },
+    { id: "#ORD-0009", customer: "Sneha Gupta", status: "Cancelled", amount: "₹420.00" },
+];
+
+const COLORS = ['#007B82', '#4A6CF7', '#475569']; // Teal, Blue, Slate
+
+// Custom Tooltip for Recharts
+const CustomTooltip = ({ active, payload, label }) => {
+    if (active && payload && payload.length) {
+        return (
+            <div className="bg-white p-3 border border-gray-100 shadow-lg rounded-lg">
+                <p className="text-sm font-semibold text-gray-900">{label}</p>
+                <p className="text-sm text-[#007B82]">
+                    Sales: ₹{payload[0].value.toLocaleString()}
+                </p>
+            </div>
+        );
+    }
+    return null;
+};
 
 export default function AnalyticsPage() {
-    const { ownerData, staff, isLoading } = useBusinessData();
-    const [timePeriod, setTimePeriod] = useState("today");
+    const { ownerData, isLoading } = useBusinessData();
+    const [timePeriod, setTimePeriod] = useState("week");
+    const [data, setData] = useState(generateData("week"));
+
+    useEffect(() => {
+        setData(generateData(timePeriod));
+    }, [timePeriod]);
+
+    // Order Source Data (Static for now, but could be dynamic)
+    const sourceData = [
+        { name: 'Dine-In', value: 535 }, // approx 60%
+        { name: 'Takeout', value: 267 }, // approx 30%
+        { name: 'Delivery', value: 90 }, // approx 10%
+    ];
 
     if (isLoading) {
         return (
@@ -16,37 +123,21 @@ export default function AnalyticsPage() {
         );
     }
 
-    // Mock data for charts
-    const topSellingItems = [
-        { name: "Classic Cheeseburger", value: 85 },
-        { name: "Margherita Pizza", value: 70 },
-        { name: "Caesar Salad", value: 65 },
-        { name: "Fettuccine Alfredo", value: 60 },
-        { name: "Truffle Fries", value: 75 },
-    ];
-
-    const recentOrders = [
-        { id: "#ORD-0012", customer: "Jane Cooper", status: "Completed", amount: "$89.50" },
-        { id: "#ORD-0011", customer: "Cody Fisher", status: "Completed", amount: "$72.00" },
-        { id: "#ORD-0010", customer: "Esther Howard", status: "Pending", amount: "$65.25" },
-        { id: "#ORD-0009", customer: "Robert Fox", status: "Cancelled", amount: "$58.90" },
-    ];
-
     return (
         <div className="min-h-screen bg-[#F9F9F9]">
             <DashboardNav />
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                {/* Header with subtle gold gradient */}
+                {/* Header */}
                 <div className="mb-8 pb-6 border-b border-gray-200">
                     <div className="flex justify-between items-start">
                         <div>
-                            <h1 className="text-4xl font-bold text-gray-900 mb-2 bg-gradient-to-r from-gray-900 via-[#C9A050] to-gray-900 bg-clip-text">
+                            <h1 className="text-4xl font-bold text-gray-900 mb-2">
                                 Analytics Dashboard
                             </h1>
-                            <p className="text-gray-500">Welcome back, {ownerData?.owner.name}! Here's your restaurant's performance overview.</p>
+                            <p className="text-gray-500">Welcome back, {ownerData?.owner.name || "Restaurant Owner"}! Here's your performance overview.</p>
                         </div>
-                        <button className="px-6 py-3 bg-gradient-to-r from-[#C9A050] to-[#8B6F3E] hover:from-[#8B6F3E] hover:to-[#C9A050] text-white font-semibold rounded-lg flex items-center gap-2 transition-all shadow-md cursor-pointer">
+                        <button className="px-6 py-3 bg-[#C9A050] hover:bg-[#B08D45] text-white font-semibold rounded-lg flex items-center gap-2 transition-all shadow-md cursor-pointer">
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                             </svg>
@@ -61,241 +152,158 @@ export default function AnalyticsPage() {
                         <button
                             key={period}
                             onClick={() => setTimePeriod(period)}
-                            className={`px-6 py-2 rounded-lg font-medium transition-all cursor-pointer ${timePeriod === period
-                                ? "bg-white text-gray-900 font-semibold shadow-md border-b-2 border-[#C9A050]"
+                            className={`px-6 py-2 rounded-lg font-medium transition-all cursor-pointer capitalize ${timePeriod === period
+                                ? "bg-white text-gray-900 font-bold shadow-md border-b-2 border-[#C9A050]"
                                 : "bg-white text-gray-500 border border-gray-200 hover:border-[#C9A050] shadow-sm hover:shadow-md"
                                 }`}
                         >
-                            {period === "today" ? "Today" : period === "week" ? "This Week" : period === "month" ? "This Month" : "Custom Range"}
+                            {period === "today" ? "Today" : period === "week" ? "This Week" : "This Month"}
                         </button>
                     ))}
                 </div>
 
-                {/* Metric Cards */}
+                {/* Metric Cards - Interactive based on state */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                    {/* Total Revenue */}
-                    <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-100">
-                        <p className="text-sm text-gray-500 font-medium mb-2">Total Revenue</p>
-                        <p className="text-4xl font-bold text-gray-900 mb-2">$12,845</p>
-                        <p className="text-sm text-[#C9A050] flex items-center gap-1 font-semibold">
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
-                            </svg>
-                            +12.5%
-                        </p>
-                    </div>
-
-                    {/* Total Orders */}
-                    <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-100">
-                        <p className="text-sm text-gray-500 font-medium mb-2">Total Orders</p>
-                        <p className="text-4xl font-bold text-gray-900 mb-2">892</p>
-                        <p className="text-sm text-[#C9A050] flex items-center gap-1 font-semibold">
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
-                            </svg>
-                            +8.2%
-                        </p>
-                    </div>
-
-                    {/* Average Order Value */}
-                    <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-100">
-                        <p className="text-sm text-gray-500 font-medium mb-2">Average Order Value</p>
-                        <p className="text-4xl font-bold text-gray-900 mb-2">$14.39</p>
-                        <p className="text-sm text-red-600 flex items-center gap-1 font-semibold">
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                            </svg>
-                            -1.1%
-                        </p>
-                    </div>
-
-                    {/* New Customers */}
-                    <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-100">
-                        <p className="text-sm text-gray-500 font-medium mb-2">New Customers</p>
-                        <p className="text-4xl font-bold text-gray-900 mb-2">76</p>
-                        <p className="text-sm text-[#C9A050] flex items-center gap-1 font-semibold">
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
-                            </svg>
-                            +20%
-                        </p>
-                    </div>
+                    <MetricCard
+                        title="Total Revenue"
+                        value={`₹${data.stats.revenue}`}
+                        change="+12.5%"
+                        isPositive={true}
+                    />
+                    <MetricCard
+                        title="Total Orders"
+                        value={data.stats.orders}
+                        change="+8.2%"
+                        isPositive={true}
+                    />
+                    <MetricCard
+                        title="Avg Order Value"
+                        value={`₹${data.stats.avg}`}
+                        change="-1.1%"
+                        isPositive={false}
+                    />
+                    <MetricCard
+                        title="New Customers"
+                        value={data.stats.newCust}
+                        change="+20%"
+                        isPositive={true}
+                    />
                 </div>
 
                 {/* Charts Section */}
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-                    {/* Sales Over Time - 2 columns */}
+                    {/* Sales Over Time (Area Chart) */}
                     <div className="lg:col-span-2 bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-                        <div className="mb-6">
-                            <div className="flex items-center gap-2 mb-1">
-                                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#C9A050]/20 to-[#C9A050]/10 flex items-center justify-center">
-                                    <svg className="w-4 h-4 text-[#C9A050]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
-                                    </svg>
-                                </div>
+                        <div className="mb-6 flex items-center justify-between">
+                            <div>
                                 <h3 className="text-xl font-bold text-gray-900">Sales Over Time</h3>
+                                <p className="text-sm text-gray-500">Revenue trend for {timePeriod}</p>
                             </div>
-                            <p className="text-sm text-gray-500">This Month <span className="text-[#C9A050] ml-2 font-semibold">+5.4%</span></p>
-                            <p className="text-3xl font-bold text-gray-900 mt-2">$8,421.50</p>
+                            <div className="text-right">
+                                <p className="text-2xl font-bold text-gray-900">₹{data.stats.revenue}</p>
+                            </div>
                         </div>
 
-                        {/* Line Chart with muted teal color */}
-                        <div className="h-64 flex items-end justify-between gap-2">
-                            <svg className="w-full h-full" viewBox="0 0 800 250" preserveAspectRatio="none">
-                                {/* Grid lines */}
-                                <line x1="0" y1="50" x2="800" y2="50" stroke="#E5E7EB" strokeWidth="1" />
-                                <line x1="0" y1="100" x2="800" y2="100" stroke="#E5E7EB" strokeWidth="1" />
-                                <line x1="0" y1="150" x2="800" y2="150" stroke="#E5E7EB" strokeWidth="1" />
-                                <line x1="0" y1="200" x2="800" y2="200" stroke="#E5E7EB" strokeWidth="1" />
-
-                                {/* Area fill with muted teal */}
-                                <path
-                                    d="M 0 150 Q 100 80 200 100 T 400 80 T 600 50 T 800 100 L 800 250 L 0 250 Z"
-                                    fill="url(#gradient-teal)"
-                                    opacity="0.2"
-                                />
-
-                                {/* Line with muted teal */}
-                                <path
-                                    d="M 0 150 Q 100 80 200 100 T 400 80 T 600 50 T 800 100"
-                                    fill="none"
-                                    stroke="#007B82"
-                                    strokeWidth="3"
-                                    strokeLinecap="round"
-                                />
-
-                                <defs>
-                                    <linearGradient id="gradient-teal" x1="0%" y1="0%" x2="0%" y2="100%">
-                                        <stop offset="0%" stopColor="#007B82" />
-                                        <stop offset="100%" stopColor="#E0F2F3" />
-                                    </linearGradient>
-                                </defs>
-                            </svg>
-                        </div>
-
-                        {/* Week labels */}
-                        <div className="flex justify-between mt-4 text-sm text-gray-500">
-                            <span>Week 1</span>
-                            <span>Week 2</span>
-                            <span>Week 3</span>
-                            <span>Week 4</span>
+                        <div className="h-72 w-full">
+                            <ResponsiveContainer width="100%" height="100%">
+                                <AreaChart data={data.chart} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
+                                    <defs>
+                                        <linearGradient id="colorSales" x1="0" y1="0" x2="0" y2="1">
+                                            <stop offset="5%" stopColor="#007B82" stopOpacity={0.1} />
+                                            <stop offset="95%" stopColor="#007B82" stopOpacity={0} />
+                                        </linearGradient>
+                                    </defs>
+                                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#E5E7EB" />
+                                    <XAxis
+                                        dataKey="name"
+                                        axisLine={false}
+                                        tickLine={false}
+                                        tick={{ fill: '#6B7280', fontSize: 12 }}
+                                        dy={10}
+                                    />
+                                    <YAxis
+                                        axisLine={false}
+                                        tickLine={false}
+                                        tick={{ fill: '#6B7280', fontSize: 12 }}
+                                        tickFormatter={(value) => `₹${value / 1000}k`}
+                                    />
+                                    <Tooltip content={<CustomTooltip />} />
+                                    <Area
+                                        type="monotone"
+                                        dataKey="sales"
+                                        stroke="#007B82"
+                                        strokeWidth={3}
+                                        fillOpacity={1}
+                                        fill="url(#colorSales)"
+                                    />
+                                </AreaChart>
+                            </ResponsiveContainer>
                         </div>
                     </div>
 
-                    {/* Order Source Breakdown - 1 column */}
-                    <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-                        <div className="flex items-center gap-2 mb-6">
-                            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#C9A050]/20 to-[#C9A050]/10 flex items-center justify-center">
-                                <svg className="w-4 h-4 text-[#C9A050]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
-                                </svg>
-                            </div>
-                            <h3 className="text-xl font-bold text-gray-900">Order Source Breakdown</h3>
-                        </div>
+                    {/* Order Source Breakdown (Pie Chart) */}
+                    <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 flex flex-col">
+                        <h3 className="text-xl font-bold text-gray-900 mb-6">Order Source</h3>
 
-                        {/* Donut Chart with soft blue palette */}
-                        <div className="flex items-center justify-center mb-6">
-                            <div className="relative w-48 h-48">
-                                <svg viewBox="0 0 200 200" className="transform -rotate-90">
-                                    {/* Background circle */}
-                                    <circle cx="100" cy="100" r="80" fill="none" stroke="#F3F4F6" strokeWidth="40" />
-
-                                    {/* Dine-In 60% - Muted Teal */}
-                                    <circle
-                                        cx="100"
-                                        cy="100"
-                                        r="80"
-                                        fill="none"
-                                        stroke="#007B82"
-                                        strokeWidth="40"
-                                        strokeDasharray="301.6 502.7"
-                                        strokeDashoffset="0"
-                                    />
-
-                                    {/* Takeout 30% - Soft Blue */}
-                                    <circle
-                                        cx="100"
-                                        cy="100"
-                                        r="80"
-                                        fill="none"
-                                        stroke="#4A6CF7"
-                                        strokeWidth="40"
-                                        strokeDasharray="150.8 502.7"
-                                        strokeDashoffset="-301.6"
-                                    />
-
-                                    {/* Delivery 10% - Slate Grey */}
-                                    <circle
-                                        cx="100"
-                                        cy="100"
-                                        r="80"
-                                        fill="none"
-                                        stroke="#475569"
-                                        strokeWidth="40"
-                                        strokeDasharray="50.3 502.7"
-                                        strokeDashoffset="-452.4"
-                                    />
-                                </svg>
-
-                                {/* Center text */}
-                                <div className="absolute inset-0 flex flex-col items-center justify-center">
-                                    <p className="text-4xl font-bold text-gray-900">892</p>
-                                    <p className="text-sm text-gray-500">Total Orders</p>
-                                </div>
+                        <div className="flex-1 min-h-[200px] relative">
+                            <ResponsiveContainer width="100%" height="100%">
+                                <PieChart>
+                                    <Pie
+                                        data={sourceData}
+                                        cx="50%"
+                                        cy="50%"
+                                        innerRadius={60}
+                                        outerRadius={80}
+                                        paddingAngle={5}
+                                        dataKey="value"
+                                    >
+                                        {sourceData.map((entry, index) => (
+                                            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                                        ))}
+                                    </Pie>
+                                    <Tooltip />
+                                </PieChart>
+                            </ResponsiveContainer>
+                            {/* Center Text Overly */}
+                            <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+                                <p className="text-3xl font-bold text-gray-900">{data.stats.orders}</p>
+                                <p className="text-xs text-gray-500">Orders</p>
                             </div>
                         </div>
 
-                        {/* Legend */}
-                        <div className="space-y-3">
-                            <div className="flex items-center justify-between">
-                                <div className="flex items-center gap-2">
-                                    <div className="w-3 h-3 rounded-full bg-[#007B82]"></div>
-                                    <span className="text-sm text-gray-500">Dine-In</span>
+                        {/* Custom Legend */}
+                        <div className="mt-4 space-y-3">
+                            {sourceData.map((entry, index) => (
+                                <div key={entry.name} className="flex items-center justify-between">
+                                    <div className="flex items-center gap-2">
+                                        <div className="w-3 h-3 rounded-full" style={{ backgroundColor: COLORS[index] }}></div>
+                                        <span className="text-sm text-gray-600">{entry.name}</span>
+                                    </div>
+                                    <span className="text-sm font-semibold text-[#C9A050]">
+                                        {Math.round((entry.value / 892) * 100)}%
+                                    </span>
                                 </div>
-                                <span className="text-sm font-semibold text-[#C9A050]">60%</span>
-                            </div>
-                            <div className="flex items-center justify-between">
-                                <div className="flex items-center gap-2">
-                                    <div className="w-3 h-3 rounded-full bg-[#4A6CF7]"></div>
-                                    <span className="text-sm text-gray-500">Takeout</span>
-                                </div>
-                                <span className="text-sm font-semibold text-[#C9A050]">30%</span>
-                            </div>
-                            <div className="flex items-center justify-between">
-                                <div className="flex items-center gap-2">
-                                    <div className="w-3 h-3 rounded-full bg-[#475569]"></div>
-                                    <span className="text-sm text-gray-500">Delivery</span>
-                                </div>
-                                <span className="text-sm font-semibold text-[#C9A050]">10%</span>
-                            </div>
+                            ))}
                         </div>
                     </div>
                 </div>
 
-                {/* Bottom Section - Top Selling Items and Recent Orders */}
+                {/* Bottom Section */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    {/* Top Selling Menu Items */}
+                    {/* Top Selling Items (Bar Chart) */}
                     <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-                        <div className="flex items-center gap-2 mb-6">
-                            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#C9A050]/20 to-[#C9A050]/10 flex items-center justify-center">
-                                <svg className="w-4 h-4 text-[#C9A050]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                                </svg>
-                            </div>
-                            <h3 className="text-xl font-bold text-gray-900">Top Selling Menu Items</h3>
-                        </div>
-                        <div className="space-y-4">
-                            {topSellingItems.map((item, index) => (
+                        <h3 className="text-xl font-bold text-gray-900 mb-6">Top Selling Items</h3>
+                        <div className="space-y-5">
+                            {data.items.map((item, index) => (
                                 <div key={index}>
                                     <div className="flex justify-between items-center mb-2">
                                         <span className="text-sm font-medium text-gray-900">{item.name}</span>
-                                        <span className="text-sm font-semibold text-[#C9A050]">{item.value}%</span>
+                                        <span className="text-sm font-semibold text-[#C9A050]">{item.value} sold</span>
                                     </div>
-                                    <div className="w-full bg-gray-100 rounded-full h-2 overflow-hidden">
+                                    <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
                                         <div
-                                            className="bg-gradient-to-r from-[#007B82] to-[#4A6CF7] h-2 rounded-full transition-all"
-                                            style={{ width: `${item.value}%` }}
+                                            className="bg-gradient-to-r from-[#007B82] to-[#4A6CF7] h-2.5 rounded-full transition-all duration-1000 ease-out"
+                                            style={{ width: `${(item.value / Math.max(...data.items.map(i => i.value))) * 100}%` }}
                                         ></div>
                                     </div>
                                 </div>
@@ -303,15 +311,11 @@ export default function AnalyticsPage() {
                         </div>
                     </div>
 
-                    {/* Recent High-Value Orders */}
+                    {/* Recent Orders Table */}
                     <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-                        <div className="flex items-center gap-2 mb-6">
-                            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#C9A050]/20 to-[#C9A050]/10 flex items-center justify-center">
-                                <svg className="w-4 h-4 text-[#C9A050]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                                </svg>
-                            </div>
-                            <h3 className="text-xl font-bold text-gray-900">Recent High-Value Orders</h3>
+                        <div className="flex justify-between items-center mb-6">
+                            <h3 className="text-xl font-bold text-gray-900">Recent Transactions</h3>
+                            <button className="text-sm text-[#C9A050] hover:text-[#8B6F3E] font-medium">View All</button>
                         </div>
                         <div className="overflow-x-auto">
                             <table className="w-full">
@@ -325,9 +329,9 @@ export default function AnalyticsPage() {
                                 </thead>
                                 <tbody>
                                     {recentOrders.map((order, index) => (
-                                        <tr key={index} className="border-b border-gray-100">
+                                        <tr key={index} className="border-b border-gray-50 hover:bg-gray-50 transition-colors">
                                             <td className="py-3 text-sm text-gray-900 font-medium">{order.id}</td>
-                                            <td className="py-3 text-sm text-gray-500">{order.customer}</td>
+                                            <td className="py-3 text-sm text-gray-600">{order.customer}</td>
                                             <td className="py-3">
                                                 <span className={`px-3 py-1 rounded-full text-xs font-semibold ${order.status === "Completed" ? "bg-green-100 text-green-700" :
                                                     order.status === "Pending" ? "bg-yellow-100 text-yellow-700" :
@@ -336,7 +340,7 @@ export default function AnalyticsPage() {
                                                     {order.status}
                                                 </span>
                                             </td>
-                                            <td className="py-3 text-sm font-bold text-[#C9A050] text-right">{order.amount}</td>
+                                            <td className="py-3 text-sm font-bold text-gray-900 text-right">{order.amount}</td>
                                         </tr>
                                     ))}
                                 </tbody>
@@ -344,50 +348,30 @@ export default function AnalyticsPage() {
                         </div>
                     </div>
                 </div>
-
-                {/* Additional Stats */}
-                <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-                        <div className="flex items-center gap-3 mb-3">
-                            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#C9A050]/20 to-[#C9A050]/10 flex items-center justify-center">
-                                <svg className="w-5 h-5 text-[#C9A050]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                            </div>
-                            <h4 className="font-semibold text-gray-900">Peak Hours</h4>
-                        </div>
-                        <p className="text-2xl font-bold text-gray-900">7-9 PM</p>
-                        <p className="text-sm text-gray-500 mt-1">Dinner rush hour</p>
-                    </div>
-
-                    <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-                        <div className="flex items-center gap-3 mb-3">
-                            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#C9A050]/20 to-[#C9A050]/10 flex items-center justify-center">
-                                <svg className="w-5 h-5 text-[#C9A050]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                                </svg>
-                            </div>
-                            <h4 className="font-semibold text-gray-900">Table Occupancy</h4>
-                        </div>
-                        <p className="text-2xl font-bold text-gray-900">68%</p>
-                        <p className="text-sm text-gray-500 mt-1">Current utilization</p>
-                    </div>
-
-                    <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-                        <div className="flex items-center gap-3 mb-3">
-                            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#C9A050]/20 to-[#C9A050]/10 flex items-center justify-center">
-                                <svg className="w-5 h-5 text-[#C9A050]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-                                </svg>
-                            </div>
-                            <h4 className="font-semibold text-gray-900">Average Rating</h4>
-                        </div>
-                        <p className="text-2xl font-bold text-gray-900">4.5 <span className="text-yellow-500">⭐</span></p>
-                        <p className="text-sm text-gray-500 mt-1">Based on 234 reviews</p>
-                    </div>
-                </div>
             </div>
             <Footer />
+        </div>
+    );
+}
+
+// Sub-component for simple metric cards
+function MetricCard({ title, value, change, isPositive }) {
+    return (
+        <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-100">
+            <p className="text-sm text-gray-500 font-medium mb-2">{title}</p>
+            <p className="text-4xl font-bold text-gray-900 mb-2">{value}</p>
+            <p className={`text-sm flex items-center gap-1 font-semibold ${isPositive ? 'text-[#C9A050]' : 'text-red-500'}`}>
+                {isPositive ? (
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                    </svg>
+                ) : (
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                    </svg>
+                )}
+                {change}
+            </p>
         </div>
     );
 }

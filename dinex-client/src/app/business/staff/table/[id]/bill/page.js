@@ -50,19 +50,28 @@ export default function BillPage() {
     const handleConfirmPayment = async () => {
         const confirmed = await showDialog({
             title: "Confirm Payment",
-            message: "Confirm payment received?",
-            confirmText: "Yes, Payment Received",
+            message: `Mark total amount of ₹${bill.total} as received?`,
+            confirmText: "Payment Received",
             cancelText: "Cancel",
             type: "success",
         });
         if (confirmed) {
             setIsProcessing(true);
-            setTimeout(() => {
-                markAsPaid(order.orderId);
-                showToast("Payment confirmed successfully!", "success");
+            try {
+                // Ensure backend clears the table
+                await markAsPaid(order.orderId);
+                showToast("Payment confirmed! Table is now free.", "success");
                 router.push('/business/staff/home');
-            }, 500);
+            } catch (error) {
+                setIsProcessing(false);
+                showToast("Payment confirmation failed", "error");
+            }
         }
+    };
+
+    const handlePayLater = () => {
+        // Just go back, status is already 'bill-pending' from when 'Generate Bill' was clicked
+        router.push('/business/staff/home');
     };
 
     const handleDownloadBill = () => {
@@ -81,11 +90,11 @@ export default function BillPage() {
             <div className="container mx-auto px-6 max-w-4xl">
                 {/* Back Button */}
                 <button
-                    onClick={() => router.back()}
+                    onClick={handlePayLater}
                     className="flex items-center gap-2 text-gray-600 hover:text-amber-600 mb-6 transition-colors cursor-pointer"
                 >
                     <ArrowLeft className="w-5 h-5" />
-                    <span className="font-semibold">Back</span>
+                    <span className="font-semibold">Back (Payment Pending)</span>
                 </button>
 
                 {/* Bill Card */}

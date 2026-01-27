@@ -11,7 +11,7 @@ export default function ManageOrderPage() {
     const router = useRouter();
     const params = useParams();
     const tableId = parseInt(params.id);
-    const { tables, getOrderByTableId, addItemsToOrder, updateItemStatus, removeItemFromOrder, completeOrder, cancelOrder } = useOrder();
+    const { tables, getOrderByTableId, addItemsToOrder, updateItemStatus, removeItemFromOrder, completeOrder, cancelOrder, generateBill } = useOrder();
     const { showToast, showDialog } = useNotification();
 
     const [showAddItems, setShowAddItems] = useState(false);
@@ -60,8 +60,9 @@ export default function ManageOrderPage() {
     };
 
     const handleGenerateBill = () => {
+        generateBill(tableId);
         completeOrder(order.orderId);
-        router.push(`/business/staff/table/${tableId}/bill`);
+        router.push(`/business/staff/home`); // Go back to home to see the "Bill Generated" state
     };
 
     const handleCancelOrder = async () => {

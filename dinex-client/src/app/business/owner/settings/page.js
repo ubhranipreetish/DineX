@@ -251,10 +251,10 @@ export default function SettingsPage() {
                                         <div className="flex items-start justify-between mb-3">
                                             <div className="flex items-center gap-3">
                                                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#C9A050] to-[#8B6F3E] flex items-center justify-center text-white font-semibold text-lg">
-                                                    S
+                                                    R
                                                 </div>
                                                 <div>
-                                                    <h4 className="font-semibold text-gray-900">Sarah Johnson</h4>
+                                                    <h4 className="font-semibold text-gray-900">Rahul Mehta</h4>
                                                     <p className="text-sm text-gray-500">2 days ago</p>
                                                 </div>
                                             </div>
@@ -263,7 +263,7 @@ export default function SettingsPage() {
                                             </div>
                                         </div>
                                         <p className="text-gray-700 leading-relaxed">
-                                            Absolutely amazing experience! The ambiance was perfect, the service was impeccable, and the food was outstanding. The pasta was cooked to perfection and the desserts were divine. Will definitely be coming back!
+                                            Absolutely loved the Butter Chicken! The flavors were authentic and the naan was perfectly soft. Great ambiance for a family dinner. Will definitely visit again.
                                         </p>
                                     </div>
 
@@ -272,10 +272,10 @@ export default function SettingsPage() {
                                         <div className="flex items-start justify-between mb-3">
                                             <div className="flex items-center gap-3">
                                                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#4A6CF7] to-[#357ABD] flex items-center justify-center text-white font-semibold text-lg">
-                                                    M
+                                                    A
                                                 </div>
                                                 <div>
-                                                    <h4 className="font-semibold text-gray-900">Michael Chen</h4>
+                                                    <h4 className="font-semibold text-gray-900">Anjali Gupta</h4>
                                                     <p className="text-sm text-gray-500">5 days ago</p>
                                                 </div>
                                             </div>
@@ -284,7 +284,7 @@ export default function SettingsPage() {
                                             </div>
                                         </div>
                                         <p className="text-gray-700 leading-relaxed">
-                                            Great food and excellent service! The menu has a wonderful variety. The only minor issue was the wait time during peak hours, but the quality of the meal made it worth it. Highly recommend the chef's special!
+                                            The Paneer Tikka was delicious and the service was very quick. Just felt the music was a bit too loud, but otherwise a wonderful dining experience.
                                         </p>
                                     </div>
 
@@ -293,10 +293,10 @@ export default function SettingsPage() {
                                         <div className="flex items-start justify-between mb-3">
                                             <div className="flex items-center gap-3">
                                                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#FF6B35] to-[#FF8C42] flex items-center justify-center text-white font-semibold text-lg">
-                                                    E
+                                                    V
                                                 </div>
                                                 <div>
-                                                    <h4 className="font-semibold text-gray-900">Emily Rodriguez</h4>
+                                                    <h4 className="font-semibold text-gray-900">Vikram Singh</h4>
                                                     <p className="text-sm text-gray-500">1 week ago</p>
                                                 </div>
                                             </div>
@@ -305,7 +305,7 @@ export default function SettingsPage() {
                                             </div>
                                         </div>
                                         <p className="text-gray-700 leading-relaxed">
-                                            One of the best dining experiences I've had in this city. The attention to detail in every dish was remarkable. The staff was friendly and knowledgeable about the menu. Perfect for special occasions!
+                                            Best Dal Makhani in the city! Reminded me of the dhabas in Punjab. The staff was very courteous and took good care of our large group. Highly recommended!
                                         </p>
                                     </div>
 
@@ -314,10 +314,10 @@ export default function SettingsPage() {
                                         <div className="flex items-start justify-between mb-3">
                                             <div className="flex items-center gap-3">
                                                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#007B82] to-[#005F65] flex items-center justify-center text-white font-semibold text-lg">
-                                                    D
+                                                    N
                                                 </div>
                                                 <div>
-                                                    <h4 className="font-semibold text-gray-900">David Thompson</h4>
+                                                    <h4 className="font-semibold text-gray-900">Neha Kapoor</h4>
                                                     <p className="text-sm text-gray-500">2 weeks ago</p>
                                                 </div>
                                             </div>
@@ -326,7 +326,7 @@ export default function SettingsPage() {
                                             </div>
                                         </div>
                                         <p className="text-gray-700 leading-relaxed">
-                                            Solid restaurant with consistently good food. The portions are generous and the prices are reasonable. Love the cozy atmosphere. Would give 5 stars if they expanded their vegetarian options a bit more.
+                                            Good food and decent pricing. The Tandoori Platter is a must-try. Service could be a bit faster during peak hours, but the taste makes up for it.
                                         </p>
                                     </div>
 
@@ -335,10 +335,10 @@ export default function SettingsPage() {
                                         <div className="flex items-start justify-between mb-3">
                                             <div className="flex items-center gap-3">
                                                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#475569] to-[#334155] flex items-center justify-center text-white font-semibold text-lg">
-                                                    A
+                                                    K
                                                 </div>
                                                 <div>
-                                                    <h4 className="font-semibold text-gray-900">Amanda Williams</h4>
+                                                    <h4 className="font-semibold text-gray-900">Karan Malhotra</h4>
                                                     <p className="text-sm text-gray-500">3 weeks ago</p>
                                                 </div>
                                             </div>
@@ -347,7 +347,7 @@ export default function SettingsPage() {
                                             </div>
                                         </div>
                                         <p className="text-gray-700 leading-relaxed">
-                                            Fantastic restaurant! From the moment we walked in, we were treated like VIPs. The wine selection is impressive, and our server gave excellent recommendations. The filet mignon was cooked perfectly. Can't wait to return!
+                                            Celebrated my wife's birthday here and they made it very special. The complimentary dessert was a nice touch. The Biryani was flavorful and authentic.
                                         </p>
                                     </div>
                                 </div>
